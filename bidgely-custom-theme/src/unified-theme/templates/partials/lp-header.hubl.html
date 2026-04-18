@@ -1,0 +1,70 @@
+<!--
+  templateType: global_partial
+  subtype: header
+  screenshotPath: ../../images/template-previews/partials/lp-header.png
+  label: Landing page header
+-->
+
+{% set template_translations = load_translations('../_locales', html_lang, 'en') %}
+{% import "../../helpers/variables.hubl.html" %}
+
+<div class="hs-elevate-header">
+  <a href="#main-content" class="hs-elevate-header__skip">{{ template_translations.partial_header_skip_to_content.message }}</a>
+
+  {% dnd_area "header" label="Header" %}
+    {% dnd_section
+      padding={
+        "top": spacing_0,
+        "bottom": spacing_0
+      }
+    %}
+      {% dnd_column %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../../components/modules/BidgelyHeader",
+            offset=0,
+            width=12,
+            groupNavigation={
+              "menu": "default",
+              "navAriaLabel": "Primary"
+            },
+            groupLogo={
+              "logoMark": "b",
+              "logoSuffix": "idgely",
+              "brandLink": {
+                "url": {
+                  "href": "/",
+                  "type": "EXTERNAL",
+                  "content_id": null
+                },
+                "open_in_new_tab": false
+              }
+            },
+            groupCtas={
+              "showSecondaryCta": true,
+              "secondaryCtaText": "Log In",
+              "secondaryCtaLink": {
+                "url": {
+                  "href": "",
+                  "type": "EXTERNAL",
+                  "content_id": null
+                },
+                "open_in_new_tab": false
+              },
+              "primaryCtaText": "Talk to Sales",
+              "primaryCtaLink": {
+                "url": {
+                  "href": "",
+                  "type": "EXTERNAL",
+                  "content_id": null
+                },
+                "open_in_new_tab": false
+              }
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+</div>

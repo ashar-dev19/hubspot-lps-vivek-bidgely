@@ -1,0 +1,13 @@
+# HubSpot CLI (never commit secrets)
+hubspot.config.*
+hubspot.config.yaml
+hubspot.config.yml
+
+# Environment
+.env
+.env.*
+
+# OS / editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
