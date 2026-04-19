@@ -1026,7 +1026,7 @@ a {
 /* -----------------------------------------------------------------------------
    Jobs to be done (CX outcomes grid — Figma)
    ----------------------------------------------------------------------------- */
-.section--jtbd {
+.section-capabilities {
   padding: 72px var(--space-page) 80px;
   background: #eef5fb;
 }
@@ -2479,7 +2479,7 @@ a {
     --space-page: 1.25rem;
   }
 
-  .section--jtbd {
+  .section-capabilities {
     padding-bottom: 3rem;
   }
 

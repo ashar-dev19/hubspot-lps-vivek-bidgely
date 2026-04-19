@@ -938,12 +938,12 @@ a {
 /* -----------------------------------------------------------------------------
    Jobs to be done
    ----------------------------------------------------------------------------- */
-.section--jtbd {
+.section-capabilities {
   padding: 72px var(--space-page) 0;
   background: var(--white);
 }
 
-.section--jtbd .section-heading {
+.section-capabilities .section-heading {
   margin-bottom: 1.75rem;
 }
 
