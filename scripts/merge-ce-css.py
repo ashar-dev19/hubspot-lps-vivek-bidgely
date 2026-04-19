@@ -64,11 +64,6 @@ CE_PREAMBLE = r"""/* -----------------------------------------------------------
   margin: 0;
 }
 
-.customer-engagement-page img {
-  max-width: 100%;
-  height: auto;
-}
-
 .customer-engagement-page a {
   color: inherit;
 }

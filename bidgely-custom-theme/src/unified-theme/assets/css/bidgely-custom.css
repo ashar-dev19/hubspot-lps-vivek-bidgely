@@ -501,11 +501,6 @@
   margin: 0;
 }
 
-.customer-engagement-page img {
-  width: auto;
-  height: 22px;
-}
-
 .customer-engagement-page a {
   color: inherit;
 }
@@ -1502,8 +1497,10 @@
 .jtbd-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-flow: row;
   gap: 1.25rem;
   align-items: stretch;
+  /* Four columns on wide viewports; card 5+ starts the next row (column 1). */
 }
 
 .jtbd-card {
