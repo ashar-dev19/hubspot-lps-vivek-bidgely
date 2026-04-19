@@ -1,7 +1,7 @@
 import { ModuleFields, TextField, LinkField, FieldGroup } from '@hubspot/cms-components/fields';
 
 const defaultCtaLink = {
-  url: { href: '', type: 'EXTERNAL' as const, content_id: null },
+  url: { href: '#contact', type: 'EXTERNAL' as const, content_id: null },
   open_in_new_tab: false,
 };
 
@@ -18,7 +18,7 @@ export const fields = (
         name="ceHeadingBeforeAccent"
         default="Most CX platforms know what your customers did. Bidgely knows "
       />
-      <TextField label="Heading — accent word (gradient)" name="ceHeadingAccent" default="why" />
+      <TextField label="Heading — accent word (teal)" name="ceHeadingAccent" default="why" />
       <TextField
         label="Right column tagline"
         name="ceTagline"

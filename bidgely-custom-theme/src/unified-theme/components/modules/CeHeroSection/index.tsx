@@ -1,4 +1,3 @@
-import { useId } from 'react';
 import type { TextFieldType, LinkFieldType } from '@hubspot/cms-components/fields';
 import { ModuleMeta } from '../../types/modules.js';
 import { getLinkFieldHref, getLinkFieldRel, getLinkFieldTarget } from '../../utils/content-fields.js';
@@ -26,33 +25,35 @@ const Div = createComponent('div');
 const P = createComponent('p');
 const H1 = createComponent('h1');
 const Span = createComponent('span');
+const A = createComponent('a');
+
+const HERO_HEADING_ID = 'hero-heading';
 
 export const Component = (props: CeHeroSectionProps) => {
   const { groupCeHero, groupCeHeroCta } = props;
-  const headingId = `ce-hero-heading-${useId().replace(/:/g, '')}`;
   const href = getLinkFieldHref(groupCeHeroCta.ceCtaLink) || '#';
   const target = getLinkFieldTarget(groupCeHeroCta.ceCtaLink);
   const rel = getLinkFieldRel(groupCeHeroCta.ceCtaLink);
 
   return (
     <Div className="customer-engagement-page">
-      <Section className="hero" aria-labelledby={headingId}>
+      <Section className="hero" aria-labelledby={HERO_HEADING_ID}>
         <Div className="hero__grid" aria-hidden="true" />
         <Div className="hero__inner">
           <Div className="hero__col-left">
             <P className="eyebrow">{groupCeHero.ceEyebrow}</P>
-            <H1 id={headingId} className="hero__title">
+            <H1 id={HERO_HEADING_ID} className="hero__title">
               {groupCeHero.ceHeadingBeforeAccent}
-              <Span className="text-gradient">{groupCeHero.ceHeadingAccent}</Span>
+              <Span className="text-teal-bold">{groupCeHero.ceHeadingAccent}</Span>
             </H1>
             <Div>
-              <a
+              <A
                 className="btn btn--dark"
                 href={href}
                 {...(target ? { target, rel: rel || undefined } : {})}
               >
                 {groupCeHeroCta.ceCtaText}
-              </a>
+              </A>
             </Div>
           </Div>
           <Div className="hero__col-right">
@@ -82,6 +83,6 @@ export const meta: ModuleMeta = {
 
 export const defaultModuleConfig = {
   moduleName: 'elevate/components/modules/ce_hero_section',
-  version: 2,
+  version: 4,
   themeModule: true,
 };

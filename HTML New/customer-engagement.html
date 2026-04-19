@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Engagement · Bidgely UtilityAI™</title>
+    <link rel="stylesheet" href="customer-engagement.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <input type="checkbox" id="site-nav-toggle" class="site-nav__toggle" aria-controls="site-primary-nav" />
+      <div class="site-header__inner">
+        <div class="site-header__left">
+          <a href="index.html" class="site-header__brand">
+            <span class="site-header__logo"><span class="site-header__logo-mark">b</span>idgely</span>
+          </a>
+          <nav id="site-primary-nav" class="site-header__nav" aria-label="Primary">
+            <ul class="site-nav">
+              <li class="site-nav__item site-nav__item--has-sub">
+                <details class="site-nav__details" name="site-nav-dropdowns">
+                  <summary class="site-nav__dropdown">
+                    Solutions
+                    <svg class="site-nav__chevron" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </summary>
+                  <ul class="site-nav__sub">
+                    <li><a class="site-nav__sublink" href="#">Customer Engagement</a></li>
+                    <li><a class="site-nav__sublink" href="#">Grid Planning</a></li>
+                    <li><a class="site-nav__sublink" href="#">Energy Efficiency</a></li>
+                    <li><a class="site-nav__sublink" href="#">EV &amp; Electrification</a></li>
+                    <li><a class="site-nav__sublink" href="#">Rates &amp; Affordability</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li class="site-nav__item site-nav__item--has-sub">
+                <details class="site-nav__details" name="site-nav-dropdowns">
+                  <summary class="site-nav__dropdown">
+                    Technology
+                    <svg class="site-nav__chevron" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </summary>
+                  <ul class="site-nav__sub">
+                    <li><a class="site-nav__sublink" href="#">UtilityAI™ Platform</a></li>
+                    <li><a class="site-nav__sublink" href="#">Disaggregation Engine</a></li>
+                    <li><a class="site-nav__sublink" href="#">APIs &amp; Integrations</a></li>
+                    <li><a class="site-nav__sublink" href="#">Security &amp; Compliance</a></li>
+                  </ul>
+                </details>
+              </li>
+              <li><a class="site-nav__link" href="#">Customers</a></li>
+              <li><a class="site-nav__link" href="#">Resources</a></li>
+              <li><a class="site-nav__link" href="#">Company</a></li>
+            </ul>
+          </nav>
+        </div>
+        <label for="site-nav-toggle" class="site-nav__burger">
+          <span class="site-nav__burger-line"></span>
+          <span class="site-nav__burger-line"></span>
+          <span class="site-nav__burger-line"></span>
+          <span class="site-nav__burger-label">Menu</span>
+        </label>
+        <div class="site-header__actions">
+          <a href="#login" class="btn btn--ghost">Log In</a>
+          <a href="#sales" class="btn btn--primary">Talk to Sales</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero__grid" aria-hidden="true"></div>
+        <div class="hero__inner">
+          <div class="hero__col-left">
+            <p class="eyebrow">Customer Engagement</p>
+            <h1 id="hero-heading" class="hero__title">
+              Most CX platforms know what your customers did. Bidgely knows <span class="text-teal-bold">why</span>
+            </h1>
+            <div>
+              <a href="#contact" class="btn btn--dark">Talk to an Expert</a>
+            </div>
+          </div>
+          <div class="hero__col-right">
+            <p class="hero__tagline">Fewer Calls. Better Enrollment. Customers Who Actually Engage.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mock-section" aria-label="Product preview">
+        <div class="container">
+          <div class="mock-shell">
+            <aside class="mock-floater mock-floater--left" aria-hidden="true">
+              <p class="mock-floater__label">Energy saved</p>
+              <p class="mock-floater__value">1.5 TWh</p>
+              <p class="mock-floater__hint">Across deployments</p>
+            </aside>
+            <aside class="mock-floater mock-floater--right" aria-hidden="true">
+              <p class="mock-floater__label">Enrollment</p>
+              <p class="mock-floater__value">3.1×</p>
+              <p class="mock-floater__hint">Program increase</p>
+            </aside>
+
+            <div class="mock-window">
+              <div class="mock-window__chrome">
+                <span class="mock-window__dot mock-window__dot--red" aria-hidden="true"></span>
+                <span class="mock-window__dot mock-window__dot--yellow" aria-hidden="true"></span>
+                <span class="mock-window__dot mock-window__dot--green" aria-hidden="true"></span>
+                <span class="mock-window__title">UTILITYAI · CUSTOMER INTELLIGENCE · METER #49211</span>
+              </div>
+              <div class="mock-window__body">
+                <div class="mock-window__main">
+                  <div class="mock-customer">
+                    <div class="mock-customer__avatar" aria-hidden="true">JM</div>
+                    <div>
+                      <div class="mock-customer__name">Jennifer Martinez</div>
+                      <div class="mock-customer__meta">Acct #449211 · TOU-EV Rate · Springfield, IL</div>
+                    </div>
+                    <span class="mock-customer__badge">High Bill Risk</span>
+                  </div>
+
+                  <div class="insight-row">
+                    <div class="insight-card">
+                      <div class="insight-card__heading-price">
+                      <div class="insight-card__label">This Month</div>
+                      <div class="insight-card__value">$247</div>
+                      </div>
+                      <div class="insight-card__hint">+$68 vs last month</div>
+                    </div>
+                    <div class="insight-card insight-card--accent">
+                      <div class="insight-card__heading-price">
+                      <div class="insight-card__label">Primary Driver</div>
+                      <div class="insight-card__value insight-card__value--gradient">EV Charging</div>
+                      </div>
+                      <div class="insight-card__hint">+$34 on-p eak shift</div>
+                    </div>
+                    <div class="insight-card">
+                      <div class="insight-card__label">Program Match</div>
+                      <div class="insight-card__value">92%</div>
+                      <div class="insight-card__hint">Smart Charge Rebate</div>
+                    </div>
+                  </div>
+
+                  <div class="appliance-list">
+                    <div class="appliance-row">
+                      <span class="appliance-row__icon" aria-hidden="true">
+                        <img class="appliance-row__icon-img" src="assets/ev-charging.png" alt="" width="22" height="22" loading="lazy" />
+                      </span>
+                      <span class="appliance-row__label">EV Charging</span>
+                      <span class="appliance-row__track"><span class="appliance-row__fill appliance-row__fill--82"></span></span>
+                      <span class="appliance-row__amt">$89</span>
+                    </div>
+                    <div class="appliance-row">
+                      <span class="appliance-row__icon" aria-hidden="true">
+                        <img class="appliance-row__icon-img" src="assets/cooling.png" alt="" width="22" height="22" loading="lazy" />
+                      </span>
+                      <span class="appliance-row__label">HVAC / Cooling</span>
+                      <span class="appliance-row__track"><span class="appliance-row__fill appliance-row__fill--58"></span></span>
+                      <span class="appliance-row__amt">$63</span>
+                    </div>
+                    <div class="appliance-row">
+                      <span class="appliance-row__icon" aria-hidden="true">
+                        <img class="appliance-row__icon-img" src="assets/water-heater.png" alt="" width="22" height="22" loading="lazy" />
+                      </span>
+                      <span class="appliance-row__label">Water Heater</span>
+                      <span class="appliance-row__track"><span class="appliance-row__fill appliance-row__fill--28"></span></span>
+                      <span class="appliance-row__amt">$31</span>
+                    </div>
+                  </div>
+
+                  <div class="mock-action">
+                    <p class="mock-action__text">Send proactive outreach: shift EV charging to save $34/month</p>
+                    <a href="#send" class="btn"
+                      >Send Now
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M4.66667 11.3332L11.3333 4.6665" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M4.66667 4.6665H11.3333V11.3332" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <aside class="mock-side">
+                  <div class="impact-card">
+                    <span class="impact-card__tag">CX Impact</span>
+                    <div class="impact-card__stat">50%+</div>
+                    <p class="impact-card__desc">Reduction in high-bill call volume through proactive outreach</p>
+                  </div>
+                  <div class="stat-grid">
+                    <div class="stat-tile">
+                      <div class="stat-tile__label">JD Power</div>
+                      <div class="stat-tile__value">2+</div>
+                      <div class="stat-tile__hint">Quartile improvement</div>
+                    </div>
+                    <div class="stat-tile">
+                      <div class="stat-tile__label">CSAT</div>
+                      <div class="stat-tile__value">85%</div>
+                      <div class="stat-tile__hint">On alert programs</div>
+                    </div>
+                    <div class="stat-tile">
+                      <div class="stat-tile__label">Enrollment</div>
+                      <div class="stat-tile__value">3.1×</div>
+                      <div class="stat-tile__hint">Program increase</div>
+                    </div>
+                    <div class="stat-tile">
+                      <div class="stat-tile__label">Energy Saved</div>
+                      <div class="stat-tile__value">1.5 TWh</div>
+                      <div class="stat-tile__hint">Across deployments</div>
+                    </div>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-cta" aria-labelledby="demo-cta-heading">
+        <div class="demo-cta__grid" aria-hidden="true"></div>
+        <div class="demo-cta__inner container">
+          <h2 id="demo-cta-heading" class="demo-cta__title">See UtilityAI CX Engagement in Action</h2>
+          <a href="#sales" class="btn btn--xl">Talk to Sales</a>
+        </div>
+      </section>
+
+      <section class="section--jtbd" aria-labelledby="jtbd-heading">
+        <div class="container">
+          <div class="jtbd-head">
+            <p class="eyebrow">CAPABILITIES</p>
+            <h2 id="jtbd-heading" class="section-heading">
+              CX outcomes you can <span class="headline-accent">actually own.</span>
+            </h2>
+            <p class="jtbd-head__lead">
+              The data you need is already behind every meter. Decode it and put it to work.
+            </p>
+          </div>
+          <div class="jtbd-grid">
+            <article class="jtbd-card">
+              <img
+                class="jtbd-card__icon"
+                src="assets/Explain.png"
+                width="56"
+                height="56"
+                alt=""
+                decoding="async"
+              />
+              <h3 class="jtbd-card__title">Explain every bill before the phone rings.</h3>
+              <p class="jtbd-card__text">
+                Surface appliance-level cost drivers proactively so customers already understand their bill and CSRs can resolve what does come in.
+              </p>
+            </article>
+            <article class="jtbd-card">
+              <img
+                class="jtbd-card__icon"
+                src="assets/Know%20what.png"
+                width="56"
+                height="56"
+                alt=""
+                decoding="async"
+              />
+              <h3 class="jtbd-card__title">Know exactly what moves your satisfaction scores.</h3>
+              <p class="jtbd-card__text">
+                Map JD Power drivers to specific customer interactions so improvements are targeted and measurable, not guesswork.
+              </p>
+            </article>
+            <article class="jtbd-card">
+              <img
+                class="jtbd-card__icon"
+                src="assets/Reach%20the%20right.png"
+                width="56"
+                height="56"
+                alt=""
+                decoding="async"
+              />
+              <h3 class="jtbd-card__title">Reach the right customers with the right offer.</h3>
+              <p class="jtbd-card__text">
+                AI agents work continuously in the background across targeting, outreach, enrollment, and program management. You set the rules and approve what matters. Agents handle the volume. Your team handles the judgment.
+              </p>
+            </article>
+            <article class="jtbd-card">
+              <img
+                class="jtbd-card__icon"
+                src="assets/Make%20every.png"
+                width="56"
+                height="56"
+                alt=""
+                decoding="async"
+              />
+              <h3 class="jtbd-card__title">Make every digital touchpoint feel personal.</h3>
+              <p class="jtbd-card__text">
+                Put appliance-level intelligence behind your portal, IVR, and app so customers feel understood, not processed.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section--programs" aria-labelledby="programs-heading">
+        <div class="container">
+          <header class="programs-intro">
+            <p class="eyebrow">Use Cases</p>
+            <h2 id="programs-heading" class="section-heading">
+              What <span class="headline-accent">UtilityAI™</span> makes possible in CX.
+            </h2>
+            <p class="lead">
+              Each use case uses the same appliance-level intelligence layer — so your CX, DSM, and marketing teams operate from the same source of truth.
+            </p>
+          </header>
+
+          <article class="program-block">
+            <div class="program-block__text">
+              <h3 class="program-block__title">Proactive Usage Notifications</h3>
+              <p class="program-block__subtitle">Alerts that change behavior, not just inboxes.</p>
+              <p class="program-block__problem">
+                Generic alerts train customers to ignore you. When every notification says the same thing to the same segment, open rates fall, calls rise, and trust erodes.
+              </p>
+              <ul class="outcome-list">
+                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 85% verified CSAT on personalized alert programs</li>
+                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 2+ quartile JD Power improvement at reference utilities</li>
+                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 15%+ reduction in CSR churn from reduced inbound volume</li>
+              </ul>
+              <a class="program-block__link" href="#">Explore Proactive Notifications →</a>
+            </div>
+            <div class="program-block__visual">
+              <div class="program-visual">
+                <p class="program-visual__label">Generic vs. Appliance-Level Alerts</p>
+                <div class="alerts-grid">
+                  <div class="alert-card alert-card--generic">
+                    <p class="alert-card__source">Your utility</p>
+                    <span class="alert-card__tag alert-card__tag--muted">SEGMENT BASED</span>
+                    <p class="alert-card__headline">Your bill may be higher this month</p>
+                    <p class="alert-card__body">Usage in your area has been above average. Visit your online account to see your usage.</p>
+                  </div>
+                  <div class="alert-card alert-card--smart">
+                    <p class="alert-card__source">Your utility · Powered by UtilityAI</p>
+                    <span class="alert-card__tag alert-card__tag--teal">APPLIANCE-LEVEL</span>
+                    <p class="alert-card__headline">Hi Jennifer — your <span class="text-teal">EV charging</span> added $34 this week.</p>
+                    <p class="alert-card__body">
+                      Shifting to off-peak overnight charging could save you up to <span class="text-teal">$28/month</span>. Here's how to enroll in our Smart Charge program.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="program-block program-block--reverse">
+            <div class="program-block__text">
+              <h3 class="program-block__title">Customer Self-Service Tools</h3>
+              <p class="program-block__subtitle">Self-service that actually resolves, not just redirects.</p>
+              <p class="program-block__problem">
+                Customers who can't explain their own bill don't trust their utility. Self-service built on whole-home averages doesn't resolve that — it moves the confusion online.
+              </p>
+              <ul class="outcome-list">
+                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 18% TOU enrollment rates via targeted self-service journeys</li>
+                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 127% of filed EE targets achieved across deployments</li>
+                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 1.5 TWh+ in total energy saved</li>
+              </ul>
+              <a class="program-block__link" href="#">Explore Self-Service Tools →</a>
+            </div>
+            <div class="program-block__visual">
+              <div class="program-visual">
+                <p class="program-visual__label">Customer Portal · Appliance-Level View</p>
+                <div class="portal-frame">
+                  <div class="portal-frame__nav">
+                    <span class="portal-frame__title">My Energy Dashboard</span>
+                    <div class="portal-tabs">
+                      <span class="portal-tab portal-tab--active">Usage</span>
+                      <span class="portal-tab portal-tab--idle">Bills</span>
+                      <span class="portal-tab portal-tab--idle">Programs</span>
+                    </div>
+                  </div>
+                  <div class="portal-frame__body">
+                    <div>
+                      <p class="portal-chart__label">Last 7 Days · Appliance Breakdown</p>
+                      <div class="portal-bars">
+                        <div class="portal-bar">
+                          <div class="portal-bar__track"><div class="portal-bar__fill portal-bar__fill--ev"></div></div>
+                          <span class="portal-bar__lbl">EV</span>
+                        </div>
+                        <div class="portal-bar">
+                          <div class="portal-bar__track"><div class="portal-bar__fill portal-bar__fill--hvac"></div></div>
+                          <span class="portal-bar__lbl">HVAC</span>
+                        </div>
+                        <div class="portal-bar">
+                          <div class="portal-bar__track"><div class="portal-bar__fill portal-bar__fill--h2o"></div></div>
+                          <span class="portal-bar__lbl">H2O</span>
+                        </div>
+                        <div class="portal-bar">
+                          <div class="portal-bar__track"><div class="portal-bar__fill portal-bar__fill--other"></div></div>
+                          <span class="portal-bar__lbl">Other</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="portal-promo">
+                      <span class="portal-promo__icon" aria-hidden="true">⚡</span>
+                      <div class="portal-promo__text">
+                        <div class="portal-promo__title">Smart Charge Program</div>
+                        <div class="portal-promo__sub">Based on your EV usage, you could save up to $34/month</div>
+                      </div>
+                      <span class="portal-promo__cta">Enroll Now →</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="program-block">
+            <div class="program-block__text">
+              <h3 class="program-block__title">High Bill Analyzer &amp; Call Resolution</h3>
+              <p class="program-block__subtitle">Resolve the call before the customer finishes explaining.</p>
+              <p class="program-block__problem">
+                No more clicking through four systems to piece together a vague answer. Get to the root cause of calls, to make them one and done.
+              </p>
+              <ul class="outcome-list">
+                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 50%+ reduction in high-bill calls</li>
+                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 30% reduction in average call handle time</li>
+                <li><span class="outcome-list__check" aria-hidden="true">✓</span> Up to 25,000 CSR calls deflected in a single program cycle</li>
+              </ul>
+              <a class="program-block__link" href="#">Explore High Bill Analyzer →</a>
+            </div>
+            <div class="program-block__visual">
+              <div class="program-visual">
+                <p class="program-visual__label">CSR Console · High Bill Resolution</p>
+                <div class="bill-panel">
+                  <div class="bill-panel__head">
+                    <span class="bill-panel__title">Bill Analysis · Acct #449211</span>
+                    <span class="bill-panel__pill">CSR ASSISTANT</span>
+                  </div>
+                  <div class="bill-panel__body">
+                    <div class="bill-panel__delta">
+                      <span class="bill-panel__delta-val">+$68</span>
+                      <span class="bill-panel__delta-hint">vs. prior billing period</span>
+                    </div>
+                    <div class="driver-row">
+                      <span class="driver-row__icon" aria-hidden="true">🚗</span>
+                      <span class="driver-row__label">EV Charging (on-peak)</span>
+                      <span class="driver-row__track"><span class="driver-row__fill driver-row__fill--75"></span></span>
+                      <span class="driver-row__val">+$34</span>
+                    </div>
+                    <div class="driver-row">
+                      <span class="driver-row__icon" aria-hidden="true">❄️</span>
+                      <span class="driver-row__label">HVAC usage spike</span>
+                      <span class="driver-row__track"><span class="driver-row__fill driver-row__fill--40"></span></span>
+                      <span class="driver-row__val">+$22</span>
+                    </div>
+                    <div class="driver-row">
+                      <span class="driver-row__icon" aria-hidden="true">🌡️</span>
+                      <span class="driver-row__label">Weather adjustment</span>
+                      <span class="driver-row__track"><span class="driver-row__fill driver-row__fill--22"></span></span>
+                      <span class="driver-row__val">+$12</span>
+                    </div>
+                    <p class="bill-panel__tip">
+                      <strong>Recommended:</strong> Offer Smart Charge enrollment. Saves $34/mo. 92% propensity match.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section--agents" aria-labelledby="agents-heading">
+        <div class="section--agents__glow" aria-hidden="true"></div>
+        <div class="container">
+          <div class="agents-intro">
+            <div>
+              <p class="eyebrow eyebrow--on-dark">Agentic Automation in CX</p>
+              <h2 id="agents-heading" class="section-heading section-heading--white">AI that acts. Not just advises.</h2>
+              <p class="lead lead--on-dark">
+                Bidgely's agentic layer runs the workflows your team currently does manually across every customer touchpoint. From IVR personalization to campaign triggers, agents work continuously without adding headcount.
+              </p>
+            </div>
+            <div class="agents-intro__aside">
+              <div class="agents-value">
+                <p class="eyebrow eyebrow--sm">Agentic Value, Modeled</p>
+                <p class="agents-value__num">$3–7M/year</p>
+                <p class="agents-value__desc">From deflected calls, improved enrollment, and automated DSM workflows</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="agent-grid">
+            <article class="agent-card">
+              <div class="agent-card__icon" aria-hidden="true">📡</div>
+              <h3 class="agent-card__title">IVR Personalization Agent</h3>
+              <p class="agent-card__body">
+                Detects the likely call reason before the customer finishes speaking — pulling from their live appliance profile and billing delta. Routes and resolves at the IVR level without a CSR.
+              </p>
+              <p class="agent-card__stat">Up to 50,000 at-risk customers handled per program cycle</p>
+            </article>
+            <article class="agent-card">
+              <div class="agent-card__icon" aria-hidden="true">🎯</div>
+              <h3 class="agent-card__title">Proactive Outreach Agent</h3>
+              <p class="agent-card__body">
+                Continuously monitors usage patterns and triggers personalized email, SMS, or portal messages before the customer has a reason to call. Picks the right channel and timing for each premise.
+              </p>
+              <p class="agent-card__stat">15%+ reduction in CSR churn from reduced inbound volume</p>
+            </article>
+            <article class="agent-card">
+              <div class="agent-card__icon" aria-hidden="true">📋</div>
+              <h3 class="agent-card__title">Program Enrollment Agent</h3>
+              <p class="agent-card__body">
+                Identifies program-eligible customers, segments by propensity, and runs targeted recruitment journeys — including follow-ups, re-engagements, and confirmation — without manual campaign management.
+              </p>
+              <p class="agent-card__stat">4x reduction in marketing cost per enrollment</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section--genai" aria-labelledby="genai-heading">
+        <div class="container">
+          <p class="eyebrow">GenAI in Customer Experience</p>
+          <h2 id="genai-heading" class="section-heading">
+            Conversations grounded in real <span class="headline-accent">customer data.</span>
+          </h2>
+          <p class="lead lead--narrow">
+            Bidgely's GenAI layer doesn't run on generic LLM prompts. Every answer — to a customer or a CSR — is grounded in that customer's disaggregated appliance profile.
+          </p>
+
+          <div class="genai-grid">
+            <div class="genai-features">
+              <article class="genai-feature">
+                <div class="genai-feature__icon" aria-hidden="true">🤖</div>
+                <div>
+                  <h3 class="genai-feature__title">Energy Assistant (Customer-Facing)</h3>
+                  <p class="genai-feature__text">
+                    A conversational AI that answers billing and usage questions, explains appliance-level charges, and recommends programs — embedded in your portal, app, or SMS channel. Personalized to each meter, not a generic chatbot.
+                  </p>
+                </div>
+              </article>
+              <article class="genai-feature">
+                <div class="genai-feature__icon" aria-hidden="true">🧑‍💻</div>
+                <div>
+                  <h3 class="genai-feature__title">CSR Copilot</h3>
+                  <p class="genai-feature__text">
+                    A GenAI assistant embedded in your CSR console. Agents ask plain-language questions and get appliance-level answers, rate comparisons, and next-best actions in seconds. No tab-switching required.
+                  </p>
+                </div>
+              </article>
+              <article class="genai-feature">
+                <div class="genai-feature__icon" aria-hidden="true">📊</div>
+                <div>
+                  <h3 class="genai-feature__title">Chart &amp; Bill Explainers</h3>
+                  <p class="genai-feature__text">
+                    Usage charts and bill breakdowns with embedded natural-language explanations. Customers can tap any bar, spike, or line item and get a plain-English reason — powered by the same disaggregation that drives your CSR tools.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <aside class="chat-demo" aria-label="Energy Assistant sample conversation">
+              <div class="chat-demo__header">
+                <div class="chat-demo__avatar" aria-hidden="true">⚡</div>
+                <div>
+                  <div class="chat-demo__headline">Energy Assistant</div>
+                  <div class="chat-demo__status">● Online · Grounded in your meter data</div>
+                </div>
+              </div>
+              <div class="chat-demo__thread">
+                <div class="chat-bubble-group chat-bubble-group--user">
+                  <div class="chat-bubble__label">You</div>
+                  <div class="chat-bubble chat-bubble--user">Why is my bill $68 higher this month?</div>
+                </div>
+                <div class="chat-bubble-group chat-bubble-group--assistant">
+                  <div class="chat-bubble__label chat-bubble__label--brand">ENERGY ASSISTANT</div>
+                  <div class="chat-bubble chat-bubble--assistant">
+                    Your bill increased mainly because of your <strong>EV charging</strong> — it added about <strong>$34</strong> due to on-peak sessions over the past two weeks. Your HVAC also ran longer during the heat wave, contributing another <strong>$22</strong>.<br /><br />Shifting your EV charging to overnight (after 10 PM) could recover most of that $34. Want me to walk you through the Smart Charge program?
+                  </div>
+                </div>
+                <div class="chat-bubble-group chat-bubble-group--user">
+                  <div class="chat-bubble__label">You</div>
+                  <div class="chat-bubble chat-bubble--user">Yes, how do I sign up?</div>
+                </div>
+                <div class="chat-bubble-group chat-bubble-group--assistant">
+                  <div class="chat-bubble__label chat-bubble__label--brand">ENERGY ASSISTANT</div>
+                  <div class="chat-bubble chat-bubble--assistant">
+                    I can start your enrollment right here. Based on your <strong>Level 2 charger</strong> and current TOU-EV rate, you qualify and could save up to <strong>$34/month</strong>. Should I proceed?
+                  </div>
+                </div>
+              </div>
+              <div class="chat-demo__chips">
+                <a href="#chat-enroll" class="chat-chip">Yes, enroll me</a>
+                <a href="#chat-more" class="chat-chip">Tell me more first</a>
+                <a href="#chat-bill" class="chat-chip">Show my full bill breakdown</a>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section--cases" aria-labelledby="cases-heading">
+        <div class="section--cases__grid" aria-hidden="true"></div>
+        <div class="container">
+          <p class="eyebrow">Proven Results</p>
+          <h2 id="cases-heading" class="section-heading section-heading--mb-lg">
+            Deployed at scale. <span class="headline-accent">Measured at the meter.</span>
+          </h2>
+
+          <div class="case-list">
+            <article class="case-card">
+              <h3 class="case-card__title">Avista</h3>
+              <p class="case-card__text">
+                ~300,000 customers served with UtilityAI insights across electric and gas. 27% reduction in truck rolls after CSR Console launch. 3,000+ CSR Portal uses in a single cold-weather month (Dec 2022). Identified 160,000+ eligible IQ households to transform enrollment outreach from broad to hyper-targeted. 7X improvement in per-customer savings using AWB-targeted Home Energy Audits vs. legacy approach (1 MWh vs. 0.1 MWh per customer).
+              </p>
+            </article>
+            <article class="case-card">
+              <h3 class="case-card__title">OG&amp;E</h3>
+              <p class="case-card__text">
+                Enterprise CX across ~650k residential and 132k SMB customers. 5.5M+ emails sent in Oklahoma at 58% open rate; 262k+ in Arkansas at 58% open rate. Identified ~900 VPP customers increasing peak usage during critical events, then reduced that group by 72% through targeted coaching. ~10,000 top-performing SmartHours customers driving &gt;28 MW of peak demand reduction. 1,000+ EE campaign leads generated in two weeks (up from ~50/day baseline). 97 MW SmartHours savings at 114% of target.
+              </p>
+            </article>
+            <article class="case-card">
+              <h3 class="case-card__title">TEP</h3>
+              <p class="case-card__text">
+                Transformed static, "black-and-white" HERs into a real-time CX-Plus model for ~200,000 enrolled customers with &lt;2% opt-out. 100%+ of forecast energy savings achieved two years running (2023 and 2024). 85% program like rate. 10% click rate. Nearly 3 million personalized insight emails delivered. Budget alerts at 50/75/100% of spend help customers avoid bill shock and detect appliance issues mid-cycle. CSR Console consolidated 5–6 agent screens into one view, with an estimated ~20-second reduction in average speed of answer.
+              </p>
+            </article>
+            <article class="case-card">
+              <h3 class="case-card__title">Electric Ireland</h3>
+              <p class="case-card__text">
+                Built "Home Electric+" on Ireland's national smart meter rollout, scaling 5X from 40,000 to ~210,000 customers. 95% click-through rate and 33,000 unique portal users in the first three months. 40,500 monthly active portal users as of 2025. ~300 EVs enrolled in the first 24 hours of a targeted campaign (41% click-through vs. 5–15% industry norm), &gt;1,000 EVs from a single campaign. 18% TOU enrollment rate, 70% reduction in on-peak EV charging post-transition, additional 26% reduction through behavioral coaching. Now a proven digital engagement engine and foundation for decarbonisation programs.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section--resources" aria-labelledby="resources-heading">
+        <div class="container">
+          <p class="eyebrow" id="resources-heading">Resources</p>
+          <div class="resource-grid resource-grid--spaced">
+            <article class="resource-card">
+              <span class="resource-card__type">White Paper</span>
+              <div class="resource-card__media"><span class="resource-card__emoji" aria-hidden="true">📄</span></div>
+              <div class="resource-card__body">
+                <div>
+                  <h3 class="resource-card__title">Exceeding Affordability Goals with AI for Income-Qualified Customers</h3>
+                  <p class="resource-card__desc">
+                    Learn how utilities are using appliance-level intelligence to identify and serve income-qualified customers more effectively.
+                  </p>
+                </div>
+                <a class="resource-card__cta" href="#">Download White Paper →</a>
+              </div>
+            </article>
+            <article class="resource-card resource-card--brief">
+              <span class="resource-card__type">Solution Brief</span>
+              <div class="resource-card__media"><span class="resource-card__emoji" aria-hidden="true">📰</span></div>
+              <div class="resource-card__body">
+                <div>
+                  <h3 class="resource-card__title">Powering CX+ With UtilityAI</h3>
+                  <p class="resource-card__desc">Discover how UtilityAI transforms customer engagement with personalized insights and automated workflows.</p>
+                </div>
+                <a class="resource-card__cta" href="#">Read Solution Brief →</a>
+              </div>
+            </article>
+            <article class="resource-card resource-card--demo">
+              <span class="resource-card__type">Demo</span>
+              <div class="resource-card__media"><span class="resource-card__emoji" aria-hidden="true">▶️</span></div>
+              <div class="resource-card__body">
+                <div>
+                  <h3 class="resource-card__title">Personalized Customer Experience</h3>
+                  <p class="resource-card__desc">
+                    Walk through a live demo and see how appliance-level intelligence changes the conversation for CSRs, customers, and program teams.
+                  </p>
+                </div>
+                <a class="resource-card__cta" href="#">Request a Demo →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner container">
+        <a href="index.html" class="site-footer__brand">bidgely</a>
+        <nav class="site-footer__links" aria-label="Footer">
+          <a href="#">Solutions</a>
+          <a href="#">Platform</a>
+          <a href="#">Case Studies</a>
+          <a href="#">Resources</a>
+          <a href="#">Careers</a>
+          <a href="#">Privacy</a>
+        </nav>
+        <p class="site-footer__copy">© 2025 Bidgely, Inc.</p>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var mq = window.matchMedia("(min-width: 1024px)");
+        var navToggle = document.getElementById("site-nav-toggle");
+
+        function eachDetails(fn) {
+          document.querySelectorAll(".site-nav__details").forEach(fn);
+        }
+
+        function bindDesktopHover(d) {
+          d.addEventListener("mouseenter", function () {
+            if (mq.matches) d.open = true;
+          });
+          d.addEventListener("mouseleave", function () {
+            if (mq.matches) d.open = false;
+          });
+        }
+
+        eachDetails(bindDesktopHover);
+
+        if (navToggle) {
+          navToggle.addEventListener("change", function () {
+            if (!navToggle.checked) {
+              eachDetails(function (d) {
+                d.open = false;
+              });
+            }
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

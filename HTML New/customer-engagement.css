@@ -1,459 +1,13 @@
 /* =============================================================================
-   Bidgely custom theme styles (global)
-   Imported from main.hubl.css. Add shared styles for new pages here.
+   Customer Engagement — static page styles
    ============================================================================= */
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap");
 
 /* -----------------------------------------------------------------------------
-   Site header (Bidgely header module)
-   Scoped under .bidgely-header-module so it does not clash with other pages.
+   Design tokens
    ----------------------------------------------------------------------------- */
-.bidgely-header-module {
-  --bh-white: #ffffff;
-  --bh-off: #eff7ff;
-  --bh-ink: #152d49;
-  --bh-ink-mid: #1e3d5c;
-  --bh-ink-muted: rgba(21, 45, 73, 0.52);
-  --bh-ink-faint: rgba(21, 45, 73, 0.1);
-  --bh-ink-hair: rgba(21, 45, 73, 0.07);
-  --bh-navy: #152d49;
-  --bh-teal: #449bd5;
-  --bh-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --bh-body: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --bh-space-page: clamp(1.25rem, 4vw, 3.5rem);
-}
-
-.bidgely-header-module .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 9998;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  min-height: 62px;
-  padding-inline: var(--bh-space-page);
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--bh-ink-hair);
-}
-
-.bidgely-header-module .site-header__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  width: 100%;
-  min-height: 62px;
-}
-
-.bidgely-header-module .site-header__left {
-  display: flex;
-  align-items: center;
-  flex: 1;
-  min-width: 0;
-}
-
-.bidgely-header-module .site-header__brand {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.bidgely-header-module .site-header__brand:hover,
-.bidgely-header-module .site-header__brand:focus,
-.bidgely-header-module .site-header__brand:focus-visible {
-  -webkit-text-decoration: none !important;
-  text-decoration: none !important;
-}
-
-.bidgely-header-module .site-header__logo {
-  font-family: var(--bh-sans);
-  font-size: 1.25rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--bh-ink);
-}
-
-.bidgely-header-module .site-header__logo-mark {
-  background: linear-gradient(to right, var(--bh-navy), var(--bh-teal));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.bidgely-header-module .site-header__logo-img {
-  display: block;
-  height: 34px;
-  width: auto;
-  max-width: 220px;
-  object-fit: contain;
-}
-
-.bidgely-header-module .site-nav {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  list-style: none;
-  margin: 0 0 0 2rem;
-  padding: 0;
-}
-
-/* Elevate typography applies underline via link CSS variables on all <a>; strip in header nav */
-.bidgely-header-module .site-header__nav a,
-.bidgely-header-module .site-header__nav a:hover,
-.bidgely-header-module .site-header__nav a:focus,
-.bidgely-header-module .site-header__nav a:focus-visible,
-.bidgely-header-module .site-header__nav a:active {
-  -webkit-text-decoration: none !important;
-  text-decoration: none !important;
-  text-decoration-color: transparent !important;
-}
-
-.bidgely-header-module .site-nav summary.site-nav__dropdown,
-.bidgely-header-module .site-nav summary.site-nav__dropdown:hover,
-.bidgely-header-module .site-nav summary.site-nav__dropdown:focus,
-.bidgely-header-module .site-nav summary.site-nav__dropdown:focus-visible {
-  -webkit-text-decoration: none !important;
-  text-decoration: none !important;
-}
-
-.bidgely-header-module .site-nav__link {
-  display: flex;
-  align-items: center;
-  padding: 0.625rem 0.875rem;
-  font-size: 0.875rem;
-  color: var(--bh-ink-muted);
-  text-decoration: none;
-  border-radius: 0.375rem;
-  font-family: var(--bh-body);
-  transition: color 0.15s ease, background 0.15s ease;
-}
-
-.bidgely-header-module .site-nav__link:hover {
-  color: var(--bh-ink);
-  background: var(--bh-off);
-}
-
-.bidgely-header-module .site-nav__details {
-  position: relative;
-}
-
-.bidgely-header-module .site-nav__dropdown {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.625rem 0.875rem;
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: var(--bh-ink-muted);
-  border-radius: 0.375rem;
-  font-family: var(--bh-body);
-  cursor: pointer;
-  list-style: none;
-  transition: color 0.15s ease, background 0.15s ease;
-}
-
-.bidgely-header-module .site-nav__dropdown::-webkit-details-marker {
-  display: none;
-}
-
-.bidgely-header-module .site-nav__dropdown::marker {
-  content: "";
-}
-
-.bidgely-header-module .site-nav__dropdown:hover {
-  color: var(--bh-ink);
-  background: var(--bh-off);
-}
-
-.bidgely-header-module .site-nav__chevron {
-  width: 12px;
-  height: 12px;
-  opacity: 0.3;
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-
-.bidgely-header-module .site-nav__dropdown:hover .site-nav__chevron,
-.bidgely-header-module .site-nav__details[open] .site-nav__chevron {
-  transform: rotate(180deg);
-}
-
-.bidgely-header-module .site-nav__sub {
-  list-style: none;
-  margin: 0;
-  padding: 0.25rem 0;
-}
-
-.bidgely-header-module .site-nav__sublink {
-  display: flex;
-  align-items: center;
-  padding: 0.5rem 1rem;
-  font-size: 0.8125rem;
-  color: var(--bh-ink-muted);
-  text-decoration: none;
-  font-family: var(--bh-body);
-  border-radius: 0.375rem;
-  transition: color 0.15s ease, background 0.15s ease;
-}
-
-.bidgely-header-module .site-nav__sublink:hover {
-  color: var(--bh-ink);
-  background: var(--bh-off);
-}
-
-@media (min-width: 1024px) {
-  .bidgely-header-module .site-header__left {
-    overflow: visible;
-  }
-
-  .bidgely-header-module .site-nav__details .site-nav__sub {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 248px;
-    padding: 0.35rem 0;
-    background: #fff;
-    border: 1px solid var(--bh-ink-hair);
-    border-radius: 0.5rem;
-    box-shadow: 0 10px 40px rgba(13, 17, 23, 0.12), 0 2px 8px rgba(13, 17, 23, 0.06);
-    z-index: 10010;
-  }
-
-  .bidgely-header-module .site-nav__sublink {
-    padding: 0.55rem 1rem;
-    border-radius: 0.25rem;
-  }
-}
-
-.bidgely-header-module .site-header__actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0;
-}
-
-.bidgely-header-module .site-nav__toggle {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.bidgely-header-module .site-nav__burger {
-  display: none;
-  position: relative;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  flex-shrink: 0;
-  margin: 0;
-  padding: 0;
-  border: none;
-  border-radius: 0.5rem;
-  background: transparent;
-  color: var(--bh-ink);
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-
-.bidgely-header-module .site-nav__burger:hover {
-  background: var(--bh-off);
-}
-
-.bidgely-header-module .site-nav__burger-line {
-  display: block;
-  width: 22px;
-  height: 2px;
-  margin: 3px 0;
-  border-radius: 1px;
-  background: var(--bh-ink);
-  transition: transform 0.25s ease, opacity 0.2s ease;
-}
-
-.bidgely-header-module .site-nav__burger-label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.bidgely-header-module .site-nav__toggle:focus-visible + .site-header__inner .site-nav__burger {
-  outline: 2px solid var(--bh-teal);
-  outline-offset: 2px;
-}
-
-.bidgely-header-module input.site-nav__toggle:checked + .site-header__inner .site-nav__burger-line:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-.bidgely-header-module input.site-nav__toggle:checked + .site-header__inner .site-nav__burger-line:nth-child(2) {
-  opacity: 0;
-}
-
-.bidgely-header-module input.site-nav__toggle:checked + .site-header__inner .site-nav__burger-line:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
-}
-
-.bidgely-header-module .site-header__actions .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-family: var(--bh-body);
-  cursor: pointer;
-  border: none;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-}
-
-.bidgely-header-module .site-header__actions .btn--ghost {
-  padding: 0.375rem 1rem;
-  background: transparent;
-  border: 1px solid var(--bh-ink-faint);
-  color: var(--bh-ink-mid);
-}
-
-.bidgely-header-module .site-header__actions .btn--ghost:hover {
-  border-color: rgba(0, 0, 0, 0.15);
-  background: var(--bh-off);
-}
-
-.bidgely-header-module .site-header__actions .btn--primary {
-  padding: 0.5rem 1.25rem;
-  font-weight: 700;
-  color: var(--bh-white);
-  background: linear-gradient(to right, var(--bh-navy), var(--bh-teal));
-}
-
-.bidgely-header-module .site-header__actions .btn--primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(21, 45, 73, 0.2);
-}
-
-@media (max-width: 1023px) {
-  .bidgely-header-module .site-header__inner {
-    justify-content: flex-start;
-  }
-
-  .bidgely-header-module .site-header__left {
-    flex: 0 1 auto;
-  }
-
-  .bidgely-header-module .site-nav__burger {
-    display: flex;
-    margin-left: auto;
-  }
-
-  .bidgely-header-module .site-header__nav {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 9997;
-    max-height: 0;
-    overflow: hidden;
-    visibility: hidden;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--bh-ink-hair);
-    box-shadow: 0 12px 24px rgba(13, 17, 23, 0.08);
-    transition: max-height 0.35s ease, visibility 0.35s ease;
-  }
-
-  .bidgely-header-module input.site-nav__toggle:checked + .site-header__inner .site-header__nav {
-    max-height: min(75vh, 480px);
-    overflow-y: auto;
-    visibility: visible;
-  }
-
-  .bidgely-header-module .site-nav {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    margin: 0;
-    padding: 0.5rem var(--bh-space-page) 1rem;
-    width: 100%;
-  }
-
-  .bidgely-header-module .site-nav > li {
-    border-bottom: 1px solid var(--bh-ink-hair);
-  }
-
-  .bidgely-header-module .site-nav > li:last-child {
-    border-bottom: none;
-  }
-
-  .bidgely-header-module .site-nav__link,
-  .bidgely-header-module .site-nav__dropdown {
-    width: 100%;
-    padding: 0.875rem 0.5rem;
-    border-radius: 0.375rem;
-    justify-content: space-between;
-  }
-
-  .bidgely-header-module .site-nav__chevron {
-    margin-left: auto;
-  }
-
-  .bidgely-header-module .site-nav__sub {
-    position: static;
-    top: auto;
-    left: auto;
-    min-width: 0;
-    width: 100%;
-    margin: 0;
-    padding: 0 0 0.5rem;
-    background: var(--bh-off);
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .bidgely-header-module .site-nav__sub li + li {
-    border-top: 1px solid var(--bh-ink-hair);
-  }
-
-  .bidgely-header-module .site-nav__sublink {
-    width: 100%;
-    margin: 0;
-    padding: 0.65rem 0.75rem 0.65rem 1.25rem;
-    font-size: 0.875rem;
-    border-radius: 0;
-  }
-
-  .bidgely-header-module .site-header__actions .btn {
-    padding-inline: 0.75rem;
-    font-size: 0.8125rem;
-  }
-
-  .bidgely-header-module .site-header__actions .btn--primary {
-    padding-inline: 0.875rem;
-  }
-}
-
-/* -----------------------------------------------------------------------------
-   Customer Engagement page — all section styles (merged from HTML New/customer-engagement.css)
-   ----------------------------------------------------------------------------- */
-
-/* -----------------------------------------------------------------------------
-   Design tokens (scoped — only applies inside .customer-engagement-page)
-   ----------------------------------------------------------------------------- */
-.customer-engagement-page {
+:root {
   --font-size: 16px;
   --white: #ffffff;
   --off: #eff7ff;
@@ -478,8 +32,23 @@
   --radius-xs: 9px;
   --shadow-mock: 0 4px 24px rgba(13, 17, 23, 0.08), 0 1px 6px rgba(13, 17, 23, 0.04);
   --shadow-card: 0 4px 20px rgba(13, 17, 23, 0.07);
+}
+
+/* -----------------------------------------------------------------------------
+   Base
+   ----------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
   font-size: var(--font-size);
   scroll-behavior: smooth;
+}
+
+body {
   margin: 0;
   font-family: var(--body);
   line-height: 1.6;
@@ -488,30 +57,20 @@
   overflow-x: hidden;
 }
 
-/* -----------------------------------------------------------------------------
-   Base (scoped to Customer Engagement page)
-   ----------------------------------------------------------------------------- */
-.customer-engagement-page *,
-.customer-engagement-page *::before,
-.customer-engagement-page *::after {
-  box-sizing: border-box;
-}
-
-.customer-engagement-page p {
+/* Reset browser default paragraph margins; components set spacing via classes */
+p {
   margin: 0;
 }
 
-.customer-engagement-page img {
-  width: auto;
-  height: 22px;
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-.customer-engagement-page a {
+a {
   color: inherit;
 }
 
-/* All section + utility rules below only match inside the Customer Engagement page wrapper */
-@scope (.customer-engagement-page) {
 /* -----------------------------------------------------------------------------
    Utilities
    ----------------------------------------------------------------------------- */
@@ -862,7 +421,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
-  text-decoration: none !important;
+  text-decoration: none;
   text-align: center;
   cursor: pointer;
   border: none;
@@ -965,7 +524,7 @@
   padding: 13px 26px;
   border-radius: 0.5rem;
   background: var(--ink);
-  color: var(--white) !important;
+  color: var(--white);
   font-family: var(--sans);
   font-size: 0.875rem;
   font-weight: 700;
@@ -1314,7 +873,7 @@
   font-family: var(--sans);
   font-size: 10px;
   font-weight: 700;
-  color: var(--white) !important;
+  color: var(--white);
   white-space: nowrap;
   gap: 0.3rem;
 }
@@ -2916,7 +2475,7 @@
 }
 
 @media (max-width: 768px) {
-  .customer-engagement-page {
+  :root {
     --space-page: 1.25rem;
   }
 
@@ -2933,6 +2492,3 @@
     align-items: flex-start;
   }
 }
-
-}
-
