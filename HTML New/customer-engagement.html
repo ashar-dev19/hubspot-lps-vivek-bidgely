@@ -696,6 +696,7 @@
       </section>
 
       <section class="section--genai" aria-labelledby="genai-heading">
+        <div class="section--genai__grid" aria-hidden="true"></div>
         <div class="container">
           <p class="eyebrow">GenAI in Customer Experience</p>
           <h2 id="genai-heading" class="section-heading">
@@ -786,39 +787,83 @@
       </section>
 
       <section class="section--cases" aria-labelledby="cases-heading">
-        <div class="section--cases__grid" aria-hidden="true"></div>
         <div class="container">
           <p class="eyebrow">Proven Results</p>
           <h2 id="cases-heading" class="section-heading section-heading--mb-lg">
             Deployed at scale. <span class="headline-accent">Measured at the meter.</span>
           </h2>
 
-          <div class="case-list">
-            <article class="case-card">
-              <h3 class="case-card__title">Avista</h3>
-              <p class="case-card__text">
-                ~300,000 customers served with UtilityAI insights across electric and gas. 27% reduction in truck rolls after CSR Console launch. 3,000+ CSR Portal uses in a single cold-weather month (Dec 2022). Identified 160,000+ eligible IQ households to transform enrollment outreach from broad to hyper-targeted. 7X improvement in per-customer savings using AWB-targeted Home Energy Audits vs. legacy approach (1 MWh vs. 0.1 MWh per customer).
-              </p>
-            </article>
-            <article class="case-card">
-              <h3 class="case-card__title">OG&amp;E</h3>
-              <p class="case-card__text">
-                Enterprise CX across ~650k residential and 132k SMB customers. 5.5M+ emails sent in Oklahoma at 58% open rate; 262k+ in Arkansas at 58% open rate. Identified ~900 VPP customers increasing peak usage during critical events, then reduced that group by 72% through targeted coaching. ~10,000 top-performing SmartHours customers driving &gt;28 MW of peak demand reduction. 1,000+ EE campaign leads generated in two weeks (up from ~50/day baseline). 97 MW SmartHours savings at 114% of target.
-              </p>
-            </article>
-            <article class="case-card">
-              <h3 class="case-card__title">TEP</h3>
-              <p class="case-card__text">
-                Transformed static, "black-and-white" HERs into a real-time CX-Plus model for ~200,000 enrolled customers with &lt;2% opt-out. 100%+ of forecast energy savings achieved two years running (2023 and 2024). 85% program like rate. 10% click rate. Nearly 3 million personalized insight emails delivered. Budget alerts at 50/75/100% of spend help customers avoid bill shock and detect appliance issues mid-cycle. CSR Console consolidated 5–6 agent screens into one view, with an estimated ~20-second reduction in average speed of answer.
-              </p>
-            </article>
-            <article class="case-card">
-              <h3 class="case-card__title">Electric Ireland</h3>
-              <p class="case-card__text">
-                Built "Home Electric+" on Ireland's national smart meter rollout, scaling 5X from 40,000 to ~210,000 customers. 95% click-through rate and 33,000 unique portal users in the first three months. 40,500 monthly active portal users as of 2025. ~300 EVs enrolled in the first 24 hours of a targeted campaign (41% click-through vs. 5–15% industry norm), &gt;1,000 EVs from a single campaign. 18% TOU enrollment rate, 70% reduction in on-peak EV charging post-transition, additional 26% reduction through behavioral coaching. Now a proven digital engagement engine and foundation for decarbonisation programs.
-              </p>
-            </article>
+          <div class="cases-logos" aria-label="Peer utilities">
+            <p class="cases-logos__label">Peer Utilities:</p>
+            <div class="cases-logos__row">
+              <span class="cases-logo-pill">
+                <img class="cases-logo__img" src="assets/logo-nv-energy.png" alt="NV Energy" decoding="async" />
+              </span>
+              <span class="cases-logo-pill">
+                <img class="cases-logo__img" src="assets/logo-avista.png" alt="Avista" decoding="async" />
+              </span>
+              <span class="cases-logo-pill">
+                <img class="cases-logo__img" src="assets/logo-oge.png" alt="OG&amp;E" decoding="async" />
+              </span>
+              <span class="cases-logo-pill">
+                <img class="cases-logo__img" src="assets/logo-ameren.png" alt="Ameren" decoding="async" />
+              </span>
+              <span class="cases-logo-pill">
+                <img class="cases-logo__img" src="assets/logo-xcel-energy.png" alt="Xcel Energy" decoding="async" />
+              </span>
+              <span class="cases-logo-pill">
+                <img class="cases-logo__img" src="assets/logo-power.png" alt="Power" decoding="async" />
+              </span>
+              <span class="cases-logo-pill">
+                <img class="cases-logo__img" src="assets/logo-enel.png" alt="enel" decoding="async" />
+              </span>
+            </div>
           </div>
+
+          <article class="case-feature" aria-label="Featured case study">
+            <div class="case-feature__left">
+              <p class="case-feature__kicker">Customer Engagement • High bill resolution</p>
+              <h3 class="case-feature__title">Large Western IOU</h3>
+              <p class="case-feature__desc">
+                Following a TOU rollout, this utility faced a surge in high-bill call volume — CSRs were overwhelmed and first-contact resolution was falling. They needed a way to explain bill changes at the appliance level and deflect calls before they came in.
+              </p>
+
+              <div class="case-feature__big-stat">
+                <p class="case-feature__big-num">50%+</p>
+                <p class="case-feature__big-sub">Reduction in high-bill call volume — without adding headcount</p>
+              </div>
+            </div>
+
+            <div class="case-feature__right">
+              <blockquote class="case-feature__quote">
+                “Bidgely gave us visibility we never had: appliance-level insights that transformed how we talk to customers and recruit for programs. We’re resolving calls we used to escalate and enrolling customers we used to miss.”
+              </blockquote>
+
+              <div class="case-feature__metrics">
+                <div class="case-metric">
+                  <p class="case-metric__value">30%</p>
+                  <p class="case-metric__label">Reduction in average handle time</p>
+                </div>
+                <div class="case-metric">
+                  <p class="case-metric__value">3.1×</p>
+                  <p class="case-metric__label">Increase in program enrollment</p>
+                </div>
+                <div class="case-metric">
+                  <p class="case-metric__value">85%</p>
+                  <p class="case-metric__label">CSAT on personalized alert programs</p>
+                </div>
+                <div class="case-metric">
+                  <p class="case-metric__value">25K</p>
+                  <p class="case-metric__label">CSR calls deflected in one program cycle</p>
+                </div>
+              </div>
+
+              <a class="case-feature__download" href="#">
+                Download the Full Case Study PDF
+                <img class="case-feature__download-icon" src="assets/arrow-up-right.png" alt="" aria-hidden="true" decoding="async" />
+              </a>
+            </div>
+          </article>
         </div>
       </section>
 
