@@ -1,13 +1,19 @@
-"""Merge HTML New/customer-engagement.css into bidgely-custom.css CE @scope block."""
+"""Merge HTML New/customer-engagement.css into the theme's bidgely-custom.css CE @scope block.
+
+Run from repo root (folder that contains `scripts/` and `bidgely-custom-theme/`):
+
+  python scripts/merge-ce-css.py
+"""
 from __future__ import annotations
 
 import re
+import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-REPO = ROOT.parent
-NEW_CE = REPO / "HTML New" / "customer-engagement.css"
-BIDGELY = ROOT / "src" / "unified-theme" / "assets" / "css" / "bidgely-custom.css"
+REPO_ROOT = Path(__file__).resolve().parents[1]
+THEME_ROOT = REPO_ROOT / "bidgely-custom-theme"
+NEW_CE = REPO_ROOT / "HTML New" / "customer-engagement.css"
+BIDGELY = THEME_ROOT / "src" / "unified-theme" / "assets" / "css" / "bidgely-custom.css"
 
 CE_PREAMBLE = r"""/* -----------------------------------------------------------------------------
    Customer Engagement page — all section styles (merged from HTML New/customer-engagement.css)
@@ -34,7 +40,7 @@ CE_PREAMBLE = r"""/* -----------------------------------------------------------
   --sans: "Montserrat", sans-serif;
   --body: "Montserrat", sans-serif;
   --space-page: 3.5rem;
-  --container: 1200px;
+  --container: 1300px;
   --radius-lg: 24px;
   --radius-md: 18px;
   --radius-sm: 14px;
@@ -47,7 +53,8 @@ CE_PREAMBLE = r"""/* -----------------------------------------------------------
   font-family: var(--body);
   line-height: 1.6;
   color: var(--ink);
-  background: var(--white);
+  /* Theme: let the page/template background show through (standalone HTML may use --white on body instead). */
+  background: transparent;
   overflow-x: hidden;
 }
 
@@ -60,8 +67,8 @@ CE_PREAMBLE = r"""/* -----------------------------------------------------------
   box-sizing: border-box;
 }
 
-.customer-engagement-page p {
-  margin: 0;
+p {
+  margin-block: 0;
 }
 
 .customer-engagement-page a {
@@ -74,7 +81,7 @@ CE_PREAMBLE = r"""/* -----------------------------------------------------------
 
 
 def strip_global_preamble(src: str) -> str:
-    """Remove @import, :root, and global base rules up through Utilities."""
+    """Remove @import, :root, and global base rules up through anchor `a` (before Utilities)."""
     s = re.sub(
         r"@import\s+url\(\"https://fonts\.googleapis\.com/css2[^\"]+\"\)\s*;\s*",
         "",
@@ -109,7 +116,6 @@ def strip_global_preamble(src: str) -> str:
         count=1,
         flags=re.MULTILINE,
     )
-    # :root inside 768 media → page wrapper (variables must not hit document root)
     s = re.sub(
         r"(@media\s*\(max-width:\s*768px\)\s*\{)\s*:root\s*\{",
         r"\1\n  .customer-engagement-page {",
@@ -130,7 +136,7 @@ def find_scope_block(css: str) -> tuple[int, int]:
     if scope_start == -1:
         raise ValueError("@scope not found")
     pos = scope_start + len(scope_kw) - 1
-    assert css[pos] == "{", css[pos - 5 : pos + 5]
+    assert css[pos] == "{", repr(css[pos - 5 : pos + 5])
     depth = 1
     pos += 1
     while pos < len(css) and depth:
@@ -144,21 +150,26 @@ def find_scope_block(css: str) -> tuple[int, int]:
 
 
 def main() -> None:
+    if not NEW_CE.is_file():
+        print(f"Missing source: {NEW_CE}", file=sys.stderr)
+        sys.exit(1)
+    if not BIDGELY.is_file():
+        print(f"Missing target: {BIDGELY}", file=sys.stderr)
+        sys.exit(1)
+
     new_src = NEW_CE.read_text(encoding="utf-8")
     inner = strip_global_preamble(new_src)
 
     bidgely = BIDGELY.read_text(encoding="utf-8")
     s0, s1 = find_scope_block(bidgely)
     before = bidgely[:s0]
-    after = bidgely[s1:]
-
-    # after should start with trailing content; ensure we only removed CE block
-    if not after.strip().startswith("") and len(after) < 5:
-        pass
+    after = bidgely[s1:].lstrip("\n")
+    if after.startswith("}"):
+        after = after[1:].lstrip("\n")
 
     merged = before + CE_PREAMBLE + inner + "\n\n}\n" + after
     BIDGELY.write_text(merged, encoding="utf-8", newline="\n")
-    print(f"Wrote {BIDGELY} ({len(merged)} chars)")
+    print(f"Wrote {BIDGELY} ({len(merged)} chars); CE inner ~{len(inner)} chars")
 
 
 if __name__ == "__main__":

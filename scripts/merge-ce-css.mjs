@@ -3,9 +3,17 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const REPO = path.resolve(__dirname, "..", "..");
+const REPO = path.resolve(__dirname, "..");
 const NEW_CE = path.join(REPO, "HTML New", "customer-engagement.css");
-const BIDGELY = path.join(__dirname, "..", "src", "unified-theme", "assets", "css", "bidgely-custom.css");
+const BIDGELY = path.join(
+  REPO,
+  "bidgely-custom-theme",
+  "src",
+  "unified-theme",
+  "assets",
+  "css",
+  "bidgely-custom.css",
+);
 const LOG = path.join(__dirname, "merge-ce-log.txt");
 
 const CE_PREAMBLE = `/* -----------------------------------------------------------------------------
@@ -32,8 +40,8 @@ const CE_PREAMBLE = `/* --------------------------------------------------------
   --teal-lt: #7abfe8;
   --sans: "Montserrat", sans-serif;
   --body: "Montserrat", sans-serif;
-  --space-page: 3.5rem;
-  --container: 1200px;
+  --space-page: 1.5rem;
+  --container: 1300px;
   --radius-lg: 24px;
   --radius-md: 18px;
   --radius-sm: 14px;
@@ -46,7 +54,8 @@ const CE_PREAMBLE = `/* --------------------------------------------------------
   font-family: var(--body);
   line-height: 1.6;
   color: var(--ink);
-  background: var(--white);
+  /* Theme: page background shows through (standalone HTML can set body background). */
+  background: transparent;
   overflow-x: hidden;
 }
 
@@ -59,8 +68,13 @@ const CE_PREAMBLE = `/* --------------------------------------------------------
   box-sizing: border-box;
 }
 
-.customer-engagement-page p {
-  margin: 0;
+p {
+  margin-block: 0;
+}
+
+.customer-engagement-page img {
+  max-width: 100%;
+  height: auto;
 }
 
 .customer-engagement-page a {

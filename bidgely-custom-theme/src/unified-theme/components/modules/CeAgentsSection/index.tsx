@@ -102,34 +102,36 @@ export const Component = (props: CeAgentsSectionProps) => {
                 icon?.loading && icon.loading !== 'disabled' ? icon.loading : 'lazy';
               return (
                 <Article className="agent-card" key={index}>
-                  <Div className="agent-card__icon" aria-hidden="true">
-                    {hasIcon ? (
-                      <Img
-                        src={icon.src}
-                        alt={icon.alt ?? ''}
-                        width={icon.width ?? 28}
-                        height={icon.height ?? 28}
-                        loading={imgLoading}
-                        decoding="async"
-                        data-hs-token={getDataHSToken(
-                          moduleName,
-                          `groupCeAgentCards[${index}].cardIcon`,
-                        )}
-                      />
-                    ) : null}
+                  <Div className="agent-card__icon-container">
+                    <Div className="agent-card__icon" aria-hidden="true">
+                      {hasIcon ? (
+                        <Img
+                          src={icon.src}
+                          alt={icon.alt ?? ''}
+                          width={icon.width ?? 28}
+                          height={icon.height ?? 28}
+                          loading={imgLoading}
+                          decoding="async"
+                          data-hs-token={getDataHSToken(
+                            moduleName,
+                            `groupCeAgentCards[${index}].cardIcon`,
+                          )}
+                        />
+                      ) : null}
+                    </Div>
+                    <H3
+                      className="agent-card__title"
+                      data-hs-token={getDataHSToken(moduleName, `groupCeAgentCards[${index}].cardTitle`)}
+                    >
+                      {row.cardTitle}
+                    </H3>
+                    <P
+                      className="agent-card__body"
+                      data-hs-token={getDataHSToken(moduleName, `groupCeAgentCards[${index}].cardBody`)}
+                    >
+                      {row.cardBody}
+                    </P>
                   </Div>
-                  <H3
-                    className="agent-card__title"
-                    data-hs-token={getDataHSToken(moduleName, `groupCeAgentCards[${index}].cardTitle`)}
-                  >
-                    {row.cardTitle}
-                  </H3>
-                  <P
-                    className="agent-card__body"
-                    data-hs-token={getDataHSToken(moduleName, `groupCeAgentCards[${index}].cardBody`)}
-                  >
-                    {row.cardBody}
-                  </P>
                   <P
                     className="agent-card__stat"
                     data-hs-token={getDataHSToken(moduleName, `groupCeAgentCards[${index}].cardStat`)}
@@ -164,6 +166,6 @@ export const meta: ModuleMeta = {
 
 export const defaultModuleConfig = {
   moduleName: 'elevate/components/modules/ce_agents_section',
-  version: 1,
+  version: 2,
   themeModule: true,
 };

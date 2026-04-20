@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Customer Engagement · Bidgely UtilityAI™</title>
+    <title>Customer Engagement · Bidgely UtilityAI</title>
     <link rel="stylesheet" href="customer-engagement.css" />
   </head>
   <body>
-    <header class="site-header">
+    <!-- <header class="site-header">
       <input type="checkbox" id="site-nav-toggle" class="site-nav__toggle" aria-controls="site-primary-nav" />
       <div class="site-header__inner">
         <div class="site-header__left">
@@ -42,7 +42,7 @@
                     </svg>
                   </summary>
                   <ul class="site-nav__sub">
-                    <li><a class="site-nav__sublink" href="#">UtilityAI™ Platform</a></li>
+                    <li><a class="site-nav__sublink" href="#">UtilityAI Platform</a></li>
                     <li><a class="site-nav__sublink" href="#">Disaggregation Engine</a></li>
                     <li><a class="site-nav__sublink" href="#">APIs &amp; Integrations</a></li>
                     <li><a class="site-nav__sublink" href="#">Security &amp; Compliance</a></li>
@@ -66,7 +66,7 @@
           <a href="#sales" class="btn btn--primary">Talk to Sales</a>
         </div>
       </div>
-    </header>
+    </header> -->
 
     <main>
       <section class="hero" aria-labelledby="hero-heading">
@@ -82,7 +82,7 @@
             </div>
           </div>
           <div class="hero__col-right">
-            <p class="hero__tagline">Fewer Calls. Better Enrollment. Customers Who Actually Engage.</p>
+            <p class="hero__tagline">Most CX platforms know what your customers did. Bidgely knows why, down to the appliance. That's the difference between a generic alert and one that changes behavior.</p>
           </div>
         </div>
       </section>
@@ -297,17 +297,17 @@
 
       <section class="section--programs" aria-labelledby="programs-heading">
         <div class="container">
-          <header class="programs-intro">
+          <div class="programs-intro">
             <p class="eyebrow">Use Cases</p>
             <h2 id="programs-heading" class="section-heading">
-              What <span class="headline-accent">UtilityAI™</span> makes possible in CX.
+              What <span class="headline-accent">UtilityAI</span> makes possible in CX.
             </h2>
             <p class="lead">
               Each use case uses the same appliance-level intelligence layer — so your CX, DSM, and marketing teams operate from the same source of truth.
             </p>
-          </header>
+          </div>
 
-          <article class="program-block">
+          <article id="proactive-notifications" class="program-block program-block--usage-alerts">
             <div class="program-block__text">
               <h3 class="program-block__title">Proactive Usage Notifications</h3>
               <p class="program-block__subtitle">Alerts that change behavior, not just inboxes.</p>
@@ -315,26 +315,82 @@
                 Generic alerts train customers to ignore you. When every notification says the same thing to the same segment, open rates fall, calls rise, and trust erodes.
               </p>
               <ul class="outcome-list">
-                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 85% verified CSAT on personalized alert programs</li>
-                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 2+ quartile JD Power improvement at reference utilities</li>
-                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 15%+ reduction in CSR churn from reduced inbound volume</li>
+                <li><span class="outcome-list__check" aria-hidden="true"
+                  ><svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M15.75 7.56429V8.25429C15.7491 9.87161 15.2254 11.4453 14.257 12.7407C13.2886 14.036 11.9275 14.9837 10.3765 15.4422C8.82557 15.9008 7.16794 15.8457 5.65085 15.2852C4.13376 14.7247 2.83849 13.6889 1.95822 12.3321C1.07795 10.9753 0.659843 9.37034 0.766258 7.75653C0.872672 6.14272 1.49791 4.60654 2.54871 3.3771C3.59951 2.14766 5.01959 1.29083 6.59714 0.934402C8.17469 0.577975 9.8252 0.741046 11.3025 1.39929"
+                      stroke="var(--ink)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15.75 2.25391L8.25 9.76141L6 7.51141"
+                      stroke="var(--teal-lt)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg></span> 85% verified CSAT on personalized alert programs</li>
+                <li><span class="outcome-list__check" aria-hidden="true"
+                  ><svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M15.75 7.56429V8.25429C15.7491 9.87161 15.2254 11.4453 14.257 12.7407C13.2886 14.036 11.9275 14.9837 10.3765 15.4422C8.82557 15.9008 7.16794 15.8457 5.65085 15.2852C4.13376 14.7247 2.83849 13.6889 1.95822 12.3321C1.07795 10.9753 0.659843 9.37034 0.766258 7.75653C0.872672 6.14272 1.49791 4.60654 2.54871 3.3771C3.59951 2.14766 5.01959 1.29083 6.59714 0.934402C8.17469 0.577975 9.8252 0.741046 11.3025 1.39929"
+                      stroke="var(--ink)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15.75 2.25391L8.25 9.76141L6 7.51141"
+                      stroke="var(--teal-lt)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg></span> 2+ quartile JD Power improvement at reference utilities</li>
+                <li><span class="outcome-list__check" aria-hidden="true"
+                  ><svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M15.75 7.56429V8.25429C15.7491 9.87161 15.2254 11.4453 14.257 12.7407C13.2886 14.036 11.9275 14.9837 10.3765 15.4422C8.82557 15.9008 7.16794 15.8457 5.65085 15.2852C4.13376 14.7247 2.83849 13.6889 1.95822 12.3321C1.07795 10.9753 0.659843 9.37034 0.766258 7.75653C0.872672 6.14272 1.49791 4.60654 2.54871 3.3771C3.59951 2.14766 5.01959 1.29083 6.59714 0.934402C8.17469 0.577975 9.8252 0.741046 11.3025 1.39929"
+                      stroke="var(--ink)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15.75 2.25391L8.25 9.76141L6 7.51141"
+                      stroke="var(--teal-lt)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg></span> 15%+ reduction in CSR churn from reduced inbound volume</li>
               </ul>
-              <a class="program-block__link" href="#">Explore Proactive Notifications →</a>
+              <a class="program-block__link" href="#proactive-notifications">Explore Proactive Notifications <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.66667 11.3337L11.3333 4.66699" stroke="#449BD5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4.66667 4.66699H11.3333V11.3337" stroke="#449BD5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </a>
             </div>
             <div class="program-block__visual">
-              <div class="program-visual">
-                <p class="program-visual__label">Generic vs. Appliance-Level Alerts</p>
+              <div class="program-visual program-visual--alerts-compare">
+                <p class="eyebrow">Generic vs. Appliance-Level Alerts</p>
                 <div class="alerts-grid">
                   <div class="alert-card alert-card--generic">
                     <p class="alert-card__source">Your utility</p>
-                    <span class="alert-card__tag alert-card__tag--muted">SEGMENT BASED</span>
+                    <span class="alert-card__tag alert-card__tag--muted">Segment based</span>
                     <p class="alert-card__headline">Your bill may be higher this month</p>
-                    <p class="alert-card__body">Usage in your area has been above average. Visit your online account to see your usage.</p>
+                    <p class="alert-card__body">
+                      Usage in your area has been above average. Visit your online account to see your usage.
+                    </p>
                   </div>
                   <div class="alert-card alert-card--smart">
-                    <p class="alert-card__source">Your utility · Powered by UtilityAI</p>
-                    <span class="alert-card__tag alert-card__tag--teal">APPLIANCE-LEVEL</span>
-                    <p class="alert-card__headline">Hi Jennifer — your <span class="text-teal">EV charging</span> added $34 this week.</p>
+                    <p class="alert-card__source">Your utility – Powered by UtilityAI</p>
+                    <span class="alert-card__tag alert-card__tag--mid">Appliance-level</span>
+                    <p class="alert-card__headline">
+                      Hi Jennifer — your <span class="text-teal">EV charging</span> added $34 this week.
+                    </p>
                     <p class="alert-card__body">
                       Shifting to off-peak overnight charging could save you up to <span class="text-teal">$28/month</span>. Here's how to enroll in our Smart Charge program.
                     </p>
@@ -346,21 +402,185 @@
 
           <article class="program-block program-block--reverse">
             <div class="program-block__text">
+              <h3 class="program-block__title">High Bill Analyzer &amp; Call Resolution</h3>
+              <p class="program-block__subtitle">Resolve the call before the customer finishes explaining.</p>
+              <p class="program-block__problem">
+                No more clicking through four systems to piece together a vague answer. Get to the root cause of calls, to make them one and done.
+              </p>
+              <ul class="outcome-list">
+                <li><span class="outcome-list__check" aria-hidden="true"
+                  ><svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M15.75 7.56429V8.25429C15.7491 9.87161 15.2254 11.4453 14.257 12.7407C13.2886 14.036 11.9275 14.9837 10.3765 15.4422C8.82557 15.9008 7.16794 15.8457 5.65085 15.2852C4.13376 14.7247 2.83849 13.6889 1.95822 12.3321C1.07795 10.9753 0.659843 9.37034 0.766258 7.75653C0.872672 6.14272 1.49791 4.60654 2.54871 3.3771C3.59951 2.14766 5.01959 1.29083 6.59714 0.934402C8.17469 0.577975 9.8252 0.741046 11.3025 1.39929"
+                      stroke="var(--ink)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15.75 2.25391L8.25 9.76141L6 7.51141"
+                      stroke="var(--teal-lt)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg></span> 50%+ reduction in high-bill calls</li>
+                <li><span class="outcome-list__check" aria-hidden="true"
+                  ><svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M15.75 7.56429V8.25429C15.7491 9.87161 15.2254 11.4453 14.257 12.7407C13.2886 14.036 11.9275 14.9837 10.3765 15.4422C8.82557 15.9008 7.16794 15.8457 5.65085 15.2852C4.13376 14.7247 2.83849 13.6889 1.95822 12.3321C1.07795 10.9753 0.659843 9.37034 0.766258 7.75653C0.872672 6.14272 1.49791 4.60654 2.54871 3.3771C3.59951 2.14766 5.01959 1.29083 6.59714 0.934402C8.17469 0.577975 9.8252 0.741046 11.3025 1.39929"
+                      stroke="var(--ink)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15.75 2.25391L8.25 9.76141L6 7.51141"
+                      stroke="var(--teal-lt)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg></span> 30% reduction in average call handle time</li>
+                <li><span class="outcome-list__check" aria-hidden="true"
+                  ><svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M15.75 7.56429V8.25429C15.7491 9.87161 15.2254 11.4453 14.257 12.7407C13.2886 14.036 11.9275 14.9837 10.3765 15.4422C8.82557 15.9008 7.16794 15.8457 5.65085 15.2852C4.13376 14.7247 2.83849 13.6889 1.95822 12.3321C1.07795 10.9753 0.659843 9.37034 0.766258 7.75653C0.872672 6.14272 1.49791 4.60654 2.54871 3.3771C3.59951 2.14766 5.01959 1.29083 6.59714 0.934402C8.17469 0.577975 9.8252 0.741046 11.3025 1.39929"
+                      stroke="var(--ink)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15.75 2.25391L8.25 9.76141L6 7.51141"
+                      stroke="var(--teal-lt)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg></span> Up to 25,000 CSR calls deflected in a single program cycle</li>
+              </ul>
+              <a class="program-block__link" href="#">Explore High Bill Analyzer <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.66667 11.3337L11.3333 4.66699" stroke="#449BD5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4.66667 4.66699H11.3333V11.3337" stroke="#449BD5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </a>
+            </div>
+            <div class="program-block__visual">
+              <div class="program-visual">
+                <p class="eyebrow">CSR Console · High Bill Resolution</p>
+                <div class="bill-panel">
+                  <div class="bill-panel__head">
+                    <span class="bill-panel__title">Bill Analysis · Acct #449211</span>
+                    <span class="bill-panel__pill">CSR ASSISTANT</span>
+                  </div>
+                  <div class="bill-panel__body">
+                    <div class="bill-panel__delta">
+                      <span class="bill-panel__delta-val">+$68</span>
+                      <span class="bill-panel__delta-hint">vs. prior billing period</span>
+                    </div>
+                    <div class="driver-row">
+                      <span class="driver-row__icon" aria-hidden="true">
+                        <img src="assets/ev-intelligence.png" height="17" alt="" decoding="async" />
+                      </span>
+                      <span class="driver-row__label">EV Charging (on-peak)</span>
+                      <span class="driver-row__track"><span class="driver-row__fill driver-row__fill--75"></span></span>
+                      <span class="driver-row__val">+$34</span>
+                    </div>
+                    <div class="driver-row">
+                      <span class="driver-row__icon" aria-hidden="true">
+                        <img src="assets/HVAC-usage.png" height="17" alt="" decoding="async" />
+                      </span>
+                      <span class="driver-row__label">HVAC usage spike</span>
+                      <span class="driver-row__track"><span class="driver-row__fill driver-row__fill--40"></span></span>
+                      <span class="driver-row__val">+$22</span>
+                    </div>
+                    <div class="driver-row">
+                      <span class="driver-row__icon" aria-hidden="true">
+                        <img src="assets/Weather-adjustment.png" height="17" alt="" decoding="async" />
+                      </span>
+                      <span class="driver-row__label">Weather adjustment</span>
+                      <span class="driver-row__track"><span class="driver-row__fill driver-row__fill--22"></span></span>
+                      <span class="driver-row__val">+$12</span>
+                    </div>
+                    <p class="bill-panel__tip">
+                      <strong>Recommended:</strong> Offer Smart Charge enrollment. Saves $34/mo. 92% propensity match.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="program-block">
+            <div class="program-block__text">
               <h3 class="program-block__title">Customer Self-Service Tools</h3>
               <p class="program-block__subtitle">Self-service that actually resolves, not just redirects.</p>
               <p class="program-block__problem">
                 Customers who can't explain their own bill don't trust their utility. Self-service built on whole-home averages doesn't resolve that — it moves the confusion online.
               </p>
               <ul class="outcome-list">
-                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 18% TOU enrollment rates via targeted self-service journeys</li>
-                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 127% of filed EE targets achieved across deployments</li>
-                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 1.5 TWh+ in total energy saved</li>
+                <li><span class="outcome-list__check" aria-hidden="true"
+                  ><svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M15.75 7.56429V8.25429C15.7491 9.87161 15.2254 11.4453 14.257 12.7407C13.2886 14.036 11.9275 14.9837 10.3765 15.4422C8.82557 15.9008 7.16794 15.8457 5.65085 15.2852C4.13376 14.7247 2.83849 13.6889 1.95822 12.3321C1.07795 10.9753 0.659843 9.37034 0.766258 7.75653C0.872672 6.14272 1.49791 4.60654 2.54871 3.3771C3.59951 2.14766 5.01959 1.29083 6.59714 0.934402C8.17469 0.577975 9.8252 0.741046 11.3025 1.39929"
+                      stroke="var(--ink)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15.75 2.25391L8.25 9.76141L6 7.51141"
+                      stroke="var(--teal-lt)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg></span> 18% TOU enrollment rates via targeted self-service journeys</li>
+                <li><span class="outcome-list__check" aria-hidden="true"
+                  ><svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M15.75 7.56429V8.25429C15.7491 9.87161 15.2254 11.4453 14.257 12.7407C13.2886 14.036 11.9275 14.9837 10.3765 15.4422C8.82557 15.9008 7.16794 15.8457 5.65085 15.2852C4.13376 14.7247 2.83849 13.6889 1.95822 12.3321C1.07795 10.9753 0.659843 9.37034 0.766258 7.75653C0.872672 6.14272 1.49791 4.60654 2.54871 3.3771C3.59951 2.14766 5.01959 1.29083 6.59714 0.934402C8.17469 0.577975 9.8252 0.741046 11.3025 1.39929"
+                      stroke="var(--ink)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15.75 2.25391L8.25 9.76141L6 7.51141"
+                      stroke="var(--teal-lt)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg></span> 127% of filed EE targets achieved across deployments</li>
+                <li><span class="outcome-list__check" aria-hidden="true"
+                  ><svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M15.75 7.56429V8.25429C15.7491 9.87161 15.2254 11.4453 14.257 12.7407C13.2886 14.036 11.9275 14.9837 10.3765 15.4422C8.82557 15.9008 7.16794 15.8457 5.65085 15.2852C4.13376 14.7247 2.83849 13.6889 1.95822 12.3321C1.07795 10.9753 0.659843 9.37034 0.766258 7.75653C0.872672 6.14272 1.49791 4.60654 2.54871 3.3771C3.59951 2.14766 5.01959 1.29083 6.59714 0.934402C8.17469 0.577975 9.8252 0.741046 11.3025 1.39929"
+                      stroke="var(--ink)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15.75 2.25391L8.25 9.76141L6 7.51141"
+                      stroke="var(--teal-lt)"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg></span> 1.5 TWh+ in total energy saved</li>
               </ul>
-              <a class="program-block__link" href="#">Explore Self-Service Tools →</a>
+              <a class="program-block__link" href="#">Explore Self-Service Tools <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.66667 11.3337L11.3333 4.66699" stroke="#449BD5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4.66667 4.66699H11.3333V11.3337" stroke="#449BD5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </a>
             </div>
             <div class="program-block__visual">
               <div class="program-visual">
-                <p class="program-visual__label">Customer Portal · Appliance-Level View</p>
+                <p class="eyebrow">Customer Portal · Appliance-Level View</p>
                 <div class="portal-frame">
                   <div class="portal-frame__nav">
                     <span class="portal-frame__title">My Energy Dashboard</span>
@@ -393,67 +613,19 @@
                       </div>
                     </div>
                     <div class="portal-promo">
-                      <span class="portal-promo__icon" aria-hidden="true">⚡</span>
+                      <span class="portal-promo__icon" aria-hidden="true"><svg width="15" height="24" viewBox="0 0 15 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.4445 0.75L0.75 13.2926H6.03162L3.79722 22.75L13.75 9.84754H8.26602L10.4445 0.75Z" stroke="#499ED7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        </span>
                       <div class="portal-promo__text">
                         <div class="portal-promo__title">Smart Charge Program</div>
                         <div class="portal-promo__sub">Based on your EV usage, you could save up to $34/month</div>
                       </div>
-                      <span class="portal-promo__cta">Enroll Now →</span>
+                      <span class="portal-promo__cta">Enroll Now <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.66667 11.3337L11.3333 4.66699" stroke="#449BD5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M4.66667 4.66699H11.3333V11.3337" stroke="#449BD5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg></span>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="program-block">
-            <div class="program-block__text">
-              <h3 class="program-block__title">High Bill Analyzer &amp; Call Resolution</h3>
-              <p class="program-block__subtitle">Resolve the call before the customer finishes explaining.</p>
-              <p class="program-block__problem">
-                No more clicking through four systems to piece together a vague answer. Get to the root cause of calls, to make them one and done.
-              </p>
-              <ul class="outcome-list">
-                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 50%+ reduction in high-bill calls</li>
-                <li><span class="outcome-list__check" aria-hidden="true">✓</span> 30% reduction in average call handle time</li>
-                <li><span class="outcome-list__check" aria-hidden="true">✓</span> Up to 25,000 CSR calls deflected in a single program cycle</li>
-              </ul>
-              <a class="program-block__link" href="#">Explore High Bill Analyzer →</a>
-            </div>
-            <div class="program-block__visual">
-              <div class="program-visual">
-                <p class="program-visual__label">CSR Console · High Bill Resolution</p>
-                <div class="bill-panel">
-                  <div class="bill-panel__head">
-                    <span class="bill-panel__title">Bill Analysis · Acct #449211</span>
-                    <span class="bill-panel__pill">CSR ASSISTANT</span>
-                  </div>
-                  <div class="bill-panel__body">
-                    <div class="bill-panel__delta">
-                      <span class="bill-panel__delta-val">+$68</span>
-                      <span class="bill-panel__delta-hint">vs. prior billing period</span>
-                    </div>
-                    <div class="driver-row">
-                      <span class="driver-row__icon" aria-hidden="true">🚗</span>
-                      <span class="driver-row__label">EV Charging (on-peak)</span>
-                      <span class="driver-row__track"><span class="driver-row__fill driver-row__fill--75"></span></span>
-                      <span class="driver-row__val">+$34</span>
-                    </div>
-                    <div class="driver-row">
-                      <span class="driver-row__icon" aria-hidden="true">❄️</span>
-                      <span class="driver-row__label">HVAC usage spike</span>
-                      <span class="driver-row__track"><span class="driver-row__fill driver-row__fill--40"></span></span>
-                      <span class="driver-row__val">+$22</span>
-                    </div>
-                    <div class="driver-row">
-                      <span class="driver-row__icon" aria-hidden="true">🌡️</span>
-                      <span class="driver-row__label">Weather adjustment</span>
-                      <span class="driver-row__track"><span class="driver-row__fill driver-row__fill--22"></span></span>
-                      <span class="driver-row__val">+$12</span>
-                    </div>
-                    <p class="bill-panel__tip">
-                      <strong>Recommended:</strong> Offer Smart Charge enrollment. Saves $34/mo. 92% propensity match.
-                    </p>
                   </div>
                 </div>
               </div>
@@ -484,33 +656,39 @@
 
           <div class="agent-grid">
             <article class="agent-card">
+              <div class="agent-card__icon-container">
               <div class="agent-card__icon" aria-hidden="true">
-                <img src="assets/iucx-icon-05-1.svg" alt="" width="28" height="28" decoding="async" />
+                <img src="assets/dtech26-for-regulators.svg" alt="" decoding="async" />
               </div>
               <h3 class="agent-card__title">IVR Personalization Agent</h3>
               <p class="agent-card__body">
                 Detects the likely call reason before the customer finishes speaking — pulling from their live appliance profile and billing delta. Routes and resolves at the IVR level without a CSR.
               </p>
+              </div>
               <p class="agent-card__stat">Up to 50,000 at-risk customers handled per program cycle</p>
             </article>
             <article class="agent-card">
+              <div class="agent-card__icon-container">
               <div class="agent-card__icon" aria-hidden="true">
-                <img src="assets/Black.svg" alt="" width="28" height="28" decoding="async" />
+                <img src="assets/Black.svg" alt="" decoding="async" />
               </div>
               <h3 class="agent-card__title">Proactive Outreach Agent</h3>
               <p class="agent-card__body">
                 Continuously monitors usage patterns and triggers personalized email, SMS, or portal messages before the customer has a reason to call. Picks the right channel and timing for each premise.
               </p>
+              </div>
               <p class="agent-card__stat">15%+ reduction in CSR churn from reduced inbound volume</p>
             </article>
             <article class="agent-card">
-              <div class="agent-card__icon" aria-hidden="true">
-                <img src="assets/dtech26-for-regulators.svg" alt="" width="28" height="28" decoding="async" />
+              <div class="agent-card__icon-container">
+              <div class="agent-card__  icon" aria-hidden="true">
+                <img src="assets/iucx-icon-05-1.svg" alt="" decoding="async" />
               </div>
               <h3 class="agent-card__title">Program Enrollment Agent</h3>
               <p class="agent-card__body">
                 Identifies program-eligible customers, segments by propensity, and runs targeted recruitment journeys — including follow-ups, re-engagements, and confirmation — without manual campaign management.
               </p>
+              </div>
               <p class="agent-card__stat">4x reduction in marketing cost per enrollment</p>
             </article>
           </div>
@@ -530,7 +708,9 @@
           <div class="genai-grid">
             <div class="genai-features">
               <article class="genai-feature">
-                <div class="genai-feature__icon" aria-hidden="true">🤖</div>
+                <div class="genai-feature__icon" aria-hidden="true">
+                  <img src="assets/EnergyAssistant.png" width="26" height="26" alt="" decoding="async" />
+                </div>
                 <div>
                   <h3 class="genai-feature__title">Energy Assistant (Customer-Facing)</h3>
                   <p class="genai-feature__text">
@@ -539,7 +719,9 @@
                 </div>
               </article>
               <article class="genai-feature">
-                <div class="genai-feature__icon" aria-hidden="true">🧑‍💻</div>
+                <div class="genai-feature__icon" aria-hidden="true">
+                  <img src="assets/CSRCopilot.png" width="26" height="26" alt="" decoding="async" />
+                </div>
                 <div>
                   <h3 class="genai-feature__title">CSR Copilot</h3>
                   <p class="genai-feature__text">
@@ -548,7 +730,9 @@
                 </div>
               </article>
               <article class="genai-feature">
-                <div class="genai-feature__icon" aria-hidden="true">📊</div>
+                <div class="genai-feature__icon" aria-hidden="true">
+                  <img src="assets/ChartBill.png" width="26" height="26" alt="" decoding="async" />
+                </div>
                 <div>
                   <h3 class="genai-feature__title">Chart &amp; Bill Explainers</h3>
                   <p class="genai-feature__text">
@@ -560,7 +744,10 @@
 
             <aside class="chat-demo" aria-label="Energy Assistant sample conversation">
               <div class="chat-demo__header">
-                <div class="chat-demo__avatar" aria-hidden="true">⚡</div>
+                <div class="chat-demo__avatar" aria-hidden="true"><svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.46161 0.75L0.75 9.87188H4.40651L2.85961 16.75L9.75 7.36639H5.9534L7.46161 0.75Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  </div>
                 <div>
                   <div class="chat-demo__headline">Energy Assistant</div>
                   <div class="chat-demo__status">● Online · Grounded in your meter data</div>
@@ -682,17 +869,65 @@
     </main>
 
     <footer class="site-footer">
-      <div class="site-footer__inner container">
-        <a href="index.html" class="site-footer__brand">bidgely</a>
-        <nav class="site-footer__links" aria-label="Footer">
-          <a href="#">Solutions</a>
-          <a href="#">Platform</a>
-          <a href="#">Case Studies</a>
-          <a href="#">Resources</a>
-          <a href="#">Careers</a>
-          <a href="#">Privacy</a>
+      <div class="container site-footer__main">
+        <a href="index.html" class="site-footer__logo" aria-label="Bidgely home">
+          <img
+            class="site-footer__logo-img"
+            src="assets/bidgely-logo.png"
+            alt=""
+            width="160"
+            height="44"
+            decoding="async"
+          />
+        </a>
+        <nav class="site-footer__cols" aria-label="Footer">
+          <div class="site-footer__col">
+            <h2 class="site-footer__heading">Solutions</h2>
+            <ul class="site-footer__list">
+              <li><a href="#">Energy Efficiency</a></li>
+              <li><a href="#">EV Programs</a></li>
+              <li><a href="#">Customer Engagement</a></li>
+              <li><a href="#">DER Grid Planning</a></li>
+              <li><a href="#">Flex Demand</a></li>
+              <li><a href="#">Gas Solutions</a></li>
+              <li><a href="#">Small Medium Business</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h2 class="site-footer__heading">Technology</h2>
+            <ul class="site-footer__list">
+              <li><a href="#">True Disaggregation</a></li>
+              <li><a href="#">Disaggregation as a Service</a></li>
+              <li><a href="#">UtilityAI™</a></li>
+              <li><a href="#">Patents</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <h2 class="site-footer__heading">Knowledge Base</h2>
+            <ul class="site-footer__list">
+              <li><a href="#">Resource Library</a></li>
+              <li><a href="#">Insights</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col">
+            <ul class="site-footer__list" aria-label="Company">
+              <li><a href="#">Contact us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press release</a></li>
+              <li><a href="#">Leadership</a></li>
+              <li><a href="#">Board and advisors</a></li>
+              <li><a href="#">About Bidgely</a></li>
+            </ul>
+          </div>
         </nav>
-        <p class="site-footer__copy">© 2025 Bidgely, Inc.</p>
+      </div>
+      <div class="container site-footer__bar">
+        <div class="site-footer__legal">
+          <a href="#">Terms &amp; Conditions</a>
+          <span class="site-footer__sep" aria-hidden="true">|</span>
+          <a href="#">Privacy Policy</a>
+        </div>
+        <p class="site-footer__copy">© 2026 Bidgely, Inc. All Rights Reserved.</p>
       </div>
     </footer>
 

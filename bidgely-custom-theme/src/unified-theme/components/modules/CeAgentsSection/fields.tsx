@@ -5,9 +5,9 @@ import {
   RepeatedFieldGroup,
   ImageField,
 } from '@hubspot/cms-components/fields';
-import agentIconIvr from './assets/iucx-icon-05-1.svg';
+import agentIconIvr from './assets/dtech26-for-regulators.svg';
 import agentIconOutreach from './assets/Black.svg';
-import agentIconEnrollment from './assets/dtech26-for-regulators.svg';
+import agentIconEnrollment from './assets/iucx-icon-05-1.svg';
 
 function agentCardIconDefault(src: string, alt: string) {
   return {
@@ -85,7 +85,7 @@ export const fields = (
         resizable={false}
         responsive={false}
         showLoading={true}
-        default={agentCardIconDefault(agentIconIvr, 'Agent icon')}
+        default={agentCardIconDefault(agentIconIvr, '')}
         inlineEditable={true}
       />
       <TextField label="Title" name="cardTitle" default="IVR Personalization Agent" inlineEditable={true} />
