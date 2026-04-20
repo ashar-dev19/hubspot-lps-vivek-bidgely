@@ -468,6 +468,7 @@
   --navy-mid: #1a3558;
   --teal: #449bd5;
   --teal-lt: #7abfe8;
+  --nile-blue: #35579B;
   --sans: "Montserrat", sans-serif;
   --body: "Montserrat", sans-serif;
   --space-page: 1.5rem;
@@ -2334,7 +2335,7 @@ p.agent-card__stat {
 
 .case-feature {
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: 1fr 1fr;
   border-radius: 16px;
   overflow: hidden;
   background: var(--white);
@@ -2406,11 +2407,14 @@ p.agent-card__stat {
 .case-feature__quote {
   margin: 0 0 1.25rem;
   padding: 0.75rem 0 0;
-  border-top: 4px solid var(--teal);
-  font-size: 13px;
+  border: solid var(--teal);
+  border-width: 4px 0px 0px 0px;  
+  font-size: 16px;
   line-height: 1.7;
-  color: rgba(21, 45, 73, 0.7);
+  color: var(--nile-blue);
   font-style: italic;
+  font-family: var(--sans);
+  background: none;
 }
 
 .case-feature__metrics {
@@ -2430,19 +2434,19 @@ p.agent-card__stat {
 .case-metric__value {
   margin: 0;
   font-family: var(--sans);
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 800;
   color: var(--ink);
 }
 
 .case-metric__label {
   margin: 0.125rem 0 0;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.4;
   color: rgba(21, 45, 73, 0.55);
 }
 
-.case-feature__download {
+a.case-feature__download {
   display: inline-flex;
   gap: 0.4rem;
   align-items: center;
@@ -2453,7 +2457,7 @@ p.agent-card__stat {
   text-decoration: none;
 }
 
-.case-feature__download-icon {
+a.case-feature__download-icon {
   width: 12px;
   height: 12px;
   flex: 0 0 auto;
@@ -2461,8 +2465,9 @@ p.agent-card__stat {
   margin-left: 0.15rem;
 }
 
-.case-feature__download:hover {
-  text-decoration: underline;
+a.case-feature__download:hover {
+  text-decoration: none;
+  color: var(--teal);
 }
 
 @media (max-width: 980px) {
