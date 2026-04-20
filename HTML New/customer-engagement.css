@@ -2188,7 +2188,7 @@ a.case-feature__download:hover {
   color: var(--ink-muted);
 }
 
-.resource-card__cta {
+a.resource-card__cta {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -2199,12 +2199,12 @@ a.case-feature__download:hover {
   font-weight: 600;
   color: var(--teal);
   text-decoration: none;
-  transition: color 0.25s ease, border-color 0.25s ease;
+  transition: color 0.25s ease, text-decoration 0.25s ease;
 }
 
-.resource-card:hover .resource-card__cta {
+a.resource-card__cta:hover {
   color: var(--teal);
-  border-color: var(--ink-hair);
+  text-decoration: none;
 }
 
 /* -----------------------------------------------------------------------------

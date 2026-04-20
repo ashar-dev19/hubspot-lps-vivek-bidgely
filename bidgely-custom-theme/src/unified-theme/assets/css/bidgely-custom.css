@@ -2498,48 +2498,18 @@ a.case-feature__download:hover {
   position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--off);
-  border-left: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-  cursor: pointer;
+  background: var(--white);
+  border: 1px solid rgba(13, 17, 23, 0.06);
+  border-radius: 16px;
+  cursor: default;
   overflow: hidden;
-  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.resource-card::before,
-.resource-card::after {
-  content: "";
-  position: absolute;
-  background: var(--ink);
-  transition: background 0.25s ease;
-  z-index: 2;
-}
-
-.resource-card::before {
-  top: 0;
-  right: 0;
-  width: 28px;
-  height: 2px;
-}
-
-.resource-card::after {
-  top: 0;
-  right: 0;
-  width: 2px;
-  height: 28px;
+  box-shadow: 0 10px 28px rgba(13, 17, 23, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .resource-card:hover {
   transform: translateY(-4px);
-  background: linear-gradient(to bottom right, var(--navy), var(--navy-mid), var(--ink-mid));
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-  box-shadow: 0 14px 44px rgba(13, 60, 90, 0.28);
-}
-
-.resource-card:hover::before,
-.resource-card:hover::after {
-  background: transparent;
+  box-shadow: 0 16px 44px rgba(13, 17, 23, 0.14);
 }
 
 .resource-card__type {
@@ -2560,9 +2530,9 @@ a.case-feature__download:hover {
 }
 
 .resource-card:hover .resource-card__type {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: rgba(255, 255, 255, 0.85);
+  background: var(--white);
+  border-color: rgba(13, 17, 23, 0.09);
+  color: var(--ink-muted);
 }
 
 .resource-card__media {
@@ -2574,6 +2544,13 @@ a.case-feature__download:hover {
   transition: background 0.25s ease;
 }
 
+.resource-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* .resource-card--brief .resource-card__media {
   background: linear-gradient(to bottom right, rgba(68, 155, 213, 0.1), rgba(68, 155, 213, 0.08));
 }
@@ -2583,7 +2560,7 @@ a.case-feature__download:hover {
 } */
 
 .resource-card:hover .resource-card__media {
-  background: rgba(255, 255, 255, 0.06);
+  background: #bde3fc;
 }
 
 .resource-card__emoji {
@@ -2617,7 +2594,7 @@ a.case-feature__download:hover {
 }
 
 .resource-card:hover .resource-card__title {
-  color: var(--white);
+  color: var(--ink);
 }
 
 .resource-card__desc {
@@ -2627,12 +2604,22 @@ a.case-feature__download:hover {
   transition: color 0.25s ease;
 }
 
-.resource-card:hover .resource-card__desc {
-  color: rgba(255, 255, 255, 0.62);
+.resource-card__desc p {
+  margin: 0;
 }
 
-.resource-card__cta {
-  display: block;
+.resource-card__desc p + p {
+  margin-top: 0.5rem;
+}
+
+.resource-card:hover .resource-card__desc {
+  color: var(--ink-muted);
+}
+
+a.resource-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   margin-top: 1.125rem;
   padding-top: 0.875rem;
   border-top: 1px solid rgba(13, 17, 23, 0.09);
@@ -2640,12 +2627,20 @@ a.case-feature__download:hover {
   font-weight: 600;
   color: var(--teal);
   text-decoration: none;
-  transition: color 0.25s ease, border-color 0.25s ease;
+  transition: color 0.25s ease, text-decoration 0.25s ease;
 }
 
-.resource-card:hover .resource-card__cta {
-  color: var(--teal-lt);
-  border-color: rgba(255, 255, 255, 0.12);
+.resource-card__cta-icon {
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  display: inline-block;
+  margin-left: 0.15rem;
+}
+
+a.resource-card__cta:hover {
+  color: var(--teal);
+  text-decoration: none;
 }
 
 /* -----------------------------------------------------------------------------
