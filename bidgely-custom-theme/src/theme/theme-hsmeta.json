@@ -1,0 +1,9 @@
+{
+  "uid": "unified-theme",
+  "type": "theme",
+  "config": {
+    "themePath": "unified-theme",
+    "secretNames": []
+  }
+}
+

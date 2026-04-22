@@ -466,19 +466,6 @@ export const fields = (
           step={1}
           default={50}
         />
-        <ChoiceField
-          label="Bar color"
-          name="portalBarColorVariant"
-          display="select"
-          choices={[
-            ['ev', 'EV (blue)'],
-            ['hvac', 'HVAC (teal)'],
-            ['h2o', 'Water'],
-            ['other', 'Other (muted)'],
-          ]}
-          required={true}
-          default="ev"
-        />
       </RepeatedFieldGroup>
 
       <ImageField

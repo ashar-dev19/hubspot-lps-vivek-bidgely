@@ -813,6 +813,6 @@ export const meta: ModuleMeta = {
 
 export const defaultModuleConfig = {
   moduleName: 'elevate/components/modules/ce_programs_section',
-  version: 6,
+  version: 7,
   themeModule: true,
 };

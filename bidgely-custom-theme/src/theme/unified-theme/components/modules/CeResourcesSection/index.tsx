@@ -8,16 +8,18 @@ import arrowUpRightPng from './assets/arrow-up-right.png';
 type HubdbColumns = {
   colType: TextFieldType['default'];
   colImage: TextFieldType['default'];
+  imageBaseUrl: TextFieldType['default'];
   colTitle: TextFieldType['default'];
   colDesc: TextFieldType['default'];
   colCtaLabel: TextFieldType['default'];
   colCtaLink: TextFieldType['default'];
-  colVariant: TextFieldType['default'];
 };
 
 type HubdbSettings = {
-  hubdbTableId: NumberFieldType['default'];
+  hubdbTableId: TextFieldType['default'];
   hubdbLimit: NumberFieldType['default'];
+  filterColumn: TextFieldType['default'];
+  filterValue: TextFieldType['default'];
 };
 
 type ResourceRow = {
@@ -28,7 +30,6 @@ type ResourceRow = {
   description: string;
   ctaLabel: string;
   ctaHref: string;
-  variant: string;
 };
 
 type CeResourcesSectionProps = {
@@ -52,12 +53,6 @@ const Span = createComponent('span');
 const A = createComponent('a');
 const Article = createComponent('article');
 const Img = createComponent('img');
-
-function normalizeVariant(raw: string) {
-  const val = (raw || '').toString().trim().toLowerCase();
-  if (!val) return '';
-  return val.replace(/[^a-z0-9_-]/g, '-');
-}
 
 /** HubDB Rich text stores HTML; React must not escape it. Plain text has no tags. */
 function looksLikeHtmlFragment(value: string) {
@@ -101,12 +96,10 @@ export const Component = (props: CeResourcesSectionProps) => {
 
           <Div className="resource-grid resource-grid--spaced">
             {resources.map((row, idx) => {
-              const variant = normalizeVariant(row.variant);
-              const variantClass = variant ? `resource-card--${variant}` : '';
               const imageSrc = normalizeHubdbImageSrc(row.imageSrc);
               const hasImage = Boolean(imageSrc);
               return (
-                <Article className={`resource-card ${variantClass}`} key={idx}>
+                <Article className="resource-card" key={idx}>
                   <Span className="resource-card__type">{row.type}</Span>
                   <Div className="resource-card__media" aria-hidden={!hasImage}>
                     {hasImage ? (
@@ -147,22 +140,49 @@ export const Component = (props: CeResourcesSectionProps) => {
 export { fields } from './fields.js';
 
 export const hublDataTemplate = `
-  {% set table_id = module.groupCeResourcesHubdb.hubdbTableId|int %}
+  {# Text field so pasted IDs (with commas/spaces) work reliably; digits-only for hubdb_table_rows. #}
+  {% set table_id_raw = module.groupCeResourcesHubdb.hubdbTableId|default("")|trim %}
+  {% set table_id_digits = table_id_raw|replace(",", "")|replace(" ", "") %}
+  {% set table_id = table_id_digits|int %}
   {% set limit = module.groupCeResourcesHubdb.hubdbLimit|int %}
+  {% set filter_col = module.groupCeResourcesHubdb.filterColumn|default("")|trim %}
+  {% set filter_val = module.groupCeResourcesHubdb.filterValue|default("")|trim %}
+  {% set filter_active = filter_col and filter_val %}
+  {% set fetch_limit = limit %}
+  {% if filter_active %}
+    {% set fetch_limit = 500 %}
+  {% endif %}
   {% set colType = module.groupCeResourcesColumns.colType %}
   {% set colImage = module.groupCeResourcesColumns.colImage %}
+  {% set image_base = module.groupCeResourcesColumns.imageBaseUrl|default("")|trim %}
   {% set colTitle = module.groupCeResourcesColumns.colTitle %}
   {% set colDesc = module.groupCeResourcesColumns.colDesc %}
   {% set colCtaLabel = module.groupCeResourcesColumns.colCtaLabel %}
   {% set colCtaLink = module.groupCeResourcesColumns.colCtaLink %}
-  {% set colVariant = module.groupCeResourcesColumns.colVariant %}
 
   {% set rows = [] %}
 
   {% if table_id > 0 %}
-    {% set hubdb_rows = hubdb_table_rows(table_id, "limit=" ~ limit) %}
+    {% set hubdb_rows = hubdb_table_rows(table_id, "limit=" ~ fetch_limit) %}
 
     {% for r in hubdb_rows %}
+      {% if rows|length >= limit %}
+        {% break %}
+      {% endif %}
+
+      {# Comma-separated tags (e.g. CA,DS,EDD): exact token match after trim; spaces removed in cell only. #}
+      {% set row_match = namespace(ok=true) %}
+      {% if filter_active %}
+        {% set row_match.ok = false %}
+        {% set cell_norm = (r[filter_col] ~ "")|replace(" ", "") %}
+        {% for part in cell_norm|split(",") %}
+          {% if part|trim == filter_val %}
+            {% set row_match.ok = true %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% if row_match.ok %}
       {% set raw_link = r[colCtaLink] %}
       {% if raw_link is mapping and raw_link.url %}
         {% set href = raw_link.url %}
@@ -170,38 +190,57 @@ export const hublDataTemplate = `
         {% set href = raw_link %}
       {% endif %}
 
-      {# HubDB Image columns return a special object (not always a mapping in HubL). Never coerce the whole object to string. #}
+      {# HubDB Image columns return a mapping; Text columns can hold a filename when image_base is set. #}
       {% set raw_image = r[colImage] %}
       {% set img_src = "" %}
       {% set img_alt = "" %}
       {% if raw_image %}
-        {% if raw_image.url %}
-          {% set img_src = raw_image.url %}
-        {% elif raw_image.src %}
-          {% set img_src = raw_image.src %}
-        {% endif %}
-        {% if img_src == "" %}
-          {% set fid = "" %}
-          {% if raw_image.fileId %}
-            {% set fid = raw_image.fileId %}
-          {% elif raw_image.file_id %}
-            {% set fid = raw_image.file_id %}
+        {% if raw_image is mapping %}
+          {% if raw_image.url %}
+            {% set img_src = raw_image.url %}
+          {% elif raw_image.src %}
+            {% set img_src = raw_image.src %}
           {% endif %}
-          {% if fid %}
-            {% set fb = file_by_id(fid) %}
-            {% if fb %}
-              {% if fb.url %}
-                {% set img_src = fb.url %}
-              {% elif fb.friendlyUrl %}
-                {% set img_src = fb.friendlyUrl %}
+          {% if img_src == "" %}
+            {% set fid = "" %}
+            {% if raw_image.fileId %}
+              {% set fid = raw_image.fileId %}
+            {% elif raw_image.file_id %}
+              {% set fid = raw_image.file_id %}
+            {% endif %}
+            {% if fid %}
+              {% set fb = file_by_id(fid) %}
+              {% if fb %}
+                {% if fb.url %}
+                  {% set img_src = fb.url %}
+                {% elif fb.friendlyUrl %}
+                  {% set img_src = fb.friendlyUrl %}
+                {% endif %}
               {% endif %}
             {% endif %}
           {% endif %}
-        {% endif %}
-        {% if raw_image.altText %}
-          {% set img_alt = raw_image.altText %}
-        {% elif raw_image.alt %}
-          {% set img_alt = raw_image.alt %}
+          {% if raw_image.altText %}
+            {% set img_alt = raw_image.altText %}
+          {% elif raw_image.alt %}
+            {% set img_alt = raw_image.alt %}
+          {% endif %}
+        {% elif raw_image is string %}
+          {% set raw_str = raw_image|trim %}
+          {% if image_base %}
+            {% set base = image_base %}
+            {% set blen = base|length %}
+            {% if blen > 0 and base|slice(blen - 1, 1) != "/" %}
+              {% set base = base ~ "/" %}
+            {% endif %}
+            {% set fname = raw_str %}
+            {% set flen = fname|length %}
+            {% if flen > 0 and fname|slice(0, 1) == "/" %}
+              {% set fname = fname|slice(1, flen - 1) %}
+            {% endif %}
+            {% set img_src = base ~ fname %}
+          {% else %}
+            {% set img_src = raw_str %}
+          {% endif %}
         {% endif %}
       {% endif %}
 
@@ -224,18 +263,26 @@ export const hublDataTemplate = `
         {% set img_src = "https:" ~ img_src %}
       {% endif %}
 
+      {% set cta_lab = "" %}
+      {% if colCtaLabel|trim %}
+        {% set cta_lab = r[colCtaLabel|trim] ~ "" %}
+      {% endif %}
+      {% if cta_lab|trim == "" %}
+        {% set cta_lab = "Read More" %}
+      {% endif %}
+
       {% set row = {
           "type": (r[colType] ~ ""),
           "imageSrc": (img_src ~ ""),
           "imageAlt": (img_alt ~ ""),
           "title": (r[colTitle] ~ ""),
           "description": desc_str,
-          "ctaLabel": (r[colCtaLabel] ~ ""),
-          "ctaHref": (href ~ ""),
-          "variant": (r[colVariant] ~ "")
+          "ctaLabel": cta_lab,
+          "ctaHref": (href ~ "")
         }
       %}
       {% do rows.append(row) %}
+      {% endif %}
     {% endfor %}
   {% endif %}
 
@@ -255,7 +302,7 @@ export const meta: ModuleMeta = {
 
 export const defaultModuleConfig = {
   moduleName: 'elevate/components/modules/ce_resources_section',
-  version: 7,
+  version: 12,
   themeModule: true,
 };
 

@@ -1182,7 +1182,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 3.5rem;
+  gap: 1.5rem;
 }
 
 .demo-cta__title {
@@ -2115,8 +2115,7 @@ p.agent-card__stat {
 }
 
 .chat-demo__avatar-img {
-  width: 100%;
-  height: 100%;
+  height: 20px;
   object-fit: cover;
   display: block;
 }
@@ -2289,7 +2288,7 @@ p.agent-card__stat {
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(21, 45, 73, 0.45);
+  color: var(--ink-muted);
   margin: 0;
 }
 
@@ -2306,10 +2305,11 @@ p.agent-card__stat {
   justify-content: center;
   height: 38px;
   padding: 0.45rem 0.8rem;
-  border-radius: 14px;
+  border-radius: 10px;
   background: var(--white);
   border: 1px solid rgba(21, 45, 73, 0.12);
   box-shadow: 0 1px 2px rgba(13, 17, 23, 0.04);
+  min-width: 96px;
 }
 
 .cases-logo__img {
@@ -2466,7 +2466,6 @@ a.case-feature__download-icon {
 }
 
 a.case-feature__download:hover {
-  text-decoration: none;
   color: var(--teal);
 }
 
@@ -2474,8 +2473,8 @@ a.case-feature__download:hover {
   .case-feature {
     grid-template-columns: 1fr;
   }
-  .case-feature__right {
-    padding-top: 1.5rem;
+  .case-feature__left,.case-feature__right{
+    padding: 2.5rem 1.5rem 2.25rem;
   }
 }
 
@@ -2483,9 +2482,7 @@ a.case-feature__download:hover {
    Resources
    ----------------------------------------------------------------------------- */
 .section--resources {
-  background: var(--white);
   padding: 72px var(--space-page);
-  border-top: 1px solid var(--ink-hair);
 }
 
 .resource-grid {
@@ -2521,22 +2518,15 @@ a.case-feature__download:hover {
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding: 0.25rem 0.625rem;
+  padding: 0.25rem 0.9rem;
   border-radius: 999px;
-  background: var(--white);
-  border: 1px solid rgba(13, 17, 23, 0.09);
-  color: var(--ink-muted);
+  background: var(--teal);
+  color: var(--white);
   transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 
-.resource-card:hover .resource-card__type {
-  background: var(--white);
-  border-color: rgba(13, 17, 23, 0.09);
-  color: var(--ink-muted);
-}
-
 .resource-card__media {
-  height: 10rem;
+  height: 12.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2640,7 +2630,6 @@ a.resource-card__cta {
 
 a.resource-card__cta:hover {
   color: var(--teal);
-  text-decoration: none;
 }
 
 /* -----------------------------------------------------------------------------
@@ -2648,8 +2637,8 @@ a.resource-card__cta:hover {
    ----------------------------------------------------------------------------- */
 .site-footer {
   margin-top: 0;
-  border-top: 1px solid var(--ink-hair);
   padding: 3.5rem var(--space-page) 0;
+  border-top: 1px solid #dfe1e4;
 }
 
 .site-footer__main {
@@ -2777,11 +2766,13 @@ a.resource-card__cta:hover {
   .agents-intro,
   .agent-grid,
   .genai-grid,
-  .resource-grid,
   .alerts-grid {
     grid-template-columns: 1fr;
   }
-
+  .resource-grid
+  {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .mock-shell {
     padding: 1.25rem 1rem;
     border-radius: 1rem;
@@ -2854,13 +2845,60 @@ a.resource-card__cta:hover {
     grid-template-columns: 1fr;
   }
 
+  .hero{
+    padding-top: 50px;
+  }
+
+  .hero__inner{
+    gap: 50px;
+  }
+
+  .demo-cta{
+    padding: 2.5rem var(--space-page);
+  }
+
+  .resource-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .driver-row {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .driver-row__track {
+      flex: 0 0 80% !important;
+  }
+  
+  .portal-frame__nav {
+    flex-wrap: wrap;
+    gap: 7px;
+  }
+
+  .portal-tabs {
+    flex-wrap: wrap;
+  }
+
+  .agents-intro{
+    margin-bottom: 2rem;
+  }
+
+  .genai-feature {
+    flex-direction: column;
+  }
+
+  .portal-promo {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
   .site-footer__bar {
     flex-direction: column;
     align-items: center;
   }
 
   .mock-shell {
-    padding: 0.875rem 0.625rem;
+    padding: 0;
     border-radius: 0.75rem;
   }
 
