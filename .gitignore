@@ -11,3 +11,6 @@ hubspot.config.yml
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# Build outputs (generated)
+bidgely-custom-theme/src/theme/unified-theme/assets/dist

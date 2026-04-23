@@ -467,6 +467,7 @@
   --navy: #152d49;
   --navy-mid: #1a3558;
   --teal: #449bd5;
+  --azure: #3499ED;
   --teal-lt: #7abfe8;
   --nile-blue: #35579B;
   --sans: "Montserrat", sans-serif;
@@ -743,6 +744,97 @@ p {
    ----------------------------------------------------------------------------- */
 .mock-section {
   padding: 0 var(--space-page) 4rem;
+}
+
+.ce-header-banner-mock {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3rem, 6vw, 4.5rem) var(--space-page) clamp(4rem, 8vw, 5.5rem);
+  background: linear-gradient(135deg, #152D49 0%, #499ED7 100%);
+}
+
+.ce-header-banner-mock__content {
+  text-align: center;
+  padding-top: clamp(1.25rem, 2vw, 1.75rem);
+  padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.ce-header-banner-mock__headline {
+  margin: 0;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: 54px;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--white);
+}
+
+.ce-header-banner-mock__subcopy {
+  margin: 0.9rem auto 0;
+  max-width: 795px;
+  font-size: 17px;
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 300;
+}
+
+.ce-header-banner-mock__cta {
+  margin-top: 1.125rem;
+}
+
+a.ce-header-banner-mock__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0.625rem 1.125rem;
+  border-radius: 0.5rem;
+  background: var(--white);
+  color: var(--ink-mid);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(13, 17, 23, 0.14);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.ce-header-banner-mock__cta-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(13, 17, 23, 0.16);
+  color: var(--ink-mid);
+}
+
+.ce-header-banner-mock__bars {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: clamp(84px, 10vw, 132px);
+  object-fit: cover;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ce-header-banner-mock .container {
+  position: relative;
+  z-index: 1;
+}
+
+.ce-header-banner-mock .mock-shell {
+  padding-top: clamp(1rem, 2vw, 1.75rem);
+  padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: -235px;
+}
+
+@media (max-width: 980px) {
+  .ce-header-banner-mock__headline {
+    font-size: clamp(34px, 6.5vw, 44px);
+  }
+  .ce-header-banner-mock__subcopy {
+    font-size: 15px;
+  }
 }
 
 .mock-shell {
@@ -1101,7 +1193,7 @@ p {
   letter-spacing: -0.02em;
   line-height: 1.2;
   margin-bottom: 0.25rem;
-  background: linear-gradient(to right, var(--navy), var(--teal));
+  background: var(--azure);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
