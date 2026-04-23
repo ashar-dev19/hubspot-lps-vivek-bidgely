@@ -1,0 +1,146 @@
+<style>
+/* ── Cloud Partners Banner ── */
+.bly-cp {
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  background: #152d49;
+}
+.bly-cp__card {
+  margin: 0 auto;
+  padding: 60px 52px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  max-width:1300px;
+  
+}
+.bly-cp__left {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+.bly-cp__heading {
+  font-size: 38px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0 0 24px;
+}
+.bly-cp__heading em {
+  font-style: normal;
+  color: #499ed7;
+}
+/* Logo row */
+.bly-cp__logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.bly-cp__logo-pill {
+  background: rgba(255,255,255,.1);
+  border-radius: 8px;
+  height: 40px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.bly-cp__logo-pill img {
+  height: 18px;
+  width: auto;
+  max-width: 90px;
+  object-fit: contain;
+  display: block;
+  filter: brightness(0) invert(1);
+  opacity: .85;
+}
+/* CTA */
+.bly-cp__cta-wrap {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.bly-cp__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 28px;
+  background: #fff;
+  color: #152d49;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  transition: background .2s, box-shadow .2s;
+  white-space: nowrap;
+}
+.bly-cp__cta:hover {
+  background: #f0f8ff;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+}
+@media (max-width: 768px) {
+  .bly-cp__card { flex-direction: column; align-items: flex-start; padding: 32px 24px; gap: 24px; }
+  .bly-cp__heading { font-size: 20px; }
+}
+</style>
+
+{% set ab = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+{% set has_logos = module.logos and module.logos|length > 0 and module.logos[0].image.src %}
+
+{% set fallback_logos = [
+  {"src": ab ~ "/amazon-web-services-logo-1.svg", "alt": "AWS"},
+  {"src": ab ~ "/18-snowflake-1.svg",             "alt": "Snowflake"},
+  {"src": ab ~ "/19-databricks-1.svg",            "alt": "Databricks"},
+  {"src": ab ~ "/20-Azure.svg",                   "alt": "Microsoft Azure"},
+  {"src": ab ~ "/21-Oracle.svg",                  "alt": "Oracle"},
+  {"src": ab ~ "/22-MongoDB.svg",                 "alt": "MongoDB"},
+  {"src": ab ~ "/23-CoreWeaver.svg",              "alt": "CoreWeave"}
+] %}
+
+<section class="bly-cp" aria-label="Cloud deployment partners">
+  <div class="bly-cp__card">
+
+    <div class="bly-cp__left">
+      <h2 class="bly-cp__heading">
+        {% if module.heading %}
+          {{ module.heading }}
+        {% else %}
+          Deployed in <em>your cloud</em> or ours.
+        {% endif %}
+      </h2>
+
+      <div class="bly-cp__logos" role="list" aria-label="Partner logos">
+        {% if has_logos %}
+          {% for item in module.logos %}{% if item.image.src %}
+            <div class="bly-cp__logo-pill" role="listitem">
+              <img src="{{ item.image.src }}" alt="{{ item.image.alt | default('') }}" loading="lazy">
+            </div>
+          {% endif %}{% endfor %}
+        {% else %}
+          {% for logo in fallback_logos %}
+            <div class="bly-cp__logo-pill" role="listitem">
+              <img src="{{ logo.src }}" alt="{{ logo.alt }}" loading="lazy">
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="bly-cp__cta-wrap">
+      <a href="{{ module.cta_url.href | default('#') }}"
+         {% if module.cta_url.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+         class="bly-cp__cta">
+        {% if module.cta_label %}{{ module.cta_label }}{% else %}Explore the Platform{% endif %}
+      </a>
+    </div>
+
+  </div>
+</section>

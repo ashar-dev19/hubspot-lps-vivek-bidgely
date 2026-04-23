@@ -1,0 +1,303 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Bidgely Home
+  screenshotPath: ../images/template-previews/bidgely-utilityai.png
+-->
+
+{% set ab = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+</head>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+{# =========================================================
+   HERO
+   ========================================================= #}
+<section class="section section--hero hero-bg"
+         style=" text-align:center;">
+  <div style="position:absolute;inset:0;pointer-events:none;opacity:.6;">
+    <img src="{{ ab }}/grid-1.svg" alt="" style="width:100%;height:100%;object-fit:cover;">
+  </div>
+  <div class="container" style="position:relative;z-index:1;padding-bottom:80px;">
+    <h1 class="h1">
+      {% rich_text "hero_heading" html="Every smart meter is a window.<br>Few utilities ever look through it." no_wrapper=True %}
+    </h1>
+    <p class="body-sm" style="margin-top:28px;max-width:536px;margin-left:auto;margin-right:auto;font-size:17px;line-height:1.5;color:#152D4985;font-weight:400;">
+      {% rich_text "hero_subheading" html="Appliance-level intelligence for every customer, grid asset, and hour of the year, only with <strong>UtilityAI&trade;</strong>." no_wrapper=True %}
+    </p>
+    <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
+      <a href="{% text "hero_cta1_link" value="#" no_wrapper=True %}" class="btn btn--gradient">
+        {% text "hero_cta1_label" value="Talk to Sales" no_wrapper=True %}
+      </a>
+      <a href="{% text "hero_cta2_link" value="#" no_wrapper=True %}" class="btn btn--white-outline">
+        <svg width="11" height="13" viewBox="0 0 11 13" fill="none" aria-hidden="true"><path d="M0 0L11 6.5L0 13V0Z" fill="currentColor"/></svg>
+        {% text "hero_cta2_label" value="Watch Overview" no_wrapper=True %}
+      </a>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   STATS BAR
+   ========================================================= #}
+{% module "stats_bar" path="../modules/stats-bar.module" %}
+
+{# =========================================================
+   LOGO CAROUSEL
+   ========================================================= #}
+{% module "logo_carousel" path="../modules/logo-carousel.module" %}
+
+{# =========================================================
+   VERTICAL AI CAPABILITIES
+   ========================================================= #}
+<section class="section section--white" style="border-bottom:1px solid rgba(21,45,73,.07);">
+  <div class="container">
+    <div class="vai-cards-grid">
+
+      <div>
+        <h2 class="h2">
+          <span class="text-azure">{% text "vai_heading_accent" value="Vertical AI" no_wrapper=True %}</span>
+          {% rich_text "vai_heading_rest" html=" for the<br>entire utility<br>enterprise." no_wrapper=True %}
+        </h2>
+        <div class="body-sm" style="margin-top:20px;">
+          {% rich_text "vai_subcopy" html="Deliver personalized CX, strengthen grid operations, and maximize efficiency and electrification programs, as SaaS or deployed in your cloud." no_wrapper=True %}
+        </div>
+      </div>
+
+      <div class="vai-cards-list">
+
+        {# card 1 — active by default #}
+        <article class="vai-card">
+          {% image "vai_card1_icon" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/icon-1.svg" alt="Disaggregation icon" class="vai-card-icon" %}
+          <h3 class="h3 vai-card-title">{% text "vai_card1_title" value="Patented Disaggregation" no_wrapper=True %}</h3>
+          <div class="body-sm vai-card-body">
+            {% rich_text "vai_card1_body" html="Identify what's running inside every home and business from meter data alone. No surveys. No smart plugs. No customer action required. Every insight on the platform is built on this foundation." no_wrapper=True %}
+          </div>
+          <div class="vai-card-divider">
+            <a href="{% text "vai_card1_link_href" value="#" no_wrapper=True %}" class="link-arrow vai-card-link">
+              {% text "vai_card1_link_label" value="Explore Disaggregation" no_wrapper=True %}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </article>
+
+        {# card 2 #}
+        <article class="vai-card">
+          {% image "vai_card2_icon" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/dtech26-for-regulators.svg" alt="GenAI icon" class="vai-card-icon" %}
+          <h3 class="h3 vai-card-title">{% text "vai_card2_title" value="GenAI" no_wrapper=True %}</h3>
+          <div class="body-sm vai-card-body">
+            {% rich_text "vai_card2_body" html="Ask questions in plain English, get answers grounded in real data. A CSR resolves a high-bill call in seconds. A planner queries load trends across feeders without writing a line of code. No data team required." no_wrapper=True %}
+          </div>
+          <div class="vai-card-divider">
+            <a href="{% text "vai_card2_link_href" value="#" no_wrapper=True %}" class="link-arrow vai-card-link">
+              {% text "vai_card2_link_label" value="Explore GenAI" no_wrapper=True %}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </article>
+
+        {# card 3 #}
+        <article class="vai-card">
+          {% image "vai_card3_icon" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/icon-3.svg" alt="Agentic AI icon" class="vai-card-icon" %}
+          <h3 class="h3 vai-card-title">{% text "vai_card3_title" value="Agentic AI" no_wrapper=True %}</h3>
+          <div class="body-sm vai-card-body">
+            {% rich_text "vai_card3_body" html="AI agents work continuously in the background across targeting, outreach, enrollment, and program management. You set the rules and approve what matters. Agents handle the volume. Your team handles the judgment." no_wrapper=True %}
+          </div>
+          <div class="vai-card-divider">
+            <a href="{% text "vai_card3_link_href" value="#" no_wrapper=True %}" class="link-arrow vai-card-link">
+              {% text "vai_card3_link_label" value="Explore Agentic AI" no_wrapper=True %}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   SOLUTIONS TABS
+   ========================================================= #}
+{% module "solutions_tabs" path="../modules/solutions-tabs.module" %}
+
+{# =========================================================
+   CLOUD DEPLOYMENT PARTNERS
+   ========================================================= #}
+{% module "cloud_partners" path="../modules/cloud-partners.module" %}
+
+{# =========================================================
+   SCALE METRICS + CASE STUDIES
+   ========================================================= #}
+<section class="section section--grey" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;opacity:.4;pointer-events:none;">
+    <img src="{{ ab }}/grid.svg" alt="" style="width:100%;height:100%;object-fit:cover;">
+  </div>
+  <div class="container" style="position:relative;">
+
+    <div class="text-center">
+      <p class="eyebrow">{% text "scale_eyebrow" value="Proven Results" no_wrapper=True %}</p>
+      <div style="margin-top:16px;">
+        {% rich_text "scale_heading" html="<h2 class='h2'>Deployed at scale. Measured at the <span class='gradient-text'> meter.</span></h2>" no_wrapper=True %}
+      </div>
+    </div>
+
+    {# case study cards — uses global .cs-cards responsive class #}
+    <div class="cs-cards">
+
+      <article class="cs-card">
+        <div class="cs-card__header">
+          <p class="cs-card__category">{% text "cs1_category" value="EV Intelligence" no_wrapper=True %}</p>
+          <div style="margin-top:12px;">
+            {% image "cs1_logo" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/nv-energy-logo.svg" alt="NV Energy" class="cs-card__logo" %}
+          </div>
+          <span class="cs-card__tag">{% text "cs1_tag" value="EV & Grid" no_wrapper=True %}</span>
+        </div>
+        <div class="cs-card__body">
+          <p class="cs-card__quote">{% text "cs1_quote" value="Narrowed 33,000 EV customers to 1,000 high-impact households, focused on the 3% driving disproportionate load and accelerating TOU adoption with precision targeting." no_wrapper=True %}</p>
+          <div class="cs-card__stat">
+            <div class="cs-card__stat-value gradient-text">{% text "cs1_stat_value" value="33K → 1K" no_wrapper=True %}</div>
+            <div class="cs-card__stat-label">{% rich_text "cs1_stat_label" html="EV customers targeted with precision" no_wrapper=True %}</div>
+          </div>
+          <div class="cs-card__foot">
+            <a href="{% text "cs1_link_href" value="#" no_wrapper=True %}" class="link-arrow text-azure-soft">
+              {% text "cs1_link_label" value="Read Case Study" no_wrapper=True %}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="cs-card">
+        <div class="cs-card__header">
+          <p class="cs-card__category">{% text "cs2_category" value="Customer Engagement" no_wrapper=True %}</p>
+          <div style="margin-top:12px;">
+            {% image "cs2_logo" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/pseg-li.svg" alt="PSEG Long Island" class="cs-card__logo" %}
+          </div>
+          <span class="cs-card__tag">{% text "cs2_tag" value="Personalization" no_wrapper=True %}</span>
+        </div>
+        <div class="cs-card__body">
+          <p class="cs-card__quote">{% text "cs2_quote" value="Personalized communications delivered at scale, with 3x engagement lift and 97% customer satisfaction across the program." no_wrapper=True %}</p>
+          <div class="cs-card__stat">
+            <div class="cs-card__stat-value gradient-text">{% text "cs2_stat_value" value="20M+" no_wrapper=True %}</div>
+            <div class="cs-card__stat-label">{% rich_text "cs2_stat_label" html="personalized communications delivered" no_wrapper=True %}</div>
+          </div>
+          <div class="cs-card__foot">
+            <a href="{% text "cs2_link_href" value="#" no_wrapper=True %}" class="link-arrow text-azure-soft">
+              {% text "cs2_link_label" value="Read Case Study" no_wrapper=True %}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="cs-card">
+        <div class="cs-card__header">
+          <p class="cs-card__category">{% text "cs3_category" value="Energy Efficiency" no_wrapper=True %}</p>
+          <div style="margin-top:12px;">
+            {% image "cs3_logo" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/nw-natural.svg" alt="NW Natural" class="cs-card__logo" %}
+          </div>
+          <span class="cs-card__tag">{% text "cs3_tag" value="DSM Performance" no_wrapper=True %}</span>
+        </div>
+        <div class="cs-card__body">
+          <p class="cs-card__quote">{% text "cs3_quote" value="Exceeded all performance targets and proved ROI from day one, delivering 238% of contracted savings in the first year of deployment." no_wrapper=True %}</p>
+          <div class="cs-card__stat">
+            <div class="cs-card__stat-value gradient-text">{% text "cs3_stat_value" value="238%" no_wrapper=True %}</div>
+            <div class="cs-card__stat-label">{% rich_text "cs3_stat_label" html="of contracted savings achieved in year one" no_wrapper=True %}</div>
+          </div>
+          <div class="cs-card__foot">
+            <a href="{% text "cs3_link_href" value="#" no_wrapper=True %}" class="link-arrow text-azure-soft">
+              {% text "cs3_link_label" value="Read Case Study" no_wrapper=True %}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div style="text-align:center;margin-top:48px;">
+      <a href="{% text "cs_all_link_href" value="#" no_wrapper=True %}" class="btn btn--ghost">
+        {% text "cs_all_link_label" value="View All Case Studies" no_wrapper=True %}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+{# =========================================================
+   AWARDS & RECOGNITION
+   ========================================================= #}
+<section class="section section--pale">
+  <div class="container">
+    <p class="eyebrow" style="text-align:center;">{% text "awards_eyebrow" value="Awards & Recognition" no_wrapper=True %}</p>
+    <div class="award-grid">
+      <div class="award">
+        {% image "award1_logo" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/fast-company.svg" alt="Fast Company" class="award__logo" %}
+        <div class="award__label">{% text "award1_label" value="#7 Applied AI" no_wrapper=True %}</div>
+        <div class="award__year">{% text "award1_year" value="2024" no_wrapper=True %}</div>
+      </div>
+      <div class="award">
+        {% image "award2_logo" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/guidehouse.svg" alt="Guidehouse" class="award__logo" %}
+        <div class="award__label">{% text "award2_label" value="Leader, Utility Analytics" no_wrapper=True %}</div>
+        <div class="award__year">{% text "award2_year" value="2024" no_wrapper=True %}</div>
+      </div>
+      <div class="award">
+        {% image "award3_logo" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ctg-logo-1.svg" alt="Cleantech Group" class="award__logo" %}
+        <div class="award__label">{% text "award3_label" value="Global Cleantech Group" no_wrapper=True %}</div>
+        <div class="award__year">{% text "award3_year" value="2024" no_wrapper=True %}</div>
+      </div>
+      <div class="award">
+        {% image "award4_logo" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/frost-sullivan.svg" alt="Frost & Sullivan" class="award__logo" %}
+        <div class="award__label">{% text "award4_label" value="Technology Innovation" no_wrapper=True %}</div>
+        <div class="award__year">{% text "award4_year" value="2023" no_wrapper=True %}</div>
+      </div>
+      <div class="award">
+        {% image "award5_logo" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/aceee.svg" alt="ACEEE" class="award__logo" %}
+        <div class="award__label">{% text "award5_label" value="Exemplary Behavior Program" no_wrapper=True %}</div>
+        <div class="award__year">{% text "award5_year" value="2022" no_wrapper=True %}</div>
+      </div>
+      <div class="award">
+        {% image "award6_logo" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/enertech.svg" alt="Enertech" class="award__logo" %}
+        <div class="award__label">{% text "award6_label" value="Top Energy AI Company" no_wrapper=True %}</div>
+        <div class="award__year">{% text "award6_year" value="2022" no_wrapper=True %}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   CTA BAND
+   ========================================================= #}
+<section class="cta-strip">
+  <div class="cta-strip__inner">
+    <div>
+      <h2 class="h2" style="color:#fff;">{% text "cta_heading" value="See UtilityAI in your environment." no_wrapper=True %}</h2>
+      <div class="body-sm" style="margin-top:12px;">
+        {% rich_text "cta_subcopy" html="Join the utilities delivering individual-level intelligence across every customer, meter, and grid asset." no_wrapper=True %}
+      </div>
+    </div>
+    <a href="{% text "cta_button_link" value="#" no_wrapper=True %}" class="btn btn--white">
+      {% text "cta_button_label" value="Talk to Sales" no_wrapper=True %}
+    </a>
+  </div>
+</section>
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+<script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
+{{ standard_footer_includes }}
+</body>
+</html>

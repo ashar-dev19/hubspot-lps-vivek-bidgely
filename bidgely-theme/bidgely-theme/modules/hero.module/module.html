@@ -1,0 +1,23 @@
+<section class="b-hero">
+  {% if module.show_grid %}
+    <div class="b-hero__grid"></div>
+  {% endif %}
+
+  <div class="b-hero__inner">
+    <h1>{{ module.headline|escape }}</h1>
+    <div class="b-hero__sub">{{ module.subhead }}</div>
+
+    <div class="b-hero__actions">
+      {% if module.primary_cta_text %}
+        <a class="b-btn b-btn--primary" href="{{ module.primary_cta_link.url.href|default('#') }}">
+          {{ module.primary_cta_text|escape }}
+        </a>
+      {% endif %}
+      {% if module.secondary_cta_text %}
+        <a class="b-btn b-btn--ghost" href="{{ module.secondary_cta_link.url.href|default('#') }}">
+          {{ module.secondary_cta_text|escape }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>

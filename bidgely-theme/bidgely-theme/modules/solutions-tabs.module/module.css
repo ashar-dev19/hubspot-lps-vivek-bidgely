@@ -1,0 +1,14 @@
+.solutions-tabs-module__heading { margin-top: 16px; }
+.solutions-tabs-module__heading h2,
+.solutions-tabs-module__heading p { margin: 0; }
+.solutions-tabs-module__heading h2 { font-size: 42px; font-weight: 700; letter-spacing: -1.05px; }
+
+.solutions-tabs-module__panel-heading h3 {
+  font-size: 27px; line-height: 1.2; font-weight: 700; letter-spacing: -.68px;
+  color: var(--nile); margin: 0;
+}
+
+@media (max-width: 768px) {
+  .solutions-tabs-module__heading h2 { font-size: 28px; }
+  .solutions-tabs-module__panels { padding: 24px !important; }
+}
