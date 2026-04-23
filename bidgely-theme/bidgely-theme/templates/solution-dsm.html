@@ -1,0 +1,420 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: 260424 – DSM
+  screenshotPath: ../images/template-previews/bidgely-solution-dsm.png
+-->
+
+{% set asset_base = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+</head>
+<style>
+  .hero {
+    position: relative;
+    background: url(https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-4.svg);
+    background-size: cover;
+  }
+  .hero::before { display: none; }
+  .hero::after  { display: none; }
+  .hero__eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: .55px;
+    line-height: 1.6; color: var(--azure); text-transform: uppercase;
+    margin: 0 0 16px;
+  }
+
+  /* ================================================================
+     PROVEN RESULTS — featured case (left, navy) + stacked proof points (right, white)
+     ================================================================ */
+  .pr-case {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-radius: var(--radius-xl); overflow: hidden;
+    border: 1px solid var(--nile-7); box-shadow: var(--shadow-soft);
+    background: #fff;
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .pr-case:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(21,45,73,.10); }
+
+  .pr-case__featured {
+    background: var(--nile); color: #fff; padding: 44px 44px 36px;
+    display: flex; flex-direction: column; gap: 22px; min-width: 0;
+  }
+  .pr-case__featured-label {
+    font-size: 10px; letter-spacing: .8px; color: var(--azure-tint);
+    text-transform: uppercase; font-weight: 600;
+  }
+  .pr-case__featured-logo { min-height: 64px; display: flex; align-items: center; }
+  .pr-case__featured-logo img { max-height: 64px; width: auto; max-width: 100%; object-fit: contain; display: block; }
+  .pr-case__featured-copy {
+    font-size: 14px; line-height: 1.6; color: rgba(215,239,255,.75);
+    font-weight: 300; flex: 1; margin: 0;
+  }
+  .pr-case__featured-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--azure-tint); font-weight: 600; font-size: 13px;
+    margin-top: auto;
+  }
+  .pr-case__featured-cta svg { transition: transform .2s ease; }
+  .pr-case__featured-cta:hover svg { transform: translate(2px,-2px); }
+
+  .pr-case__proofs {
+    padding: 40px 44px; display: flex; flex-direction: column;
+    justify-content: center; min-width: 0;
+  }
+  .pr-case__proof { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .pr-case__proof + .pr-case__proof {
+    margin-top: 22px; padding-top: 22px;
+    border-top: 1px solid var(--nile-7);
+  }
+  .pr-case__proof-logo { min-height: 32px; display: flex; align-items: center; }
+  .pr-case__proof-logo img { max-height: 32px; width: auto; max-width: 180px; object-fit: contain; display: block; }
+  .pr-case__proof-copy { font-size: 14px; line-height: 1.55; color: var(--nile-52); margin: 0; }
+
+  @media (max-width: 1100px) {
+    .pr-case { grid-template-columns: 1fr; }
+    .pr-case__featured, .pr-case__proofs { padding: 32px; }
+  }
+
+  /* ================================================================
+     FOOTNOTES — industry benchmark attribution
+     ================================================================ */
+  .footnotes {
+    margin-top: 48px; padding: 20px 24px;
+    background: var(--bg-soft); border-radius: var(--radius);
+    font-size: 11px; line-height: 1.55; color: var(--nile-52);
+  }
+  .footnotes strong { color: var(--nile); font-weight: 700; }
+
+  /* ================================================================
+     IMAGE / ICON OVERFLOW FIXES — prevent chopping in cards
+     ================================================================ */
+  .genai-card { align-items: flex-start; min-width: 0; }
+  .genai-card .ic {
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--bg-soft);
+  }
+  .genai-card > div:not(.ic) { min-width: 0; flex: 1; }
+  .genai-card h4, .genai-card p { overflow-wrap: break-word; word-wrap: break-word; }
+  .agent-card, .card { min-width: 0; }
+  .agent-card p, .card__copy { overflow-wrap: break-word; word-wrap: break-word; }
+  .cap-card__icon-img, .agent-card img { object-fit: contain; }
+  .stripe__visual img, .hero-visual img { object-fit: contain; }
+</style>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+{# =========================================================
+   HERO
+   ========================================================= #}
+<section class="hero">
+  <div class="hero__inner container">
+    <div class="hero__top">
+      <div>
+        <p class="hero__eyebrow">{% text "hero_eyebrow" value="MAXIMIZE DSM PERFORMANCE" no_wrapper=True %}</p>
+        <h1>
+          {% rich_text "hero_heading" html="Programs for the Right Customer. Not the Average Customer." no_wrapper=True %}
+        </h1>
+        <a class="btn btn--navy" href="{% text "hero_cta_link" value="#" no_wrapper=True %}">
+          {% text "hero_cta_label" value="Talk to an Expert" no_wrapper=True %}
+        </a>
+      </div>
+      <div class="hero__copy body-sm">
+        {% rich_text "hero_copy" html="Regulators want higher savings at lower costs to help affordability initiatives. Budgets are flat. And the customers who can actually move the needle are buried in a population of millions. Bidgely&rsquo;s appliance-level intelligence identifies who can save, which appliance can shift, and who will enroll &mdash; at every premises." no_wrapper=True %}
+      </div>
+    </div>
+    <div class="hero-visual">
+      {% image "hero_visual" src="{{ asset_base }}/dsm-hero-diagram.svg" alt="DSM intelligence dashboard preview" class="hero-visual__img" %}
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   NAVY CTA STRIP
+   ========================================================= #}
+<section class="cta-strip">
+  <div class="cta-strip__inner container">
+    <h2>{% text "strip_heading" value="See UtilityAI Maximize DSM Performance" no_wrapper=True %}</h2>
+    <a class="btn btn--white" href="{% text "strip_cta_link" value="#" no_wrapper=True %}">
+      {% text "strip_cta_label" value="Talk to Sales" no_wrapper=True %}
+    </a>
+  </div>
+</section>
+
+{# =========================================================
+   JOBS TO BE DONE – 4-CARD GRID
+   ========================================================= #}
+<section class="section section--pale">
+  <div class="container">
+    <p class="eyebrow">{% text "cap_eyebrow" value="JOBS TO BE DONE" no_wrapper=True %}</p>
+    <h2 class="h2">
+      {% rich_text "cap_heading" html="DSM outcomes you can <span class='accent'>actually own.</span>" no_wrapper=True %}
+    </h2>
+
+    <div class="cards-4 mt-8">
+      <article class="card">
+        {% image "cap1_icon" src="{{ asset_base }}/dsm-icon-1.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap1_title" html="Deliver your Behavior EE savings while uplifting your CSAT." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap1_copy" html="With over 20 behavior Energy efficiency Home Energy Reports (HER) programs running successfully averaging at 105% of the contracted savings, Bidgely also delivers higher CSAT than before with our appliance level itemization included in the reports." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card">
+        {% image "cap2_icon" src="{{ asset_base }}/dsm-icon-2.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap2_title" html="Cut your per-kW and per-kWh costs permanently." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap2_copy" html="Targeted demand response programs achieve 43% lower cost per kW than untargeted programs ($149/kW vs. $260/kW). Precision targeting means fewer wasted incentives and higher-performing enrollees." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card">
+        {% image "cap3_icon" src="{{ asset_base }}/dsm-icon-3.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap3_title" html="Recruit the right customers into every program." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap3_copy" html="Your engagement platform is the channel. Bidgely is the intelligence that decides who gets what message, when, and why. This personalization narrows tens of thousands of candidates down to the ones who have the right appliances and are most likely to act." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card">
+        {% image "cap4_icon" src="{{ asset_base }}/dsm-icon-4.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap4_title" html="Prove program impact to regulators and executives." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap4_copy" html="Deliver evaluation-ready savings attributed at the appliance level, rather than modeled estimates. Demonstrate that every dollar spent on DSM produced a measurable, defensible result." no_wrapper=True %}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   USE CASES – STRIPES
+   ========================================================= #}
+<section class="section section--white">
+  <div class="container">
+    <div class="solutions-head">
+      <p class="eyebrow">{% text "sol_eyebrow" value="USE CASES" no_wrapper=True %}</p>
+      <h2 class="h2">{% rich_text "sol_heading" html="Where appliance-level intelligence meets <span class='accent'>DSM outcomes.</span>" no_wrapper=True %}</h2>
+      <p class="lede">{% rich_text "sol_lede" html="Each use case uses the same appliance-level intelligence layer, so your energy efficiency, demand response, and program marketing teams operate from the same source of truth." no_wrapper=True %}</p>
+    </div>
+
+    {# Stripe 1 — Home Energy Reports (Behavioral EE) #}
+    <div class="stripe">
+      <div class="stripe__copy">
+        <h3>{% text "stripe1_title" value="Home Energy Reports (Behavioral EE)" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "stripe1_sub" value="Behavioral savings engagement that&rsquo;s personalized, measurable, and built to scale." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "stripe1_quote" html="Legacy HER programs rely on &ldquo;shaming&rdquo; neighbor comparisons and generic tips that flatten engagement over time. They often treat differing households the same, exclude DER customers, and struggle to prove savings to evaluators. The results are stagnating savings, declining CSAT, and programs that cost more to run than they return." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "stripe1_bullets" html="<li>2+ TWh in cumulative energy savings across Bidgely HER deployments</li><li>Pacific Power saw 200% of forecast savings in Oregon and 136% in Washington, with high CSAT noted by the evaluator</li><li>Rocky Mountain Power achieved 41 GWh electricity savings and 25% program cost reduction versus legacy HERs</li><li>PNM achieved 9.2 GWh evaluated savings and 127% of filed goal after program redesign</li><li>SoCalGas drove 565K therm savings in year one</li>" no_wrapper=True %}
+        </ul>
+        <a class="stripe__cta link-arrow" href="{% text "stripe1_cta_link" value="#" no_wrapper=True %}">
+          {% text "stripe1_cta_label" value="Explore Home Energy Reports" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+      <div class="stripe__visual">
+        {% image "stripe1_img" src="{{ asset_base }}/dsm-diagram-1.svg" alt="Home Energy Reports diagram" class="stripe__img" %}
+      </div>
+    </div>
+
+    {# Stripe 2 — Demand Response Targeting & Recruitment #}
+    <div class="stripe stripe--reverse">
+      <div class="stripe__copy">
+        <h3>{% text "stripe2_title" value="Demand Response Targeting &amp; Recruitment" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "stripe2_sub" value="Find the customers who can actually shift load before you spend a dollar on outreach." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "stripe2_quote" html="90% of smart thermostats in your territory are not enrolled in a demand response program. Most EV owners are charging on-peak and have never been contacted. Broad recruitment campaigns waste budget on low-impact households while missing the customers whose appliance-level load profiles make them ideal candidates for demand flexibility." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "stripe2_bullets" html="<li>43% lower cost per kW through targeted DR recruitment ($149 vs. $260/kW)</li><li>73% improvement in cost-effectiveness for smart thermostat DR programs targeting top cooling consumers</li><li>NV Energy filtered 33,000 EV candidates down to 1,000 high-value targets, achieving a 41% click through rate and 1.2kW/car load reduction over 0.2&ndash;0.3 kW/car industry benchmark</li><li>PSEG Long Island drove a 70% reduction in on-peak EV charging through targeted TOU coaching</li>" no_wrapper=True %}
+        </ul>
+        <a class="stripe__cta link-arrow" href="{% text "stripe2_cta_link" value="#" no_wrapper=True %}">
+          {% text "stripe2_cta_label" value="Explore Demand Response Targeting" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+      <div class="stripe__visual">
+        {% image "stripe2_img" src="{{ asset_base }}/dsm-diagram-2.svg" alt="Demand response targeting diagram" class="stripe__img" %}
+      </div>
+    </div>
+
+    {# Stripe 3 — EE Program Targeting & Recruitment #}
+    <div class="stripe">
+      <div class="stripe__copy">
+        <h3>{% text "stripe3_title" value="Energy Efficiency Program Targeting &amp; Recruitment" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "stripe3_sub" value="Put every EE rebate and incentive in front of the customer most likely to convert." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "stripe3_quote" html="Traditional EE targeting uses billing data and demographics to build broad segments. It cannot distinguish a home with a degraded HVAC system from one that just runs hot, or identify which premises have single-speed pool pumps, inefficient water heaters, or high-saturation heating. That imprecision wastes incentive budgets and leaves the highest-potential savers untouched." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "stripe3_bullets" html="<li>25% improved program uptake through appliance-level targeting</li><li>15% reduced marketing cost per enrollment</li><li>NW Natural drove 238% of contracted savings in year one with a 97% realization rate</li><li>CVA achieved 112% of savings goal</li><li>2.5x improvement in weatherization program participation through targeted outreach</li>" no_wrapper=True %}
+        </ul>
+        <a class="stripe__cta link-arrow" href="{% text "stripe3_cta_link" value="#" no_wrapper=True %}">
+          {% text "stripe3_cta_label" value="Explore EE Program Targeting" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+      <div class="stripe__visual">
+        {% image "stripe3_img" src="{{ asset_base }}/dsm-diagram-3.svg" alt="EE program targeting diagram" class="stripe__img" %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   AGENTIC AUTOMATION
+   ========================================================= #}
+<section class="section section--navy">
+  <div class="container">
+    <div class="agentic-head">
+      <div>
+        <p class="eyebrow">{% text "ag_eyebrow" value="AGENTIC AUTOMATION IN DSM" no_wrapper=True %}</p>
+        <h2 class="h2">{% rich_text "ag_heading" html="Agents that run your DSM programs.<br>Not just report on them." no_wrapper=True %}</h2>
+        <p class="lede">{% rich_text "ag_lede" html="Bidgely&rsquo;s agentic layer runs the DSM workflows your team currently does manually, from program health monitoring to targeting list generation to mid-cycle course correction, without adding headcount." no_wrapper=True %}</p>
+      </div>
+      <div class="agentic-pill">
+        <div class="label">{% text "ag_pill_label" value="Agentic Value, Modeled" no_wrapper=True %}</div>
+        <div class="val">{% text "ag_pill_value" value="$3M+" no_wrapper=True %}</div>
+        <div class="sub">{% rich_text "ag_pill_sub" html="In avoided DSM marketing waste. $4&ndash;6M/year in modeled value per utility across DR cost reduction, enrollment lift, and analyst time savings." no_wrapper=True %}</div>
+      </div>
+    </div>
+
+    <div class="agent-cards">
+      <article class="agent-card">
+        {% image "ag_card1_icon" src="{{ asset_base }}/iucx-icon-05.svg" alt="" width="42" height="42" %}
+        <h4>{% text "ag_card1_title" value="DSM Performance Monitor Agent" no_wrapper=True %}</h4>
+        <p>{% rich_text "ag_card1_copy" html="Monitors every program in your portfolio &mdash; DR, EE, TOU, managed charging &mdash; against enrollment and savings targets in real time. Flags underperformance mid-cycle before monthly reviews, identifies the root cause, and generates ready-to-act targeting lists for course correction." no_wrapper=True %}</p>
+      </article>
+
+      <article class="agent-card">
+        {% image "ag_card2_icon" src="{{ asset_base }}/Group.svg" alt="" width="42" height="42" %}
+        <h4>{% text "ag_card2_title" value="Behavioral Engagement Agent" no_wrapper=True %}</h4>
+        <p>{% rich_text "ag_card2_copy" html="Runs personalized HER campaigns across paper, email, and digital channels continuously. Selects the next-best interaction for each customer from a library of behavioral tips, program promotions, and rate coaching, adapting to each household&rsquo;s appliance profile, DER status, and savings potential." no_wrapper=True %}</p>
+      </article>
+
+      <article class="agent-card">
+        {% image "ag_card3_icon" src="{{ asset_base }}/g9044.svg" alt="" width="42" height="42" %}
+        <h4>{% text "ag_card3_title" value="Program Targeting Agent" no_wrapper=True %}</h4>
+        <p>{% rich_text "ag_card3_copy" html="Continuously scores every premise for EE, DR, TOU, and electrification program fit based on live appliance profiles, efficiency ratings, and behavioral signals. Delivers fresh candidate lists to your DSM and marketing teams without manual data pulls or analyst bottlenecks." no_wrapper=True %}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   GENAI
+   ========================================================= #}
+<section class="section section--grey">
+  <div class="container">
+    <div class="genai__head">
+      <p class="eyebrow">{% text "genai_eyebrow" value="GENAI IN DSM PERFORMANCE" no_wrapper=True %}</p>
+      <h2 class="h2">{% rich_text "genai_heading" html="Plain-language answers to complex <span class='accent'>DSM questions.</span>" no_wrapper=True %}</h2>
+      <p class="lede">{% rich_text "genai_lede" html="Bidgely&rsquo;s GenAI layer gives your DSM, program management, and customer operations teams a conversational interface to the data that drives every targeting decision and savings measurement." no_wrapper=True %}</p>
+    </div>
+
+    <div class="genai">
+      <div class="genai__cards">
+        <div class="genai-card">
+          <div class="ic" style="background-image:url('{{ asset_base }}/ders-icon-v1.svg');"></div>
+          <div>
+            <h4>{% text "genai_card1_title" value="DSM Program Copilot" no_wrapper=True %}</h4>
+            <p>{% rich_text "genai_card1_copy" html="A GenAI assistant for program managers. Ask plain-language questions about program health, enrollment gaps, and savings trajectory. Example: &ldquo;How is my summer cooling DR program tracking?&rdquo; &rarr; enrollment vs. target, participation rate, kWh savings vs. target, and key gap drivers." no_wrapper=True %}</p>
+          </div>
+        </div>
+        <div class="genai-card">
+          <div class="ic" style="background-image:url('{{ asset_base }}/iucx-icon-05-1.svg');"></div>
+          <div>
+            <h4>{% text "genai_card2_title" value="Home Energy Advisor / Assessment" no_wrapper=True %}</h4>
+            <p>{% rich_text "genai_card2_copy" html="A conversational AI embedded in your portal or app that helps customers understand their usage, find savings opportunities, and explore program eligibility &mdash; with answers grounded in their actual appliance profile, not generic FAQs." no_wrapper=True %}</p>
+          </div>
+        </div>
+        <div class="genai-card">
+          <div class="ic" style="background-image:url('{{ asset_base }}/daas-v2.svg');"></div>
+          <div>
+            <h4>{% text "genai_card3_title" value="Program Eligibility Explainers" no_wrapper=True %}</h4>
+            <p>{% rich_text "genai_card3_copy" html="Automatically generated plain-language explanations of why a specific customer qualifies for a rebate, program, or rate plan &mdash; embedded in outreach to improve conversion and reduce call center inquiries." no_wrapper=True %}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="genai__visual">
+        {% image "genai_visual" src="{{ asset_base }}/grounded-conversations.svg" alt="DSM Program Copilot conversation mockup" class="genai__img" %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   PROVEN RESULTS — NV Energy featured + PSEG / NW Natural / Pacific Power proof points
+   ========================================================= #}
+<section class="section section--white">
+  <div class="container">
+    <div class="results-head" style="display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:28px;">
+      <p class="eyebrow">{% text "results_eyebrow" value="PROVEN RESULTS" no_wrapper=True %}</p>
+      <h2 class="h2" style="margin:0;">{% rich_text "results_heading" html="Deployed at scale. <span class='accent'>Measured at the meter.</span>" no_wrapper=True %}</h2>
+    </div>
+
+    <div class="pr-case">
+      {# ── Featured case (left, navy) ── #}
+      <div class="pr-case__featured">
+        <div class="pr-case__featured-label">{% text "featured_label" value="FEATURED CASE STUDY" no_wrapper=True %}</div>
+        <div class="pr-case__featured-logo">
+          {% image "featured_logo" src="{{ asset_base }}/nv-energy-logo-color.svg" alt="NV Energy" %}
+        </div>
+        <p class="pr-case__featured-copy">
+          {% rich_text "featured_copy" html="Compressed 33,000 EV candidates to 1,000 high-value targets using appliance-level intelligence. Achieved 41% click-through rate (vs. 5&ndash;15% industry norm), recruited 300+ customers in the first 24 hours, and delivered 1 kW/car load reduction &mdash; 3&ndash;5x the industry benchmark." no_wrapper=True %}
+        </p>
+        <a class="pr-case__featured-cta" href="{% text "featured_cta_link" value="#" no_wrapper=True %}">
+          {% text "featured_cta_label" value="Read Case Study" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+
+      {# ── Proof points stacked (right, white) ── #}
+      <div class="pr-case__proofs">
+        <div class="pr-case__proof">
+          <div class="pr-case__proof-logo">
+            {% image "proof1_logo" src="{{ asset_base }}/pseg-logo-color.svg" alt="PSEG Long Island" %}
+          </div>
+          <p class="pr-case__proof-copy">
+            {% rich_text "proof1_copy" html="20M personalized emails, 59% open rate, 81% customer satisfaction, 70% reduction in on-peak EV charging. J.D. Power #1 ranking." no_wrapper=True %}
+          </p>
+        </div>
+        <div class="pr-case__proof">
+          <div class="pr-case__proof-logo">
+            {% image "proof2_logo" src="{{ asset_base }}/nw-natural-logo.svg" alt="NW Natural" %}
+          </div>
+          <p class="pr-case__proof-copy">
+            {% rich_text "proof2_copy" html="238% of contracted savings in program year one, 97% realization rate." no_wrapper=True %}
+          </p>
+        </div>
+        <div class="pr-case__proof">
+          <div class="pr-case__proof-logo">
+            {% image "proof3_logo" src="{{ asset_base }}/pacific-power-logo-color.svg" alt="Pacific Power" %}
+          </div>
+          <p class="pr-case__proof-copy">
+            {% rich_text "proof3_copy" html="Highest CSAT scores Cadmus has evaluated among behavioral programs. 200% of forecast savings in Oregon." no_wrapper=True %}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    {# Industry-benchmark attribution footnote #}
+    <div class="footnotes">
+      {% rich_text "footnotes" html="<strong>Footnotes &mdash; Industry benchmarks (not Bidgely data):</strong> &sup1; Industry estimate cited in Bidgely DR Webinar materials. &sup2; Industry benchmark for per-vehicle load reduction (0.2&ndash;0.3 kW/car), used as comparison to Bidgely/NV Energy result of 1 kW/car. &sup3; Industry norm for email CTR (5&ndash;15%), used as comparison to Bidgely/NV Energy result of 41%." no_wrapper=True %}
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   RESOURCES – dynamic HubDB, filtered by "dsm" tag
+   ========================================================= #}
+{% module "resources_dsm" path="./modules/resources-hubdb.module"
+    eyebrow="Resources"
+    solution_tag="dsm"
+    limit=3 %}
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+<script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
+{{ standard_footer_includes }}
+</body>
+</html>

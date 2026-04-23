@@ -1,0 +1,7 @@
+/* Header module — all topnav rules live in css/main.css.
+   Use this file only for overrides that must be scoped to this module. */
+@media (max-width: 768px) {
+  .topnav__menu,
+  .topnav__actions { display: none; }
+  .topnav__burger  { display: flex; }
+}
