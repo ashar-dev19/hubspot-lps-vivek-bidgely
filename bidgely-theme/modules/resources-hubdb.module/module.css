@@ -1,0 +1,23 @@
+/* Scoped to this module. Layout/typography from css/main.css
+   (.section, .container, .eyebrow, .resources, .resource, .resource__*). */
+
+section.section.resources-hubdb {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.resources-hubdb .resources {
+  margin-top: 2.5rem;
+}
+
+.resources-hubdb__desc p {
+  margin: 0;
+}
+
+.resources-hubdb__desc p + p {
+  margin-top: 0.5rem;
+}
+
+.resources-hubdb .resource__cta svg {
+  flex-shrink: 0;
+}

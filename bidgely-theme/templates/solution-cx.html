@@ -323,13 +323,11 @@
   </div>
 </section>
 
-{# =========================================================
-   RESOURCES – dynamic HubDB, filtered by "cx" tag
-   ========================================================= #}
-{% module "resources_cx" path="./modules/resources-hubdb.module"
-    eyebrow="Resources"
-    solution_tag="cx"
-    limit=3 %}
+{# RESOURCES – HubDB: pass field `name`s from fields.json as module parameters (defaults for this instance).
+   You can use variables, e.g. ce_resources_eyebrow=my_eyebrow, filter_value=my_tag (no quotes on identifiers). #}
+{% module "resources_cx" path="../modules/resources-hubdb.module",
+  ce_resources_eyebrow="Resources",
+  filter_value="CX" %}
 
 {% module "site_footer" path="../modules/global-footer.module" %}
 

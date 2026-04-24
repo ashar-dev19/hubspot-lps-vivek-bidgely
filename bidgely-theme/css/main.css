@@ -735,6 +735,7 @@ background: #FFFFFF;
     background: rgba(68,155,213,.9); color: #fff;
     padding: 3px 12px; border-radius: 999px;
     font-size: 9px; letter-spacing: .5px; text-transform: uppercase;
+    z-index: 1;
   }
   .resource__body  { padding: 20px 24px 12px; flex: 1; }
   .resource__title { font-size: 14px; font-weight: 700; color: var(--nile); margin: 0 0 10px; line-height: 1.35; }

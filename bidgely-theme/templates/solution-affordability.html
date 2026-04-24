@@ -89,18 +89,6 @@
       font-size: 13px;
     }
 
-    /* Resource placeholders */
-    .aff-resource-media {
-      background: var(--nile);
-      min-height: 198px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,.4);
-      font-size: 13px;
-      position: relative;
-    }
-
     @media (max-width: 768px) {
       .aff-hero { padding: 80px 0 40px; }
       .aff-compare__title { font-size: 22px; }
@@ -109,7 +97,7 @@
 </head>
 <body>
 
-{% module "site_header" path="./modules/global-header.module" %}
+{% module "site_header" path="../modules/global-header.module" %}
 
 {# ===== 1. HERO ===== #}
 <section class="hero section--pale aff-hero">
@@ -429,55 +417,12 @@
   </div>
 </section>
 
-{# ===== 9. RESOURCES ===== #}
-<section class="section section--pale">
-  <div class="container">
-    <p class="eyebrow">RESOURCES</p>
-    <div class="resources">
-      <article class="resource">
-        <div class="resource__media aff-resource-media">
-          [ Resource image placeholder ]
-          <span class="resource__badge">PLAYBOOK</span>
-        </div>
-        <div class="resource__body">
-          <h4 class="resource__title">LMI Program Targeting and Affordability Intelligence Playbook</h4>
-          <p class="resource__copy">A step-by-step guide for utilities scaling LMI program enrollment — from income-proxy identification to M&amp;V reporting — using appliance-level intelligence.</p>
-        </div>
-        <div class="resource__foot">
-          <a class="resource__cta" href="#">Download the Playbook <img src="{{ ab }}/icon-feathericons-arrow-up-right-3.svg" alt=""></a>
-        </div>
-      </article>
-      <article class="resource">
-        <div class="resource__media aff-resource-media">
-          [ Resource image placeholder ]
-          <span class="resource__badge">CASE STUDY</span>
-        </div>
-        <div class="resource__body">
-          <h4 class="resource__title">Pacific Power Unlocks Affordability With Precision Targeting</h4>
-          <p class="resource__copy">How Pacific Power used Bidgely's income-proxy scoring to identify LMI households proactively — driving 3x enrollment lift and measurable bill reduction at the premise level.</p>
-        </div>
-        <div class="resource__foot">
-          <a class="resource__cta" href="#">Read the Case Study <img src="{{ ab }}/icon-feathericons-arrow-up-right-3.svg" alt=""></a>
-        </div>
-      </article>
-      <article class="resource">
-        <div class="resource__media aff-resource-media">
-          [ Resource image placeholder ]
-          <span class="resource__badge">WEBINAR</span>
-        </div>
-        <div class="resource__body">
-          <h4 class="resource__title">AI-Driven Affordability: From LMI Identification to M&amp;V</h4>
-          <p class="resource__copy">A recorded webinar walking through Bidgely's full affordability stack — income-proxy scoring, program matching, agentic enrollment, and appliance-level impact measurement.</p>
-        </div>
-        <div class="resource__foot">
-          <a class="resource__cta" href="#">Watch the Webinar <img src="{{ ab }}/icon-feathericons-arrow-up-right-4.svg" alt=""></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
+{# RESOURCES – HubDB (filter CX) #}
+{% module "resources_affordability" path="../modules/resources-hubdb.module",
+  ce_resources_eyebrow="Resources",
+  filter_value="CX" %}
 
-{% module "site_footer" path="./modules/global-footer.module" %}
+{% module "site_footer" path="../modules/global-footer.module" %}
 
 {{ standard_footer_includes }}
 <script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>

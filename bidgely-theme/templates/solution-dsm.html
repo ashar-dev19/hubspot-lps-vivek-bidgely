@@ -404,13 +404,10 @@
   </div>
 </section>
 
-{# =========================================================
-   RESOURCES – dynamic HubDB, filtered by "dsm" tag
-   ========================================================= #}
-{% module "resources_dsm" path="./modules/resources-hubdb.module"
-    eyebrow="Resources"
-    solution_tag="dsm"
-    limit=3 %}
+{# RESOURCES – HubDB: match HubDB token exactly (case-sensitive). #}
+{% module "resources_dsm" path="../modules/resources-hubdb.module",
+  ce_resources_eyebrow="Resources",
+  filter_value="CX" %}
 
 {% module "site_footer" path="../modules/global-footer.module" %}
 

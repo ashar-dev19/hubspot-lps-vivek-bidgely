@@ -305,21 +305,6 @@
     .case-tile__cta{ margin-top:auto; color:var(--c-shake); font-weight:600; font-size:13px; display:inline-flex; align-items:center; gap:6px; padding-top:8px; }
     .case-tile__cta img{ width:14px; height:14px; }
 
-    /* ============================================================
-       RESOURCES
-       ============================================================ */
-    .resources{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:30px; }
-    .resource{ background:#fff; border-radius:15px; border:1px solid rgba(21,45,73,.07); overflow:hidden; display:flex; flex-direction:column; }
-    .resource__media{ position:relative; height:198px; background:var(--c-navy); overflow:hidden; }
-    .resource__media img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-    .resource__badge{ position:absolute; top:14px; right:14px; background:rgba(68,155,213,.9); color:#fff; padding:3px 12px; border-radius:999px; font-size:9px; letter-spacing:.5px; text-transform:uppercase; }
-    .resource__body{ padding:20px 24px 12px; flex:1; }
-    .resource__title{ font-size:14px; font-weight:700; color:var(--c-navy); margin:0 0 10px; line-height:1.35; }
-    .resource__copy{ font-size:13px; color:var(--c-navy-7); line-height:1.55; }
-    .resource__foot{ padding:16px 24px; border-top:1px solid rgba(21,45,73,.08); }
-    .resource__cta{ color:var(--c-shake); font-weight:600; font-size:13px; display:inline-flex; align-items:center; gap:6px; }
-    .resource__cta img{ width:16px; height:16px; }
-
     .static-visual{ background:var(--c-bg-pale); border-radius:14px; padding:24px; }
     .static-visual--plain{ background:transparent; padding:0; border-radius:0; }
     .static-visual img, .static-visual svg{ width:100%; height:auto; display:block; border-radius:14px; }
@@ -730,68 +715,12 @@
     {% end_dnd_column %}
   {% end_dnd_section %}
 
-  {# ===== SECTION 8 — RESOURCES ===== #}
-  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
-    {% dnd_column width=12 %}
-      {% dnd_row %}
-        {% dnd_module path="@hubspot/rich_text", label="Section 8 — Resources" %}
-        {% module_attribute "html" %}
-<section class="section section--pale">
-  <div class="container">
-    <div class="eyebrow">RESOURCES</div>
-
-    <div class="resources">
-      <article class="resource">
-        <div class="resource__media">
-          <img src="{{ asset_base }}/adobestock-1107738400-1.png" alt="">
-          <span class="resource__badge">PLAYBOOK</span>
-        </div>
-        <div class="resource__body">
-          <h4 class="resource__title">Heat Pump Adoption and Beneficial Electrification</h4>
-          <p class="resource__copy">A playbook for utilities scaling residential heat pump adoption without overloading the grid — targeting, segmentation, and rebate design based on appliance-level intelligence.</p>
-        </div>
-        <div class="resource__foot">
-          <a class="resource__cta" href="#">Download the Playbook <img src="{{ asset_base }}/icon-feathericons-arrow-up-right-3.svg" alt=""></a>
-        </div>
-      </article>
-
-      <article class="resource">
-        <div class="resource__media">
-          <img src="{{ asset_base }}/adobestock-518917895-1.png" alt="">
-          <span class="resource__badge">CASE STUDY</span>
-        </div>
-        <div class="resource__body">
-          <h4 class="resource__title">NV Energy: Harnessing EV Intelligence for Smarter Load Management</h4>
-          <p class="resource__copy">How NV Energy used Bidgely's AMI-based EV detection to find unknown EV households, enroll them in managed charging, and shift peak load.</p>
-        </div>
-        <div class="resource__foot">
-          <a class="resource__cta" href="#">Read the Case Study <img src="{{ asset_base }}/icon-feathericons-arrow-up-right-3.svg" alt=""></a>
-        </div>
-      </article>
-
-      <article class="resource">
-        <div class="resource__media">
-          <img src="{{ asset_base }}/adobestock-1682732419-1.png" alt="">
-          <span class="resource__badge">DEMO</span>
-        </div>
-        <div class="resource__body">
-          <h4 class="resource__title">AWB Heat Pump Targeting Demo</h4>
-          <p class="resource__copy">Walk through a live demo of appliance-level heat pump targeting — see how propensity scoring, income eligibility, and grid impact show up in a single view.</p>
-        </div>
-        <div class="resource__foot">
-          <a class="resource__cta" href="#">Request the Demo <img src="{{ asset_base }}/icon-feathericons-arrow-up-right-4.svg" alt=""></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-        {% end_module_attribute %}
-      {% end_dnd_module %}
-      {% end_dnd_row %}
-    {% end_dnd_column %}
-  {% end_dnd_section %}
-
 {% end_dnd_area %}
+
+{# RESOURCES – HubDB (filter CX) #}
+{% module "resources_electrification" path="../modules/resources-hubdb.module",
+  ce_resources_eyebrow="Resources",
+  filter_value="CX" %}
 
 {% module "site_footer" path="../modules/global-footer.module" %}
 

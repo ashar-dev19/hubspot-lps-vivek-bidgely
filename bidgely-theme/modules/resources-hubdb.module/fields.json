@@ -1,1 +1,145 @@
-[ ]
+[
+  {
+    "id": "hubdb_table_id",
+    "name": "hubdb_table_id",
+    "label": "HubDB table ID",
+    "required": true,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "1051752149",
+    "help_text": "Numeric table ID from HubDB (commas/spaces are stripped). Use 0 to disable the query."
+  },
+  {
+    "id": "hubdb_limit",
+    "name": "hubdb_limit",
+    "label": "Max rows",
+    "required": true,
+    "locked": false,
+    "display_width": null,
+    "type": "number",
+    "default": 3,
+    "min": 1,
+    "max": 50,
+    "help_text": "Matching rows to show. With a filter, up to 500 rows are read until enough matches."
+  },
+  {
+    "id": "filter_column",
+    "name": "filter_column",
+    "label": "Filter column (optional)",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "solution_tags",
+    "help_text": "HubDB column with comma-separated tags (e.g. CA,DS,EDD). Leave filter column and value blank to show all rows (up to max)."
+  },
+  {
+    "id": "filter_value",
+    "name": "filter_value",
+    "label": "Filter value (optional)",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "CX",
+    "help_text": "Exact token match after trim within comma-separated filter column."
+  },
+  {
+    "id": "col_type",
+    "name": "col_type",
+    "label": "Column name for type (pill)",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "page_template",
+    "help_text": "e.g. page_template — shown as badge on the card image."
+  },
+  {
+    "id": "col_image",
+    "name": "col_image",
+    "label": "Column name for image (optional)",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "feature_image",
+    "help_text": "HubDB Image column, or Text with filename when Image file base URL is set."
+  },
+  {
+    "id": "image_base_url",
+    "name": "image_base_url",
+    "label": "Image file base URL (optional)",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources",
+    "help_text": "If set, image column is treated as path/filename under this URL."
+  },
+  {
+    "id": "col_title",
+    "name": "col_title",
+    "label": "Column name for title",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "hs_name"
+  },
+  {
+    "id": "col_desc",
+    "name": "col_desc",
+    "label": "Column name for description",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "long_description",
+    "help_text": "Rich text or plain text column; HTML is rendered when present."
+  },
+  {
+    "id": "col_cta_label",
+    "name": "col_cta_label",
+    "label": "Column name for CTA label",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "",
+    "help_text": "If empty or cell blank, label falls back to Read More."
+  },
+  {
+    "id": "col_cta_link",
+    "name": "col_cta_link",
+    "label": "Column name for CTA link",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "url",
+    "help_text": "URL or link column."
+  },
+  {
+    "id": "ce_resources_eyebrow",
+    "name": "ce_resources_eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "Resources"
+  }
+]
