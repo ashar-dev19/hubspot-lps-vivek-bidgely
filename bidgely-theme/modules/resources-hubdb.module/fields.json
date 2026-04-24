@@ -9,7 +9,19 @@
     "display_width": null,
     "type": "text",
     "default": "1051752149",
-    "help_text": "Numeric table ID from HubDB (commas/spaces are stripped). Use 0 to disable the query."
+    "help_text": "Single HubDB table ID (commas/spaces in the value are stripped). Use 0 to disable the query."
+  },
+  {
+    "id": "hubdb_row_ids",
+    "name": "hubdb_row_ids",
+    "label": "HubDB row IDs (optional)",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "",
+    "help_text": "Comma-separated HubDB row IDs (e.g. 123,456,789). When any IDs are set, ONLY those rows are shown in this order and the tag filter (filter column + value) is ignored. Leave blank to use tag filtering instead."
   },
   {
     "id": "hubdb_limit",

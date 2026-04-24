@@ -1,4 +1,14 @@
-{# HubDB → resource cards (parity with CeResourcesSection React module) #}
+{# =============================================================================
+   HubDB → resource cards
+   FILTER PRIORITY:
+   1) hubdb_row_ids — If this field has any comma-separated numeric row IDs, ONLY
+      those rows are shown (in the order listed). Tag filter is IGNORED.
+   2) Otherwise — filter_column + filter_value (token match in comma-separated tags).
+   SORTING (tag mode only):
+   Rows are fetched with orderBy=-hs_updated_at (newest HubDB update first), then
+   the tag filter is applied in that order. (HubDB tables include hs_updated_at by default.)
+   ID mode loads a larger window then matches by hs_id; display order follows your ID list.
+   ============================================================================= #}
 {% set table_id_raw = module.hubdb_table_id|default("")|trim %}
 {% set table_id_digits = table_id_raw|replace(",", "")|replace(" ", "") %}
 {% set table_id = table_id_digits|int %}
@@ -18,160 +28,323 @@
 {% set col_cta_label = module.col_cta_label|default("")|trim %}
 {% set col_cta_link = module.col_cta_link|default("url")|trim %}
 
+{# Optional: comma-separated HubDB row IDs — takes priority over tag filter #}
+{% set ids_raw = module.hubdb_row_ids|default("")|trim %}
+{% set id_list = [] %}
+{% if ids_raw %}
+  {% for piece in ids_raw|split(",") %}
+    {% set segment = piece|trim|replace(" ", "") %}
+    {% if segment %}
+      {% set clean_id = segment|replace(",", "") %}
+      {% if clean_id|int > 0 %}
+        {% do id_list.append(clean_id|int) %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% set use_row_ids = id_list|length > 0 %}
+
 {% set resource_rows = [] %}
 
 {% if table_id > 0 %}
-  {% set hubdb_rows = hubdb_table_rows(table_id, "limit=" ~ fetch_limit) %}
-  {% for r in hubdb_rows %}
-    {% if resource_rows|length >= limit %}
-      {% break %}
-    {% endif %}
-
-    {% set row_match = namespace(ok=true) %}
-    {% if filter_active %}
-      {% set row_match.ok = false %}
-      {% set cell_norm = (r[filter_col] ~ "")|replace(" ", "") %}
-      {% for part in cell_norm|split(",") %}
-        {% if part|trim == filter_val %}
-          {% set row_match.ok = true %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-
-    {% if row_match.ok %}
-      {% set raw_link = r[col_cta_link] %}
-      {% if raw_link is mapping and raw_link.url %}
-        {% set href = raw_link.url %}
-      {% else %}
-        {% set href = raw_link %}
+  {% if use_row_ids %}
+    {# --- Curated rows by ID (tag filter skipped) --- #}
+    {% set hubdb_rows = hubdb_table_rows(table_id, "limit=3000") %}
+    {% for rid in id_list %}
+      {% if resource_rows|length >= limit %}
+        {% break %}
       {% endif %}
-
-      {% set raw_image = none %}
-      {% if col_image %}
-        {% set raw_image = r[col_image] %}
-      {% endif %}
-      {% set img_src = "" %}
-      {% set img_alt = "" %}
-      {% if raw_image %}
-        {% if raw_image is mapping %}
-          {% if raw_image.url %}
-            {% set img_src = raw_image.url %}
-          {% elif raw_image.src %}
-            {% set img_src = raw_image.src %}
+      {% for r in hubdb_rows %}
+        {% if (r.hs_id|int) == (rid|int) %}
+          {% set raw_link = r[col_cta_link] %}
+          {% if raw_link is mapping and raw_link.url %}
+            {% set href = raw_link.url %}
+          {% else %}
+            {% set href = raw_link %}
           {% endif %}
-          {% if img_src == "" %}
-            {% set fid = "" %}
-            {% if raw_image.fileId %}
-              {% set fid = raw_image.fileId %}
-            {% elif raw_image.file_id %}
-              {% set fid = raw_image.file_id %}
-            {% endif %}
-            {% if fid %}
-              {% set fb = file_by_id(fid) %}
-              {% if fb %}
-                {% if fb.url %}
-                  {% set img_src = fb.url %}
-                {% elif fb.friendlyUrl %}
-                  {% set img_src = fb.friendlyUrl %}
+
+          {% set raw_image = none %}
+          {% if col_image %}
+            {% set raw_image = r[col_image] %}
+          {% endif %}
+          {% set img_src = "" %}
+          {% set img_alt = "" %}
+          {% if raw_image %}
+            {% if raw_image is mapping %}
+              {% if raw_image.url %}
+                {% set img_src = raw_image.url %}
+              {% elif raw_image.src %}
+                {% set img_src = raw_image.src %}
+              {% endif %}
+              {% if img_src == "" %}
+                {% set fid = "" %}
+                {% if raw_image.fileId %}
+                  {% set fid = raw_image.fileId %}
+                {% elif raw_image.file_id %}
+                  {% set fid = raw_image.file_id %}
                 {% endif %}
+                {% if fid %}
+                  {% set fb = file_by_id(fid) %}
+                  {% if fb %}
+                    {% if fb.url %}
+                      {% set img_src = fb.url %}
+                    {% elif fb.friendlyUrl %}
+                      {% set img_src = fb.friendlyUrl %}
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+              {% if raw_image.altText %}
+                {% set img_alt = raw_image.altText %}
+              {% elif raw_image.alt %}
+                {% set img_alt = raw_image.alt %}
+              {% endif %}
+            {% elif raw_image is string %}
+              {% set raw_str = raw_image|trim %}
+              {% if image_base %}
+                {% set base = image_base %}
+                {% if base|length > 0 and not (base|regex_match("/$")) %}
+                  {% set base = base ~ "/" %}
+                {% endif %}
+                {% set fname = raw_str|trim %}
+                {% if fname|regex_match("^/") %}
+                  {% set fname = fname|regex_replace("^/", "") %}
+                {% endif %}
+                {% set img_src = base ~ fname %}
+              {% else %}
+                {% set img_src = raw_str %}
               {% endif %}
             {% endif %}
           {% endif %}
-          {% if raw_image.altText %}
-            {% set img_alt = raw_image.altText %}
-          {% elif raw_image.alt %}
-            {% set img_alt = raw_image.alt %}
-          {% endif %}
-        {% elif raw_image is string %}
-          {% set raw_str = raw_image|trim %}
-          {% if image_base %}
-            {% set base = image_base %}
-            {# HubSpot slice() requires a positive start index — use regex instead of slice. #}
-            {% if base|length > 0 and not (base|regex_match("/$")) %}
-              {% set base = base ~ "/" %}
+
+          {% set raw_desc = r[col_desc] %}
+          {% set desc_str = "" %}
+          {% if raw_desc is mapping %}
+            {% if raw_desc.html %}
+              {% set desc_str = raw_desc.html %}
+            {% elif raw_desc.content %}
+              {% set desc_str = raw_desc.content %}
+            {% else %}
+              {% set desc_str = raw_desc|string %}
             {% endif %}
-            {% set fname = raw_str|trim %}
-            {% if fname|regex_match("^/") %}
-              {% set fname = fname|regex_replace("^/", "") %}
-            {% endif %}
-            {% set img_src = base ~ fname %}
           {% else %}
-            {% set img_src = raw_str %}
+            {% set desc_str = raw_desc ~ "" %}
+          {% endif %}
+
+          {% if img_src is string and img_src|regex_match("^//") %}
+            {% set img_src = "https:" ~ img_src %}
+          {% endif %}
+
+          {% set cta_lab = "" %}
+          {% if col_cta_label %}
+            {% set cta_lab = r[col_cta_label] ~ "" %}
+          {% endif %}
+          {% if cta_lab|trim == "" %}
+            {% set cta_lab = "Read More" %}
+          {% endif %}
+
+          {% set row = {
+            "type": r[col_type] ~ "",
+            "image_src": img_src ~ "",
+            "image_alt": img_alt ~ "",
+            "title": r[col_title] ~ "",
+            "description": desc_str,
+            "cta_label": cta_lab,
+            "cta_href": href ~ ""
+          } %}
+          {% do resource_rows.append(row) %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+
+  {% else %}
+    {# --- Tag (or no) filter; newest first via hs_updated_at --- #}
+    {% set hubdb_query = "limit=" ~ fetch_limit ~ "&orderBy=-hs_updated_at" %}
+    {% set hubdb_rows = hubdb_table_rows(table_id, hubdb_query) %}
+    {% for r in hubdb_rows %}
+      {% if resource_rows|length >= limit %}
+        {% break %}
+      {% endif %}
+
+      {% set row_match = namespace(ok=true) %}
+      {% if filter_active %}
+        {% set row_match.ok = false %}
+        {% set cell_norm = (r[filter_col] ~ "")|replace(" ", "") %}
+        {% for part in cell_norm|split(",") %}
+          {% if part|trim == filter_val %}
+            {% set row_match.ok = true %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+      {% if row_match.ok %}
+        {% set raw_link = r[col_cta_link] %}
+        {% if raw_link is mapping and raw_link.url %}
+          {% set href = raw_link.url %}
+        {% else %}
+          {% set href = raw_link %}
+        {% endif %}
+
+        {% set raw_image = none %}
+        {% if col_image %}
+          {% set raw_image = r[col_image] %}
+        {% endif %}
+        {% set img_src = "" %}
+        {% set img_alt = "" %}
+        {% if raw_image %}
+          {% if raw_image is mapping %}
+            {% if raw_image.url %}
+              {% set img_src = raw_image.url %}
+            {% elif raw_image.src %}
+              {% set img_src = raw_image.src %}
+            {% endif %}
+            {% if img_src == "" %}
+              {% set fid = "" %}
+              {% if raw_image.fileId %}
+                {% set fid = raw_image.fileId %}
+              {% elif raw_image.file_id %}
+                {% set fid = raw_image.file_id %}
+              {% endif %}
+              {% if fid %}
+                {% set fb = file_by_id(fid) %}
+                {% if fb %}
+                  {% if fb.url %}
+                    {% set img_src = fb.url %}
+                  {% elif fb.friendlyUrl %}
+                    {% set img_src = fb.friendlyUrl %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+            {% if raw_image.altText %}
+              {% set img_alt = raw_image.altText %}
+            {% elif raw_image.alt %}
+              {% set img_alt = raw_image.alt %}
+            {% endif %}
+          {% elif raw_image is string %}
+            {% set raw_str = raw_image|trim %}
+            {% if image_base %}
+              {% set base = image_base %}
+              {% if base|length > 0 and not (base|regex_match("/$")) %}
+                {% set base = base ~ "/" %}
+              {% endif %}
+              {% set fname = raw_str|trim %}
+              {% if fname|regex_match("^/") %}
+                {% set fname = fname|regex_replace("^/", "") %}
+              {% endif %}
+              {% set img_src = base ~ fname %}
+            {% else %}
+              {% set img_src = raw_str %}
+            {% endif %}
           {% endif %}
         {% endif %}
-      {% endif %}
 
-      {% set raw_desc = r[col_desc] %}
-      {% set desc_str = "" %}
-      {% if raw_desc is mapping %}
-        {% if raw_desc.html %}
-          {% set desc_str = raw_desc.html %}
-        {% elif raw_desc.content %}
-          {% set desc_str = raw_desc.content %}
+        {% set raw_desc = r[col_desc] %}
+        {% set desc_str = "" %}
+        {% if raw_desc is mapping %}
+          {% if raw_desc.html %}
+            {% set desc_str = raw_desc.html %}
+          {% elif raw_desc.content %}
+            {% set desc_str = raw_desc.content %}
+          {% else %}
+            {% set desc_str = raw_desc|string %}
+          {% endif %}
         {% else %}
-          {% set desc_str = raw_desc|string %}
+          {% set desc_str = raw_desc ~ "" %}
         {% endif %}
-      {% else %}
-        {% set desc_str = raw_desc ~ "" %}
-      {% endif %}
 
-      {% if img_src is string and img_src|regex_match("^//") %}
-        {% set img_src = "https:" ~ img_src %}
-      {% endif %}
+        {% if img_src is string and img_src|regex_match("^//") %}
+          {% set img_src = "https:" ~ img_src %}
+        {% endif %}
 
-      {% set cta_lab = "" %}
-      {% if col_cta_label %}
-        {% set cta_lab = r[col_cta_label] ~ "" %}
-      {% endif %}
-      {% if cta_lab|trim == "" %}
-        {% set cta_lab = "Read More" %}
-      {% endif %}
+        {% set cta_lab = "" %}
+        {% if col_cta_label %}
+          {% set cta_lab = r[col_cta_label] ~ "" %}
+        {% endif %}
+        {% if cta_lab|trim == "" %}
+          {% set cta_lab = "Read More" %}
+        {% endif %}
 
-      {% set row = {
-        "type": r[col_type] ~ "",
-        "image_src": img_src ~ "",
-        "image_alt": img_alt ~ "",
-        "title": r[col_title] ~ "",
-        "description": desc_str,
-        "cta_label": cta_lab,
-        "cta_href": href ~ ""
-      } %}
-      {% do resource_rows.append(row) %}
-    {% endif %}
-  {% endfor %}
+        {% set row = {
+          "type": r[col_type] ~ "",
+          "image_src": img_src ~ "",
+          "image_alt": img_alt ~ "",
+          "title": r[col_title] ~ "",
+          "description": desc_str,
+          "cta_label": cta_lab,
+          "cta_href": href ~ ""
+        } %}
+        {% do resource_rows.append(row) %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 {% endif %}
 
 <section class="section resources-hubdb section--pale" aria-labelledby="resources-hubdb-heading-{{ name }}">
   <div class="container">
     <p class="eyebrow" id="resources-hubdb-heading-{{ name }}">{{ module.ce_resources_eyebrow }}</p>
-    <div class="resources">
-      {% for row in resource_rows %}
-        <article class="resource">
-          <div class="resource__media">
-            {% if row.type|trim %}
-              <span class="resource__badge">{{ row.type }}</span>
-            {% endif %}
-            {% if row.image_src|trim %}
-              <img src="{{ row.image_src }}" alt="{{ row.image_alt }}" loading="lazy" decoding="async">
-            {% endif %}
-          </div>
-          <div class="resource__body">
-            <h3 class="resource__title">{{ row.title }}</h3>
-            {% if row.description %}
-              {# HubDB rich text — editor-controlled HubDB content. #}
-              <div class="resource__copy resources-hubdb__desc">{{ row.description|safe }}</div>
-            {% endif %}
-          </div>
-          <div class="resource__foot">
-            <a class="resource__cta" href="{{ row.cta_href }}" rel="noopener">
-              {{ row.cta_label }}
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M4.667 11.333 11.333 4.667M11.333 4.667H5.333M11.333 4.667V10.667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </a>
-          </div>
-        </article>
-      {% endfor %}
+
+    {% if resource_rows|length > 0 %}
+    {# Splide (CDN) — dots only, no arrows; inited in module.js #}
+    <div
+      id="resources-hubdb-splide-{{ name }}"
+      class="splide resources-hubdb__splide"
+      data-resources-hubdb-carousel
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="{{ module.ce_resources_eyebrow|escape }}">
+      <div class="splide__track">
+        <ul class="splide__list">
+          {% for row in resource_rows %}
+          <li class="splide__slide">
+            <article class="resource">
+              <div class="resource__media">
+                {% if row.type|trim %}
+                  <span class="resource__badge">{{ row.type }}</span>
+                {% endif %}
+                {% if row.image_src|trim %}
+                  <img src="{{ row.image_src }}" alt="{{ row.image_alt }}" loading="lazy" decoding="async">
+                {% endif %}
+              </div>
+              <div class="resource__body">
+                <h3 class="resource__title">{{ row.title }}</h3>
+                {% if row.description %}
+                  {# Teaser: strip tags, collapse whitespace, max 50 words + " ..." if longer. #}
+                  {% set plain = row.description|striptags|regex_replace("\\s+", " ")|trim %}
+                  {% set wlist = [] %}
+                  {% for w in plain|split(" ") %}
+                    {% if w|trim != "" %}
+                      {% do wlist.append(w|trim) %}
+                    {% endif %}
+                  {% endfor %}
+                  {% set teaser_parts = [] %}
+                  {% for w in wlist %}
+                    {% if teaser_parts|length < 50 %}
+                      {% do teaser_parts.append(w) %}
+                    {% endif %}
+                  {% endfor %}
+                  {% set teaser = teaser_parts|join(" ") %}
+                  {% if wlist|length > 50 %}
+                    {% set teaser = teaser ~ " ..." %}
+                  {% endif %}
+                  <div class="resource__copy resources-hubdb__desc">{{ teaser }}</div>
+                {% endif %}
+              </div>
+              <div class="resource__foot">
+                <a class="resource__cta" href="{{ row.cta_href }}" rel="noopener">
+                  {{ row.cta_label }}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M4.667 11.333 11.333 4.667M11.333 4.667H5.333M11.333 4.667V10.667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
+    {% endif %}
   </div>
 </section>

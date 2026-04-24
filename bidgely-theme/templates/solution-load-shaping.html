@@ -475,12 +475,11 @@
   </div>
 </section>
 
-{# =========================================================
-   RESOURCES – HubDB (filter CX)
-   ========================================================= #}
+{# Resources (HubDB): hubdb_row_ids → curated rows only (ignores tag). Else → tag filter; newest hs_updated_at first. hubdb_limit=max cards. #}
 {% module "resources_load_shaping" path="../modules/resources-hubdb.module",
   ce_resources_eyebrow="Resources",
-  filter_value="CX" %}
+  filter_value="CX",
+  hubdb_limit=3 %}
 
 {% module "site_footer" path="../modules/global-footer.module" %}
 

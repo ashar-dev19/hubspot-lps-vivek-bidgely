@@ -323,11 +323,15 @@
   </div>
 </section>
 
-{# RESOURCES – HubDB: pass field `name`s from fields.json as module parameters (defaults for this instance).
-   You can use variables, e.g. ce_resources_eyebrow=my_eyebrow, filter_value=my_tag (no quotes on identifiers). #}
+{# Resources (HubDB module):
+   • hubdb_row_ids — comma-separated HubDB row IDs; if set, ONLY those rows (in order), max hubdb_limit cards; tag filter is IGNORED.
+   • Else — filter_column + filter_value match a token in the HubDB tags column; rows are newest-first (hs_updated_at).
+   • hubdb_limit — max cards shown (3 below). #}
 {% module "resources_cx" path="../modules/resources-hubdb.module",
   ce_resources_eyebrow="Resources",
-  filter_value="CX" %}
+  filter_value="CX",
+  hubdb_limit=4,
+  hubdb_row_ids="313538825931,313538825932,313538825933,313538825934" %}
 
 {% module "site_footer" path="../modules/global-footer.module" %}
 
