@@ -69,7 +69,7 @@
     "allow_new_line": false,
     "display_width": null,
     "type": "text",
-    "default": "page_template",
+    "default": "asset_picklist_tag",
     "help_text": "e.g. page_template — shown as badge on the card image."
   },
   {

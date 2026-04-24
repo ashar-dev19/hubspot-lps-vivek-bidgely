@@ -1,6 +1,6 @@
 <!--
-  templateType: page
-  isAvailableForNewContent: true
+    templateType: page
+    isAvailableForNewContent: true
   label: Bidgely Solution – Improve Peak Load Shaping & Shifting
   screenshotPath: ../images/template-previews/bidgely-solution-load-shaping.png
 -->
@@ -9,14 +9,14 @@
 
 <!doctype html>
 <html lang="{{ html_lang }}" {{ html_lang_dir }}>
-<head>
-  <meta charset="utf-8">
-  {{ standard_header_includes }}
+  <head>
+    <meta charset="utf-8">
+    {{ standard_header_includes }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
-</head>
+  </head>
 <style>
   .hero {
     position: relative;
@@ -189,7 +189,7 @@
   .cap-card__icon-img, .agent-card img { object-fit: contain; }
   .stripe__visual img, .hero-visual img { object-fit: contain; }
 </style>
-<body>
+  <body>
 
 {% module "site_header" path="../modules/global-header.module" %}
 
@@ -484,6 +484,6 @@
 {% module "site_footer" path="../modules/global-footer.module" %}
 
 <script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
-{{ standard_footer_includes }}
-</body>
+    {{ standard_footer_includes }}
+  </body>
 </html>

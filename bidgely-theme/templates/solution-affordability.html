@@ -100,6 +100,8 @@
 {% module "site_header" path="../modules/global-header.module" %}
 
 {# ===== 1. HERO ===== #}
+{# (commented out) static hero banner — saved for later use #}
+{#
 <section class="hero section--pale aff-hero">
   <div class="container">
     <div class="hero__top">
@@ -115,6 +117,19 @@
     </div>
   </div>
 </section>
+#}
+
+{# hero-2-columns module (copy/paste and replace values as needed) #}
+{% module "hero_affordability"
+  path="../modules/hero-2-columns.module",
+  eyebrow="JOBS TO BE DONE",
+  heading="Reach the Right Households. Lower Energy Burden. Maximize Program Impact.",
+  copy="<p>60% of low-income households are energy burdened, but fewer than 20% of eligible customers are enrolled in the programs designed to help them. The gap is not funding — it is precision. Bidgely identifies income-qualified households at the premises level, matches them to the right programs, and proves outcomes your regulators and stakeholders can defend.</p>",
+  cta_text="Talk to an Expert",
+  cta_link={ "url": { "type": "EXTERNAL", "href": "#" }, "open_in_new_tab": false, "no_follow": false },
+  background_image={ "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-4.svg", "alt": "", "loading": "disabled" },
+  image={ "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/DSM-diagram-1.png", "alt": "Affordability intelligence dashboard", "loading": "lazy" }
+%}
 
 {# ===== 2. COMPARISON — ZIP vs PREMISES ===== #}
 <section class="section section--white aff-compare">
