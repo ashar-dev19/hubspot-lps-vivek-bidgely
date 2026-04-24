@@ -269,7 +269,7 @@
     .genai__head{ grid-column:1 / -1; }
     .genai-card{ background:#fff; border-radius:14px; padding:18px; display:flex; gap:18px; box-shadow:var(--shadow-card); align-items:flex-start; }
     .genai-card + .genai-card{ margin-top:18px; }
-    .genai-card .ic{ width:42px; height:42px; flex:0 0 42px; border-radius:9px; background-size:cover; }
+    .genai-card .ic{ width:42px; height:42px; flex:0 0 42px; border-radius:0; background-size:contain;background-repeat: no-repeat; }
     .genai-card h4{ font-size:14px; font-weight:700; color:var(--c-navy); margin:0 0 6px; }
     .genai-card p{ font-size:13px; line-height:1.5; color:var(--c-navy-7); margin:0; }
 
@@ -608,21 +608,21 @@
     <div class="genai">
       <div>
         <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/ders-icon-v1.svg');"></div>
+          <div class="ic" style="background-image:url('{{ asset_base }}/electrification-icon-18.svg');"></div>
           <div>
             <h4>Electrification Advisor (Customer-Facing)</h4>
             <p>Conversational AI embedded in your portal or app that answers "what if I buy a heat pump, EV, or water heater" questions with personalized cost estimates, rebate eligibility, and rate comparisons — based on that customer's actual usage.</p>
           </div>
         </div>
         <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/iucx-icon-05-1.svg');"></div>
+          <div class="ic" style="background-image:url('{{ asset_base }}/electrification-dsm.svg');"></div>
           <div>
             <h4>Electrification / DSM Analyst Copilot</h4>
             <p>A GenAI assistant for program and DSM teams. Ask plain-language questions about pipeline, candidate segments, and grid impact. Get appliance-level answers without building a custom query.</p>
           </div>
         </div>
         <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/daas-v2.svg');"></div>
+          <div class="ic" style="background-image:url('{{ asset_base }}/electrification-icon-10.svg');"></div>
           <div>
             <h4>Program Eligibility Explainers</h4>
             <p>Auto-generated plain-language explanations of why a specific customer qualifies for a rebate. Embed directly into outreach and portal experiences to improve conversion.</p>
@@ -631,7 +631,7 @@
       </div>
 
       <div class="static-visual static-visual--plain">
-        <img src="{{ asset_base }}/grounded-conversations.svg" alt="Electrification Advisor conversation mockup">
+        <img src="{{ asset_base }}/electrification-diagram-5.svg" alt="Electrification Advisor conversation mockup">
       </div>
     </div>
   </div>
