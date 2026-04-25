@@ -1,0 +1,104 @@
+[
+  {
+    "id": "mock_section_aria_label",
+    "name": "mock_section_aria_label",
+    "label": "Section accessible name (aria-label)",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "Hero"
+  },
+  {
+    "id": "banner_bars_image",
+    "name": "banner_bars_image",
+    "label": "Bottom decorative strip",
+    "required": false,
+    "locked": false,
+    "responsive": false,
+    "resizable": false,
+    "show_loading": false,
+    "display_width": null,
+    "type": "image",
+    "default": {
+      "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ce-pet.svg",
+      "alt": "",
+      "loading": "disabled"
+    },
+    "help_text": "Bottom edge of the gradient hero. Default: HubSpot-hosted SVG; replace in the editor if needed."
+  },
+  {
+    "id": "hero_headline",
+    "name": "hero_headline",
+    "label": "Hero headline",
+    "required": false,
+    "locked": false,
+    "allow_new_line": true,
+    "display_width": null,
+    "type": "text",
+    "default": "Fewer Calls. Better Enrollment. Customers Who Actually Engage."
+  },
+  {
+    "id": "hero_subcopy",
+    "name": "hero_subcopy",
+    "label": "Hero subcopy",
+    "required": false,
+    "locked": false,
+    "display_width": null,
+    "type": "richtext",
+    "default": "Most CX platforms know what your customers did. Bidgely knows why, down to the appliance. That's the difference between a generic alert and one that changes behavior."
+  },
+  {
+    "id": "hero_cta_text",
+    "name": "hero_cta_text",
+    "label": "Hero CTA text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "Talk to an Expert"
+  },
+  {
+    "id": "hero_cta_link",
+    "name": "hero_cta_link",
+    "label": "Hero CTA link",
+    "required": false,
+    "locked": false,
+    "supported_types": ["EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG"],
+    "show_advanced_rel_options": false,
+    "display_width": null,
+    "type": "link",
+    "default": {
+      "url": {
+        "type": "EXTERNAL",
+        "content_id": null,
+        "href": "#talk-to-an-expert",
+        "href_with_scheme": "#talk-to-an-expert"
+      },
+      "open_in_new_tab": false,
+      "no_follow": false,
+      "sponsored": false,
+      "user_generated_content": false
+    }
+  },
+  {
+    "id": "hero_visual_image",
+    "name": "hero_visual_image",
+    "label": "Hero image",
+    "required": false,
+    "locked": false,
+    "responsive": true,
+    "resizable": true,
+    "show_loading": true,
+    "display_width": null,
+    "type": "image",
+    "default": {
+      "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/banner-ce.svg",
+      "alt": "Customer engagement",
+      "loading": "lazy"
+    },
+    "help_text": "Main visual below the headline and CTA. Default: HubSpot-hosted SVG; replace in the editor if needed."
+  }
+]
