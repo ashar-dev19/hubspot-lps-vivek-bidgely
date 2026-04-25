@@ -24,7 +24,7 @@
       aria-hidden="true"
       decoding="async">
 
-    <div class="hero__inner">
+    <div class="hero__inner container">
       <h1 class="text-center">
         {% for line in module.hero_headline|split('\n') %}
           {% if not loop.first %}<br>{% endif %}{{ line|escape }}

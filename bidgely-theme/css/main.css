@@ -179,6 +179,7 @@ section.section--hero strong {
   .btn--ghost    { background: #fff; color: var(--nile); border-color: var(--nile-10); }
   .btn--gradient { color: #fff; background: var(--gradient); }
   .btn--navy     { background: var(--nile); color: #fff; padding: 16px 26px; border-radius: 10px; }
+  .btn--blue     { background: var(--azure-soft); color: #fff; padding: 16px 26px; border-radius: 10px; }
   .btn--white    { background: #fff; color: var(--nile); padding: 16px 26px; border-radius: 9px; }
   .btn--white-outline    { background: #fff; color: var(--nile); border: 1px solid var(--nile-10); border-radius: 9px; gap: 5px; }
   .gradient-btn  { background: var(--gradient); color: #fff; }
