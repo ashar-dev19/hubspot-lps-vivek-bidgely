@@ -1,13 +1,17 @@
 <!--
-  templateType: "page"
+  templateType: page
   isAvailableForNewContent: true
-  label: Bidgely Solution — Affordability
+  label: WIP Bidgely Solution – Affordability
+  screenshotPath: ../images/template-previews/bidgely-solution-cx.png
 -->
 
-{% set ab = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+
+{% set asset_base = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/Affordability" %}
 
 <!doctype html>
-<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+
+<html lang="en" >
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,423 +21,459 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
-  <style>
-    /* ── Affordability page — scoped styles (.aff-*) ── */
 
-    /* Hero */
-    .aff-hero { padding: 100px 0 60px; }
-    .aff-hero-img { width: 100%; height: auto; display: block; border-radius: 12px; }
-
-    /* Comparison section */
-    .aff-compare { padding: 64px 0; }
-    .aff-compare__head { text-align: center; max-width: 680px; margin: 0 auto 40px; }
-    .aff-compare__title { font-size: 30px; font-weight: 800; color: var(--nile); line-height: 1.25; margin: 0 0 12px; letter-spacing: -.5px; }
-    .aff-compare__title span { color: var(--azure); }
-    .aff-compare__sub { font-size: 15px; color: var(--nile-52); font-weight: 300; line-height: 1.6; margin: 0; }
-    .aff-compare__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .aff-compare__card { background: #fff; border: 1px solid #e4ecf4; border-radius: 14px; overflow: hidden; }
-    .aff-compare__card--alt .aff-compare__card-header { background: #152d49; }
-    .aff-compare__card--alt .aff-compare__card-label { color: #fff; }
-    .aff-compare__card-header { background: #f2f8fc; padding: 14px 20px; border-bottom: 1px solid #e4ecf4; }
-    .aff-compare__card-label { font-size: 11px; font-weight: 700; letter-spacing: .6px; color: var(--nile); text-transform: uppercase; margin: 0 0 2px; }
-    .aff-compare__card-sub { font-size: 11px; color: var(--nile-52); margin: 0; }
-    .aff-compare__card--alt .aff-compare__card-sub { color: rgba(255,255,255,.6); }
-    .aff-compare__visual { min-height: 160px; background: #eaf4fb; display: flex; align-items: center; justify-content: center; color: var(--nile-52); font-size: 12px; }
-    .aff-compare__body { padding: 20px; }
-    .aff-compare__list { list-style: none; margin: 0 0 20px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-    .aff-compare__list li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--nile-52); line-height: 1.4; }
-    .aff-compare__list li::before { content: ""; flex-shrink: 0; width: 16px; height: 16px; margin-top: 1px; border-radius: 50%; background-size: 10px; background-repeat: no-repeat; background-position: center; }
-    .aff-compare__list--neg li::before { background-color: #fde8e8; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cline x1='3' y1='3' x2='9' y2='9' stroke='%23e53e3e' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='9' y1='3' x2='3' y2='9' stroke='%23e53e3e' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E"); }
-    .aff-compare__list--pos li::before { background-color: #e6f9f0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpolyline points='2,6 5,9 10,3' fill='none' stroke='%2338a169' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
-    .aff-compare__stat { border-top: 1px solid #e4ecf4; padding-top: 16px; }
-    .aff-compare__stat-val { font-size: 26px; font-weight: 800; letter-spacing: -.5px; line-height: 1; margin-bottom: 4px; }
-    .aff-compare__stat-val--neg { color: #c53030; }
-    .aff-compare__stat-val--pos { color: #276749; }
-    .aff-compare__stat-label { font-size: 12px; color: var(--nile-52); }
-    @media (max-width: 640px) { .aff-compare__grid { grid-template-columns: 1fr; } }
-
-    /* Outcomes cards */
-    .aff-lede { margin-top: 12px; }
-    .aff-cards { margin-top: 36px; }
-
-    /* Use cases */
-    .aff-solutions-head { max-width: 640px; margin-bottom: 48px; }
-    .aff-stripe-label { color: var(--azure); margin-bottom: 8px; }
-
-    /* Stripe visual placeholders */
-    .aff-placeholder {
-      min-height: 280px;
-      background: #f2f8fc;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--nile-52);
-      font-size: 13px;
-    }
-
-    /* Agentic section */
-    .aff-eyebrow-light { color: var(--azure-tint); }
-    .aff-agentic-h2 { color: #fff; margin-top: 6px; }
-    .aff-lede-light { color: #fff; opacity: .85; }
-
-    /* GenAI */
-    .aff-genai-placeholder {
-      min-height: 320px;
-      background: #fff;
-      border-radius: var(--radius-lg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--nile-52);
-      font-size: 13px;
-    }
-
-    @media (max-width: 768px) {
-      .aff-hero { padding: 80px 0 40px; }
-      .aff-compare__title { font-size: 22px; }
-    }
-  </style>
+ 
 </head>
+<style>
+  .hero {
+    position: relative;
+    background: url(https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-4.svg);
+    background-size: cover;
+  }
+  .hero::before { display: none; }
+  .hero::after  { display: none; }
+  .hero__eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: .55px;
+    line-height: 1.6; color: var(--azure); text-transform: uppercase;
+    margin: 0 0 16px;
+  }
+
+  /* ================================================================
+     STRIPE BULLETS — render as checkmarks (Affordability spec ✓)
+     ================================================================ */
+  .stripe__bullets.stripe__bullets--check { list-style: none; padding-left: 0; }
+  .stripe__bullets.stripe__bullets--check li {
+    position: relative; padding-left: 28px; margin-bottom: 10px;
+    font-size: 14px; line-height: 1.55; color: var(--nile-80);
+  }
+  .stripe__bullets.stripe__bullets--check li::before {
+    content: "";
+    position: absolute; left: 0; top: 6px;
+    width: 16px; height: 16px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23499ed7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-size: contain; background-repeat: no-repeat;
+  }
+
+  /* ================================================================
+     TRUST STRIP — logo row above featured case
+     ================================================================ */
+  .trust-strip {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    gap: 40px 56px; padding: 24px 32px; margin: 0 0 36px;
+    background: var(--bg-soft); border-radius: var(--radius);
+  }
+  .trust-strip__label {
+    font-size: 10px; letter-spacing: .8px; font-weight: 600;
+    color: var(--nile-52); text-transform: uppercase;
+    flex-basis: 100%; text-align: center; margin: 0;
+  }
+  .trust-strip__logo { max-height: 32px; width: auto; object-fit: contain; opacity: .72; transition: opacity .2s ease; }
+  .trust-strip__logo:hover { opacity: 1; }
+  .trust-strip__text {
+    font-size: 13px; font-weight: 600; letter-spacing: .3px;
+    color: var(--nile-52); padding: 6px 14px;
+    border: 1px solid var(--nile-15); border-radius: 20px;
+  }
+
+  /* ================================================================
+     AGENTIC CALLOUT — right-aligned highlight box
+     ================================================================ */
+  .agentic-pill .sub em { color: #fff; font-style: normal; font-weight: 500; }
+
+  /* ================================================================
+     PROVEN RESULTS — featured case (navy) with quote + metrics + award
+     ================================================================ */
+  .pr-case {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-radius: var(--radius-xl); overflow: hidden;
+    border: 1px solid var(--nile-7); box-shadow: var(--shadow-soft);
+    background: #fff;
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .pr-case:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(21,45,73,.10); }
+
+  .pr-case__featured {
+    background: var(--nile); color: #fff; padding: 44px 44px 36px;
+    display: flex; flex-direction: column; gap: 20px; min-width: 0;
+  }
+  .pr-case__featured-label {
+    font-size: 10px; letter-spacing: .8px; color: var(--azure-tint);
+    text-transform: uppercase; font-weight: 600;
+  }
+  .pr-case__featured-title {
+    font-size: 20px; line-height: 1.3; font-weight: 600; color: #fff; margin: 0;
+  }
+  .pr-case__featured-quote {
+    position: relative; padding-left: 18px;
+    border-left: 3px solid var(--azure);
+    font-size: 14px; line-height: 1.6; font-style: italic;
+    color: rgba(215,239,255,.85); margin: 4px 0;
+  }
+  .pr-case__featured-quote cite {
+    display: block; margin-top: 10px;
+    font-size: 12px; font-style: normal; font-weight: 600;
+    color: var(--azure-tint); letter-spacing: .2px;
+  }
+  .pr-case__featured-metrics {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; gap: 10px;
+  }
+  .pr-case__featured-metrics li {
+    position: relative; padding-left: 26px;
+    font-size: 13px; line-height: 1.5; color: rgba(215,239,255,.88);
+  }
+  .pr-case__featured-metrics li::before {
+    content: "";
+    position: absolute; left: 0; top: 3px;
+    width: 16px; height: 16px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237abfe8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+    background-size: contain; background-repeat: no-repeat;
+  }
+  .pr-case__featured-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--azure-tint); font-weight: 600; font-size: 13px;
+    margin-top: auto;
+  }
+  .pr-case__featured-cta svg { transition: transform .2s ease; }
+  .pr-case__featured-cta:hover svg { transform: translate(2px,-2px); }
+
+  /* Award badge inside featured card */
+  .pr-case__award {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 14px; margin-top: 8px;
+    background: rgba(122,191,232,.10);
+    border: 1px solid rgba(122,191,232,.30);
+    border-radius: 8px;
+    font-size: 12px; line-height: 1.4; color: #fff;
+    font-weight: 600; letter-spacing: .2px;
+    align-self: flex-start; max-width: 100%;
+  }
+  .pr-case__award::before {
+    content: "";
+    display: inline-block; width: 18px; height: 18px; flex-shrink: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237abfe8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='8' r='7'/><polyline points='8.21 13.89 7 23 12 20 17 23 15.79 13.88'/></svg>");
+    background-size: contain; background-repeat: no-repeat;
+  }
+
+  .pr-case__proofs {
+    padding: 44px; display: flex; flex-direction: column;
+    justify-content: center; min-width: 0;
+  }
+  .pr-case__proof { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .pr-case__proof + .pr-case__proof {
+    margin-top: 28px; padding-top: 28px;
+    border-top: 1px solid var(--nile-7);
+  }
+  .pr-case__proof-label {
+    font-size: 10px; letter-spacing: .8px; color: var(--nile-52);
+    text-transform: uppercase; font-weight: 600;
+  }
+  .pr-case__proof-logo { min-height: 40px; display: flex; align-items: center; }
+  .pr-case__proof-logo img { max-height: 40px; width: auto; max-width: 200px; object-fit: contain; display: block; }
+  .pr-case__proof-copy { font-size: 14px; line-height: 1.6; color: var(--nile-80); margin: 0; }
+
+  @media (max-width: 1100px) {
+    .pr-case { grid-template-columns: 1fr; }
+    .pr-case__featured, .pr-case__proofs { padding: 32px; }
+  }
+
+  /* ================================================================
+     FOOTNOTES — industry-benchmark attribution
+     ================================================================ */
+  .footnotes {
+    margin-top: 48px; padding: 20px 24px;
+    background: var(--bg-soft); border-radius: var(--radius);
+    font-size: 11px; line-height: 1.55; color: var(--nile-52);
+  }
+  .footnotes strong { color: var(--nile); font-weight: 700; }
+
+  /* ================================================================
+     IMAGE / ICON OVERFLOW FIXES — prevent chopping in cards
+     ================================================================ */
+  .genai-card { align-items: flex-start; min-width: 0; }
+  .genai-card .ic {
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--bg-soft);
+  }
+  .genai-card > div:not(.ic) { min-width: 0; flex: 1; }
+  .genai-card h4, .genai-card p { overflow-wrap: break-word; word-wrap: break-word; }
+  .agent-card, .card { min-width: 0; }
+  .agent-card p, .card__copy { overflow-wrap: break-word; word-wrap: break-word; }
+  .cap-card__icon-img, .agent-card img { object-fit: contain; }
+  .stripe__visual img, .hero-visual img { object-fit: contain; }
+</style>
 <body>
+
 
 {% module "site_header" path="../modules/global-header.module" %}
 
-{# ===== 1. HERO ===== #}
-{# (commented out) static hero banner — saved for later use #}
-{#
-<section class="hero section--pale aff-hero">
-  <div class="container">
+{# =========================================================
+   HERO
+   ========================================================= #}
+  {% module "hero-2-column" path="../modules/hero-2-columns.module" %}
+{# =========================================================<section class="hero">
+  <div class="hero__inner container">
     <div class="hero__top">
       <div>
-        <span class="hero__eyebrow">JOBS TO BE DONE</span>
-        <h1>Reach the Right Households.<br>Lower Energy Burden.<br>Maximize Program Impact.</h1>
-        <p class="hero__copy">60% of low-income households are energy burdened, but fewer than 20% of eligible customers are enrolled in the programs designed to help them. The gap is not funding — it is precision. Bidgely identifies income-qualified households at the premises level, matches them to the right programs, and proves outcomes your regulators and stakeholders can defend.</p>
-        <a class="btn btn--navy" href="#">Talk to an Expert</a>
+        <p class="hero__eyebrow">ADVANCE AFFORDABILITY</p>
+        <h1>
+          Reach the Right Households. Lower Energy Burden. Maximize Program Impact.
+        </h1>
+        <a class="btn btn--navy" href="#">
+          Talk to an Expert
+        </a>
       </div>
-      <div class="stripe__visual">
-        <img class="aff-hero-img" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/DSM-diagram-1.png" alt="Affordability intelligence dashboard">
+      <div class="hero__copy body-sm">
+        60% of low-income households are energy burdened, but fewer than 20% of eligible customers are enrolled in the programs designed to help them. The gap is not funding. It is precision. Bidgely identifies income-qualified households at the premises level, matches them to the right programs, and proves outcomes your regulators and stakeholders can defend.
       </div>
+    </div>
+    <div class="hero-visual">
+      {% image "hero_visual" src="{{ asset_base }}/affordability-diagram-1.svg" alt="DSM intelligence dashboard preview" class="hero-visual__img" %}
     </div>
   </div>
-</section>
-#}
+</section>========================================================= #}
 
-{# hero-2-columns module (copy/paste and replace values as needed) #}
-{% module "hero_affordability"
-  path="../modules/hero-2-columns.module",
-  eyebrow="JOBS TO BE DONE",
-  heading="Reach the Right Households. Lower Energy Burden. Maximize Program Impact.",
-  copy="<p>60% of low-income households are energy burdened, but fewer than 20% of eligible customers are enrolled in the programs designed to help them. The gap is not funding — it is precision. Bidgely identifies income-qualified households at the premises level, matches them to the right programs, and proves outcomes your regulators and stakeholders can defend.</p>",
-  cta_text="Talk to an Expert",
-  cta_link={ "url": { "type": "EXTERNAL", "href": "#" }, "open_in_new_tab": false, "no_follow": false },
-  background_image={ "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-4.svg", "alt": "", "loading": "disabled" },
-  image={ "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/DSM-diagram-1.png", "alt": "Affordability intelligence dashboard", "loading": "lazy" }
-%}
 
-{# ===== 2. COMPARISON — ZIP vs PREMISES ===== #}
-<section class="section section--white aff-compare">
-  <div class="container">
-    <div class="aff-compare__head">
-      <h2 class="aff-compare__title">ZIP codes miss <span>40%</span> of eligible households</h2>
-      <p class="aff-compare__sub">Traditional targeting relies on broad geographic proxies. Premises-level intelligence finds who it actually needs.</p>
-    </div>
-    <div class="aff-compare__grid">
-
-      <div class="aff-compare__card">
-        <div class="aff-compare__card-header">
-          <p class="aff-compare__card-label">Traditional ZIP Code Method</p>
-          <p class="aff-compare__card-sub">Misses most qualifying households</p>
-        </div>
-        <div class="aff-compare__visual">[ ZIP code map placeholder ]</div>
-        <div class="aff-compare__body">
-          <ul class="aff-compare__list aff-compare__list--neg">
-            <li>Treats 4,200 households as one income band</li>
-            <li>Misses eligible households in higher-income ZIPs</li>
-            <li>No energy burden visibility</li>
-          </ul>
-          <div class="aff-compare__stat">
-            <div class="aff-compare__stat-val aff-compare__stat-val--neg">−2,500 households</div>
-            <div class="aff-compare__stat-label">40% of eligible customers missed</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="aff-compare__card aff-compare__card--alt">
-        <div class="aff-compare__card-header">
-          <p class="aff-compare__card-label">Bidgely Premises-Level Detection</p>
-          <p class="aff-compare__card-sub">Qualifying households scoring</p>
-        </div>
-        <div class="aff-compare__visual">[ Premises-level map placeholder ]</div>
-        <div class="aff-compare__body">
-          <ul class="aff-compare__list aff-compare__list--pos">
-            <li>Scores every premises for income &amp; energy burden</li>
-            <li>Finds eligible households across all geographies</li>
-            <li>Detects energy burden, arrears, and usage patterns</li>
-          </ul>
-          <div class="aff-compare__stat">
-            <div class="aff-compare__stat-val aff-compare__stat-val--pos">+4,200 households</div>
-            <div class="aff-compare__stat-label">100% more eligible customers reached</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
+<section class="cta-strip">
+  <div class="cta-strip__inner container">
+    <h2>See UtilityAI Advance Affordability</h2>
+    <a class="btn btn--white" href="#">
+      Talk to Sales
+    </a>
   </div>
 </section>
 
-{# ===== 3. OUTCOMES CARDS ===== #}
+
 <section class="section section--pale">
   <div class="container">
-    <p class="eyebrow">OUTCOMES</p>
-    <h2 class="h2">Affordability outcomes you can <span class="accent">own, measure, and defend.</span></h2>
-    <p class="lede aff-lede">Four jobs Bidgely gets done for affordability teams — all from the same appliance-level intelligence layer.</p>
-    <div class="cards-4 aff-cards">
+    <p class="eyebrow">JOBS TO BE DONE</p>
+    <h2 class="h2">
+      Affordability outcomes you can <span class='accent'>own, measure, and defend.</span>
+    </h2>
+
+    <div class="cards-4 mt-8">
       <article class="card">
-        <img class="cap-card__icon-img" src="{{ ab }}/target.svg" alt="">
-        <h3 class="card__title">Find households most likely to participate and benefit.</h3>
-        <p class="card__copy">Score every premises by program eligibility, energy burden, and propensity — so outreach budgets go to households that will actually enroll and save.</p>
+        <img data-asset="affordability-icon-1.svg" src="{{ asset_base }}/affordability-icon-1.svg" alt="" class="cap-card__icon-img" loading="lazy">
+        <h3 class="card__title">Find the households your current methods miss.</h3>
+        <p class="card__copy">Move beyond ZIP code averages and census-block proxies. Bidgely detects income-qualified customers at the premises level by combining income estimation, energy usage, energy density, arrearage data, and program participation into a single confidence-scored profile.</p>
       </article>
+
       <article class="card">
-        <img class="cap-card__icon-img" src="{{ ab }}/customer-experience-v1.svg" alt="">
-        <h3 class="card__title">Match every household to the right program.</h3>
-        <p class="card__copy">LIHEAP, CARE, bill assistance, weatherization — Bidgely recommends the best program fit for each household based on their actual energy profile and eligibility.</p>
+        <img data-asset="affordability-icon-2.svg" src="{{ asset_base }}/affordability-icon-2.svg" alt="" class="cap-card__icon-img" loading="lazy">
+        <h3 class="card__title">Match every household to every relevant program.</h3>
+        <p class="card__copy">Customers often qualify for multiple programs but get enrolled in one at a time, often starting with the wrong one. Bidgely sequences interventions by urgency: bill stabilization before weatherization, assistance before efficiency upgrades.</p>
       </article>
+
       <article class="card">
-        <img class="cap-card__icon-img" src="{{ ab }}/explain-bill.svg" alt="">
-        <h3 class="card__title">Measure savings at the premise and appliance level.</h3>
-        <p class="card__copy">Track real bill reduction, usage change, and load shift by customer — with appliance-level attribution, not billing regression estimates.</p>
+        <img data-asset="affordability-icon-3.svg" src="{{ asset_base }}/affordability-icon-3.svg" alt="" class="cap-card__icon-img" loading="lazy">
+        <h3 class="card__title">Recruit with touch points that meet the moment.</h3>
+        <p class="card__copy">AI-powered outreach dynamically adapts language, timing, and program recommendations to each household. Multilingual, personalized, and delivered across email, SMS, web, and print.</p>
       </article>
+
       <article class="card">
-        <img class="cap-card__icon-img" src="{{ ab }}/daas-v2.svg" alt="">
-        <h3 class="card__title">Prove program ROI to regulators and leadership.</h3>
-        <p class="card__copy">Automated reporting dashboards tie program spend to verified customer outcomes — enabling continuous optimization and regulatory confidence.</p>
+        <img data-asset="affordability-icon-4.svg" src="{{ asset_base }}/affordability-icon-4.svg" alt="" class="cap-card__icon-img" loading="lazy">
+        <h3 class="card__title">Prove down-stream program impact beyond enrollment.</h3>
+        <p class="card__copy">Measure pre- and post-program energy savings, billing relief, and arrearage reduction at the premises level. Enrolled customers save an estimated $300&ndash;$500 per year. Show regulators exactly who benefited, by how much, and that energy burden moved from above 8% toward the affordable threshold.</p>
       </article>
     </div>
   </div>
 </section>
 
-{# ===== 4. USE CASES — NUMBERED STRIPES ===== #}
+
 <section class="section section--white">
   <div class="container">
-    <div class="aff-solutions-head">
+    <div class="solutions-head">
       <p class="eyebrow">USE CASES</p>
-      <h2 class="h2">The right program, <span class="accent">at the right time.</span></h2>
-      <p class="lede">Bidgely identifies who needs help, what program fits them, and when to reach out — continuously, across your full service territory.</p>
+      <h2 class="h2">What UtilityAI&trade; makes possible in <span class='accent'>affordability.</span></h2>
+      <p class="lede">Every utility has customers who need help but can&rsquo;t be found with traditional methods. Each use case runs on the same premises-level intelligence layer so your affordability, Demand-Side Management (DSM), and regulatory teams operate from one source of truth.</p>
     </div>
 
+    
     <div class="stripe">
       <div class="stripe__copy">
-        <p class="eyebrow aff-stripe-label">01 &nbsp;LMI IDENTIFICATION</p>
-        <h3>LMI Household Identification &amp; Scoring</h3>
-        <p class="stripe__sub">Find who qualifies — without asking them to raise their hand.</p>
-        <div class="stripe__quote">Most LMI programs rely on customers to self-identify or cross-reference LIHEAP rolls. Bidgely builds an income-proxy score from AMI data, census overlays, and appliance usage patterns — identifying eligible households passively and continuously.</div>
-        <ul class="stripe__bullets">
-          <li>90%+ precision on LMI identification without self-disclosure</li>
-          <li>Refreshed scores as household energy behavior changes</li>
-          <li>Integrates directly with CRM and program enrollment workflows</li>
+        <h3>Find the households that need help most, not just the ones that are easiest to find.</h3>
+        <div class="stripe__quote">Traditional Low-to-Moderate Income (LMI) targeting relies on ZIP code demographics and census-block data that treats a population of 4,000 as a single income band. Eligible households living outside expected geographies go unidentified. Middle-income households facing real energy burden fail oversimplified income tests. Half of income-qualified customers are unaware programs exist. 88% say they are already doing everything they can to reduce their bills. The result: families stay in crisis, arrears compound, and approved budgets go unspent.</div>
+        <ul class="stripe__bullets stripe__bullets--check">
+          <li>Pacific Power identified 8,270 high-propensity income-qualified candidates from AMI data, converting 2.3% on the very first touchpoint, then uncovered an additional 14,000 prospects for its next expansion campaign</li><li>Avista identified 160,000+ eligible households using premises-level eligibility insights, lifting average program participation from 4% to 6&ndash;8%</li><li>Avista identified 90 rural customers qualified for USDA grants in just 10 minutes, a segment previously thought not to exist in their territory</li>
         </ul>
-        <a class="stripe__cta" href="#">
-          Explore LMI Targeting
-          <img src="{{ ab }}/icon-feathericons-arrow-up-right-5.svg" alt="">
+        <a class="stripe__cta link-arrow" href="#">
+          Explore IQ Detection
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
-      <div class="stripe__visual aff-placeholder">
-        [ LMI targeting interface placeholder ]
+      <div class="stripe__visual">
+        <img data-asset="affordability-diagram-1.svg" src="{{ asset_base }}/affordability-diagram-2.svg" alt="Premises-level IQ detection diagram" class="stripe__img" loading="lazy">
       </div>
     </div>
 
+    
     <div class="stripe stripe--reverse">
       <div class="stripe__copy">
-        <p class="eyebrow aff-stripe-label">02 &nbsp;BILL ASSISTANCE</p>
-        <h3>Bill Assistance &amp; LIHEAP Enrollment</h3>
-        <p class="stripe__sub">Drive enrollment before bills become crisis.</p>
-        <div class="stripe__quote">High-burden households are often enrolled in bill assistance programs only after they've already fallen behind. Bidgely identifies rising energy burden early — flagging households for proactive outreach before arrears accumulate.</div>
-        <ul class="stripe__bullets">
-          <li>Early-warning flags for rising energy cost burden</li>
-          <li>Segmented by program eligibility, income tier, and usage pattern</li>
-          <li>Feeds directly into LIHEAP, CARE, and custom bill assist workflows</li>
+        <h3>Connect the right customer to the right program at the right moment.</h3>
+        <div class="stripe__quote">Income-qualified customers often qualify for weatherization, assistance, efficiency rebates, and electrification programs simultaneously, but utilities enroll them in one at a time, often starting with the wrong one. A customer in arrears needs bill stabilization before a weatherization referral. A homeowner with degraded HVAC needs an efficiency upgrade, not a generic discount. When the right programs reach the right household in the right sequence, the impact compounds: arrears forgiven, bills stabilized, efficiency upgraded, energy burden cut in half. Without that sequencing, outreach wastes budget and leaves the highest-need households under-served.</div>
+        <ul class="stripe__bullets stripe__bullets--check">
+          <li>Pacific Power: 7% click-through rate on targeted IQ outreach, double the average for their existing customer communications</li><li>Avista: cut one household&rsquo;s heating costs from $424 to $163/month by pinpointing insulation gaps remotely, delivering ~$700 in savings over three months</li><li>Avista: reduced high-bill investigation truck rolls by ~27% through better targeting</li><li>Alabama Power: LMI customers represent 34% of the customer base, with targeted EE kit distribution and weatherization referrals driven by appliance-level segmentation</li><li>GenAI-powered recruitment personalizes messaging per household, adapts language dynamically including multilingual support, and eliminates conflicting or redundant program offers</li><li>Only 42&ndash;50% of assistance programs can be pre-qualified using income and household size alone&sup1;; Bidgely adds energy burden, arrears, appliance profile, and enrollment history to close the gap</li>
         </ul>
-        <a class="stripe__cta" href="#">
-          Explore Bill Assistance Programs
-          <img src="{{ ab }}/icon-feathericons-arrow-up-right-6.svg" alt="">
+        <a class="stripe__cta link-arrow" href="#">
+          Explore Program Sequencing
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
-      <div class="stripe__visual aff-placeholder">
-        [ Bill assistance visual placeholder ]
-      </div>
-    </div>
-
-    <div class="stripe">
-      <div class="stripe__copy">
-        <p class="eyebrow aff-stripe-label">03 &nbsp;WEATHERIZATION</p>
-        <h3>Weatherization &amp; Efficiency Program Targeting</h3>
-        <p class="stripe__sub">Target upgrades where they'll have the biggest impact on energy burden.</p>
-        <div class="stripe__quote">Weatherization dollars go furthest when they're concentrated on homes with the highest heating and cooling loads. Bidgely's appliance-level profiles identify inefficient HVAC, aging water heaters, and envelope losses — prioritizing upgrade candidates by both energy burden and program ROI.</div>
-        <ul class="stripe__bullets">
-          <li>Appliance-level identification of high-load, low-efficiency homes</li>
-          <li>Income-eligibility scoring layered on top of usage signals</li>
-          <li>Program M&amp;V built in — measure savings at appliance level post-upgrade</li>
-        </ul>
-        <a class="stripe__cta" href="#">
-          Explore Weatherization Targeting
-          <img src="{{ ab }}/icon-feathericons-arrow-up-right-7.svg" alt="">
-        </a>
-      </div>
-      <div class="stripe__visual aff-placeholder">
-        [ Weatherization targeting placeholder ]
+      <div class="stripe__visual">
+        <img data-asset="affordability-diagram-2.svg" src="{{ asset_base }}/affordability-diagram-3.svg" alt="Program matching and sequencing diagram" class="stripe__img" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
-{# ===== 5. AGENTIC AUTOMATION ===== #}
+
 <section class="section section--navy">
   <div class="container">
     <div class="agentic-head">
       <div>
-        <p class="eyebrow aff-eyebrow-light">AGENTIC AUTOMATION IN AFFORDABILITY</p>
-        <h2 class="h2 aff-agentic-h2">AI agents that find, route, sequence programs, and prove impact.</h2>
-        <p class="lede aff-lede-light">Bidgely's agentic layer runs the affordability workflows your team currently does manually — from candidate identification to program enrollment to M&amp;V reporting — without adding headcount.</p>
+        <p class="eyebrow">AGENTIC AUTOMATION IN AFFORDABILITY</p>
+        <h2 class="h2">AI agents that find need, sequence programs, and <span class='accent'>prove impact</span>&mdash;without manual analysis.</h2>
+        <p class="lede">Bidgely&rsquo;s agentic layer automates the IQ workflows your team currently does manually, from premises-level detection to program recommendation to equity reporting, without adding headcount.</p>
       </div>
       <div class="agentic-pill">
-        <div class="label">PROGRAM EFFICIENCY, MODELED</div>
-        <div class="val">~40% lower</div>
-        <div class="sub">Cost per enrollment vs. broad-territory outreach</div>
+        <div class="label">Modeled value at 1M customers</div>
+        <div class="val">$13–31M</div>
+        <div class="sub">per year in customer bill savings from incremental IQ enrollment, plus $500K/year in reduced outreach waste from precision targeting.</div>
       </div>
     </div>
+
     <div class="agent-cards">
       <article class="agent-card">
-        <img src="{{ ab }}/target.svg" alt="" width="42" height="42">
-        <h4>Eligibility Discovery Agent</h4>
-        <p>Continuously scores the full service territory for LMI eligibility, energy burden, and program fit. Refreshes candidate lists automatically as usage patterns change — no manual pulls, no stale LIHEAP crosswalks.</p>
-        <div class="meta">Live eligibility scoring across full territory</div>
+        <img data-asset="affordability-icon-1.svg" src="{{ asset_base }}/affordability-icon-5.svg" alt="" class="cap-card__icon-img" loading="lazy">
+        <h4>IQ Detection & Prioritization Agent</h4>
+        <p>Continuously scores every premises for IQ eligibility using income estimation, energy burden, arrearage risk, and program enrollment status. Surfaces the &ldquo;stacked eligibility&rdquo; segment: customers eligible for 3+ programs but enrolled in none. Generates prioritized outreach lists ranked by urgency and savings potential.</p>
       </article>
+
       <article class="agent-card">
-        <img src="{{ ab }}/customer-experience-v1.svg" alt="" width="42" height="42">
-        <h4>Program Enrollment Agent</h4>
-        <p>Identifies program-eligible households, segments by benefit tier and outreach timing, and runs personalized enrollment journeys — including follow-ups and re-engagements — without manual campaign management.</p>
-        <div class="meta">3x enrollment lift vs. broad-territory campaigns</div>
+        <img data-asset="affordability-icon-1.svg" src="{{ asset_base }}/affordability-icon-6.svg" alt="" class="cap-card__icon-img" loading="lazy">
+        <h4>Program Recommendation Agent</h4>
+        <p>For each identified IQ customer, determines which programs to recommend and in what sequence. Applies a decision hierarchy: arrears management first for accounts at disconnect risk, rate assistance second for high energy burden, weatherization third for inefficient housing stock, and electrification rebates for eligible homeowners.</p>
       </article>
+
       <article class="agent-card">
-        <img src="{{ ab }}/explain-bill.svg" alt="" width="42" height="42">
-        <h4>Impact Measurement Agent</h4>
-        <p>Tracks bill reduction, load shift, and savings attribution at the premises and appliance level post-enrollment. Auto-generates M&amp;V reports for regulators and program leadership without analyst intervention.</p>
-        <div class="meta">Appliance-level M&amp;V — no billing regression required</div>
+        <img data-asset="affordability-icon-1.svg" src="{{ asset_base }}/affordability-icon-7.svg" alt="" class="cap-card__icon-img" loading="lazy">
+        <h4>Equity & Compliance Reporting Agent</h4>
+        <p>Tracks IQ program participation by geography, income band, and demographic segment. Flags enrollment gaps against Justice40 and state equity mandates. Generates regulator-ready reports showing who was reached, who was missed, and what outcomes were delivered.</p>
       </article>
     </div>
   </div>
 </section>
 
-{# ===== 6. GENAI PERSONALIZATION ===== #}
+
 <section class="section section--grey">
   <div class="container">
     <div class="genai__head">
       <p class="eyebrow">GENAI IN AFFORDABILITY</p>
-      <h2 class="h2">Every customer gets the right message, <span class="accent">at the right time.</span></h2>
-      <p class="lede aff-lede">Bidgely's GenAI layer personalizes affordability outreach at scale — grounded in each household's real energy profile, not a generic template.</p>
+      <h2 class="h2">Every IQ customer gets the right message, <span class='accent'>in their language, at the right time.</span></h2>
+      <p class="lede">Bidgely&rsquo;s GenAI layer powers personalized, multilingual IQ outreach at a scale no human team can match. Every message is grounded in that customer&rsquo;s actual usage, energy burden, and program eligibility.</p>
     </div>
+
     <div class="genai">
-      <div>
+      <div class="genai__cards">
         <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ ab }}/ders-icon-v1.svg');"></div>
+          <div class="ic" style="background-image:url('https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ders-icon-v1.svg');"></div>
           <div>
-            <h4>Affordability Advisor (Customer-Facing)</h4>
-            <p>Conversational AI embedded in your portal that answers "what programs am I eligible for?" with personalized recommendations — based on that customer's actual usage, income proxy, and current enrollment status.</p>
+            <h4>IQ Energy Advisor</h4>
+            <p>A conversational AI embedded in your portal or app that helps IQ customers understand their energy burden, explore available programs, and check eligibility with clear, plain-language explanations grounded in their actual usage profile.</p>
           </div>
         </div>
         <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ ab }}/iucx-icon-05-1.svg');"></div>
+          <div class="ic" style="background-image:url('https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/iucx-icon-05-1.svg');"></div>
           <div>
-            <h4>Program Analyst Copilot</h4>
-            <p>A GenAI assistant for affordability and DSM teams. Ask plain-language questions about program pipeline, enrollment gaps, and impact performance — get appliance-level answers without building a query.</p>
+            <h4>IQ Recruitment Engine</h4>
+            <p>GenAI-powered Next Best Interactions dynamically adapt language, timing, and program recommendations to each IQ household. Incorporates income probability, energy usage, arrears patterns, and weather to ensure every interaction is timely and relevant.</p>
           </div>
         </div>
         <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ ab }}/daas-v2.svg');"></div>
+          <div class="ic" style="background-image:url('https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/daas-v2.svg');"></div>
           <div>
-            <h4>Personalized Outreach Generation</h4>
-            <p>Auto-generated enrollment messages tailored to each household's energy burden, program eligibility, and preferred channel — driving higher open and conversion rates than generic bulk campaigns.</p>
+            <h4>CSR Affordability Copilot</h4>
+            <p>When a customer calls about a high bill or payment difficulty, the CSR Copilot surfaces their IQ eligibility status, energy burden score, and recommended program stack so the agent can connect them to the right help in one call.</p>
           </div>
         </div>
       </div>
-      <div class="aff-genai-placeholder">
-        [ AI personalization mockup placeholder ]
+
+      <div class="genai__visual">
+        <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grounded-conversations.svg" alt="IQ Energy Advisor conversation mockup" class="genai__img" loading="lazy">
       </div>
     </div>
   </div>
 </section>
 
-{# ===== 7. PROVEN RESULTS ===== #}
+
 <section class="section section--white">
   <div class="container">
-    <div class="results-head">
-      <div>
-        <p class="eyebrow">PROVEN RESULTS</p>
-        <h2 class="h2">Best affordability outcomes for <span class="accent">utilities and their customers.</span></h2>
-      </div>
+    <div class="results-head" style="display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:28px;">
+      <p class="eyebrow">PROVEN RESULTS</p>
+      <h2 class="h2" style="margin:0;">Real affordability outcomes for utilities and their customers. <span class='accent'>Measured at the premises.</span></h2>
     </div>
-    <div class="peers">
-      <span>PEER UTILITIES:</span>
-      <img src="{{ ab }}/frame-2147227076.svg" alt="Peer utility logos" width="734" height="38">
+
+    
+    <div class="trust-strip">
+      <p class="trust-strip__label">DEPLOYED WITH</p>
+      <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/pacific-power-logo-color.svg" loading="lazy">
+      <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/avista-logo.svg" loading="lazy">
+      <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/Affordability/Alabama-Power-Logo.svg" loading="lazy">
+      <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/desc-logo-color.svg" alt="DESC" class="trust-strip__logo" loading="lazy">
+      <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/Affordability/Entergy-Logo.svg" loading="lazy">
+      <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/OGE-Color-logo-2.svg" alt="OG&E" class="trust-strip__logo" loading="lazy">
     </div>
-    <div class="case">
-      <div class="case__left">
-        <div class="case__eyebrow">AFFORDABILITY · LMI TARGETING · BILL ASSISTANCE</div>
-        <h3 class="case__title">Pacific Power</h3>
-        <p class="case__copy">Pacific Power needed to dramatically improve LMI enrollment rates for their CARE-equivalent program while reducing the cost of outreach. Using Bidgely's income-proxy scoring and appliance-level profiling, Pacific Power identified eligible households proactively — reaching them before bills became unmanageable and reducing outreach cost per enrollment significantly.</p>
-        <div class="case__hero">
-          <div class="v">3x</div>
-          <div class="l">Enrollment lift vs. broad-territory outreach campaigns</div>
-        </div>
-      </div>
-      <div class="case__right">
-        <p class="case__quote">"Bidgely's precision targeting let us stop mailing the whole territory and start finding the households who actually needed help — before they called us in crisis."</p>
-        <div class="case__stats">
-          <div class="case__stat"><div class="v">AMI-only</div><div class="l">No surveys or income disclosure required</div></div>
-          <div class="case__stat"><div class="v">40%</div><div class="l">Reduction in cost per enrollment</div></div>
-          <div class="case__stat"><div class="v">Premise-level</div><div class="l">M&amp;V with appliance attribution</div></div>
-          <div class="case__stat"><div class="v">Continuous</div><div class="l">Eligibility refresh as usage changes</div></div>
-        </div>
-        <a class="case__cta" href="#">
-          Read the Pacific Power Case Study
-          <img src="{{ ab }}/icon-feathericons-arrow-up-right-4.svg" alt="">
+
+    <div class="pr-case">
+      
+      <div class="pr-case__featured">
+        <div class="pr-case__featured-label">FEATURED CASE STUDY</div>
+        <h3 class="pr-case__featured-title">Pacific Power Unlocks Affordability With Precision Targeting</h3>
+        <blockquote class="pr-case__featured-quote">
+          &ldquo;Bidgely helped us create a segment to isolate customers who were below $70,000 and in the top 10% of electrical usage.&rdquo;<cite>Barb Modey, Customer Satisfaction Market Research Manager, PacifiCorp</cite>
+        </blockquote>
+        <ul class="pr-case__featured-metrics">
+          <li>71,118 enrolled participants (surpassing 70K goal)</li><li>90% customer satisfaction</li><li>10% improvement in J.D. Power Affordability program awareness score</li><li>14,000 new prospects uncovered for 2026</li>
+        </ul>
+        <span class="pr-case__award">2026 E&E Product Leader Award for Income-Qualified Solution</span>
+        <a class="pr-case__featured-cta" href="#">
+          Read Case Study
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
-    </div>
-    <div class="case-also">
-      <article class="case-tile">
-        <div class="case-tile__utility">AVISTA</div>
-        <div class="case-tile__title">LMI targeting + weatherization program precision</div>
-        <p class="case-tile__copy">Avista used Bidgely to identify weatherization candidates by layering appliance-level efficiency signals onto LMI eligibility scores — directing upgrade dollars to the highest-burden, highest-ROI homes.</p>
-        <a class="case-tile__cta" href="#">Read the Case Study <img src="{{ ab }}/icon-feathericons-arrow-up-right-4.svg" alt=""></a>
-      </article>
-      <article class="case-tile">
-        <div class="case-tile__utility">NW NATURAL</div>
-        <div class="case-tile__title">Bill assistance enrollment + 238% of contracted savings</div>
-        <p class="case-tile__copy">NW Natural exceeded all program performance targets in year one — using Bidgely's propensity targeting to enroll the highest-burden households first and drive verified savings at the appliance level.</p>
-        <a class="case-tile__cta" href="#">Read the Case Study <img src="{{ ab }}/icon-feathericons-arrow-up-right-4.svg" alt=""></a>
-      </article>
-      <article class="case-tile">
-        <div class="case-tile__utility">PSEG LONG ISLAND</div>
-        <div class="case-tile__title">Personalized affordability communications at scale</div>
-        <p class="case-tile__copy">PSEG Long Island used Bidgely to deliver personalized energy burden insights and program recommendations — achieving 3x engagement lift and 97% customer satisfaction.</p>
-        <a class="case-tile__cta" href="#">Read the Case Study <img src="{{ ab }}/icon-feathericons-arrow-up-right-4.svg" alt=""></a>
-      </article>
-    </div>
-  </div>
-</section>
 
-{# ===== 8. CTA STRIP ===== #}
-<section class="cta-strip">
-  <div class="cta-strip__inner">
-    <h2>Ready to transform your affordability programs?</h2>
-    <a class="btn btn--white" href="#">Book a Demo</a>
+      
+      <div class="pr-case__proofs">
+        <div class="pr-case__proof">
+          <div class="pr-case__proof-label">SECONDARY PROOF POINT</div>
+          <div class="pr-case__proof-logo">
+            <span style="font-size:18px; font-weight:700; color:var(--nile); letter-spacing:.3px;">Avista</span>
+          </div>
+          <p class="pr-case__proof-copy">
+            160,000+ eligible households identified. Heating costs reduced from $424 to $163/month for one targeted household, saving ~$700 over three months. 90 rural customers qualified for USDA grants in 10 minutes. ~27% reduction in high-bill truck rolls. Low-income customers who previously rated their utility lower on trust and satisfaction are now receiving the personalized support that rebuilds that relationship.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="footnotes">
+      &sup1; Bidgely analysis of existing utility IQ program pre-qualification workflows.
+    </div>
   </div>
 </section>
+        {% end_module_attribute %}
+      {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+{% end_dnd_area %}
 
 {# Resources (HubDB): hubdb_row_ids → curated rows only (ignores tag). Else → tag filter; newest hs_updated_at first. hubdb_limit=max cards. #}
-{% module "resources_affordability" path="../modules/resources-hubdb.module",
+{% module "resources_electrification" path="../modules/resources-hubdb.module",
   ce_resources_eyebrow="Resources",
   filter_value="CX",
   hubdb_limit=3 %}

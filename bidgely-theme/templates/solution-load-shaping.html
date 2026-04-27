@@ -209,11 +209,11 @@
         </a>
       </div>
       <div class="hero__copy body-sm">
-        {% rich_text "hero_copy" html="Most Time of Use (TOU) and Demand Response (DR) programs are built on assumptions: generic outreach, stale baselines, and hope. Meanwhile, regulators are asking for evidence, peaks keep growing, and the customers who could actually shift load never get the right message. The customers who can reshape your load curve are already in your service territory. Most utilities just can&rsquo;t find them. Bidgely transforms load shaping from a rate rollout into a guided behavioral journey with targeting that finds real flexibility, coaching that changes behavior, and analytics that prove it." no_wrapper=True %}
+        {% rich_text "hero_copy" html="TOU and DR programs run on assumptions: generic outreach, stale baselines, and hope. The customers who can actually reshape your load curve are already in your territory. Bidgely finds them, coaches them to shift, and proves they did." no_wrapper=True %}
       </div>
     </div>
     <div class="hero-visual">
-      {% image "hero_visual" src="{{ asset_base }}/load-shaping-hero-diagram.svg" alt="Load shaping analytics dashboard preview" class="hero-visual__img" %}
+      {% image "hero_visual" src="{{ asset_base }}/load-shaping-diagram-1.svg" alt="Load shaping analytics dashboard preview" class="hero-visual__img" %}
     </div>
   </div>
 </section>
@@ -237,32 +237,32 @@
   <div class="container">
     <p class="eyebrow">{% text "cap_eyebrow" value="JOBS TO BE DONE" no_wrapper=True %}</p>
     <h2 class="h2">
-      {% rich_text "cap_heading" html="The flexibility is already in your customer base. <span class='accent'>These outcomes prove it.</span>" no_wrapper=True %}
+      {% rich_text "cap_heading" html="The flexibility is already in your customer base. <br><span class='accent'>These outcomes prove it.</span>" no_wrapper=True %}
     </h2>
 
     <div class="cards-4 mt-8">
       <article class="card">
         {% image "cap1_icon" src="{{ asset_base }}/load-shaping-icon-1.svg" alt="" class="cap-card__icon-img" %}
         <h3 class="card__title">{% rich_text "cap1_title" html="Design rates that actually reshape the load curve." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap1_copy" html="Go beyond flat-rate assumptions. Model proposed Time of Use (TOU), Time of Day (TOD), Critical Peak Pricing (CPP), and demand-charge rates against real appliance-level usage at every premises to predict bill impact, identify shiftable load, and segment customers before a single enrollment email goes out." no_wrapper=True %}</p>
+        <p class="card__copy">{% rich_text "cap1_copy" html="Model TOU, TOD, CPP, and demand-charge rates against real appliance-level usage to predict bill impact and segment customers before a single enrollment email goes out." no_wrapper=True %}</p>
       </article>
 
       <article class="card">
         {% image "cap2_icon" src="{{ asset_base }}/load-shaping-icon-2.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap2_title" html="Recruit the right customers and stop wasting budget on the wrong ones." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap2_copy" html="Target customers by actual shift potential, not billing averages. Use per-household bill simulations and GenAI-powered personalized messaging that drives 10X higher conversion than generic outreach. One utility saw 18% bill savings potential for its high-flexibility segment vs. bill shock and churn for non-targeted enrollees." no_wrapper=True %}</p>
+        <h3 class="card__title">{% rich_text "cap2_title" html="Stop wasting budget on the wrong customers." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap2_copy" html="Target by actual shift potential, not billing averages. Per-household bill simulations and personalized messaging consistently outperform generic outreach on enrollment and conversion." no_wrapper=True %}</p>
       </article>
 
       <article class="card">
         {% image "cap3_icon" src="{{ asset_base }}/load-shaping-icon-4.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap3_title" html="Coach enrolled customers to durable, measurable load shift." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap3_copy" html="Replace one-time enrollment with ongoing, personalized behavioral coaching. Peak usage appliance-specific recommendations powered by GenAI show each customer exactly what to change and how much they will save." no_wrapper=True %}</p>
+        <h3 class="card__title">{% rich_text "cap3_title" html="Coach customers past sign-up into lasting load shift." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap3_copy" html="Appliance-specific recommendations show each customer exactly what to change and how much they will save." no_wrapper=True %}</p>
       </article>
 
       <article class="card">
-        {% image "cap4_icon" src="{{ asset_base }}/load-shaping-icon-5.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap4_title" html="Prove grid value to regulators with verified, post-enrollment analytics." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap4_copy" html="Quantify before-and-after load shapes, calculate dollar-value of demand redistribution, and demonstrate regulator-ready ROI from actual premises-level data, not modeled estimates. Stale 12-month pre-enrollment baselines don&rsquo;t cut it anymore." no_wrapper=True %}</p>
+        {% image "cap4_icon" src="{{ asset_base }}/load-shaping-icon-5-2.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap4_title" html="Prove grid value with verified post-enrollment analytics." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap4_copy" html="Quantify before-and-after load shapes from actual customer data, not modeled estimates. Stale 12-month pre-enrollment baselines don't cut it anymore." no_wrapper=True %}</p>
       </article>
     </div>
   </div>
@@ -276,7 +276,7 @@
     <div class="solutions-head">
       <p class="eyebrow">{% text "sol_eyebrow" value="USE CASES" no_wrapper=True %}</p>
       <h2 class="h2">{% rich_text "sol_heading" html="What UtilityAI&trade; makes possible in <span class='accent'>load shaping and shifting.</span>" no_wrapper=True %}</h2>
-      <p class="lede">{% rich_text "sol_lede" html="Every utility has customers who have flexible load that can shift. The challenge is finding them, reaching them, and proving they did. Each use case runs on the same appliance-level intelligence layer, from rate design through coaching and measurement, so your rates, programs, and regulatory teams operate from one source of truth." no_wrapper=True %}</p>
+      <p class="lede">{% rich_text "sol_lede" html="The flexible load exists. The challenge is finding it, moving it, and proving it. One intelligence layer. One source of truth" no_wrapper=True %}</p>
     </div>
 
     {# Stripe 1 — TOU / TOD / CPP Rate Design & Launch #}
@@ -284,7 +284,7 @@
       <div class="stripe__copy">
         <h3>{% text "stripe1_title" value="TOU / TOD / CPP Rate Design & Launch" no_wrapper=True %}</h3>
         <p class="stripe__sub">{% text "stripe1_sub" value="Design smarter rates. Recruit the right customers. Coach them to shift. Prove it." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe1_quote" html="Most Time of Use (TOU) programs enroll customers based on billing data and hope for the best. Wrong customers get bill increases, right customers never enroll in the rate, and your regulator sees participation numbers with no verified load shift behind them. That gap between enrollment and impact is where programs fail and where peak demand keeps growing." no_wrapper=True %}</div>
+        <div class="stripe__quote">{% rich_text "stripe1_quote" html="Most TOU programs enroll based on billing data and hope. Wrong customers get bill shock. Right customers never enroll. Regulators see participation numbers with no verified load shift behind them." no_wrapper=True %}</div>
         <ul class="stripe__bullets stripe__bullets--check">
           {% rich_text "stripe1_bullets" html="<li>10X higher TOU conversion with personalized recruitment vs. generic messaging</li><li>900K customers auto-migrated to Time of Day (TOD) rates with 97&ndash;98% retention (PSEG Long Island)</li><li>72% reduction in customers increasing peak usage after targeted coaching (OG&amp;E SmartHours)</li><li>9.2 MW demand swing from coaching alone, equivalent to $200K+ in avoided event-based Demand Response (DR) incentive payments, using only 2&ndash;3 personalized emails with no additional incentive spend</li><li>97 MW SmartHours demand savings, 114% actual-to-target performance</li><li>81%+ CSAT on coached TOU programs</li>" no_wrapper=True %}
         </ul>
@@ -303,7 +303,7 @@
       <div class="stripe__copy">
         <h3>{% text "stripe2_title" value="Behavioral Demand Response" no_wrapper=True %}</h3>
         <p class="stripe__sub">{% text "stripe2_sub" value="Turn peak events from blunt-force curtailment into precision demand flexibility." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe2_quote" html="Traditional Behavioral Demand Response (BDR) treats every customer the same: generic event notifications, flat participation assumptions, and seasonal savings estimates that rarely reflect what actually happened behind the meter. Without knowing which appliances drive each customer&rsquo;s peak contribution, your cost per kW stays high and your regulators question whether the program is delivering real capacity value. Regulators are increasingly requiring verified, per-customer capacity contributions to count behavioral DR toward resource adequacy." no_wrapper=True %}</div>
+        <div class="stripe__quote">{% rich_text "stripe2_quote" html="Traditional BDR sends the same message to every customer. Without knowing which appliances drive each customer's peak contribution, cost per kW stays high and regulators question whether the program delivers real capacity value." no_wrapper=True %}</div>
         <ul class="stripe__bullets stripe__bullets--check">
           {% rich_text "stripe2_bullets" html="<li>450,000+ customers enrolled in behavioral DR programs</li><li>0.2&ndash;0.5 kW peak demand reduction per participating customer</li><li>Appliance-level segmentation identifies high-impact HVAC, water heater, and EV loads for targeted event messaging</li><li>Self-serve utility console for seamless DR event triggering and post-event close-the-loop communications</li><li>Pre-event, during-event, and post-event personalized communications powered by disaggregation insights</li>" no_wrapper=True %}
         </ul>
@@ -322,7 +322,7 @@
       <div class="stripe__copy">
         <h3>{% text "stripe3_title" value="DERMS / DRMS / VPP Targeting & Recruiting" no_wrapper=True %}</h3>
         <p class="stripe__sub">{% text "stripe3_sub" value="Find the flexible assets hiding on your grid. Recruit the customers who own them." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe3_quote" html="The flexible capacity you need for your Virtual Power Plant (VPP) is already on your grid. You just can&rsquo;t see it yet. 90% of smart thermostats in your territory are not enrolled in Demand Response (DR).&sup1; Many EV owners are charging on-peak and have never been contacted. One utility discovered 7,000 EVs not enrolled in the optimal overnight rate, nearly double the existing participant count. Your Distributed Energy Resource Management System (DERMS) and DR Management System (DRMS) platforms need participating devices and engaged customers to deliver value. Broad recruitment campaigns waste budget on low-impact households while the highest-value DER owners sit untouched in your AMI data." no_wrapper=True %}</div>
+        <div class="stripe__quote">{% rich_text "stripe3_quote" html="The flexible capacity you need is already on your grid. You just can't see it yet. Broad campaigns keep missing the highest-value DER owners because they target the wrong signal." no_wrapper=True %}</div>
         <ul class="stripe__bullets stripe__bullets--check">
           {% rich_text "stripe3_bullets" html="<li>43% lower cost per kW through targeted DR recruitment ($149 vs. $260/kW)</li><li>1.3 kW/car load reduction from targeted EV recruitment, 3X the industry average&sup2;</li><li>41% click-through on targeted DER campaigns vs. single-digit industry benchmarks&sup3;</li><li>33,000 EV candidates compressed to 1,000 high-value targets (NV Energy)</li><li>Cost of load shifting drops from ~$250/kW to sub-$90/kW at scale with targeted approach</li><li>Capacity procured through targeted DER recruitment costs a fraction of supply-side alternatives</li>" no_wrapper=True %}
         </ul>
@@ -360,19 +360,19 @@
       <article class="agent-card">
         {% image "ag_card1_icon" src="{{ asset_base }}/iucx-icon-05.svg" alt="" width="42" height="42" %}
         <h4>{% text "ag_card1_title" value="Demand Flexibility Agent" no_wrapper=True %}</h4>
-        <p>{% rich_text "ag_card1_copy" html="Continuously monitors Time of Use (TOU) and Demand Response (DR) program performance by segment. Identifies emerging poor performers, triggers targeted coaching interventions, and flags high-value participants for retention before the season ends. What one utility did manually in 2025, segment by segment with 2&ndash;3 email sends to correct 900+ poor performers, this agent does continuously and automatically across every rate and program." no_wrapper=True %}</p>
+        <p>{% rich_text "ag_card1_copy" html="Monitors TOU and DR performance by segment. Flags poor performers mid-cycle, triggers coaching interventions, and identifies high-value participants for retention before the season ends." no_wrapper=True %}</p>
       </article>
 
       <article class="agent-card">
-        {% image "ag_card2_icon" src="{{ asset_base }}/Group.svg" alt="" width="42" height="42" %}
+        {% image "ag_card2_icon" src="{{ asset_base }}/Behavioral-Engagement-Agent.svg" alt="" width="42" height="42" %}
         <h4>{% text "ag_card2_title" value="Rate Simulation Agent" no_wrapper=True %}</h4>
-        <p>{% rich_text "ag_card2_copy" html="Automatically models the impact of proposed and active TOU, Time of Day (TOD), Critical Peak Pricing (CPP), and demand-charge rate structures across your customer base. Surfaces bill-impact distributions, shiftable-load potential, and recruitment cohorts on demand, without custom analysis." no_wrapper=True %}</p>
+        <p>{% rich_text "ag_card2_copy" html="Models proposed and active TOU, TOD, CPP, and demand-charge structures across your customer base. Surfaces bill-impact distributions, shiftable-load potential, and recruitment cohorts without custom analysis." no_wrapper=True %}</p>
       </article>
 
       <article class="agent-card">
-        {% image "ag_card3_icon" src="{{ asset_base }}/g9044.svg" alt="" width="42" height="42" %}
+        {% image "ag_card3_icon" src="{{ asset_base }}/NW-Natural-White-Logo.svg" alt="" width="175" height="42" %}
         <h4>{% text "ag_card3_title" value="DR Event Optimization Agent" no_wrapper=True %}</h4>
-        <p>{% rich_text "ag_card3_copy" html="Monitors grid conditions, identifies the highest-impact customers for each event based on real-time appliance profiles, and triggers personalized event communications. Closes the loop with post-event performance analytics by premises." no_wrapper=True %}</p>
+        <p>{% rich_text "ag_card3_copy" html="Identifies the highest-impact customers for each event based on real-time appliance profiles, triggers personalized communications, and closes the loop with post-event analytics." no_wrapper=True %}</p>
       </article>
     </div>
   </div>
@@ -426,12 +426,14 @@
     {# Trust strip — deployed-with logo row #}
     <div class="trust-strip">
       <p class="trust-strip__label">{% text "trust_label" value="DEPLOYED WITH" no_wrapper=True %}</p>
-      {% image "trust_logo1" src="{{ asset_base }}/oge-logo-color.svg" alt="OG&E" class="trust-strip__logo" %}
-      {% image "trust_logo2" src="{{ asset_base }}/pseg-li-logo-color.svg" alt="PSEG Long Island" class="trust-strip__logo" %}
-      {% image "trust_logo3" src="{{ asset_base }}/desc-logo-color.svg" alt="DESC" class="trust-strip__logo" %}
-      <span class="trust-strip__text">{% text "trust_text1" value="PNM" no_wrapper=True %}</span>
-      {% image "trust_logo4" src="{{ asset_base }}/nv-energy-logo-color.svg" alt="NV Energy" class="trust-strip__logo" %}
-      <span class="trust-strip__text">{% text "trust_text2" value="Duke Energy" no_wrapper=True %}</span>
+      {% image "trust_logo1" src="{{ asset_base }}/OGE-Color-logo-2.svg" alt="OG&E" class="trust-strip__logo" %}
+      {% image "trust_logo2" src="{{ asset_base }}/pseg-logo-color.svg" alt="PSEG Long Island" class="trust-strip__logo" %}
+      {% image "trust_logo3" src="{{ asset_base }}/Duke-Energy-Color-Logo-2.svg" alt="DESC" class="trust-strip__logo" %}
+      {# <span class="trust-strip__text">{% text "trust_text1" value="PNM" no_wrapper=True %}</span> #}
+      {% image "trust_logo4" src="{{ asset_base }}/desc-logo-color.svg" alt="NV Energy" class="trust-strip__logo" %}
+      {% image "trust_logo4" src="{{ asset_base }}/nv-energy-logo-color-2.svg" alt="NV Energy" class="trust-strip__logo" %}
+      {% image "trust_logo4" src="{{ asset_base }}/Duke-Energy-Color-Logo-2.svg" alt="NV Energy" class="trust-strip__logo" %}
+      {# <span class="trust-strip__text">{% text "trust_text2" value="Duke Energy" no_wrapper=True %}</span> #}
     </div>
 
     <div class="pr-case">

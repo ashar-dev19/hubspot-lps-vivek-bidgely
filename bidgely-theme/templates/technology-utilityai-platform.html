@@ -232,7 +232,7 @@
     <span class="hero__eyebrow">UTILITYAI PLATFORM</span>
     <h1>Pre-Built for Utilities.<br>Configurable for <span class="accent">Yours.</span></h1>
     <p class="tup-hero__sub">One intelligence layer. Every meter. Every customer. Every decision — connected from raw AMI data to program outcomes your regulators can verify.</p>
-    <a class="btn btn--blue" href="#">See It in Action</a>
+    <a class="btn btn--navy" href="#">See It in Action</a>
   </div>
 </section>
 
@@ -310,10 +310,12 @@
         <div class="tup-arch__cloud">
           <p class="tup-arch__cloud-label">Deploy on your preferred cloud</p>
           <div class="tup-arch__cloud-logos">
-            <img src="{{ ab }}/amazon-web-services-logo-1.svg" alt="AWS">
-            <img src="{{ ab }}/20-Azure.svg" alt="Azure">
-            <img src="{{ ab }}/18-snowflake-1.svg" alt="Snowflake">
-            <img src="{{ ab }}/19-databricks-1.svg" alt="Databricks">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/div.px-3 (3).svg " alt="Snowflake">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/div.px-3 (4).svg " alt="Databricks">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/div.px-3.svg" alt="AWS">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/div.px-3 (1).svg" alt="Azure">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/div.px-3 (2).svg " alt="cloud">
+            
           </div>
           <p class="tup-arch__cloud-onprem">&#x1F3E2; On Premise</p>
         </div>
@@ -360,132 +362,109 @@
   </div>
 </section>
 
-{# ===== 3. VERTICAL AI LAYER — TABS ===== #}
-<section class="section section--pale tup-vtabs-section">
+{# ===== 3. VERTICAL AI LAYER — two fabric cards ===== #}
+<section class="section tup-vai-section">
   <div class="container">
+
     <div class="tup-section-head">
-      <p class="eyebrow">THE INTELLIGENCE LAYER</p>
-      <h2 class="h2">The Vertical AI Intelligence Layer<br><span class="accent">for Utilities.</span></h2>
-      <p class="lede">Every Bidgely capability runs on the same appliance-level foundation — so CX, DSM, EV, and affordability teams always work from the same source of truth.</p>
+      <p class="eyebrow">PLATFORM ARCHITECTURE</p>
+      <h2 class="h2">The Vertical AI Intelligence Layer for Utilities.</h2>
+      <p class="lede">Models run inside your environment. Your data never leaves. Deploy from the marketplace on any major cloud or data platform.</p>
     </div>
 
-    <div class="tup-vtabs" id="tup-vtabs">
-      <ul class="tup-vtabs__list" role="tablist">
-        <li class="tup-vtabs__tab is-active" role="tab" data-panel="0" tabindex="0">
-          <p class="tup-vtabs__tab-label">Customer Engagement</p>
-          <p class="tup-vtabs__tab-sub">Fewer calls, higher satisfaction</p>
-        </li>
-        <li class="tup-vtabs__tab" role="tab" data-panel="1" tabindex="0">
-          <p class="tup-vtabs__tab-label">DSM &amp; Demand Response</p>
-          <p class="tup-vtabs__tab-sub">Target the right load, at the right time</p>
-        </li>
-        <li class="tup-vtabs__tab" role="tab" data-panel="2" tabindex="0">
-          <p class="tup-vtabs__tab-label">EV Intelligence</p>
-          <p class="tup-vtabs__tab-sub">Detect, forecast, and manage EV load</p>
-        </li>
-        <li class="tup-vtabs__tab" role="tab" data-panel="3" tabindex="0">
-          <p class="tup-vtabs__tab-label">Affordability</p>
-          <p class="tup-vtabs__tab-sub">LMI targeting and program precision</p>
-        </li>
-      </ul>
+    <div class="tup-vai__grid">
 
-      <div class="tup-vtabs__panels">
-        <div class="tup-vtabs__panel is-active" role="tabpanel">
-          <div class="tup-vtabs__panel-inner">
-            <div class="tup-vtabs__panel-top">
-              <div class="tup-vtabs__panel-copy">
-                <h3>Personalized insights that deflect calls and drive enrollment.</h3>
-                <p>Bidgely delivers appliance-level bill explanations, proactive usage alerts, and program recommendations to every customer — embedded in your existing portal, IVR, or mobile app.</p>
-                <a class="stripe__cta" href="#">Explore Customer Engagement <img src="{{ ab }}/icon-feathericons-arrow-up-right-5.svg" alt=""></a>
-              </div>
-              <div class="tup-vtabs__panel-visual">[ CX dashboard placeholder ]</div>
-            </div>
-            <div class="tup-vtabs__panel-footer">
-              <div class="tup-vtabs__stat"><div class="tup-vtabs__stat-val">30–40%</div><div class="tup-vtabs__stat-label">Reduction in billing-related inbound calls</div></div>
-              <div class="tup-vtabs__stat"><div class="tup-vtabs__stat-val">97%</div><div class="tup-vtabs__stat-label">CSAT maintained across deployments</div></div>
-              <div class="tup-vtabs__stat"><div class="tup-vtabs__stat-val">2.8x</div><div class="tup-vtabs__stat-label">Program enrollment lift vs. broadcast campaigns</div></div>
-            </div>
+      {# Left card — GenAI Fabric (dark navy) #}
+      <div class="tup-vai__card">
+  
+  <div class="tup-vai__card-header">
+    <h3 class="tup-vai__card-title">GenAI Fabric</h3>
+  </div>
+
+  <div class="tup-vai__card-body">
+    <p class="tup-vai__card-desc">
+      Connects any LLM in your environment to the utility intelligence your meters already generate. One MCP server. Every LLM your organization already uses.
+    </p>
+
+    <ul class="tup-vai__list">
+      <li class="tup-vai__list-item">
+        <span class="tup-vai__dot"></span>
+        <div>
+          <div class="tup-vai__list-item-title">MCP Server</div>
+          <div class="tup-vai__list-item-sub">
+            Exposes your utility models and data to any LLM in your environment
           </div>
         </div>
+      </li>
 
-        <div class="tup-vtabs__panel" role="tabpanel">
-          <div class="tup-vtabs__panel-inner">
-            <div class="tup-vtabs__panel-top">
-              <div class="tup-vtabs__panel-copy">
-                <h3>Precision targeting for every DSM and demand response program.</h3>
-                <p>Score every premises for appliance-level DR flexibility, HVAC load, and EE propensity — so program outreach reaches households that will actually respond and save.</p>
-                <a class="stripe__cta" href="#">Explore DSM &amp; DR <img src="{{ ab }}/icon-feathericons-arrow-up-right-5.svg" alt=""></a>
-              </div>
-              <div class="tup-vtabs__panel-visual">[ DSM targeting dashboard placeholder ]</div>
-            </div>
-            <div class="tup-vtabs__panel-footer">
-              <div class="tup-vtabs__stat"><div class="tup-vtabs__stat-val">238%</div><div class="tup-vtabs__stat-label">Of contracted savings achieved in year one</div></div>
-              <div class="tup-vtabs__stat"><div class="tup-vtabs__stat-val">3x</div><div class="tup-vtabs__stat-label">Enrollment lift vs. territory-wide outreach</div></div>
-            </div>
+      <li class="tup-vai__list-item">
+        <span class="tup-vai__dot"></span>
+        <div>
+          <div class="tup-vai__list-item-title">LLM Connectors</div>
+          <div class="tup-vai__list-item-sub">
+            Microsoft Copilot, Claude, ChatGPT, and Glean
           </div>
         </div>
+      </li>
+    </ul>
 
-        <div class="tup-vtabs__panel" role="tabpanel">
-          <div class="tup-vtabs__panel-inner">
-            <div class="tup-vtabs__panel-top">
-              <div class="tup-vtabs__panel-copy">
-                <h3>Detect EVs on the network before they cause grid problems.</h3>
-                <p>Bidgely identifies EVs from AMI data alone — no customer disclosure required — and forecasts charging load by circuit and substation to inform infrastructure planning and managed-charging enrollment.</p>
-                <a class="stripe__cta" href="#">Explore EV Intelligence <img src="{{ ab }}/icon-feathericons-arrow-up-right-5.svg" alt=""></a>
-              </div>
-              <div class="tup-vtabs__panel-visual">[ EV detection dashboard placeholder ]</div>
-            </div>
-            <div class="tup-vtabs__panel-footer">
-              <div class="tup-vtabs__stat"><div class="tup-vtabs__stat-val">85%+</div><div class="tup-vtabs__stat-label">EV detection accuracy with AMI data only</div></div>
-              <div class="tup-vtabs__stat"><div class="tup-vtabs__stat-val">Circuit-level</div><div class="tup-vtabs__stat-label">Load forecast for infrastructure planning</div></div>
-            </div>
-          </div>
-        </div>
+    <a class="tup-vai__btn" href="#">
+      Explore the GenAI Fabric ↗
+    </a>
+  </div>
 
-        <div class="tup-vtabs__panel" role="tabpanel">
-          <div class="tup-vtabs__panel-inner">
-            <div class="tup-vtabs__panel-top">
-              <div class="tup-vtabs__panel-copy">
-                <h3>Find every LMI household your ZIP-code model is missing.</h3>
-                <p>Bidgely scores every premises for income proxy, energy burden, and program eligibility — identifying LMI households passively and continuously from AMI data, with no surveys or LIHEAP crosswalks required.</p>
-                <a class="stripe__cta" href="#">Explore Affordability <img src="{{ ab }}/icon-feathericons-arrow-up-right-5.svg" alt=""></a>
-              </div>
-              <div class="tup-vtabs__panel-visual">[ LMI targeting map placeholder ]</div>
+</div>
+
+      {# Right card — Agentic Automation Fabric (azure) #}
+      <div class="tup-vai__card tup-vai__card--azure">
+        <h3 class="tup-vai__card-title">Agentic Automation Fabric</h3>
+        <p class="tup-vai__card-desc">Production-ready agents for the workflows your teams run every day, and the infrastructure to build any agent your utility needs.</p>
+        <ul class="tup-vai__list">
+          <li>
+            <div>
+              <span class="tup-vai__list-item-title">Prebuilt Agents</span>
+              <span class="tup-vai__list-item-sub">Ready-to-deploy for high bill analysis, transformer monitoring, and more</span>
             </div>
-            <div class="tup-vtabs__panel-footer">
-              <div class="tup-vtabs__stat"><div class="tup-vtabs__stat-val">90%+</div><div class="tup-vtabs__stat-label">LMI identification precision without disclosure</div></div>
-              <div class="tup-vtabs__stat"><div class="tup-vtabs__stat-val">40%</div><div class="tup-vtabs__stat-label">Reduction in cost per enrollment</div></div>
+          </li>
+          <li>
+            <div>
+              <span class="tup-vai__list-item-title">Custom Agents</span>
+              <span class="tup-vai__list-item-sub">Build unlimited agents tailored to your utility workflows</span>
             </div>
-          </div>
-        </div>
+          </li>
+        </ul>
+        <a class="tup-vai__btn" href="#">
+          Explore Agentic Automation
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+
+    </div>{# end .tup-vai__grid #}
+
+    {# Stats row #}
+    <div class="tup-vai__stats">
+      <div class="tup-vai__stat">
+        <span class="tup-vai__stat-val">25</span>
+        <span class="tup-vai__stat-label">Patents</span>
+      </div>
+      <div class="tup-vai__stat">
+        <span class="tup-vai__stat-val">90%+</span>
+        <span class="tup-vai__stat-label">EV Detection Accuracy</span>
+      </div>
+      <div class="tup-vai__stat">
+        <span class="tup-vai__stat-val">50M+</span>
+        <span class="tup-vai__stat-label">Meters</span>
+      </div>
+      <div class="tup-vai__stat">
+        <span class="tup-vai__stat-val">1TB+</span>
+        <span class="tup-vai__stat-label">AMI Data Daily</span>
       </div>
     </div>
+
   </div>
 </section>
 
-{# ===== 4. METRICS STRIP ===== #}
-<section class="section section--white tup-metrics-section">
-  <div class="container">
-    <div class="metrics-grid">
-      <div class="metric">
-        <div class="metric__value">38M+</div>
-        <div class="metric__label">Meters analyzed across deployments</div>
-      </div>
-      <div class="metric">
-        <div class="metric__value">500M+</div>
-        <div class="metric__label">Personalized insights delivered annually</div>
-      </div>
-      <div class="metric">
-        <div class="metric__value">270B</div>
-        <div class="metric__label">Data points processed per home</div>
-      </div>
-      <div class="metric">
-        <div class="metric__value">177+</div>
-        <div class="metric__label">Utility deployments across 4 continents</div>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 {# ===== 5. BUILT FOR YOUR ENVIRONMENT ===== #}
 <section class="section section--pale tup-cloud-section">
