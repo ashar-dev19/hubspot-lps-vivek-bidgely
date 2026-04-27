@@ -1,0 +1,343 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: 260424 Bidgely Solution – CX
+  screenshotPath: ../images/template-previews/bidgely-solution-cx.png
+-->
+
+{% set asset_base = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+</head>
+  <style>
+  .hero {
+        position: relative;
+        background: url(https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-4.svg);
+        background-size: cover;
+    }
+    .hero::before{
+      display: none;
+    }
+    .hero::after{
+        display: none;
+    }
+  </style>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+{# =========================================================
+   HERO
+   ========================================================= #}
+<section class="hero">
+  <div class="hero__inner container">
+    <div class="hero__top">
+      <div>
+        <h1>
+          {% rich_text "hero_heading" html="Fewer Calls. Better Enrollment.
+Customers Who Actually<span class='accent'> Engage.</span>" no_wrapper=True %}
+        </h1>
+        <a class="btn btn--navy" href="{% text "hero_cta_link" value="#" no_wrapper=True %}">
+          {% text "hero_cta_label" value="Talk to an Expert" no_wrapper=True %}
+        </a>
+      </div>
+      <div class="hero__copy body-sm">
+        {% rich_text "hero_copy" html="Most CX platforms know what your customers did. Bidgely knows why, down to the appliance.
+That's the difference between a generic alert and one that changes behavior." no_wrapper=True %}
+      </div>
+    </div>
+    <div class="hero-visual">
+      {% image "hero_visual" src="{{ asset_base }}/cx-hero.svg" alt="UtilityAI CX hero dashboard preview" class="hero-visual__img" %}
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   NAVY CTA STRIP
+   ========================================================= #}
+<section class="cta-strip">
+  <div class="cta-strip__inner container">
+    <h2>{% text "strip_heading" value="See UtilityAI CX engagement in action." no_wrapper=True %}</h2>
+    <a class="btn btn--white" href="{% text "strip_cta_link" value="#" no_wrapper=True %}">
+      {% text "strip_cta_label" value="Talk to Sales" no_wrapper=True %}
+    </a>
+  </div>
+</section>
+
+{# =========================================================
+   CAPABILITIES – 4-CARD GRID
+   ========================================================= #}
+<section class="section section--pale">
+  <div class="container">
+    <p class="eyebrow">{% text "cap_eyebrow" value="Capabilities" no_wrapper=True %}</p>
+    <h2 class="h2">
+      {% rich_text "cap_heading" html="CX outcomes you can <span class='accent'>actually own.</span>" no_wrapper=True %}
+    </h2>
+    <p class="lede">
+      {% rich_text "cap_lede" html="The data you need is already behind every meter. Decode it and put it to work." no_wrapper=True %}
+    </p>
+
+    <div class="cards-4 mt-8">
+      <article class="card">
+        {% image "cap1_icon" src="{{ asset_base }}/explain-bill.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap1_title" html="Explain every bill before<br>the phone rings." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap1_copy" html="Surface appliance-level cost drivers proactively so customers already understand their bill and CSRs can resolve what does come in." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card">
+        {% image "cap2_icon" src="{{ asset_base }}/customer-experience-v1.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap2_title" html="Know exactly what moves<br>your satisfaction scores." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap2_copy" html="Map JD Power drivers to specific customer interactions so improvements are targeted and measurable, not guesswork." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card">
+        {% image "cap3_icon" src="{{ asset_base }}/target.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap3_title" html="Reach the right customers<br>with the right offer." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap3_copy" html="AI agents work continuously in the background across targeting, outreach, enrollment, and program management. You set the rules and approve what matters." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card">
+        {% image "cap4_icon" src="{{ asset_base }}/every-touchpoint.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap4_title" html="Make every digital<br>touchpoint feel personal." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap4_copy" html="Put appliance-level intelligence behind your portal, IVR, and app so customers feel understood, not processed." no_wrapper=True %}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   SOLUTIONS STRIPES
+   ========================================================= #}
+<section class="section section--white">
+  <div class="container">
+    <div class="solutions-head">
+      <p class="eyebrow">{% text "sol_eyebrow" value="Solutions" no_wrapper=True %}</p>
+      <h2 class="h2">{% rich_text "sol_heading" html="What <span class='accent'>UtilityAI</span> makes possible in CX." no_wrapper=True %}</h2>
+      <p class="lede">{% rich_text "sol_lede" html="Each use case uses the same appliance-level intelligence layer — so your CX, DSM, and marketing teams operate from the same source of truth." no_wrapper=True %}</p>
+    </div>
+
+    {# Stripe 1 #}
+    <div class="stripe">
+      <div class="stripe__copy">
+        <h3>{% text "stripe1_title" value="Proactive Usage Notifications" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "stripe1_sub" value="Alerts that change behavior, not just inboxes." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "stripe1_quote" html="Generic alerts train customers to ignore you. When every notification says the same thing to the same segment, open rates fall, calls rise, and trust erodes." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "stripe1_bullets" html="<li>85% verified CSAT on personalized alert programs</li><li>2+ quartile JD Power improvement at reference utilities</li><li>15%+ reduction in CSR churn from reduced inbound volume</li>" no_wrapper=True %}
+        </ul>
+        <a class="stripe__cta link-arrow" href="{% text "stripe1_cta_link" value="#" no_wrapper=True %}">
+          {% text "stripe1_cta_label" value="Explore Proactive Notifications" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+      <div class="stripe__visual">
+        {% image "stripe1_img" src="{{ asset_base }}/proactive-usage.svg" alt="Proactive usage notification comparison UI" class="stripe__img" %}
+      </div>
+    </div>
+
+    {# Stripe 2 #}
+    <div class="stripe stripe--reverse">
+      <div class="stripe__copy">
+        <h3>{% text "stripe2_title" value="High Bill Analyzer & Call Resolution" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "stripe2_sub" value="Resolve the call before the customer finishes explaining." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "stripe2_quote" html="CSRs are clicking through four systems to piece together a vague answer. Customers hang up unsatisfied. The same call comes back the next month." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "stripe2_bullets" html="<li>50%+ reduction in high-bill calls</li><li>30% reduction in average call handle time</li><li>Up to 25,000 CSR calls deflected in a single program cycle</li>" no_wrapper=True %}
+        </ul>
+        <a class="stripe__cta link-arrow" href="{% text "stripe2_cta_link" value="#" no_wrapper=True %}">
+          {% text "stripe2_cta_label" value="Explore High Bill Analyzer" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+      <div class="stripe__visual">
+        {% image "stripe2_img" src="{{ asset_base }}/high-bill.svg" alt="High bill analyzer console preview" class="stripe__img" %}
+      </div>
+    </div>
+
+    {# Stripe 3 #}
+    <div class="stripe">
+      <div class="stripe__copy">
+        <h3>{% text "stripe3_title" value="Customer Self-Service Tools" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "stripe3_sub" value="Self-service that actually resolves, not just redirects." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "stripe3_quote" html="Customers who can't explain their own bill don't trust their utility. Self-service built on whole-home averages doesn't resolve that — it moves the confusion online." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "stripe3_bullets" html="<li>18% TOU enrollment rates via targeted self-service journeys</li><li>127% of filed EE targets achieved across deployments</li><li>1.5 TWh+ in total energy saved</li>" no_wrapper=True %}
+        </ul>
+        <a class="stripe__cta link-arrow" href="{% text "stripe3_cta_link" value="#" no_wrapper=True %}">
+          {% text "stripe3_cta_label" value="Explore Self-Service Tools" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+      <div class="stripe__visual">
+        {% image "stripe3_img" src="{{ asset_base }}/customer-service.svg" alt="Customer self-service portal preview" class="stripe__img" %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   AGENTIC AUTOMATION
+   ========================================================= #}
+<section class="section section--navy">
+  <div class="container">
+    <div class="agentic-head">
+      <div>
+        <p class="eyebrow">{% text "ag_eyebrow" value="Agentic Automation in CX" no_wrapper=True %}</p>
+        <h2 class="h2">{% rich_text "ag_heading" html="AI that acts.<br>Not just advises." no_wrapper=True %}</h2>
+        <p class="lede">{% rich_text "ag_lede" html="Bidgely's agentic layer runs the workflows your team currently does manually across every customer touchpoint. From IVR personalization to campaign triggers, agents work continuously without adding headcount." no_wrapper=True %}</p>
+      </div>
+      <div class="agentic-pill">
+        <div class="label">{% text "ag_pill_label" value="Agentic Value, Modeled" no_wrapper=True %}</div>
+        <div class="val">{% text "ag_pill_value" value="$3–7M/year" no_wrapper=True %}</div>
+        <div class="sub">{% rich_text "ag_pill_sub" html="From deflected calls, improved enrollment, and automated DSM workflows" no_wrapper=True %}</div>
+      </div>
+    </div>
+
+    <div class="agent-cards">
+      <article class="agent-card">
+        {% image "ag_card1_icon" src="{{ asset_base }}/dtech26-for-regulators.svg" alt="" width="42" height="42" %}
+        <h4>{% text "ag_card1_title" value="IVR Personalization Agent" no_wrapper=True %}</h4>
+        <p>{% rich_text "ag_card1_copy" html="Detects the likely call reason before the customer finishes speaking — pulling from their live appliance profile and billing delta. Routes and resolves at the IVR level without a CSR." no_wrapper=True %}</p>
+        <div class="meta">{% text "ag_card1_meta" value="Up to 50,000 at-risk customers handled per program cycle" no_wrapper=True %}</div>
+      </article>
+
+      <article class="agent-card">
+        {% image "ag_card2_icon" src="{{ asset_base }}/black-1.svg" alt="" width="42" height="42" %}
+        <h4>{% text "ag_card2_title" value="Proactive Outreach Agent" no_wrapper=True %}</h4>
+        <p>{% rich_text "ag_card2_copy" html="Continuously monitors usage patterns and triggers personalized email, SMS, or portal messages before the customer has a reason to call. Picks the right channel and timing for each premise." no_wrapper=True %}</p>
+        <div class="meta">{% text "ag_card2_meta" value="15%+ reduction in CSR churn from reduced inbound volume" no_wrapper=True %}</div>
+      </article>
+
+      <article class="agent-card">
+        {% image "ag_card3_icon" src="{{ asset_base }}/iucx-icon-05.svg" alt="" width="42" height="42" %}
+        <h4>{% text "ag_card3_title" value="Program Enrollment Agent" no_wrapper=True %}</h4>
+        <p>{% rich_text "ag_card3_copy" html="Identifies program-eligible customers, segments by propensity, and runs targeted recruitment journeys — including follow-ups, re-engagements, and confirmation — without manual campaign management." no_wrapper=True %}</p>
+        <div class="meta">{% text "ag_card3_meta" value="4x reduction in marketing cost per enrollment" no_wrapper=True %}</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   GENAI
+   ========================================================= #}
+<section class="section section--gray">
+  <div class="container">
+    <div class="genai__head">
+      <p class="eyebrow">{% text "genai_eyebrow" value="GenAI in Customer Experience" no_wrapper=True %}</p>
+      <h2 class="h2">{% rich_text "genai_heading" html="Conversations grounded in real <span class='accent'>customer data.</span>" no_wrapper=True %}</h2>
+      <p class="lede">{% rich_text "genai_lede" html="Bidgely's GenAI layer doesn't run on generic LLM prompts. Every answer — to a customer or a CSR — is grounded in that customer's disaggregated appliance profile." no_wrapper=True %}</p>
+    </div>
+
+    <div class="genai">
+      <div class="genai__cards">
+        <div class="genai-card">
+          <div class="ic" style="background-image:url('{{ asset_base }}/ders-icon-v1.svg');"></div>
+          <div>
+            <h4>{% text "genai_card1_title" value="Energy Assistant (Customer-Facing)" no_wrapper=True %}</h4>
+            <p>{% rich_text "genai_card1_copy" html="A conversational AI that answers billing and usage questions, explains appliance-level charges, and recommends programs — embedded in your portal, app, or SMS channel. Personalized to each meter, not a generic chatbot." no_wrapper=True %}</p>
+          </div>
+        </div>
+        <div class="genai-card">
+          <div class="ic" style="background-image:url('{{ asset_base }}/iucx-icon-05-1.svg');"></div>
+          <div>
+            <h4>{% text "genai_card2_title" value="CSR Copilot" no_wrapper=True %}</h4>
+            <p>{% rich_text "genai_card2_copy" html="A GenAI assistant embedded in your CSR console. Agents ask plain-language questions and get appliance-level answers, rate comparisons, and next-best actions in seconds. No tab-switching required." no_wrapper=True %}</p>
+          </div>
+        </div>
+        <div class="genai-card">
+          <div class="ic" style="background-image:url('{{ asset_base }}/daas-v2.svg');"></div>
+          <div>
+            <h4>{% text "genai_card3_title" value="Chart & Bill Explainers" no_wrapper=True %}</h4>
+            <p>{% rich_text "genai_card3_copy" html="Usage charts and bill breakdowns with embedded natural-language explanations. Customers can tap any bar, spike, or line item and get a plain-English reason — powered by the same disaggregation that drives your CSR tools." no_wrapper=True %}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="genai__visual">
+        {% image "genai_visual" src="{{ asset_base }}/grounded-conversations.svg" alt="Grounded conversations assistant preview" class="genai__img" %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   PROVEN RESULTS (case study)
+   ========================================================= #}
+<section class="section section--white">
+  <div class="container">
+    <div class="results-head">
+      <div>
+        <p class="eyebrow">{% text "results_eyebrow" value="Proven Results" no_wrapper=True %}</p>
+        <h2 class="h2">{% rich_text "results_heading" html="Deployed at scale. <span class='accent'>Measured at the meter.</span>" no_wrapper=True %}</h2>
+      </div>
+    </div>
+
+    <div class="peers">
+      <span>{% text "peers_label" value="Peer Utilities:" no_wrapper=True %}</span>
+      {% image "peers_logos" src="{{ asset_base }}/frame-2147227076.svg" alt="Peer utility logos" width="734" height="38" %}
+    </div>
+
+    <div class="case">
+      <div class="case__left">
+        <div class="case__eyebrow">{% text "case_eyebrow" value="Customer Engagement · High Bill Resolution" no_wrapper=True %}</div>
+        <h3 class="case__title">{% text "case_title" value="Large Western IOU" no_wrapper=True %}</h3>
+        <p class="case__copy">{% rich_text "case_copy" html="Following a TOU rollout, this utility faced a surge in high-bill call volume — CSRs were overwhelmed and first-contact resolution was falling. They needed a way to explain bill changes at the appliance level and deflect calls before they came in." no_wrapper=True %}</p>
+        <div class="case__hero">
+          <div class="v">{% text "case_hero_value" value="50%+" no_wrapper=True %}</div>
+          <div class="l">{% text "case_hero_label" value="Reduction in high-bill call volume — without adding headcount" no_wrapper=True %}</div>
+        </div>
+      </div>
+      <div class="case__right">
+        <p class="case__quote">{% rich_text "case_quote" html="\"Bidgely gave us visibility we never had: appliance-level insights that transformed how we talk to customers and recruit for programs. We're resolving calls we used to escalate and enrolling customers we used to miss.\"" no_wrapper=True %}</p>
+        <div class="case__stats">
+          <div class="case__stat">
+            <div class="v">{% text "stat1_v" value="30%" no_wrapper=True %}</div>
+            <div class="l">{% text "stat1_l" value="Reduction in average handle time" no_wrapper=True %}</div>
+          </div>
+          <div class="case__stat">
+            <div class="v">{% text "stat2_v" value="3.1×" no_wrapper=True %}</div>
+            <div class="l">{% text "stat2_l" value="Increase in program enrollment" no_wrapper=True %}</div>
+          </div>
+          <div class="case__stat">
+            <div class="v">{% text "stat3_v" value="85%" no_wrapper=True %}</div>
+            <div class="l">{% text "stat3_l" value="CSAT on personalized alert programs" no_wrapper=True %}</div>
+          </div>
+          <div class="case__stat">
+            <div class="v">{% text "stat4_v" value="25K" no_wrapper=True %}</div>
+            <div class="l">{% text "stat4_l" value="CSR calls deflected in one program cycle" no_wrapper=True %}</div>
+          </div>
+        </div>
+        <a class="case__cta link-arrow" href="{% text "case_cta_link" value="#" no_wrapper=True %}">
+          {% text "case_cta_label" value="Download the Full Case Study PDF" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# Resources (HubDB module):
+   • hubdb_row_ids — comma-separated HubDB row IDs; if set, ONLY those rows (in order), max hubdb_limit cards; tag filter is IGNORED.
+   • Else — filter_column + filter_value match a token in the HubDB tags column; rows are newest-first (hs_updated_at).
+   • hubdb_limit — max cards shown (3 below). #}
+{% module "resources_cx" path="../modules/resources-hubdb.module",
+  ce_resources_eyebrow="Resources",
+  filter_value="CX",
+  hubdb_limit=4,
+  hubdb_row_ids="313538825931,313538825932,313538825933,313538825934" %}
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+<script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
+{{ standard_footer_includes }}
+</body>
+</html>
