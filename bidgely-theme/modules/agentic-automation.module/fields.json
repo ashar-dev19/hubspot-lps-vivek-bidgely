@@ -1,0 +1,213 @@
+[
+  {
+    "id": "agents_intro",
+    "name": "agents_intro",
+    "label": "Agents — intro (left)",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "agents_intro.ce_agents_eyebrow",
+        "name": "ce_agents_eyebrow",
+        "label": "Eyebrow",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "display_width": null,
+        "type": "text",
+        "default": "Agentic Automation in CX"
+      },
+      {
+        "id": "agents_intro.ce_agents_heading",
+        "name": "ce_agents_heading",
+        "label": "Heading",
+        "required": false,
+        "locked": false,
+        "allow_new_line": true,
+        "display_width": null,
+        "type": "text",
+        "default": "AI that acts.\nNot just advises."
+      },
+      {
+        "id": "agents_intro.ce_agents_lede",
+        "name": "ce_agents_lede",
+        "label": "Lead paragraph",
+        "required": false,
+        "locked": false,
+        "display_width": null,
+        "type": "richtext",
+        "default": "<p>Bidgely's agentic layer runs the workflows your team currently does manually across every customer touchpoint. From IVR personalization to campaign triggers, agents work continuously without adding headcount.</p>"
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": true,
+    "group_occurrence_meta": null,
+    "display_width": null,
+    "type": "group",
+    "default": {
+      "ce_agents_eyebrow": "Agentic Automation in CX",
+      "ce_agents_heading": "AI that acts.\nNot just advises.",
+      "ce_agents_lede": "<p>Bidgely's agentic layer runs the workflows your team currently does manually across every customer touchpoint. From IVR personalization to campaign triggers, agents work continuously without adding headcount.</p>"
+    }
+  },
+  {
+    "id": "agents_value",
+    "name": "agents_value",
+    "label": "Agents — value pill (right)",
+    "required": false,
+    "locked": false,
+    "children": [
+      {
+        "id": "agents_value.ce_agents_value_eyebrow",
+        "name": "ce_agents_value_eyebrow",
+        "label": "Eyebrow",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "display_width": null,
+        "type": "text",
+        "default": "Agentic Value, Modeled"
+      },
+      {
+        "id": "agents_value.ce_agents_value_num",
+        "name": "ce_agents_value_num",
+        "label": "Highlight number",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "display_width": null,
+        "type": "text",
+        "default": "$3–7M/year"
+      },
+      {
+        "id": "agents_value.ce_agents_value_desc",
+        "name": "ce_agents_value_desc",
+        "label": "Description",
+        "required": false,
+        "locked": false,
+        "display_width": null,
+        "type": "richtext",
+        "default": "<p>From deflected calls, improved enrollment, and automated DSM workflows</p>"
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": true,
+    "group_occurrence_meta": null,
+    "display_width": null,
+    "type": "group",
+    "default": {
+      "ce_agents_value_eyebrow": "Agentic Value, Modeled",
+      "ce_agents_value_num": "$3–7M/year",
+      "ce_agents_value_desc": "<p>From deflected calls, improved enrollment, and automated DSM workflows</p>"
+    }
+  },
+  {
+    "id": "agent_cards",
+    "name": "agent_cards",
+    "label": "Agent cards",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": 1,
+      "max": 12,
+      "sorting_label_field": "agent_cards.card_title",
+      "default": 3
+    },
+    "children": [
+      {
+        "id": "agent_cards.card_icon",
+        "name": "card_icon",
+        "label": "Card icon",
+        "required": false,
+        "locked": false,
+        "responsive": false,
+        "resizable": false,
+        "show_loading": true,
+        "display_width": null,
+        "type": "image",
+        "default": {
+          "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/dtech26-for-regulators.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": 42,
+          "height": 42
+        }
+      },
+      {
+        "id": "agent_cards.card_title",
+        "name": "card_title",
+        "label": "Title",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "display_width": null,
+        "type": "text",
+        "default": "IVR Personalization Agent"
+      },
+      {
+        "id": "agent_cards.card_body",
+        "name": "card_body",
+        "label": "Body",
+        "required": false,
+        "locked": false,
+        "display_width": null,
+        "type": "richtext",
+        "default": "<p>Detects the likely call reason before the customer finishes speaking — pulling from their live appliance profile and billing delta. Routes and resolves at the IVR level without a CSR.</p>"
+      },
+      {
+        "id": "agent_cards.card_stat",
+        "name": "card_stat",
+        "label": "Stat line",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "display_width": null,
+        "type": "text",
+        "default": "Up to 50,000 at-risk customers handled per program cycle"
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": true,
+    "group_occurrence_meta": null,
+    "display_width": null,
+    "type": "group",
+    "default": [
+      {
+        "card_icon": {
+          "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/dtech26-for-regulators.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": 42,
+          "height": 42
+        },
+        "card_title": "IVR Personalization Agent",
+        "card_body": "<p>Detects the likely call reason before the customer finishes speaking — pulling from their live appliance profile and billing delta. Routes and resolves at the IVR level without a CSR.</p>",
+        "card_stat": "Up to 50,000 at-risk customers handled per program cycle"
+      },
+      {
+        "card_icon": {
+          "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/black-1.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": 42,
+          "height": 42
+        },
+        "card_title": "Proactive Outreach Agent",
+        "card_body": "<p>Continuously monitors usage patterns and triggers personalized email, SMS, or portal messages before the customer has a reason to call. Picks the right channel and timing for each premise.</p>",
+        "card_stat": "15%+ reduction in CSR churn from reduced inbound volume"
+      },
+      {
+        "card_icon": {
+          "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/iucx-icon-05.svg",
+          "alt": "",
+          "loading": "lazy",
+          "width": 42,
+          "height": 42
+        },
+        "card_title": "Program Enrollment Agent",
+        "card_body": "<p>Identifies program-eligible customers, segments by propensity, and runs targeted recruitment journeys — including follow-ups, re-engagements, and confirmation — without manual campaign management.</p>",
+        "card_stat": "4x reduction in marketing cost per enrollment"
+      }
+    ]
+  }
+]

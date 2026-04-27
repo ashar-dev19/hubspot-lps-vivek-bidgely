@@ -1,0 +1,6 @@
+/* Agentic Automation — layout and tokens live in main.css (.section--navy, .agentic-head, .agent-card, …). */
+.agent-cards .agent-card{
+    display: flex;  
+    flex-direction: column;
+    justify-content: space-between;
+}
