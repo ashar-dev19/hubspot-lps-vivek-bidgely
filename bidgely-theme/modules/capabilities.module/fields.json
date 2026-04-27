@@ -1,0 +1,151 @@
+[
+  {
+    "id": "cap_eyebrow",
+    "name": "cap_eyebrow",
+    "label": "Eyebrow",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "Capabilities"
+  },
+  {
+    "id": "cap_heading_before",
+    "name": "cap_heading_before",
+    "label": "Heading — before blue",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "CX outcomes you can "
+  },
+  {
+    "id": "cap_heading_blue",
+    "name": "cap_heading_blue",
+    "label": "Heading — blue text",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": "actually own."
+  },
+  {
+    "id": "cap_heading_after",
+    "name": "cap_heading_after",
+    "label": "Heading — after blue (optional)",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "display_width": null,
+    "type": "text",
+    "default": ""
+  },
+  {
+    "id": "cap_lede",
+    "name": "cap_lede",
+    "label": "Lead paragraph",
+    "required": false,
+    "locked": false,
+    "display_width": null,
+    "type": "richtext",
+    "default": "The data you need is already behind every meter. Decode it and put it to work."
+  },
+  {
+    "id": "cards",
+    "name": "cards",
+    "label": "Cards",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": 1,
+      "max": 16,
+      "sorting_label_field": "cards.title",
+      "default": 4
+    },
+    "children": [
+      {
+        "id": "cards.icon",
+        "name": "icon",
+        "label": "Icon",
+        "required": false,
+        "locked": false,
+        "responsive": false,
+        "resizable": false,
+        "show_loading": true,
+        "display_width": null,
+        "type": "image",
+        "default": {
+          "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/explain-bill-icon.svg",
+          "alt": "",
+          "loading": "lazy"
+        }
+      },
+      {
+        "id": "cards.title",
+        "name": "title",
+        "label": "Title",
+        "required": false,
+        "locked": false,
+        "display_width": null,
+        "type": "richtext",
+        "default": "Explain every bill before the phone rings."
+      },
+      {
+        "id": "cards.copy",
+        "name": "copy",
+        "label": "Body",
+        "required": false,
+        "locked": false,
+        "display_width": null,
+        "type": "richtext",
+        "default": "Surface appliance-level cost drivers proactively so customers already understand their bill and CSRs can resolve what does come in."
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": true,
+    "group_occurrence_meta": null,
+    "display_width": null,
+    "type": "group",
+    "default": [
+      {
+        "icon": {
+          "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/explain-bill-icon.svg",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "title": "Explain every bill before the phone rings.",
+        "copy": "Surface appliance-level cost drivers proactively so customers already understand their bill and CSRs can resolve what does come in."
+      },
+      {
+        "icon": {
+          "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/customer-experience-v1.svg",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "title": "Know exactly what moves your satisfaction scores.",
+        "copy": "Map JD Power drivers to specific customer interactions so improvements are targeted and measurable, not guesswork."
+      },
+      {
+        "icon": {
+          "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/target.svg",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "title": "Reach the right customers with the right offer.",
+        "copy": "AI agents work continuously in the background across targeting, outreach, enrollment, and program management. You set the rules and approve what matters."
+      },
+      {
+        "icon": {
+          "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/every-touchpoint.svg",
+          "alt": "",
+          "loading": "lazy"
+        },
+        "title": "Make every digital touchpoint feel personal.",
+        "copy": "Put appliance-level intelligence behind your portal, IVR, and app so customers feel understood, not processed."
+      }
+    ]
+  }
+]

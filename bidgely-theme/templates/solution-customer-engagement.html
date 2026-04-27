@@ -21,20 +21,67 @@
 
 {% module "site_header" path="../modules/global-header.module" %}
 
-{% module "hero_text_image" path="../modules/hero-text-image.module" %}
+{% dnd_area "main" label="Main Content" %}
 
-{% module "call_to_action" path="../modules/call-to-action.module" %}
+  {# ===== SECTION 1 — HERO ===== #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/hero-text-image.module"
+          label="Hero"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
+  {# ===== SECTION 2 — CTA STRIP ===== #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/call-to-action.module"
+          label="Call to action"
+          subcopy=""
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-{# Resources (HubDB module):
-   • hubdb_row_ids — comma-separated HubDB row IDs; if set, ONLY those rows (in order), max hubdb_limit cards; tag filter is IGNORED.
-   • Else — filter_column + filter_value match a token in the HubDB tags column; rows are newest-first (hs_updated_at).
-   • hubdb_limit — max cards shown (3 below). #}
-{% module "resources_cx" path="../modules/resources-hubdb.module",
-  ce_resources_eyebrow="Resources",
-  filter_value="CX",
-  hubdb_limit=4,
-  hubdb_row_ids="313538825931,313538825932,313538825933,313538825934" %}
+  {# ===== SECTION 3 — CAPABILITIES ===== #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/capabilities.module"
+          label="Capabilities"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+  {# ===== SECTION 4 — RESOURCES (HubDB) ===== #}
+  {# hubdb_row_ids — comma-separated HubDB row IDs; if set, ONLY those rows (in order), max hubdb_limit cards; tag filter is IGNORED. #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/resources-hubdb.module"
+          label="Resources"
+          ce_resources_eyebrow="Resources"
+          filter_value="CX"
+          hubdb_limit=4
+          hubdb_row_ids="313538825931,313538825932,313538825933,313538825934"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+{% end_dnd_area %}
 
 {% module "site_footer" path="../modules/global-footer.module" %}
 

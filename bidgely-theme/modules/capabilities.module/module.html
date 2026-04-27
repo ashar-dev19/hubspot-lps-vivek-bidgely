@@ -1,0 +1,64 @@
+{#
+  capabilities.module — Uses existing main.css classes:
+  section, section--pale, container, eyebrow, h2, lede, cards-4, card, card__title, card__copy, cap-card__icon-img.
+
+  {% module "capabilities"
+    path="../modules/capabilities.module"
+  %}
+
+  Fields: cap_eyebrow, cap_heading_before, cap_heading_blue, cap_heading_after, cap_lede (richtext), cards (repeater group)
+#}
+
+<section class="section section--pale">
+  <div class="container">
+    {% if module.cap_eyebrow|default("")|trim %}
+      <p class="eyebrow">{{ module.cap_eyebrow|escape }}</p>
+    {% endif %}
+
+    {% set heading_before = module.cap_heading_before|default("") %}
+    {% set heading_blue = module.cap_heading_blue|default("") %}
+    {% set heading_after = module.cap_heading_after|default("") %}
+    {% if heading_before|trim or heading_blue|trim or heading_after|trim %}
+      <h2 class="h2">
+        {{ heading_before|escape }}<span class="accent">{{ heading_blue|escape }}</span>{{ heading_after|escape }}
+      </h2>
+    {% endif %}
+
+    {% if module.cap_lede %}
+      <p class="lede">
+        {{ module.cap_lede }}
+      </p>
+    {% endif %}
+
+    {% if module.cards %}
+      <div class="cards-4">
+        {% for card in module.cards %}
+          <article class="card">
+            {% if card.icon and card.icon.src %}
+              <img
+                class="cap-card__icon-img"
+                src="{{ card.icon.src|escape }}"
+                alt="{{ card.icon.alt|default('')|escape }}"
+                {% set iload = card.icon.loading|default("lazy") %}
+                {% if iload and iload != "disabled" %}loading="{{ iload|escape }}"{% endif %}
+                decoding="async">
+            {% endif %}
+
+            {% if card.title %}
+              <h3 class="card__title">
+                {{ card.title }}
+              </h3>
+            {% endif %}
+
+            {% if card.copy %}
+              <p class="card__copy">
+                {{ card.copy }}
+              </p>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
