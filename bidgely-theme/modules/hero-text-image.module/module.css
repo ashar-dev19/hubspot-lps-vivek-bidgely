@@ -1,12 +1,8 @@
-:root {
-  --white:            #FFFFFF;
-}
-
 .hero.hero-text-image-module{
   background: var(--gradient-135);
 }
 .hero.hero-text-image-module h1,.hero.hero-text-image-module p{
-  color: var(--white);
+  color: var(--nile-white);
 }
 .hero.hero-text-image-module h1{
   max-width: 900px;
