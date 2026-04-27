@@ -596,7 +596,7 @@ section.section--hero strong {
   .genai-card + .genai-card { margin-top: 18px; }
   .genai-card .ic {
     width: 42px; height: 42px; flex: 0 0 42px;
-    border-radius: 9px; background-size: cover;
+    background-repeat: no-repeat; background-size: contain;
   }
   .genai-card h4  { font-size: 14px; font-weight: 700; color: var(--nile); margin: 0 0 6px; }
   .genai-card p   { font-size: 13px; line-height: 1.5; color: var(--nile-52); margin: 0; }

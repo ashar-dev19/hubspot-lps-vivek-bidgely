@@ -89,7 +89,20 @@
     {% end_dnd_column %}
   {% end_dnd_section %}
 
-  {# ===== SECTION 6 — RESOURCES (HubDB) ===== #}
+  {# ===== SECTION 6 — GENAI ===== #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/genai.module"
+          label="GenAI"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+  {# ===== SECTION 7 — RESOURCES (HubDB) ===== #}
   {# hubdb_row_ids — comma-separated HubDB row IDs; if set, ONLY those rows (in order), max hubdb_limit cards; tag filter is IGNORED. #}
   {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
     {% dnd_column width=12 %}
