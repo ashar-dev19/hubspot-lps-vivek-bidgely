@@ -24,7 +24,7 @@
           {% set heading_after = intro.ce_agents_heading_after|default('') %}
           {% if heading_before|trim or heading_accent|trim or heading_after|trim %}
             <h2 class="h2">
-              {{ br_text(heading_before) }}{% if heading_accent|trim %}<span class="accent"> {{ br_text(heading_accent) }} </span>{% endif %}{{ br_text(heading_after) }}
+              {{ br_text(heading_before) }}{% if heading_accent|trim %}<span class="accent">{{ br_text(heading_accent) }}</span>{% endif %}{{ br_text(heading_after) }}
             </h2>
           {% endif %}
         {% endif %}
