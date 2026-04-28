@@ -1,0 +1,380 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Bidgely Technology — GenAI
+  screenshotPath: ../images/template-previews/bidgely-technology-gen-ai.png
+-->
+
+{% set ab = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+</head>
+<style>
+.tup-arch__caps.gen-ai {
+    grid-template-columns: repeat(2, 1fr);
+
+}
+.gen-ai .tup-arch__cap {
+    padding: 20px 44px !important;
+}
+.tup-arch.gen-ai-left-box .tup-arch__col.tup-arch__col--inputs .tup-arch__io-item img {
+    flex-shrink: 0;
+    height: 35px !important;
+    opacity: 1;
+    width: 155px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+</style>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+{# ===== SECTIONS GO HERE ===== #}
+
+{# ===== 1. HERO ===== #}
+<section class="hero tup-hero">
+  <div class="container">
+    <span class="hero__eyebrow">GenAI Fabric</span>
+    <h1>Any LLM, Grounded in <br> Utility Intelligence</h1>
+    <p class="tup-hero__sub">Generic LLMs answer general questions, but cannot explain a high bill with appliance-level precision, identify what is loading a transformer, or forecast DER impact on a feeder. Bidgely GenAI connects any LLM to pre-trained utility models and real AMI data. Every answer is accurate enough to act on.</p>
+    <a class="btn btn--navy" href="#">Get a Demo</a>
+  </div>
+</section>
+
+
+{# ===== 2. BUILT FOR YOUR ENVIRONMENT — 3 text cards ===== #}
+<section class="section section--white tup-cloud-section">
+  <div class="container">
+    <div class="tup-cloud__head">
+      <h2 class="h2">Not another AI layer on top of billing data</h2>
+    </div>
+    <div class="tup-cloud__cards">
+
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/daas-v2.svg" alt="">
+        <h3>Built on appliance-level intelligence, not
+billing records</h3>
+        <p>Our GenAI sits on top of disaggregation, DER propensity scores, load forecasts, and behavioral profiles. Not just CIS records. That is the difference between an answer and an insight.</p>
+      </div>
+
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/iucx-icon-05-1.svg" alt="">
+        <h3>Works with any AI platform your
+organization uses</h3>
+        <p>No need to replace your existing AI investments. Connect Copilot, Claude, ChatGPT, Glean, or any AI platform. No custom integration required.</p>
+      </div>
+
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/ders-icon-v1.svg" alt="">
+        <h3>Deployed inside your environment</h3>
+        <p>Run on Bidgely cloud or deploy inside your own infrastructure. Your security policies and governance controls apply to every query and every answer.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+{# ===== 3. How it works ===== #}
+<section class="section section--navy tup-platform">
+  <div class="container">
+
+    <div class="tup-platform__head">
+      <p class="eyebrow">HOW IT WORKS</p>
+      <h2>One MCP Server. Every LLM.</h2>
+      <p>
+        The GenAI Fabric uses Model Context Protocol (MCP) to expose your utility
+intelligence to any LLM in your environment.
+      </p>
+    </div>
+
+    {# ── Main architecture card ── #}
+    <div class="tup-arch gen-ai-left-box">
+
+      {# LEFT — Data Inputs #}
+      <div class="tup-arch__col tup-arch__col--inputs">
+        <p class="tup-arch__col-label">Your LLMs</p>
+        <div class="tup-arch__io-list">
+          <div class="tup-arch__io-item">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Claude_AI_logo%201.svg">
+          </div>
+          <div class="tup-arch__io-item">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/microsoft-copilot-logo%201.svg">
+          </div>
+          <div class="tup-arch__io-item">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/gpt.svg">
+          </div>
+          <div class="tup-arch__io-item">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/glean.svg">
+          </div>
+         
+        </div>
+      </div>
+
+      {# CENTER — UtilityAI Engine #}
+      <div class="tup-arch__center">
+         <div class="tup-arch-box">
+           
+     
+        <div class="tup-arch__center-title">
+             <p class="eyebrow">HOW IT WORKS</p>
+          <h3>UtilityAI GenAI Fabric</h3>
+          
+        </div>
+
+        <div class="tup-arch__caps gen-ai">
+          <div class="tup-arch__cap">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/app.svg" alt="">
+            <span>Appliance-Level Disaggregation</span>
+          </div>
+          <div class="tup-arch__cap">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/ev-intelligence.svg" alt="">
+            <span>DER Propensity Scores</span>
+          </div>
+          <div class="tup-arch__cap">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/ld-f.svg" alt="">
+            <span>Load Forecasts</span>
+          </div>
+          <div class="tup-arch__cap">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/gen-ai.svg" alt="">
+            <span>Behavioral profiles</span>
+          </div>
+        
+        </div>
+          </div>
+       
+      </div>
+
+      {# RIGHT — Outcomes #}
+      <div class="tup-arch__col tup-arch__col--outcomes">
+        <p class="tup-arch__col-label">Utility Data</p>
+        <div class="tup-arch__io-list">
+          <div class="tup-arch__io-item">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/ce.svg" alt="">AMI / Smart Meter Data
+          </div>
+          <div class="tup-arch__io-item">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/ev-program.svg" alt="">CIS Customer Data
+          </div>
+          <div class="tup-arch__io-item">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/grid-planning.svg" alt="">Grid & Feeder Data
+          </div>
+          <div class="tup-arch__io-item">
+            <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/energy-effic.svg" alt="">DER / Solar Data
+          </div>
+        </div>
+      </div>
+
+    </div>{# end .tup-arch #}
+
+    {# ── Works with your stack strip ── #}
+    <div class="tup-stack">
+      <p class="tup-stack__label">Works with your stack</p>
+      <div class="tup-stack__logos">
+        <img src="{{ ab }}/18-snowflake-1.svg" alt="Snowflake">
+        <img src="{{ ab }}/19-databricks-1.svg" alt="Databricks">
+        <img src="{{ ab }}/amazon-web-services-logo-1.svg" alt="AWS Marketplace">
+        <img src="{{ ab }}/20-Azure.svg" alt="Azure Marketplace">
+        <img src="{{ ab }}/21-Oracle.svg" alt="Google Cloud Marketplace">
+        <img src="{{ ab }}/22-MongoDB.svg" alt="Copilot">
+        <img src="{{ ab }}/23-CoreWeaver.svg" alt="Claude">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+{# ===== 3. VERTICAL AI LAYER — two fabric cards ===== #}
+<section class="section tup-vai-section">
+  <div class="container">
+
+    <div class="tup-section-head">
+      <h2 class="h2">Generic LLM vs. Grounded in Utility Data</h2>
+    </div>
+
+    <div class="tup-vai__grid">
+
+      {# Left card — GenAI Fabric (dark navy) #}
+      <div class="tup-vai__card">
+  
+  <div class="tup-vai__card-header">
+    <h3 class="tup-vai__card-title">Generic LLM</h3>
+  </div>
+
+  <div class="tup-vai__card-body">
+    <p class="tup-vai__card-desc">
+      Connects any LLM in your environment to the utility intelligence your meters already generate. One MCP server. Every LLM your organization already uses.
+    </p>
+
+    <ul class="tup-vai__list">
+      <li class="tup-vai__list-item">
+        <span class="tup-vai__dot"></span>
+        <div>
+          <div class="tup-vai__list-item-title">MCP Server</div>
+          <div class="tup-vai__list-item-sub">
+            Exposes your utility models and data to any LLM in your environment
+          </div>
+        </div>
+      </li>
+
+      <li class="tup-vai__list-item">
+        <span class="tup-vai__dot"></span>
+        <div>
+          <div class="tup-vai__list-item-title">LLM Connectors</div>
+          <div class="tup-vai__list-item-sub">
+            Microsoft Copilot, Claude, ChatGPT, and Glean
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <a class="btn btn--navy" href="#">
+      Explore the GenAI Fabric ↗
+    </a>
+  </div>
+
+</div>
+
+      {# Right card — Agentic Automation Fabric (azure) #}
+      <div class="tup-vai__card right-box">
+  
+  <div class="tup-vai__card-header">
+    <h3 class="tup-vai__card-title">Bidgely GenAI</h3>
+  </div>
+
+  <div class="tup-vai__card-body">
+    <p class="tup-vai__card-desc">
+      Production-ready agents for the workflows your teams run every day, and the
+infrastructure to build any agent your utility needs.
+    </p>
+
+    <ul class="tup-vai__list">
+      <li class="tup-vai__list-item">
+        <span class="tup-vai__dot"></span>
+        <div>
+          <div class="tup-vai__list-item-title">Prebuilt Agents</div>
+          <div class="tup-vai__list-item-sub">
+            Ready-to-deploy for high bill analysis, transformer monitoring, and more
+          </div>
+        </div>
+      </li>
+
+      <li class="tup-vai__list-item">
+        <span class="tup-vai__dot"></span>
+        <div>
+          <div class="tup-vai__list-item-title">Custom Agents</div>
+          <div class="tup-vai__list-item-sub">
+            Build unlimited agents tailored to your utility workflows
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <a class="btn btn--blue" href="#" target="_self">
+      Explore Agentic Automation
+    </a>
+  </div>
+
+</div>
+
+    </div>{# end .tup-vai__grid #}
+
+
+  </div>
+</section>
+
+
+
+{# ===== 6. FROM METER TO EVERY DECISION — 3-col checklist ===== #}
+<section class="section section--navy tup-meter-section">
+  <div class="container">
+    <div class="tup-meter__head">
+      <p class="eyebrow" style="color:var(--azure-tint);">WHAT YOU CAN BUILD</p>
+      <h2>From the meter to every<br>decision that matters.</h2>
+      <p>Every use case runs on the same pre-trained models, the same data, and the same deployment your CIO already approved.</p>
+    </div>
+    <div class="tup-meter__cols">
+
+      <div class="tup-meter__col">
+        <img class="tup-meter__col-icon" src="{{ ab }}/customer-experience-v1.svg" alt="">
+        <p class="tup-meter__col-title">For Customer Experience, Call Center, and DSM</p>
+        <ul class="tup-meter__list">
+          <li>5M+ personalizations with appliance-level context</li>
+          <li>High bill complaint analysis agent</li>
+          <li>Marketing campaign fact integration</li>
+          <li>Custom CEM BI visuals</li>
+          <li>Usage insights surfaced in your CRM</li>
+          <li>Customer-facing chatbot</li>
+        </ul>
+      </div>
+
+      <div class="tup-meter__col">
+        <img class="tup-meter__col-icon" src="{{ ab }}/daas-v2.svg" alt="">
+        <p class="tup-meter__col-title">For Grid Planning, Asset Management, and Operations</p>
+        <ul class="tup-meter__list">
+          <li>Transformer loading monitoring agent</li>
+          <li>DER load forecasting</li>
+          <li>Non-energy intervention recommendation agent</li>
+          <li>Outage root cause analysis dashboard</li>
+          <li>Community DER analysis for interconnections</li>
+          <li>DERMS and ADMS integration</li>
+        </ul>
+      </div>
+
+      <div class="tup-meter__col">
+        <img class="tup-meter__col-icon" src="{{ ab }}/explain-bill.svg" alt="">
+        <p class="tup-meter__col-title">For Regulatory, Rates, and Internal Operations</p>
+        <ul class="tup-meter__list">
+          <li>Dynamic pricing simulation with appliance-level elasticity</li>
+          <li>IVR agent</li>
+          <li>Automated market potential studies</li>
+          <li>Cost and benefits analyzer for regulatory filings</li>
+          <li>Appliance-level inputs into system load forecasts</li>
+          <li>Rate analysis and design</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+{# ===== 7. CTA STRIP ===== #}
+<section class="tup-cta-strip">
+  <div class="cta-strip__inner">
+    <h2>Ready to see it in your environment?</h2>
+    <a class="btn btn--white" href="#">Talk to an Expert</a>
+  </div>
+</section>
+
+{# Resources (HubDB module):
+   • hubdb_row_ids — comma-separated HubDB row IDs; if set, ONLY those rows (in order), max hubdb_limit cards; tag filter is IGNORED.
+   • Else — filter_column + filter_value match a token in the HubDB tags column; rows are newest-first (hs_updated_at).
+   • hubdb_limit — max cards shown (3 below). #}
+{% module "resources_cx" path="../modules/resources-hubdb.module",
+  ce_resources_eyebrow="Resources",
+  filter_value="CX",
+  hubdb_limit=4,
+  hubdb_row_ids="313538825931,313538825932,313538825933,313538825934" %}
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+{{ standard_footer_includes }}
+<script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Bidgely Technology — Agentic AI
+  screenshotPath: ../images/template-previews/bidgely-technology-agentic-ai.png
+-->
+
+{% set ab = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+</head>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+{# ===== SECTIONS GO HERE ===== #}
+
+{# ===== 1. HERO ===== #}
+<section class="hero tup-hero">
+  <div class="container">
+    <span class="hero__eyebrow">Agentic Automation Fabric</span>
+    <h1>Pre-Built for Utilities. Configurable for Yours.</h1>
+    <p class="tup-hero__sub">Your teams should not wait months for AI to be useful. The Agentic Automation Fabric
+ships production-ready agents for the workflows utilities run every day and the
+infrastructure to build any new agent you need, running on pre-trained utility models.</p>
+    <a class="btn btn--navy" href="#">Get a Demo</a>
+  </div>
+</section>
+
+
+
+
+{# ===== 2. BUILT FOR YOUR ENVIRONMENT — 3 text cards ===== #}
+<section class="section section--white tup-cloud-section">
+  <div class="container">
+    <div class="tup-cloud__head">
+      <h2 class="h2">Agents that know what a meter means</h2>
+    </div>
+    <div class="tup-cloud__cards">
+
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/daas-v2.svg" alt="">
+        <h3>Built on appliance-level intelligence, not
+billing records</h3>
+        <p>Our GenAI sits on top of disaggregation, DER propensity scores, load forecasts, and behavioral profiles. Not just CIS records. That is the difference between an answer and an insight.</p>
+      </div>
+
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/iucx-icon-05-1.svg" alt="">
+        <h3>Works with any AI platform your
+organization uses</h3>
+        <p>No need to replace your existing AI investments. Connect Copilot, Claude, ChatGPT, Glean, or any AI platform. No custom integration required.</p>
+      </div>
+
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/ders-icon-v1.svg" alt="">
+        <h3>Deployed inside your environment</h3>
+        <p>Run on Bidgely cloud or deploy inside your own infrastructure. Your security policies and governance controls apply to every query and every answer.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+{{ standard_footer_includes }}
+<script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
+
+</body>
+</html>
