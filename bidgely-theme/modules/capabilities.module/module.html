@@ -20,7 +20,7 @@
     {% set heading_after = module.cap_heading_after|default("") %}
     {% if heading_before|trim or heading_blue|trim or heading_after|trim %}
       <h2 class="h2">
-        {{ heading_before|escape }}<span class="accent">{{ heading_blue|escape }}</span>{{ heading_after|escape }}
+        {{ heading_before|escape }}<span class="accent"> {{ heading_blue|escape }} </span>{{ heading_after|escape }}
       </h2>
     {% endif %}
 
