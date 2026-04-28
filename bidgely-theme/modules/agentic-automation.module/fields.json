@@ -18,15 +18,37 @@
         "default": "Agentic Automation in CX"
       },
       {
-        "id": "agents_intro.ce_agents_heading",
-        "name": "ce_agents_heading",
-        "label": "Heading",
+        "id": "agents_intro.ce_agents_heading_before",
+        "name": "ce_agents_heading_before",
+        "label": "Heading — before accent",
         "required": false,
         "locked": false,
         "allow_new_line": true,
         "display_width": null,
         "type": "text",
         "default": "AI that acts.\nNot just advises."
+      },
+      {
+        "id": "agents_intro.ce_agents_heading_accent",
+        "name": "ce_agents_heading_accent",
+        "label": "Heading — accent",
+        "required": false,
+        "locked": false,
+        "allow_new_line": true,
+        "display_width": null,
+        "type": "text",
+        "default": ""
+      },
+      {
+        "id": "agents_intro.ce_agents_heading_after",
+        "name": "ce_agents_heading_after",
+        "label": "Heading — after accent",
+        "required": false,
+        "locked": false,
+        "allow_new_line": true,
+        "display_width": null,
+        "type": "text",
+        "default": ""
       },
       {
         "id": "agents_intro.ce_agents_lede",
@@ -46,7 +68,9 @@
     "type": "group",
     "default": {
       "ce_agents_eyebrow": "Agentic Automation in CX",
-      "ce_agents_heading": "AI that acts.\nNot just advises.",
+      "ce_agents_heading_before": "AI that acts.\nNot just advises.",
+      "ce_agents_heading_accent": "",
+      "ce_agents_heading_after": "",
       "ce_agents_lede": "<p>Bidgely's agentic layer runs the workflows your team currently does manually across every customer touchpoint. From IVR personalization to campaign triggers, agents work continuously without adding headcount.</p>"
     }
   },

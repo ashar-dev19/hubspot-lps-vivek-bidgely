@@ -3,6 +3,12 @@
   Field model matches CeAgentsSection (groupCeAgentsIntro, groupCeAgentsValue, groupCeAgentCards).
 #}
 
+{% macro br_text(text) -%}
+  {%- for line in text|default('')|split('\n') -%}
+    {%- if not loop.first -%}<br>{%- endif -%}{{ line|escape }}
+  {%- endfor -%}
+{%- endmacro %}
+
 <section class="section section--navy agentic-automation-module">
   <div class="container">
     {% set intro = module.agents_intro %}
@@ -12,12 +18,15 @@
         {% if intro and intro.ce_agents_eyebrow|default('')|trim %}
           <p class="eyebrow">{{ intro.ce_agents_eyebrow|escape }}</p>
         {% endif %}
-        {% if intro and intro.ce_agents_heading|default('')|trim %}
-          <h2 class="h2">
-            {% for line in intro.ce_agents_heading|split('\n') %}
-              {% if not loop.first %}<br>{% endif %}{{ line|escape }}
-            {% endfor %}
-          </h2>
+        {% if intro %}
+          {% set heading_before = intro.ce_agents_heading_before|default('') %}
+          {% set heading_accent = intro.ce_agents_heading_accent|default('') %}
+          {% set heading_after = intro.ce_agents_heading_after|default('') %}
+          {% if heading_before|trim or heading_accent|trim or heading_after|trim %}
+            <h2 class="h2">
+              {{ br_text(heading_before) }}{% if heading_accent|trim %}<span class="accent">{{ br_text(heading_accent) }}</span>{% endif %}{{ br_text(heading_after) }}
+            </h2>
+          {% endif %}
         {% endif %}
         {% if intro and intro.ce_agents_lede %}
           <div class="lede">{{ intro.ce_agents_lede }}</div>
