@@ -1,7 +1,7 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label: 260424 – DER Grid Planning
+  label: Bidgely Solution – Grid Planning
   screenshotPath: ../images/template-previews/bidgely-solution-grid-planning.png
 -->
 
@@ -16,25 +16,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
-</head>
-<style>
+  <style>
   .hero {
-    position: relative;
-    background: url(https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-4.svg);
-    background-size: cover;
+    background: url({{ asset_base }}/grid-4.svg);
   }
-  .hero::before { display: none; }
-  .hero::after  { display: none; }
-  .hero__eyebrow {
-    font-size: 11px; font-weight: 600; letter-spacing: .55px;
-    line-height: 1.6; color: var(--azure); text-transform: uppercase;
-    margin: 0 0 16px;
-  }
+  .card__title { margin: 0; }
 
-  /* ================================================================
-     PROVEN RESULTS — featured case (left, navy) + stacked proof points (right, white)
-     Matches visual reference exactly
-     ================================================================ */
   .pr-case {
     display: grid; grid-template-columns: 1fr 1fr;
     border-radius: var(--radius-xl); overflow: hidden;
@@ -84,9 +71,6 @@
     .pr-case__featured, .pr-case__proofs { padding: 32px; }
   }
 
-  /* ================================================================
-     IMAGE / ICON OVERFLOW FIXES — prevent chopping in GenAI and other cards
-     ================================================================ */
   .genai-card { align-items: flex-start; min-width: 0; }
   .genai-card .ic {
     background-size: contain !important;
@@ -100,293 +84,345 @@
   .agent-card p, .card__copy { overflow-wrap: break-word; word-wrap: break-word; }
   .cap-card__icon-img, .agent-card img { object-fit: contain; }
   .stripe__visual img, .hero-visual img { object-fit: contain; }
-</style>
+  </style>
+</head>
 <body>
 
 {% module "site_header" path="../modules/global-header.module" %}
 
-{# =========================================================
-   HERO
-   ========================================================= #}
-<section class="hero">
-  <div class="hero__inner container">
-    <div class="hero__top">
-      <div>
-        <p class="eyebrow">{% text "eyebrow" value="ENHANCE GRID RESILIENCY" no_wrapper=True %}</p>
-        <h1>
-          {% rich_text "hero_heading" html="Know What Is Happening on Your Grid and Fix It Before It Becomes a Problem" no_wrapper=True %}
-        </h1>
-        <a class="btn btn--navy" href="{% text "hero_cta_link" value="#" no_wrapper=True %}">
-          {% text "hero_cta_label" value="Talk to an Expert" no_wrapper=True %}
-        </a>
-      </div>
-      <div class="hero__copy body-sm">
-        {% rich_text "hero_copy" html="55% of transformers are approaching end-of-life. EV sales have increased 7X. EVs, solar, batteries, and heat pumps are reshaping load in real time. Most utilities are planning a grid that won&rsquo;t exist soon. Bidgely gives your grid planning, operations, and engineering teams appliance-level intelligence behind every household meter, across all 8,760 hours of the year, so they can see what&rsquo;s actually going on across your system." no_wrapper=True %}
-      </div>
-    </div>
-    <div class="hero-visual">
-      {% image "hero_visual" src="{{ asset_base }}/grid-planning-hero-diagram.svg" alt="Grid intelligence dashboard preview" class="hero-visual__img" %}
-    </div>
-  </div>
-</section>
+{% dnd_area "main" label="Main Content" %}
 
-{# =========================================================
-   NAVY CTA STRIP
-   ========================================================= #}
-<section class="cta-strip">
-  <div class="cta-strip__inner container">
-    <h2>{% text "strip_heading" value="See How UtilityAI Enhances Grid Resiliency" no_wrapper=True %}</h2>
-    <a class="btn btn--white" href="{% text "strip_cta_link" value="#" no_wrapper=True %}">
-      {% text "strip_cta_label" value="Talk to Sales" no_wrapper=True %}
-    </a>
-  </div>
-</section>
+  {# Hero: DnD rich text (not a custom module) #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module path="@hubspot/rich_text" label="Hero" %}
+          {% module_attribute "html" %}
+            <section class="hero">
+              <div class="hero__inner container">
+                <div class="hero__top">
+                  <div>
+                    <p class="eyebrow">ENHANCE GRID RESILIENCY</p>
+                    <h1>Know What Is Happening on Your Grid and Fix It Before It Becomes a Problem</h1>
+                    <a class="btn btn--navy" href="#">Talk to an Expert</a>
+                  </div>
+                  <div class="hero__copy body-sm">
+                    55% of transformers are approaching end-of-life. EV sales have increased 7X. EVs, solar, batteries, and heat pumps are reshaping load in real time. Most utilities are planning a grid that won&rsquo;t exist soon. Bidgely gives your grid planning, operations, and engineering teams appliance-level intelligence behind every household meter, across all 8,760 hours of the year, so they can see what&rsquo;s actually going on across your system.
+                  </div>
+                </div>
+                <div class="hero-visual">
+                  <img class="hero-visual__img" src="{{ asset_base }}/grid-planning-hero-diagram.svg" alt="Grid intelligence dashboard preview" loading="lazy" decoding="async">
+                </div>
+              </div>
+            </section>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-{# =========================================================
-   JOBS TO BE DONE – 4-CARD GRID
-   ========================================================= #}
-<section class="section section--pale">
-  <div class="container">
-    <p class="eyebrow">{% text "cap_eyebrow" value="JOBS TO BE DONE" no_wrapper=True %}</p>
-    <h2 class="h2">
-      {% rich_text "cap_heading" html="Grid outcomes you can <span class='accent'>actually own.</span>" no_wrapper=True %}
-    </h2>
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/call-to-action.module"
+          label="CTA strip"
+          section_heading="See How UtilityAI Enhances Grid Resiliency"
+          subcopy=""
+          cta_text="Talk to Sales"
+          button_style="white"
+          cta_link={
+            "url": { "type": "EXTERNAL", "href": "#", "href_with_scheme": "#" },
+            "open_in_new_tab": false,
+            "no_follow": false,
+            "sponsored": false,
+            "user_generated_content": false
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-    <div class="cards-4 mt-8">
-      <article class="card">
-        {% image "cap1_icon" src="{{ asset_base }}/grid-planning-icon-1.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap1_title" html="Know the true capacity of every asset on your system." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap1_copy" html="Go beyond nameplate ratings and billing data to understand real load composition by feeder, substation, and transformer using appliance-level signals from AMI. Bidgely ties disaggregated load to each grid asset." no_wrapper=True %}</p>
-      </article>
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/capabilities.module"
+          label="Jobs to be done"
+          cap_eyebrow="JOBS TO BE DONE"
+          cap_heading_before="Grid outcomes you can"
+          cap_heading_blue="actually own."
+          cap_heading_after=""
+          cap_lede=""
+          cards=[
+            {
+              "icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-planning-icon-1.svg", "alt": "", "loading": "lazy" },
+              "title": "Know the true capacity of every asset on your system.",
+              "copy": "Go beyond nameplate ratings and billing data to understand real load composition by feeder, substation, and transformer using appliance-level signals from AMI. Bidgely ties disaggregated load to each grid asset."
+            },
+            {
+              "icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-planning-icon-2.svg", "alt": "", "loading": "lazy" },
+              "title": "Plan for the DERs you cannot see yet.",
+              "copy": "Score every premise for solar, storage, EV, and heat pump propensity so your long-range forecasts reflect what is actually coming, not what already appeared on an interconnection or rebate application."
+            },
+            {
+              "icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-planning-icon-3.svg", "alt": "", "loading": "lazy" },
+              "title": "Find Non-Wires Alternatives (NWAs) before you break ground.",
+              "copy": "20+ U.S. states now require NWA evaluation before approving capital upgrades. Bidgely identifies demand-side and DER-based solutions to capacity constraints, saving utilities up to $6M annually from deferred capital investment, before you commit to infrastructure spend."
+            },
+            {
+              "icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-planning-icon-7.svg", "alt": "", "loading": "lazy" },
+              "title": "Defend your filings with data.",
+              "copy": "Integrated Resource Planning (IRP) filings are under more scrutiny than ever, with PUCs rejecting infrastructure plans built on aggregate assumptions. Support interconnection analysis and NWA filings with premises-level load evidence that holds up to regulatory scrutiny, built from actual appliance inventory on the circuit, not regional averages."
+            }
+          ]
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-      <article class="card">
-        {% image "cap2_icon" src="{{ asset_base }}/grid-planning-icon-2.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap2_title" html="Plan for the DERs you cannot see yet." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap2_copy" html="Score every premise for solar, storage, EV, and heat pump propensity so your long-range forecasts reflect what is actually coming, not what already appeared on an interconnection or rebate application." no_wrapper=True %}</p>
-      </article>
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/solution-grid.module"
+          label="Use cases"
+          programs_intro={
+            "programs_eyebrow": "USE CASES",
+            "programs_heading_before": "What ",
+            "programs_heading_accent": "UtilityAI™",
+            "programs_heading_after": " makes possible in grid resiliency.",
+            "programs_lede": "<p>Each use case uses the same appliance-level intelligence layer so your grid planning, operations, and regulatory teams operate from the same source of truth.</p>"
+          }
+          program_rows=[
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": false,
+              "program_diagram": "custom_image",
+              "program_custom_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-planing-diagram-2.svg", "alt": "Grid asset capacity analysis diagram", "loading": "lazy" },
+              "program_title": "Grid Asset Capacity Analysis",
+              "program_subtitle": "See what is actually stressing your grid assets, not just what your billing and grid systems suggest.",
+              "program_problem": "Transformer and feeder capacity assessments built on whole-home averages miss the EV charger on Elm Street and the heat pump cluster on the south feeder. Bidgely identifies appliance-level load composition at every premises and aggregates it up to the asset level so your capacity analysis reflects what is genuinely on the wire.",
+              "program_outcomes": [
+                { "program_outcome_text": "90%+ DER detection accuracy at the premises level" },
+                { "program_outcome_text": "40 million meters serve as sources for Bidgely's data models" },
+                { "program_outcome_text": "10,000s of EVs discovered by multiple utilities on their grids" }
+              ],
+              "program_link_label": "Explore Grid Asset Capacity Analysis",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "#", "href_with_scheme": "#" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            },
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": true,
+              "program_diagram": "custom_image",
+              "program_custom_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-planning-diagram-02.svg", "alt": "Long-term DER forecasting diagram", "loading": "lazy" },
+              "program_title": "Long-Term DER Forecasting and Planning",
+              "program_subtitle": "Stop forecasting with yesterday's data.",
+              "program_problem": "Long-range planning models built on historical billing data and interconnection queues systematically undercount behind-the-meter DER adoption. Bidgely starts from actual meter-level consumption, scoring every premise for solar, storage, EV, and heat pump propensity and projecting adoption by ZIP, feeder, and substation with the hourly granularity regulators now require.",
+              "program_outcomes": [
+                { "program_outcome_text": "Granular 8760 forecasts replace static snapshots with dynamic representations of daily, weekly, and seasonal variability" },
+                { "program_outcome_text": "Forecasts feed directly into industry-standard power flow tools like CYME and Synergi" }
+              ],
+              "program_link_label": "Explore Long-Term DER Forecasting",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "#", "href_with_scheme": "#" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            },
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": false,
+              "program_diagram": "custom_image",
+              "program_custom_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-planning-diagram-4.svg", "alt": "Non-wires alternatives diagram", "loading": "lazy" },
+              "program_title": "Non-Wires Alternatives",
+              "program_subtitle": "Find the demand-side flexibility before you approve the asset upgrade project.",
+              "program_problem": "When a feeder constraint appears, the default response doesn't have to be new infrastructure. Bidgely identifies the load driving that constraint, ranks customers by flexibility value per transformer, and quantifies NWA potential modeled on actual appliance-level load shift potential, not estimates.",
+              "program_outcomes": [
+                { "program_outcome_text": "NWA analysis reduced from weeks to hours per asset" },
+                { "program_outcome_text": "30–50% of assessed assets have a viable NWA alternative" },
+                { "program_outcome_text": "80% reduction in peak EV demand at a constrained transformer through NWA instead of upgrade" },
+                { "program_outcome_text": "$2–3M from transformer overload prevention" }
+              ],
+              "program_link_label": "Explore Non-Wires Alternatives",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "#", "href_with_scheme": "#" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            }
+          ]
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-      <article class="card">
-        {% image "cap3_icon" src="{{ asset_base }}/grid-planning-icon-3.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap3_title" html="Find Non-Wires Alternatives (NWAs) before you break ground." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap3_copy" html="20+ U.S. states now require NWA evaluation before approving capital upgrades. Bidgely identifies demand-side and DER-based solutions to capacity constraints, saving utilities up to $6M annually from deferred capital investment, before you commit to infrastructure spend." no_wrapper=True %}</p>
-      </article>
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/agentic-automation.module"
+          label="Agentic automation"
+          agents_intro={
+            "ce_agents_eyebrow": "AGENTIC AUTOMATION IN GRID RESILIENCY",
+            "ce_agents_heading_before": "AI that acts. Not just advises.",
+            "ce_agents_heading_accent": "",
+            "ce_agents_heading_after": "",
+            "ce_agents_lede": "<p>Bidgely&rsquo;s agentic layer handles the grid monitoring and planning workflows your team currently does manually, without adding headcount.</p>"
+          }
+          agents_value={
+            "ce_agents_value_eyebrow": "Agentic Value, Modeled",
+            "ce_agents_value_num": "$6M+/year",
+            "ce_agents_value_desc": "<p>From deferred capital investment and transformer overload prevention. Planning cycles reduced from weeks to hours per constrained asset.</p>"
+          }
+          agent_cards=[
+            {
+              "card_icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-planning-icon-4.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "card_title": "Transformer Loading Monitoring Agent",
+              "card_body": "<p>Monitors load at the substation, feeder, and transformer levels using appliance-level signals. Each alert is calibrated against that asset&rsquo;s own baseline, not a territory average. Surfaces specific load drivers, such as EV growth, heat pump cold-start peaks, and HVAC degradation.</p>",
+              "card_stat": ""
+            },
+            {
+              "card_icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-planning-icon-5.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "card_title": "DER Forecasting and Scenario Agent",
+              "card_body": "<p>Runs continuous DER adoption projections by circuit, substation, and planning zone based on live propensity scores. Test multiple future scenarios, such as population growth, climate shifts, EV adoption, DER growth, DSM programs&mdash;starting from actual meter-level consumption, not generic load shapes.</p>",
+              "card_stat": ""
+            },
+            {
+              "card_icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-planning-icon-6.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "card_title": "Non-Wires Alternatives Recommendation Agent",
+              "card_body": "<p>Runs the entire NWA workflow autonomously, from constraint identification to scenario analysis to ranked recommendation. Produces defensible plans committees can act on without rebuilding from scratch. Generates appliance-level 8760 load curves before and after implementation. Delivers candidate packages including eligible customers, program options, and projected capacity relief.</p>",
+              "card_stat": ""
+            }
+          ]
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-      <article class="card">
-        {% image "cap4_icon" src="{{ asset_base }}/grid-planning-icon-4.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap4_title" html="Defend your filings with data." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap4_copy" html="Integrated Resource Planning (IRP) filings are under more scrutiny than ever, with PUCs rejecting infrastructure plans built on aggregate assumptions. Support interconnection analysis and NWA filings with premises-level load evidence that holds up to regulatory scrutiny, built from actual appliance inventory on the circuit, not regional averages." no_wrapper=True %}</p>
-      </article>
-    </div>
-  </div>
-</section>
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/genai.module"
+          label="GenAI"
+          genai_intro={
+            "ce_genai_eyebrow": "GENAI IN GRID RESILIENCY",
+            "ce_genai_heading_before": "Plain-language answers to complex ",
+            "ce_genai_heading_accent": "grid questions.",
+            "ce_genai_heading_after": "",
+            "ce_genai_lead": "<p>Bidgely&rsquo;s GenAI layer gives grid planning, operations, and engineering teams a conversational interface to appliance-level data. Complete complex load research in minutes, not months.</p>"
+          }
+          genai_cards=[
+            {
+              "feature_icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ders-icon-v1.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "feature_title": "Grid Planning Copilot",
+              "feature_body": "<p>A GenAI assistant for planning and engineering teams. Ask about feeder loading, DER concentration, interconnection capacity, and NWA potential to get appliance-level answers without custom queries.</p>"
+            },
+            {
+              "feature_icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/iucx-icon-05-1.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "feature_title": "Outage and Anomaly Analyst",
+              "feature_body": "<p>Enables operations teams to ask about outage root cause, load anomalies, and asset performance using plain language. Surfaces appliance-level contributors to grid events so your team diagnoses faster and responds with precision.</p>"
+            },
+            {
+              "feature_icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/daas-v2.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "feature_title": "Interconnection Analysis Assistant",
+              "feature_body": "<p>Generates plain-language summaries of current-state DER load and hosting capacity for specific circuits and substations, supporting interconnection reviews and regulatory submissions with evidence grounded in AMI data.</p>"
+            }
+          ]
+          right_column_type="image"
+          genai_visual_image={ "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grounded-conversations.svg", "alt": "Grid Planning Copilot conversation mockup", "loading": "lazy" }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-{# =========================================================
-   USE CASES – STRIPES
-   ========================================================= #}
-<section class="section section--white">
-  <div class="container">
-    <div class="solutions-head">
-      <p class="eyebrow">{% text "sol_eyebrow" value="USE CASES" no_wrapper=True %}</p>
-      <h2 class="h2">{% rich_text "sol_heading" html="What <span class='accent'>UtilityAI&trade;</span> makes possible in grid resiliency." no_wrapper=True %}</h2>
-      <p class="lede">{% rich_text "sol_lede" html="Each use case uses the same appliance-level intelligence layer so your grid planning, operations, and regulatory teams operate from the same source of truth." no_wrapper=True %}</p>
-    </div>
+  {# Proven Results: DnD rich text (not proven-results.module) #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module path="@hubspot/rich_text" label="Proven results" %}
+          {% module_attribute "html" %}
+            <section class="section section--white">
+              <div class="container">
+                <div class="results-head" style="display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:28px;">
+                  <p class="eyebrow">PROVEN RESULTS</p>
+                  <h2 class="h2" style="margin:0;">Deployed at scale. <span class="accent">Measured at the meter.</span></h2>
+                </div>
 
-    {# Stripe 1 — Grid Asset Capacity Analysis #}
-    <div class="stripe">
-      <div class="stripe__copy">
-        <h3>{% text "stripe1_title" value="Grid Asset Capacity Analysis" no_wrapper=True %}</h3>
-        <p class="stripe__sub">{% text "stripe1_sub" value="See what is actually stressing your grid assets, not just what your billing and grid systems suggest." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe1_quote" html="Transformer and feeder capacity assessments built on whole-home averages miss the EV charger on Elm Street and the heat pump cluster on the south feeder. Bidgely identifies appliance-level load composition at every premises and aggregates it up to the asset level so your capacity analysis reflects what is genuinely on the wire." no_wrapper=True %}</div>
-        <ul class="stripe__bullets">
-          {% rich_text "stripe1_bullets" html="<li>90%+ DER detection accuracy at the premises level</li><li>40 million meters serve as sources for Bidgely&rsquo;s data models</li><li>10,000s of EVs discovered by multiple utilities on their grids</li>" no_wrapper=True %}
-        </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe1_cta_link" value="#" no_wrapper=True %}">
-          {% text "stripe1_cta_label" value="Explore Grid Asset Capacity Analysis" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-      <div class="stripe__visual">
-        {% image "stripe1_img" src="{{ asset_base }}/grid-planning-diagram-02.svg" alt="Grid asset capacity analysis diagram" class="stripe__img" %}
-      </div>
-    </div>
+                <div class="pr-case">
+                  <div class="pr-case__featured">
+                    <div class="pr-case__featured-label">FEATURED CASE STUDY</div>
+                    <div class="pr-case__featured-logo">
+                      <img src="{{ asset_base }}/hydro-one-logo-white.svg" alt="Hydro One" loading="lazy" decoding="async">
+                    </div>
+                    <p class="pr-case__featured-copy">
+                      Detected 10,000+ EVs on its grid from AMI data alone (vs. hundreds previously known). Produced the first-ever 8760 EV load curve with 0.37 kW/EV coincident peak contribution. Mapped EV impacts at T&amp;D and system levels. Now in CYME integration and scenario modeling for long-term grid planning.
+                    </p>
+                    <a class="pr-case__featured-cta" href="#">
+                      Read Case Study
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                    </a>
+                  </div>
 
-    {# Stripe 2 — Long-Term DER Forecasting and Planning #}
-    <div class="stripe stripe--reverse">
-      <div class="stripe__copy">
-        <h3>{% text "stripe2_title" value="Long-Term DER Forecasting and Planning" no_wrapper=True %}</h3>
-        <p class="stripe__sub">{% text "stripe2_sub" value="Stop forecasting with yesterday&rsquo;s data." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe2_quote" html="Long-range planning models built on historical billing data and interconnection queues systematically undercount behind-the-meter DER adoption. Bidgely starts from actual meter-level consumption, scoring every premise for solar, storage, EV, and heat pump propensity and projecting adoption by ZIP, feeder, and substation with the hourly granularity regulators now require." no_wrapper=True %}</div>
-        <ul class="stripe__bullets">
-          {% rich_text "stripe2_bullets" html="<li>Granular 8760 forecasts replace static snapshots with dynamic representations of daily, weekly, and seasonal variability</li><li>Forecasts feed directly into industry-standard power flow tools like CYME and Synergi</li>" no_wrapper=True %}
-        </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe2_cta_link" value="#" no_wrapper=True %}">
-          {% text "stripe2_cta_label" value="Explore Long-Term DER Forecasting" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-      <div class="stripe__visual">
-        {% image "stripe2_img" src="{{ asset_base }}/grid-planing-diagram-2.svg" alt="Long-term DER forecasting diagram" class="stripe__img" %}
-      </div>
-    </div>
+                  <div class="pr-case__proofs">
+                    <div class="pr-case__proof">
+                      <div class="pr-case__proof-logo">
+                        <img src="{{ asset_base }}/ATCO-Logo-color.svg" alt="ATCO" loading="lazy" decoding="async">
+                      </div>
+                      <p class="pr-case__proof-copy">
+                        Heating identified as 41.45% of usage, 6.83 MWh/yr premium in electric-heating homes, and 303.94 MWh forecast load growth. NWA design for remote diesel grid.
+                      </p>
+                    </div>
+                    <div class="pr-case__proof">
+                      <div class="pr-case__proof-logo">
+                        <img src="{{ asset_base }}/avista-logo.svg" alt="Avista" loading="lazy" decoding="async">
+                      </div>
+                      <p class="pr-case__proof-copy">
+                        ~1,500 EVs mapped with feeder-level visibility, continuous new use cases generated from AMI data without additional hardware.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-    {# Stripe 3 — Non-Wires Alternatives #}
-    <div class="stripe">
-      <div class="stripe__copy">
-        <h3>{% text "stripe3_title" value="Non-Wires Alternatives" no_wrapper=True %}</h3>
-        <p class="stripe__sub">{% text "stripe3_sub" value="Find the demand-side flexibility before you approve the asset upgrade project." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe3_quote" html="When a feeder constraint appears, the default response doesn&rsquo;t have to be new infrastructure. Bidgely identifies the load driving that constraint, ranks customers by flexibility value per transformer, and quantifies NWA potential modeled on actual appliance-level load shift potential, not estimates." no_wrapper=True %}</div>
-        <ul class="stripe__bullets">
-          {% rich_text "stripe3_bullets" html="<li>NWA analysis reduced from weeks to hours per asset</li><li>30&ndash;50% of assessed assets have a viable NWA alternative</li><li>80% reduction in peak EV demand at a constrained transformer through NWA instead of upgrade</li><li>$2&ndash;3M from transformer overload prevention</li>" no_wrapper=True %}
-        </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe3_cta_link" value="#" no_wrapper=True %}">
-          {% text "stripe3_cta_label" value="Explore Non-Wires Alternatives" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-      <div class="stripe__visual">
-        {% image "stripe3_img" src="{{ asset_base }}/grid-planning-diagram-4.svg" alt="Non-wires alternatives diagram" class="stripe__img" %}
-      </div>
-    </div>
-  </div>
-</section>
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/resources-hubdb.module"
+          label="Resources"
+          ce_resources_eyebrow="Resources"
+          filter_value="CX"
+          hubdb_limit=3
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-{# =========================================================
-   AGENTIC AUTOMATION
-   ========================================================= #}
-<section class="section section--navy">
-  <div class="container">
-    <div class="agentic-head">
-      <div>
-        <p class="eyebrow">{% text "ag_eyebrow" value="AGENTIC AUTOMATION IN GRID RESILIENCY" no_wrapper=True %}</p>
-        <h2 class="h2">{% rich_text "ag_heading" html="AI that acts.<br>Not just advises." no_wrapper=True %}</h2>
-        <p class="lede">{% rich_text "ag_lede" html="Bidgely&rsquo;s agentic layer handles the grid monitoring and planning workflows your team currently does manually, without adding headcount." no_wrapper=True %}</p>
-      </div>
-      <div class="agentic-pill">
-        <div class="label">{% text "ag_pill_label" value="Agentic Value, Modeled" no_wrapper=True %}</div>
-        <div class="val">{% text "ag_pill_value" value="$6M+/year" no_wrapper=True %}</div>
-        <div class="sub">{% rich_text "ag_pill_sub" html="From deferred capital investment and transformer overload prevention. Planning cycles reduced from weeks to hours per constrained asset." no_wrapper=True %}</div>
-      </div>
-    </div>
-
-    <div class="agent-cards">
-      <article class="agent-card">
-        {% image "ag_card1_icon" src="{{ asset_base }}/grid-planning-icon-5.svg" alt="" width="42" height="42" %}
-        <h4>{% text "ag_card1_title" value="Transformer Loading Monitoring Agent" no_wrapper=True %}</h4>
-        <p>{% rich_text "ag_card1_copy" html="Monitors load at the substation, feeder, and transformer levels using appliance-level signals. Each alert is calibrated against that asset&rsquo;s own baseline, not a territory average. Surfaces specific load drivers, such as EV growth, heat pump cold-start peaks, and HVAC degradation." no_wrapper=True %}</p>
-      </article>
-
-      <article class="agent-card">
-        {% image "ag_card2_icon" src="{{ asset_base }}/grid-planning-icon-6.svg" alt="" width="42" height="42" %}
-        <h4>{% text "ag_card2_title" value="DER Forecasting and Scenario Agent" no_wrapper=True %}</h4>
-        <p>{% rich_text "ag_card2_copy" html="Runs continuous DER adoption projections by circuit, substation, and planning zone based on live propensity scores. Test multiple future scenarios, such as population growth, climate shifts, EV adoption, DER growth, DSM programs&mdash;starting from actual meter-level consumption, not generic load shapes." no_wrapper=True %}</p>
-      </article>
-
-      <article class="agent-card">
-        {% image "ag_card3_icon" src="{{ asset_base }}/dtech26-for-regulators.svg" alt="" width="42" height="42" %}
-        <h4>{% text "ag_card3_title" value="Non-Wires Alternatives Recommendation Agent" no_wrapper=True %}</h4>
-        <p>{% rich_text "ag_card3_copy" html="Runs the entire NWA workflow autonomously, from constraint identification to scenario analysis to ranked recommendation. Produces defensible plans committees can act on without rebuilding from scratch. Generates appliance-level 8760 load curves before and after implementation. Delivers candidate packages including eligible customers, program options, and projected capacity relief." no_wrapper=True %}</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-{# =========================================================
-   GENAI
-   ========================================================= #}
-<section class="section section--grey">
-  <div class="container">
-    <div class="genai__head">
-      <p class="eyebrow">{% text "genai_eyebrow" value="GENAI IN GRID RESILIENCY" no_wrapper=True %}</p>
-      <h2 class="h2">{% rich_text "genai_heading" html="Plain-language answers to complex <span class='accent'>grid questions.</span>" no_wrapper=True %}</h2>
-      <p class="lede">{% rich_text "genai_lede" html="Bidgely&rsquo;s GenAI layer gives grid planning, operations, and engineering teams a conversational interface to appliance-level data. Complete complex load research in minutes, not months." no_wrapper=True %}</p>
-    </div>
-
-    <div class="genai">
-      <div class="genai__cards">
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/ders-icon-v1.svg');"></div>
-          <div>
-            <h4>{% text "genai_card1_title" value="Grid Planning Copilot" no_wrapper=True %}</h4>
-            <p>{% rich_text "genai_card1_copy" html="A GenAI assistant for planning and engineering teams. Ask about feeder loading, DER concentration, interconnection capacity, and NWA potential to get appliance-level answers without custom queries." no_wrapper=True %}</p>
-          </div>
-        </div>
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/iucx-icon-05-1.svg');"></div>
-          <div>
-            <h4>{% text "genai_card2_title" value="Outage and Anomaly Analyst" no_wrapper=True %}</h4>
-            <p>{% rich_text "genai_card2_copy" html="Enables operations teams to ask about outage root cause, load anomalies, and asset performance using plain language. Surfaces appliance-level contributors to grid events so your team diagnoses faster and responds with precision." no_wrapper=True %}</p>
-          </div>
-        </div>
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/daas-v2.svg');"></div>
-          <div>
-            <h4>{% text "genai_card3_title" value="Interconnection Analysis Assistant" no_wrapper=True %}</h4>
-            <p>{% rich_text "genai_card3_copy" html="Generates plain-language summaries of current-state DER load and hosting capacity for specific circuits and substations, supporting interconnection reviews and regulatory submissions with evidence grounded in AMI data." no_wrapper=True %}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="genai__visual">
-        {% image "genai_visual" src="{{ asset_base }}/grounded-conversations.svg" alt="Grid Planning Copilot conversation mockup" class="genai__img" %}
-      </div>
-    </div>
-  </div>
-</section>
-
-{# =========================================================
-   PROVEN RESULTS — featured Hydro One (left) + ATCO / Avista proof points (right)
-   ========================================================= #}
-<section class="section section--white">
-  <div class="container">
-    <div class="results-head" style="display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:28px;">
-      <p class="eyebrow">{% text "results_eyebrow" value="PROVEN RESULTS" no_wrapper=True %}</p>
-      <h2 class="h2" style="margin:0;">{% rich_text "results_heading" html="Deployed at scale. <span class='accent'>Measured at the meter.</span>" no_wrapper=True %}</h2>
-    </div>
-
-    <div class="pr-case">
-      {# ── Featured case (left, navy) ── #}
-      <div class="pr-case__featured">
-        <div class="pr-case__featured-label">{% text "featured_label" value="FEATURED CASE STUDY" no_wrapper=True %}</div>
-        <div class="pr-case__featured-logo">
-          {% image "featured_logo" src="{{ asset_base }}/hydro-logo.svg" alt="Hydro One" %}
-        </div>
-        <p class="pr-case__featured-copy">
-          {% rich_text "featured_copy" html="Detected 10,000+ EVs on its grid from AMI data alone (vs. hundreds previously known). Produced the first-ever 8760 EV load curve with 0.37 kW/EV coincident peak contribution. Mapped EV impacts at T&amp;D and system levels. Now in CYME integration and scenario modeling for long-term grid planning." no_wrapper=True %}
-        </p>
-        <a class="pr-case__featured-cta" href="{% text "featured_cta_link" value="#" no_wrapper=True %}">
-          {% text "featured_cta_label" value="Read Case Study" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-
-      {# ── Proof points stacked (right, white) ── #}
-      <div class="pr-case__proofs">
-        <div class="pr-case__proof">
-          <div class="pr-case__proof-logo">
-            {% image "proof1_logo" src="{{ asset_base }}/ATCO-Logo-color.svg" alt="ATCO" %}
-          </div>
-          <p class="pr-case__proof-copy">
-            {% rich_text "proof1_copy" html="Heating identified as 41.45% of usage, 6.83 MWh/yr premium in electric-heating homes, and 303.94 MWh forecast load growth. NWA design for remote diesel grid." no_wrapper=True %}
-          </p>
-        </div>
-        <div class="pr-case__proof">
-          <div class="pr-case__proof-logo">
-            {% image "proof2_logo" src="{{ asset_base }}/avista-logo.svg" alt="Avista" %}
-          </div>
-          <p class="pr-case__proof-copy">
-            {% rich_text "proof2_copy" html="~1,500 EVs mapped with feeder-level visibility, continuous new use cases generated from AMI data without additional hardware." no_wrapper=True %}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-{# Resources (HubDB): hubdb_row_ids → curated rows only (ignores tag). Else → tag filter; newest hs_updated_at first. hubdb_limit=max cards. #}
-{% module "resources_grid_planning" path="../modules/resources-hubdb.module",
-  ce_resources_eyebrow="Resources",
-  filter_value="CX",
-  hubdb_limit=3 %}
+{% end_dnd_area %}
 
 {% module "site_footer" path="../modules/global-footer.module" %}
 
