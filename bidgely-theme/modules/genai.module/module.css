@@ -139,3 +139,10 @@
   outline: 2px solid var(--azure);
   outline-offset: 2px;
 }
+.genai__visual img{
+  transition: transform .35s ease, box-shadow .35s ease, filter .35s ease;
+}
+.genai__visual:hover img {
+  transform: translateY(-4px) scale(1.01);
+  filter: drop-shadow(0 14px 30px rgba(21, 45, 73, .12));
+}

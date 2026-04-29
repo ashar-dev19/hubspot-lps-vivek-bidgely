@@ -1,732 +1,530 @@
 <!--
-  templateType: "page"
+  templateType: page
   isAvailableForNewContent: true
-  label: 260424 — Electrification
+  label: Bidgely Solution – Electrification
+
+  DnD module map:
+  - Hero → @hubspot/rich_text (editable banner; not hero-2-columns.module)
+  - CTA strip → call-to-action.module
+  - Jobs to be done → capabilities.module
+  - Use cases (stripes) → solution-grid.module
+  - Agentic automation → agentic-automation.module (inline agents_intro / agents_value — do not use set-block variables for groups)
+  - GenAI → genai.module
+  - Proven results (peer strip + featured case + tile grid) → @hubspot/rich_text (layout ≠ proven-results.module)
+  - Resources → resources-hubdb.module
 -->
 
 {% set asset_base = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
-{# Jobs-to-be-done icons — swap in File Manager as desired #}
-{% set cap_icon_1 = asset_base ~ "/target.svg" %}
-{% set cap_icon_2 = asset_base ~ "/customer-experience-v1.svg" %}
-{% set cap_icon_3 = asset_base ~ "/every-touchpoint.svg" %}
-{% set cap_icon_4 = asset_base ~ "/explain-bill.svg" %}
 
 <!doctype html>
 <html lang="{{ html_lang }}" {{ html_lang_dir }}>
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
   {{ standard_header_includes }}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
-
   <style>
-    /* ============================================================
-       DESIGN TOKENS
-       ============================================================ */
-    :root{
-      --c-navy:        #152d49;
-      --c-navy-12:     rgba(21,45,73,.12);
-      --c-navy-7:      rgba(21,45,73,.52);
-      --c-azure:       #449bd5;
-      --c-shake:       #499ed7;
-      --c-light-blue:  #7abfe8;
-      --c-bg-pale:     #f2f8fc;
-      --c-bg-grey:     #f9f9f9;
-      --c-white-12:    rgba(255,255,255,.12);
-      --c-white-50:    rgba(215,239,255,.5);
-      --c-white-90:    rgba(255,255,255,.9);
-      --c-red:         #dc2626;
-      --c-border:      #e8eaed;
-
-      --shadow-card:   0 5px 25px rgba(0,0,0,.05);
-      --shadow-soft:   0 4px 20px rgba(0,0,0,.07);
-
-      --radius-sm: 6px;
-      --radius:    10px;
-      --radius-lg: 14px;
-      --radius-xl: 22px;
-
-      --container: 1300px;
-      --gutter:    24px;
-    }
-
-    /* ============================================================
-       BASE
-       ============================================================ */
-    *,*::before,*::after{ box-sizing:border-box; }
-    html,body{ margin:0; padding:0; background:#fff; color:var(--c-navy); }
-    body{
-      font-family:'Montserrat',Helvetica,Arial,sans-serif;
-      font-size:14px;
-      line-height:1.5;
-      -webkit-font-smoothing:antialiased;
-    }
-    img,svg{ max-width:100%; display:block; }
-    a{ color:inherit; text-decoration:none; }
-    button{ font-family:inherit; cursor:pointer; }
-    p{ margin:0; }
-
-    .container{
-      width:100%;
-      max-width:var(--container);
-      margin:0 auto;
-      padding:0 var(--gutter);
-    }
-    .eyebrow{
-      font-size:14px;
-      font-weight:600;
-      letter-spacing:.55px;
-      color:var(--c-shake);
-      text-transform:uppercase;
-      margin:0 0 14px;
-    }
-    .h2{
-      font-size:34px;
-      font-weight:700;
-      line-height:1.15;
-      letter-spacing:-1px;
-      color:var(--c-navy);
-      margin:0 0 14px;
-    }
-    .h2 .accent{ color:var(--c-azure); }
-    .lede{
-      font-size:14px;
-      line-height:20px;
-      color:var(--c-navy);
-      max-width:760px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      font-size:14px;
-      font-weight:700;
-      padding:9px 18px;
-      border-radius:8px;
-      border:1px solid transparent;
-      transition:transform .15s ease, opacity .15s ease;
-      white-space:nowrap;
-    }
-    .btn{ position:relative; overflow:hidden; transform:translateY(0); box-shadow:0 0 0 rgba(0,0,0,0); }
-    .btn::after{ content:""; position:absolute; inset:auto -35% 0 auto; width:40%; height:180%; transform:rotate(22deg) translateX(130%); background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.2) 50%,rgba(255,255,255,0) 100%); transition:transform .45s ease; pointer-events:none; }
-    .btn:hover{ opacity:1; transform:translateY(-2px); box-shadow:0 10px 24px rgba(21,45,73,.14); }
-    .btn:hover::after{ transform:rotate(22deg) translateX(-150%); }
-    .btn:active{ transform:translateY(0); }
-    .btn--ghost{
-      background:#fff;
-      color:var(--c-navy);
-      border-color:rgba(21,45,73,.10);
-    }
-    .btn--gradient{
-      color:#fff;
-      background:linear-gradient(90deg,#152d49 0%,#499ed7 100%);
-    }
-    .btn--navy{
-      background:var(--c-navy);
-      color:#fff;
-      padding:16px 26px;
-      border-radius:10px;
-    }
-    .btn--white{
-      background:#fff;
-      color:var(--c-navy);
-      padding:16px 26px;
-      border-radius:9px;
-    }
-
-    /* ============================================================
-       HERO
-       ============================================================ */
     .hero {
-        position: relative;
-        background: url(https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/e-grid.svg);
-        background-size: cover;
+      background-image: url({{ asset_base }}/e-grid.svg);
     }
-    .hero__inner{
-      position:relative; z-index:1;
-      padding:120px var(--gutter) 80px;
-      max-width:var(--container);
-      margin:0 auto;
+    .card__title {
+      margin: 0;
     }
-    .hero:before{
-      display: none;
+    /* Proven Results — extra case tiles (only used in this template’s rich text) */
+    .case-also {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
-    .hero:after{
-      display: none;
+    .case-tile {
+      background: #fff;
+      border: 1px solid var(--nile-7);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .hero__top{
-      display:grid;
-      grid-template-columns:1.2fr 1fr;
-      gap:60px;
-      align-items:start;
+    .case-tile:hover {
+      box-shadow: 0 14px 30px rgba(21, 45, 73, 0.1);
     }
-    .hero h1{
-      margin:0 0 28px;
-      font-size:54px;
-      line-height:1.05;
-      font-weight:800;
-      letter-spacing:-2px;
-      color:var(--c-navy);
+    .case-tile__utility {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--azure);
+      letter-spacing: 0.55px;
+      text-transform: uppercase;
     }
-    .hero h1 .accent{ color:var(--c-azure); }
-    .hero__copy{
-      font-size:17px;
-      line-height:1.7;
-      color:var(--c-navy-7);
-      font-weight:300;
-      padding-top:8px;
+    .case-tile__title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--nile);
+      line-height: 1.3;
     }
-    .hero__eyebrow{
-      display:inline-block;
-      font-size:12px; font-weight:600; letter-spacing:.8px;
-      color:var(--c-shake); text-transform:uppercase;
-      margin-bottom:20px;
+    .case-tile__copy {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--nile-52);
+      margin: 0;
     }
-    .hero-visual{ margin-top:60px; }
-    .hero-visual img,
-    .hero-visual svg{ width:100%; height:auto; display:block; border-radius:14px; }
-
-    /* ============================================================
-       FULL-WIDTH NAVY CTA
-       ============================================================ */
-    .cta-strip{ background:var(--c-navy); color:#fff; padding:60px 0; }
-    .cta-strip__inner{
-      max-width:var(--container); margin:0 auto; padding:0 var(--gutter);
-      display:flex; align-items:center; gap:32px; justify-content:space-between;
+    .case-tile__cta {
+      margin-top: auto;
+      color: var(--azure);
+      font-weight: 600;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding-top: 8px;
+      text-decoration: none;
     }
-    .cta-strip h2{ margin:0; font-size:34px; font-weight:700; letter-spacing:-1px; line-height:1.15; }
-
-    /* ============================================================
-       SECTIONS / CARDS
-       ============================================================ */
-    .section{ padding:80px 0; border-bottom:1px solid var(--c-navy-12); }
-    .section--pale{ background:var(--c-bg-pale); }
-    .section--white{ background:#fff; }
-    .section--grey{ background:var(--c-bg-grey); }
-    .section--navy{ background:var(--c-navy); color:#fff; border-bottom:none; }
-
-    .cards-4{ margin-top:36px; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
-    .card{
-      background:#fff; border-radius:14px; padding:28px;
-      min-height:312px; display:flex; flex-direction:column; gap:14px;
+    .case-tile__cta svg {
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
     }
-    .card__icon{ width:44px; height:44px; }
-    .card__svg-icon{ width:44px; height:44px; flex-shrink:0; }
-    .card__title{ font-size:18px; font-weight:700; line-height:1.25; color:var(--c-navy); }
-    .card__copy{ font-size:14px; line-height:1.45; color:var(--c-navy-7); font-weight:500; }
-
-    /* ============================================================
-       SOLUTIONS STRIPES
-       ============================================================ */
-    .solutions-head{ text-align:center; max-width:700px; margin:0 auto 48px; }
-    .solutions-head .lede{ margin:14px auto 0; }
-
-    .stripe{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; padding:48px 0; border-top:1px solid var(--c-navy-12); }
-    .stripe:first-of-type{ border-top:none; }
-    .stripe--reverse .stripe__copy{ order:2; }
-    .stripe__copy h3{ font-size:26px; font-weight:700; color:var(--c-navy); margin:0 0 8px; letter-spacing:-.5px; }
-    .stripe__sub{ font-size:19px; font-weight:600; color:var(--c-shake); letter-spacing:-.4px; margin:0 0 14px; }
-    .stripe__quote{ border-left:2px solid var(--c-shake); padding:6px 12px; color:var(--c-navy); font-size:14px; line-height:1.45; margin-bottom:20px; }
-    .stripe__bullets{ list-style:none; margin:0 0 18px; padding:0; display:flex; flex-direction:column; gap:8px; }
-    .stripe__bullets li{ display:flex; gap:10px; align-items:flex-start; font-size:13px; color:var(--c-navy); }
-    .stripe__bullets li::before{
-      content:""; flex:0 0 18px; width:18px; height:19px; margin-top:2px;
-      background:url("{{ asset_base }}/check-bullet.svg") center/contain no-repeat;
+    .case-tile__cta:hover svg {
+      transform: translate(2px, -2px);
     }
-    .stripe__cta{ display:inline-flex; align-items:center; gap:6px; color:var(--c-shake); font-weight:600; font-size:13px; }
-    .stripe__cta img{ width:16px; height:16px; }
-    .stripe__visual{ background:var(--c-bg-pale); border-radius:14px; padding:24px; }
-    .stripe__visual img, .stripe__visual svg{ width:100%; height:auto; display:block; border-radius:8px; }
-
-    /* ============================================================
-       AGENTIC AUTOMATION
-       ============================================================ */
-    .agentic-head{ display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:start; margin-bottom:40px; }
-    .agentic-head h2{ color:#fff; margin-top:6px; }
-    .agentic-head .lede{ color:#fff; opacity:.85; }
-    .agentic-head .eyebrow{ color:var(--c-light-blue); }
-    .agentic-pill{ background:rgba(68,155,213,.06); border:1px solid rgba(68,155,213,.18); border-radius:14px; padding:18px 22px; }
-    .agentic-pill .label{ font-size:10px; letter-spacing:.8px; font-weight:600; color:var(--c-light-blue); text-transform:uppercase; }
-    .agentic-pill .val{ font-size:26px; font-weight:800; color:#fff; margin-top:4px; letter-spacing:-.6px; }
-    .agentic-pill .sub{ font-size:13px; color:rgba(215,239,255,.55); margin-top:4px; }
-
-    .agent-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .agent-card{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:30px; }
-    .agent-card__icon{ width:42px; height:42px; margin-bottom:16px; }
-    .agent-card h4{ font-size:18px; font-weight:700; color:#fff; margin:0 0 14px; }
-    .agent-card p{ font-size:14px; color:rgba(215,239,255,.55); line-height:1.4; min-height:80px; }
-    .agent-card .meta{ margin-top:24px; padding-top:14px; border-top:1px solid rgba(255,255,255,.08); color:var(--c-light-blue); font-size:11px; }
-
-    /* ============================================================
-       GEN-AI
-       ============================================================ */
-    .genai{ display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-top:40px; }
-    .genai__head{ grid-column:1 / -1; }
-    .genai-card{ background:#fff; border-radius:14px; padding:18px; display:flex; gap:18px; box-shadow:var(--shadow-card); align-items:flex-start; }
-    .genai-card + .genai-card{ margin-top:18px; }
-    .genai-card .ic{ width:42px; height:42px; flex:0 0 42px; border-radius:0; background-size:contain;background-repeat: no-repeat; }
-    .genai-card h4{ font-size:14px; font-weight:700; color:var(--c-navy); margin:0 0 6px; }
-    .genai-card p{ font-size:13px; line-height:1.5; color:var(--c-navy-7); margin:0; }
-
-    /* ============================================================
-       PROVEN RESULTS
-       ============================================================ */
-    .results-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:28px; }
-    .peers{ display:flex; align-items:center; gap:18px; margin:8px 0 32px; font-size:10px; letter-spacing:.8px; color:var(--c-navy-7); text-transform:uppercase; }
-    .peers img{ height:38px; width:auto; max-width:100%; }
-
-    .case{ display:grid; grid-template-columns:1fr 1fr; border-radius:22px; overflow:hidden; border:1px solid rgba(21,45,73,.07); box-shadow:var(--shadow-soft); background:#fff; }
-    .case__left{ background:var(--c-navy); color:#fff; padding:36px 40px; }
-    .case__eyebrow{ font-size:10px; letter-spacing:.8px; color:var(--c-light-blue); text-transform:uppercase; font-weight:600; margin-bottom:10px; }
-    .case__title{ font-size:26px; font-weight:700; margin:0 0 18px; }
-    .case__copy{ font-size:14px; color:rgba(215,239,255,.7); line-height:1.55; font-weight:300; }
-    .case__hero{ background:rgba(68,155,213,.08); border:1px solid rgba(68,155,213,.18); border-radius:11px; padding:18px; margin-top:28px; }
-    .case__hero .v{ font-size:32px; font-weight:800; letter-spacing:-.8px; }
-    .case__hero .l{ font-size:13px; color:rgba(215,239,255,.65); margin-top:4px; }
-    .case__right{ padding:36px 40px; display:flex; flex-direction:column; }
-    .case__quote{ font-style:italic; color:var(--c-navy); font-size:14px; line-height:1.6; font-weight:300; border-top:3px solid var(--c-shake); padding-top:14px; }
-    .case__stats{ margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-    .case__stat{ background:#eff7ff; border:1px solid rgba(21,45,73,.07); border-radius:9px; padding:14px; }
-    .case__stat .v{ font-size:20px; font-weight:800; color:var(--c-navy); letter-spacing:-.5px; }
-    .case__stat .l{ font-size:11px; color:var(--c-navy-7); margin-top:4px; }
-    .case__cta{ margin-top:20px; color:var(--c-shake); font-weight:600; font-size:13px; display:inline-flex; align-items:center; gap:6px; }
-    .case__cta img{ width:16px; height:16px; }
-
-    .case-also{ margin-top:28px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    .case-tile{ background:#fff; border:1px solid rgba(21,45,73,.07); border-radius:14px; padding:22px; display:flex; flex-direction:column; gap:10px; }
-    .case-tile__utility{ font-size:12px; font-weight:700; color:var(--c-shake); letter-spacing:.55px; text-transform:uppercase; }
-    .case-tile__title{ font-size:16px; font-weight:700; color:var(--c-navy); line-height:1.3; }
-    .case-tile__copy{ font-size:13px; color:var(--c-navy-7); line-height:1.5; }
-    .case-tile__cta{ margin-top:auto; color:var(--c-shake); font-weight:600; font-size:13px; display:inline-flex; align-items:center; gap:6px; padding-top:8px; }
-    .case-tile__cta img{ width:14px; height:14px; }
-
-    .static-visual{ background:var(--c-bg-pale); border-radius:14px; padding:24px; }
-    .static-visual--plain{ background:transparent; padding:0; border-radius:0; }
-    .static-visual img, .static-visual svg{ width:100%; height:auto; display:block; border-radius:14px; }
-
-    /* ============================================================
-       RESPONSIVE
-       ============================================================ */
-    @media (max-width:1100px){
-      .hero h1{ font-size:46px; }
-      .hero__top{ grid-template-columns:1fr; gap:24px; }
-      .cards-4{ grid-template-columns:repeat(2,1fr); }
-      .agent-cards{ grid-template-columns:1fr; }
-      .genai{ grid-template-columns:1fr; }
-      .resources{ grid-template-columns:1fr; }
-      .case{ grid-template-columns:1fr; }
-      .case-also{ grid-template-columns:1fr; }
-      .stripe{ grid-template-columns:1fr; }
-      .stripe--reverse .stripe__copy{ order:0; }
-      .agentic-head{ grid-template-columns:1fr; }
-      .cta-strip__inner{ flex-direction:column; align-items:flex-start; }
+    @media (max-width: 1024px) {
+      .case-also {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
-    @media (max-width:640px){
-      .hero h1{ font-size:34px; letter-spacing:-1px; }
-      .cards-4{ grid-template-columns:1fr; }
-      .h2{ font-size:26px; }
+    @media (max-width: 640px) {
+      .case-also {
+        grid-template-columns: 1fr;
+      }
     }
-  </style>
 
-  <style>
-    .cards-4 .card{ transition:background .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease; }
-    .cards-4 .card:hover{ background:linear-gradient(135deg,#152d49 0%,#499ed7 100%); transform:translateY(-2px); box-shadow:var(--shadow-soft); }
-    .cards-4 .card:hover .card__title, .cards-4 .card:hover .card__copy{ color:#fff; }
-    .cards-4 .card:hover .card__svg-icon *{ stroke:#fff !important; fill:transparent; }
-    .cards-4 .card:hover .card__svg-icon circle[fill], .cards-4 .card:hover .card__svg-icon rect[fill]{ fill:rgba(255,255,255,.12) !important; }
-    .cards-4 .card:not(:hover) .card__svg-icon .icon-accent-fill{ fill:#7abfe8 !important; }
-    .cards-4 .card:not(:hover) .card__svg-icon .icon-light-stroke{ stroke:#7abfe8 !important; }
-    .cards-4 .card img{ width:44px; height:44px; object-fit:contain; }
-
-    @keyframes fadeUp{ from{ opacity:0; transform:translateY(16px); } to{ opacity:1; transform:translateY(0); } }
-    .hero__top, .stripe, .agent-card, .genai-card, .case, .case-tile, .resource{ animation:fadeUp .6s ease both; }
-    .hero__top{ animation-delay:.05s; }
-    .stripe:nth-of-type(1){ animation-delay:.04s; }
-    .stripe:nth-of-type(2){ animation-delay:.08s; }
-    .stripe:nth-of-type(3){ animation-delay:.12s; }
-    .static-visual img, .stripe__visual img{ transition:transform .35s ease, box-shadow .35s ease, filter .35s ease; }
-    .static-visual:hover img, .stripe__visual:hover img{ transform:translateY(-4px) scale(1.01); filter:drop-shadow(0 14px 30px rgba(21,45,73,.12)); }
-    .hero .btn--navy{ animation:fadeUp .65s ease both; animation-delay:.15s; }
-    .resource, .case, .case-tile, .agent-card, .genai-card{ transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
-    .resource:hover, .case:hover, .case-tile:hover, .agent-card:hover, .genai-card:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(21,45,73,.10); }
-    .stripe__cta img, .case__cta img, .resource__cta img, .case-tile__cta img{ transition:transform .2s ease; }
-    .stripe__cta:hover img, .case__cta:hover img, .resource__cta:hover img, .case-tile__cta:hover img{ transform:translate(2px,-2px); }
-    .cap-card__icon-img{ width:44px; height:44px; object-fit:contain; transition:filter .25s ease, transform .25s ease; }
-    .cards-4 .card:hover .cap-card__icon-img{ filter:brightness(0) invert(1); transform:translateY(-1px) scale(1.03); }
+    /* Peer utility logos — same structure/CSS as proven-results.module (module CSS not loaded on this page) */
+    .electrification-proven-results .cases-logos {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      margin: 0 0 2.5rem;
+    }
+    .electrification-proven-results .cases-logos__label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--nile-52);
+      margin: 0;
+    }
+    .electrification-proven-results .cases-logos__row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.75rem;
+    }
+    .electrification-proven-results .cases-logo-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 38px;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid rgba(21, 45, 73, 0.12);
+      box-shadow: 0 1px 2px rgba(13, 17, 23, 0.04);
+      min-width: 96px;
+    }
+    .electrification-proven-results .cases-logo__img {
+      display: block;
+      height: 18px;
+      width: auto;
+      max-width: 80px;
+      object-fit: contain;
+    }
   </style>
 </head>
 <body>
 
 {% module "site_header" path="../modules/global-header.module" %}
 
-{% dnd_area "main" label="Main Content" class="production-main" %}
+{% dnd_area "main" label="Main Content" %}
 
-  {# ===== SECTION 1 — HERO ===== #}
   {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
     {% dnd_column width=12 %}
       {% dnd_row %}
-        {% dnd_module path="@hubspot/rich_text", label="Section 1 — Hero" %}
-        {% module_attribute "html" %}
-<section class="hero">
-  <div class="hero__inner">
-    <div class="hero__top">
-      <div>
-        <span class="hero__eyebrow">ACCELERATE BENEFICIAL ELECTRIFICATION</span>
-        <h1>Electrify the Right Homes at the Right Moment With the <span class='accent'>Right Offer.</span></h1>
-        <a class="btn btn--navy" href="#">Talk to an Expert</a>
-      </div>
-      <div class="hero__copy">
-        Bidgely identifies which customers already own an EV or heat pump, quantifies the peak load impact by feeder, and pinpoints who's next to buy. No surveys. No smart plugs. Just meter data at the appliance level.
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <img src="{{ asset_base }}/electrification-hero-diagram.svg" alt="Electrification intelligence dashboard preview">
-    </div>
-  </div>
-</section>
-        {% end_module_attribute %}
-      {% end_dnd_module %}
+        {% dnd_module path="@hubspot/rich_text" label="Banner" %}
+          {% module_attribute "html" %}
+            <section class="hero">
+              <div class="hero__inner container">
+                <div class="hero__top">
+                  <div>
+                    <p class="eyebrow">ACCELERATE BENEFICIAL ELECTRIFICATION</p>
+                    <h1>Electrify the Right Homes at the Right Moment With the <span class="accent">Right Offer.</span></h1>
+                    <a class="btn btn--navy" href="#">Talk to an Expert</a>
+                  </div>
+                  <div class="hero__copy body-sm">
+                    Bidgely identifies which customers already own an EV or heat pump, quantifies the peak load impact by feeder, and pinpoints who's next to buy. No surveys. No smart plugs. Just meter data at the appliance level.
+                  </div>
+                </div>
+                <div class="hero-visual">
+                  <img
+                    class="hero-visual__img"
+                    src="{{ asset_base }}/electrification-hero-diagram.svg"
+                    alt="Electrification intelligence dashboard preview"
+                    loading="lazy"
+                    decoding="async">
+                </div>
+              </div>
+            </section>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
       {% end_dnd_row %}
     {% end_dnd_column %}
   {% end_dnd_section %}
 
-  {# ===== SECTION 2 — NAVY CTA STRIP ===== #}
   {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
     {% dnd_column width=12 %}
       {% dnd_row %}
-        {% dnd_module path="@hubspot/rich_text", label="Section 2 — Demo CTA Strip" %}
-        {% module_attribute "html" %}
-<section class="cta-strip">
-  <div class="cta-strip__inner">
-    <h2>See UtilityAI Accelerate Beneficial Electrification.</h2>
-    <a class="btn btn--white" href="#">Book a Demo</a>
-  </div>
-</section>
-        {% end_module_attribute %}
-      {% end_dnd_module %}
+        {% dnd_module
+          path="../modules/call-to-action.module"
+          label="CTA strip"
+          section_heading="See UtilityAI Accelerate " ~ "\n" ~ "Beneficial Electrification."
+          subcopy=""
+          cta_text="Book a Demo"
+          button_style="white"
+          cta_link={
+            "url": { "type": "EXTERNAL", "href": "#", "href_with_scheme": "#" },
+            "open_in_new_tab": false,
+            "no_follow": false,
+            "sponsored": false,
+            "user_generated_content": false
+          }
+        %}
+        {% end_dnd_module %}
       {% end_dnd_row %}
     {% end_dnd_column %}
   {% end_dnd_section %}
 
-  {# ===== SECTION 3 — JOBS TO BE DONE (4 cards) ===== #}
   {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
     {% dnd_column width=12 %}
       {% dnd_row %}
-        {% dnd_module path="@hubspot/rich_text", label="Section 3 — Jobs to be Done" %}
-        {% module_attribute "html" %}
-<section class="section section--pale">
-  <div class="container">
-    <div class="eyebrow">JOBS TO BE DONE</div>
-    <h2 class="h2">Electrification outcomes you can <span class='accent'>actually own.</span></h2>
-    <p class="lede">Four jobs Bidgely gets done for electrification teams — all powered by the same appliance-level intelligence.</p>
-
-    <div class="cards-4">
-      <article class="card">
-        <img class="cap-card__icon-img" src="{{ cap_icon_1 }}" alt="Household targeting icon">
-        <h3 class="card__title">Find the households that<br>already bought an EV or<br>heat pump.</h3>
-        <p class="card__copy">Identify new large electric loads on the grid, help customers sign up for the best dynamic rate to minimize their bills, and shift peak load at the same time.</p>
-      </article>
-
-      <article class="card">
-        <img class="cap-card__icon-img" src="{{ cap_icon_2 }}" alt="Rebate recruitment icon">
-        <h3 class="card__title">Run rebate programs<br>that recruit, not just<br>reimburse.</h3>
-        <p class="card__copy">Identify heat pump, water heater, and EV charger candidates with our propensity algorithms before they make a purchase decision so your rebate drives the conversion instead of subsidizing it.</p>
-      </article>
-
-      <article class="card">
-        <img class="cap-card__icon-img" src="{{ cap_icon_3 }}" alt="Grid protection icon">
-        <h3 class="card__title">Protect your grid as<br>electrification scales.</h3>
-        <p class="card__copy">Know where EV charging, heat pump adoption, and water heater loads are concentrating at the transformer, feeder, and substation level before they stress it.</p>
-      </article>
-
-      <article class="card">
-        <img class="cap-card__icon-img" src="{{ cap_icon_4 }}" alt="Measurement icon">
-        <h3 class="card__title">Measure program impact<br>at the premise and<br>appliance level.</h3>
-        <p class="card__copy">Measure and report verified savings and load shift &amp; reduction from electrification programs with appliance-level attribution, not billing regression estimates.</p>
-      </article>
-    </div>
-  </div>
-</section>
-        {% end_module_attribute %}
-      {% end_dnd_module %}
+        {% dnd_module
+          path="../modules/capabilities.module"
+          label="Jobs to be done"
+          cap_eyebrow="JOBS TO BE DONE"
+          cap_heading_before="Electrification outcomes you can "
+          cap_heading_blue="actually own."
+          cap_heading_after=""
+          cap_lede="Four jobs Bidgely gets done for electrification teams — all powered by the same appliance-level intelligence."
+          cards=[
+            {
+              "icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-icon-1.svg", "alt": "Household targeting icon", "loading": "lazy" },
+              "title": "Find the households that already bought an EV or heat pump.",
+              "copy": "Identify new large electric loads on the grid, help customers sign up for the best dynamic rate to minimize their bills, and shift peak load at the same time."
+            },
+            {
+              "icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-icon-2.svg", "alt": "Rebate recruitment icon", "loading": "lazy" },
+              "title": "Run rebate programs that recruit, not just reimburse.",
+              "copy": "Identify heat pump, water heater, and EV charger candidates with our propensity algorithms before they make a purchase decision so your rebate drives the conversion instead of subsidizing it."
+            },
+            {
+              "icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-icon-3.svg", "alt": "Grid protection icon", "loading": "lazy" },
+              "title": "Protect your grid as electrification scales.",
+              "copy": "Know where EV charging, heat pump adoption, and water heater loads are concentrating at the transformer, feeder, and substation level before they stress it."
+            },
+            {
+              "icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-icon-4.svg", "alt": "Measurement icon", "loading": "lazy" },
+              "title": "Measure program impact at the premise and appliance level.",
+              "copy": "Measure and report verified savings and load shift &amp; reduction from electrification programs with appliance-level attribution, not billing regression estimates."
+            }
+          ]
+        %}
+        {% end_dnd_module %}
       {% end_dnd_row %}
     {% end_dnd_column %}
   {% end_dnd_section %}
 
-  {# ===== SECTION 4 — USE CASES (stripes) ===== #}
   {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
     {% dnd_column width=12 %}
       {% dnd_row %}
-        {% dnd_module path="@hubspot/rich_text", label="Section 4 — Use Cases" %}
-        {% module_attribute "html" %}
-<section class="section section--white">
-  <div class="container">
-    <div class="solutions-head">
-      <div class="eyebrow">USE CASES</div>
-      <h2 class="h2">What <span class='accent'>UtilityAI&trade;</span> makes possible in electrification.</h2>
-      <p class="lede">Each use case uses the same appliance-level intelligence layer, so your DSM, grid, and marketing teams operate from the same source of intelligence.</p>
-    </div>
-
-    <div class="stripe">
-      <div class="stripe__copy">
-        <h3>Heat Pump Targeting and Recruitment</h3>
-        <p class="stripe__sub">Find who will benefit most and is ready to move — before you spend a dollar on outreach.</p>
-        <div class="stripe__quote">Utilities running broad heat pump campaigns reach too many unqualified households and miss the ones most likely to convert. Bidgely identifies homes currently running gas or electric resistance heating, scores them by propensity, highest inefficiency, longest running hours, and income eligibility — and surfaces them for targeted outreach at the point of highest intent.</div>
-        <ul class="stripe__bullets">
-          <li>6X measured ROI in initial heat pump detection deployment</li>
-          <li>Heat pump detection validated with ground truth from four North American utilities</li>
-        </ul>
-        <a class="stripe__cta" href="#">
-          Explore Heat Pump Targeting
-          <img src="{{ asset_base }}/icon-feathericons-arrow-up-right-5.svg" alt="">
-        </a>
-      </div>
-      <div class="stripe__visual static-visual">
-        <img src="{{ asset_base }}/electrification-diagram-01.svg" alt="Heat pump targeting and recruitment diagram">
-      </div>
-    </div>
-
-    <div class="stripe stripe--reverse">
-      <div class="stripe__copy">
-        <h3>Electric Space Heater &amp; Water Heater Targeting</h3>
-        <p class="stripe__sub">Replace the highest-cost appliances first — with precision.</p>
-        <div class="stripe__quote">Gas-operated or aging space heaters and water heaters represent some of the richest targets for electrification. Bidgely detects them from AMI data without a survey, segments by upgrade readiness, and feeds targeted lists directly into your DSM workflow.</div>
-        <ul class="stripe__bullets">
-          <li>Appliance-level detection of electric resistance and legacy gas water heaters</li>
-          <li>Segmentation by upgrade readiness, income eligibility, and program fit</li>
-          <li>Direct hand-off to DSM and marketing workflows</li>
-        </ul>
-        <a class="stripe__cta" href="#">
-          Explore Space &amp; Water Heater Targeting
-          <img src="{{ asset_base }}/icon-feathericons-arrow-up-right-6.svg" alt="">
-        </a>
-      </div>
-      <div class="stripe__visual static-visual">
-        <img src="{{ asset_base }}/electrification-diagram-02.svg" alt="Space heater and water heater targeting diagram">
-      </div>
-    </div>
-
-    <div class="stripe">
-      <div class="stripe__copy">
-        <h3>EV L2 Charger Rebates &amp; TOU Rates</h3>
-        <p class="stripe__sub">Get ahead of home charging load before it concentrates on your grid.</p>
-        <div class="stripe__quote">EV adoption without load management creates peak loading problems utilities discover too late. Bidgely identifies households with EVs already present, flags L1/L2 charger type, and identifies households likely to acquire an EV within 12–18 months — so you can enroll or educate them into EV-TOU rates or managed charging before the load appears.</div>
-        <ul class="stripe__bullets">
-          <li>90%+ EV detection accuracy from AMI data alone</li>
-          <li>10,000+ EVs identified with AMI data only across multiple utilities</li>
-          <li>3X EV program enrollment and load shift realized</li>
-          <li>70%+ peak charging load shifted across reference utilities</li>
-        </ul>
-        <a class="stripe__cta" href="#">
-          Explore EV Programs
-          <img src="{{ asset_base }}/icon-feathericons-arrow-up-right-7.svg" alt="">
-        </a>
-      </div>
-      <div class="stripe__visual static-visual">
-        <img src="{{ asset_base }}/electrification-diagram-03.svg" alt="EV charger rebates and TOU rates diagram">
-      </div>
-    </div>
-  </div>
-</section>
-        {% end_module_attribute %}
-      {% end_dnd_module %}
+        {% dnd_module
+          path="../modules/solution-grid.module"
+          label="Use cases"
+          programs_intro={
+            "programs_eyebrow": "USE CASES",
+            "programs_heading_before": "What ",
+            "programs_heading_accent": "UtilityAI™",
+            "programs_heading_after": " makes possible in electrification.",
+            "programs_lede": "<p>Each use case uses the same appliance-level intelligence layer, so your DSM, grid, and marketing teams operate from the same source of intelligence.</p>"
+          }
+          program_rows=[
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": false,
+              "program_diagram": "custom_image",
+              "program_custom_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-diagram-01.svg", "alt": "Heat pump targeting and recruitment diagram", "loading": "lazy" },
+              "program_title": "Heat Pump Targeting and Recruitment",
+              "program_subtitle": "Find who will benefit most and is ready to move — before you spend a dollar on outreach.",
+              "program_problem": "Utilities running broad heat pump campaigns reach too many unqualified households and miss the ones most likely to convert. Bidgely identifies homes currently running gas or electric resistance heating, scores them by propensity, highest inefficiency, longest running hours, and income eligibility — and surfaces them for targeted outreach at the point of highest intent.",
+              "program_outcomes": [
+                { "program_outcome_text": "6X measured ROI in initial heat pump detection deployment" },
+                { "program_outcome_text": "Heat pump detection validated with ground truth from four North American utilities" }
+              ],
+              "program_link_label": "Explore Heat Pump Targeting",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "#", "href_with_scheme": "#" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            },
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": true,
+              "program_diagram": "custom_image",
+              "program_custom_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-diagram-02.svg", "alt": "Space heater and water heater targeting diagram", "loading": "lazy" },
+              "program_title": "Electric Space Heater & Water Heater Targeting",
+              "program_subtitle": "Replace the highest-cost appliances first — with precision.",
+              "program_problem": "Gas-operated or aging space heaters and water heaters represent some of the richest targets for electrification. Bidgely detects them from AMI data without a survey, segments by upgrade readiness, and feeds targeted lists directly into your DSM workflow.",
+              "program_outcomes": [
+                { "program_outcome_text": "Appliance-level detection of electric resistance and legacy gas water heaters" },
+                { "program_outcome_text": "Segmentation by upgrade readiness, income eligibility, and program fit" },
+                { "program_outcome_text": "Direct hand-off to DSM and marketing workflows" }
+              ],
+              "program_link_label": "Explore Space & Water Heater Targeting",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "#", "href_with_scheme": "#" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            },
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": false,
+              "program_diagram": "custom_image",
+              "program_custom_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-diagram-03.svg", "alt": "EV charger rebates and TOU rates diagram", "loading": "lazy" },
+              "program_title": "EV L2 Charger Rebates & TOU Rates",
+              "program_subtitle": "Get ahead of home charging load before it concentrates on your grid.",
+              "program_problem": "EV adoption without load management creates peak loading problems utilities discover too late. Bidgely identifies households with EVs already present, flags L1/L2 charger type, and identifies households likely to acquire an EV within 12–18 months — so you can enroll or educate them into EV-TOU rates or managed charging before the load appears.",
+              "program_outcomes": [
+                { "program_outcome_text": "90%+ EV detection accuracy from AMI data alone" },
+                { "program_outcome_text": "10,000+ EVs identified with AMI data only across multiple utilities" },
+                { "program_outcome_text": "3X EV program enrollment and load shift realized" },
+                { "program_outcome_text": "70%+ peak charging load shifted across reference utilities" }
+              ],
+              "program_link_label": "Explore EV Programs",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "#", "href_with_scheme": "#" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            }
+          ]
+        %}
+        {% end_dnd_module %}
       {% end_dnd_row %}
     {% end_dnd_column %}
   {% end_dnd_section %}
 
-  {# ===== SECTION 5 — AGENTIC AUTOMATION ===== #}
   {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
     {% dnd_column width=12 %}
       {% dnd_row %}
-        {% dnd_module path="@hubspot/rich_text", label="Section 5 — Agentic Automation" %}
-        {% module_attribute "html" %}
-<section class="section section--navy">
-  <div class="container">
-    <div class="agentic-head">
-      <div>
-        <div class="eyebrow">AGENTIC AUTOMATION IN ELECTRIFICATION</div>
-        <h2 class="h2">Automate Electrification<br>with AI Agents.</h2>
-        <p class="lede">Bidgely's agentic layer runs the electrification workflows your team currently does manually — from candidate identification to rebate recruitment to grid impact monitoring — without adding headcount.</p>
-      </div>
-      <div class="agentic-pill">
-        <div class="label">AGENTIC VALUE, MODELED</div>
-        <div class="val">~$3–7M/year</div>
-        <div class="sub">Saved in infrastructure deferral, modeled on 1M customers</div>
-      </div>
-    </div>
-
-    <div class="agent-cards">
-      <article class="agent-card">
-        <img src="{{ asset_base }}/dtech26-for-regulators.svg" alt="" width="42" height="42">
-        <h4>Electrification Propensity Agent</h4>
-        <p>Continuously scores every premises for heat pump, water heater, and EV charger readiness using live appliance profiles, income signals, and DER data. Updated candidate lists feed directly to DSM and marketing with no manual pulls.</p>
-        <div class="meta">Live propensity scoring across the full service territory</div>
-      </article>
-
-      <article class="agent-card">
-        <img src="{{ asset_base }}/black-1.svg" alt="" width="42" height="42">
-        <h4>Rebate Recruitment Agent</h4>
-        <p>Identifies program-eligible customers, segments by propensity and timing, and runs targeted outreach journeys — including follow-ups and re-engagements — without manual campaign management.</p>
-        <div class="meta">4x reduction in marketing cost per enrollment</div>
-      </article>
-
-      <article class="agent-card">
-        <img src="{{ asset_base }}/iucx-icon-05.svg" alt="" width="42" height="42">
-        <h4>Grid Electrification Monitoring Agent</h4>
-        <p>Tracks EV load, heat pump adoption, and water heater concentration by feeder and substation in real time. Flags stress points before they escalate and feeds directly into grid planning, DERMS, and VPP program enrollment.</p>
-        <div class="meta">Real-time transformer-to-substation visibility</div>
-      </article>
-    </div>
-  </div>
-</section>
-        {% end_module_attribute %}
-      {% end_dnd_module %}
+        {% dnd_module
+          path="../modules/agentic-automation.module"
+          label="Electrification — Agentic automation"
+          agents_intro={
+            "ce_agents_eyebrow": "AGENTIC AUTOMATION IN ELECTRIFICATION",
+            "ce_agents_heading_before": "Automate Electrification with AI Agents.",
+            "ce_agents_heading_accent": "",
+            "ce_agents_heading_after": "",
+            "ce_agents_lede": "<p>Bidgely's agentic layer runs the electrification workflows your team currently does manually — from candidate identification to rebate recruitment to grid impact monitoring — without adding headcount.</p>"
+          }
+          agents_value={
+            "ce_agents_value_eyebrow": "AGENTIC VALUE, MODELED",
+            "ce_agents_value_num": "~$3–7M/year",
+            "ce_agents_value_desc": "<p>Saved in infrastructure deferral, modeled on 1M customers</p>"
+          }
+          agent_cards=[
+            {
+              "card_icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-icon-5.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "card_title": "Electrification Propensity Agent",
+              "card_body": "<p>Continuously scores every premises for heat pump, water heater, and EV charger readiness using live appliance profiles, income signals, and DER data. Updated candidate lists feed directly to DSM and marketing with no manual pulls.</p>",
+              "card_stat": "Live propensity scoring across the full service territory"
+            },
+            {
+              "card_icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-icon-6.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "card_title": "Rebate Recruitment Agent",
+              "card_body": "<p>Identifies program-eligible customers, segments by propensity and timing, and runs targeted outreach journeys — including follow-ups and re-engagements — without manual campaign management.</p>",
+              "card_stat": "4x reduction in marketing cost per enrollment"
+            },
+            {
+              "card_icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-icon-7.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "card_title": "Grid Electrification Monitoring Agent",
+              "card_body": "<p>Tracks EV load, heat pump adoption, and water heater concentration by feeder and substation in real time. Flags stress points before they escalate and feeds directly into grid planning, DERMS, and VPP program enrollment.</p>",
+              "card_stat": "Real-time transformer-to-substation visibility"
+            }
+          ]
+        %}
+        {% end_dnd_module %}
       {% end_dnd_row %}
     {% end_dnd_column %}
   {% end_dnd_section %}
 
-  {# ===== SECTION 6 — GENAI IN ELECTRIFICATION ===== #}
   {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
     {% dnd_column width=12 %}
       {% dnd_row %}
-        {% dnd_module path="@hubspot/rich_text", label="Section 6 — GenAI in Electrification" %}
-        {% module_attribute "html" %}
-<section class="section section--grey">
-  <div class="container">
-    <div class="genai__head">
-      <div class="eyebrow">GENAI IN ELECTRIFICATION</div>
-      <h2 class="h2">Conversations grounded in each customer's <span class='accent'>appliance profile.</span></h2>
-      <p class="lede">Bidgely's GenAI layer runs on real data, not generic prompts. Every answer is grounded in that customer's disaggregated appliance profile and electrification readiness score.</p>
-    </div>
-
-    <div class="genai">
-      <div>
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/electrification-icon-18.svg');"></div>
-          <div>
-            <h4>Electrification Advisor (Customer-Facing)</h4>
-            <p>Conversational AI embedded in your portal or app that answers "what if I buy a heat pump, EV, or water heater" questions with personalized cost estimates, rebate eligibility, and rate comparisons — based on that customer's actual usage.</p>
-          </div>
-        </div>
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/electrification-dsm.svg');"></div>
-          <div>
-            <h4>Electrification / DSM Analyst Copilot</h4>
-            <p>A GenAI assistant for program and DSM teams. Ask plain-language questions about pipeline, candidate segments, and grid impact. Get appliance-level answers without building a custom query.</p>
-          </div>
-        </div>
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/electrification-icon-10.svg');"></div>
-          <div>
-            <h4>Program Eligibility Explainers</h4>
-            <p>Auto-generated plain-language explanations of why a specific customer qualifies for a rebate. Embed directly into outreach and portal experiences to improve conversion.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="static-visual static-visual--plain">
-        <img src="{{ asset_base }}/electrification-diagram-5.svg" alt="Electrification Advisor conversation mockup">
-      </div>
-    </div>
-  </div>
-</section>
-        {% end_module_attribute %}
-      {% end_dnd_module %}
+        {% dnd_module
+          path="../modules/genai.module"
+          label="GenAI"
+          genai_intro={
+            "ce_genai_eyebrow": "GENAI IN ELECTRIFICATION",
+            "ce_genai_heading_before": "Conversations grounded in each customer's ",
+            "ce_genai_heading_accent": "appliance profile.",
+            "ce_genai_heading_after": "",
+            "ce_genai_lead": "<p>Bidgely's GenAI layer runs on real data, not generic prompts. Every answer is grounded in that customer's disaggregated appliance profile and electrification readiness score.</p>"
+          }
+          genai_cards=[
+            {
+              "feature_icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-icon-18.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "feature_title": "Electrification Advisor (Customer-Facing)",
+              "feature_body": "<p>Conversational AI embedded in your portal or app that answers &ldquo;what if I buy a heat pump, EV, or water heater&rdquo; questions with personalized cost estimates, rebate eligibility, and rate comparisons — based on that customer's actual usage.</p>"
+            },
+            {
+              "feature_icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-dsm.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "feature_title": "Electrification / DSM Analyst Copilot",
+              "feature_body": "<p>A GenAI assistant for program and DSM teams. Ask plain-language questions about pipeline, candidate segments, and grid impact. Get appliance-level answers without building a custom query.</p>"
+            },
+            {
+              "feature_icon": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-icon-10.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "feature_title": "Program Eligibility Explainers",
+              "feature_body": "<p>Auto-generated plain-language explanations of why a specific customer qualifies for a rebate. Embed directly into outreach and portal experiences to improve conversion.</p>"
+            }
+          ]
+          right_column_type="image"
+          genai_visual_image={ "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/electrification-diagram-5.svg", "alt": "Electrification Advisor conversation mockup", "loading": "lazy" }
+        %}
+        {% end_dnd_module %}
       {% end_dnd_row %}
     {% end_dnd_column %}
   {% end_dnd_section %}
 
-  {# ===== SECTION 7 — PROVEN RESULTS ===== #}
   {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
     {% dnd_column width=12 %}
       {% dnd_row %}
-        {% dnd_module path="@hubspot/rich_text", label="Section 7 — Proven Results" %}
-        {% module_attribute "html" %}
-<section class="section section--white">
-  <div class="container">
-    <div class="results-head">
-      <div>
-        <div class="eyebrow">PROVEN RESULTS</div>
-        <h2 class="h2">Deployed at scale. <span class='accent'>Measured at the meter.</span></h2>
-      </div>
-    </div>
+        {% dnd_module path="@hubspot/rich_text" label="Proven results" %}
+          {% module_attribute "html" %}
+            <section class="section section--white electrification-proven-results">
+              <div class="container">
+                <div class="results-head">
+                  <div>
+                    <p class="eyebrow">PROVEN RESULTS</p>
+                    <h2 class="h2">Deployed at scale. <span class="accent">Measured at the meter.</span></h2>
+                  </div>
+                </div>
 
-    <div class="peers">
-      <span>PEER UTILITIES:</span>
-      <img src="{{ asset_base }}/frame-2147227076.svg" alt="Peer utility logos" width="734" height="38">
-    </div>
+                <div class="cases-logos" aria-label="Peer utilities">
+                  <p class="cases-logos__label">Peer Utilities:</p>
+                  <div class="cases-logos__row">
+                    <span class="cases-logo-pill">
+                      <img class="cases-logo__img" src="{{ asset_base }}/nv-energy-logo-color-3.svg" alt="NV Energy" height="38" loading="lazy" decoding="async">
+                    </span>
+                    <span class="cases-logo-pill">
+                      <img class="cases-logo__img" src="{{ asset_base }}/avista.svg" alt="Avista" height="38" loading="lazy" decoding="async">
+                    </span>
+                    <span class="cases-logo-pill">
+                      <img class="cases-logo__img" src="{{ asset_base }}/ogie.svg" alt="OG&amp;E" height="38" loading="lazy" decoding="async">
+                    </span>
+                    <span class="cases-logo-pill">
+                      <img class="cases-logo__img" src="{{ asset_base }}/ameran.svg" alt="Ameren" height="38" loading="lazy" decoding="async">
+                    </span>
+                    <span class="cases-logo-pill">
+                      <img class="cases-logo__img" src="{{ asset_base }}/xcel-energy.svg" alt="Xcel Energy" height="38" loading="lazy" decoding="async">
+                    </span>
+                    <span class="cases-logo-pill">
+                      <img class="cases-logo__img" src="{{ asset_base }}/nova-scotia-power-logo-color.svg" alt="Nova Scotia Power" height="38" loading="lazy" decoding="async">
+                    </span>
+                    <span class="cases-logo-pill">
+                      <img class="cases-logo__img" src="{{ asset_base }}/enel.svg" alt="Enel" height="38" loading="lazy" decoding="async">
+                    </span>
+                  </div>
+                </div>
 
-    <div class="case">
-      <div class="case__left">
-        <div class="case__eyebrow">ELECTRIFICATION · HEAT PUMP TARGETING</div>
-        <h3 class="case__title">Nova Scotia Power</h3>
-        <p class="case__copy">Nova Scotia Power needed to accelerate residential heat pump adoption while managing the grid impact of new electric heating load. Using Bidgely's appliance-level intelligence, NSP identified high-propensity candidates already running inefficient electric resistance or aging gas heating — targeting them before broad-market campaigns reached saturation.</p>
-        <div class="case__hero">
-          <div class="v">6X</div>
-          <div class="l">Measured ROI on initial heat pump detection deployment</div>
-        </div>
-      </div>
-      <div class="case__right">
-        <p class="case__quote">"Bidgely's heat pump detection gave our team a targeted list we could act on immediately — we stopped spraying marketing dollars at the whole territory and started converting the customers who were already ready."</p>
-        <div class="case__stats">
-          <div class="case__stat"><div class="v">4 utilities</div><div class="l">Ground-truth validation of heat pump detection</div></div>
-          <div class="case__stat"><div class="v">AMI only</div><div class="l">No smart plugs or surveys required</div></div>
-          <div class="case__stat"><div class="v">Income-aware</div><div class="l">Equity-scored targeting built in</div></div>
-          <div class="case__stat"><div class="v">Feeder-level</div><div class="l">Grid impact visibility at the transformer</div></div>
-        </div>
-        <a class="case__cta" href="#">
-          Read the Nova Scotia Power Case Study
-          <img src="{{ asset_base }}/icon-feathericons-arrow-up-right-4.svg" alt="">
-        </a>
-      </div>
-    </div>
+                <div class="case">
+                  <div class="case__left">
+                    <div class="case__eyebrow">ELECTRIFICATION · HEAT PUMP TARGETING</div>
+                    <h3 class="case__title">Nova Scotia Power</h3>
+                    <p class="case__copy">Nova Scotia Power needed to accelerate residential heat pump adoption while managing the grid impact of new electric heating load. Using Bidgely's appliance-level intelligence, NSP identified high-propensity candidates already running inefficient electric resistance or aging gas heating — targeting them before broad-market campaigns reached saturation.</p>
+                    <div class="case__hero">
+                      <div class="v">6X</div>
+                      <div class="l">Measured ROI on initial heat pump detection deployment</div>
+                    </div>
+                  </div>
+                  <div class="case__right">
+                    <p class="case__quote">&ldquo;Bidgely's heat pump detection gave our team a targeted list we could act on immediately — we stopped spraying marketing dollars at the whole territory and started converting the customers who were already ready.&rdquo;</p>
+                    <div class="case__stats">
+                      <div class="case__stat"><div class="v">4 utilities</div><div class="l">Ground-truth validation of heat pump detection</div></div>
+                      <div class="case__stat"><div class="v">AMI only</div><div class="l">No smart plugs or surveys required</div></div>
+                      <div class="case__stat"><div class="v">Income-aware</div><div class="l">Equity-scored targeting built in</div></div>
+                      <div class="case__stat"><div class="v">Feeder-level</div><div class="l">Grid impact visibility at the transformer</div></div>
+                    </div>
+                    <a class="case__cta link-arrow" href="#">
+                      Read the Nova Scotia Power Case Study
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                    </a>
+                  </div>
+                </div>
 
-    <div class="case-also">
-      <article class="case-tile">
-        <div class="case-tile__utility">NV ENERGY</div>
-        <div class="case-tile__title">EV detection, targeting &amp; 3X recruitment lift</div>
-        <p class="case-tile__copy">Featured in a joint Bidgely + Utility Dive campaign — how NV Energy used AMI-based EV detection to find thousands of unknown EV households and enroll them in managed charging.</p>
-        <a class="case-tile__cta" href="#">Read the Case Study <img src="{{ asset_base }}/icon-feathericons-arrow-up-right-4.svg" alt=""></a>
-      </article>
-      <article class="case-tile">
-        <div class="case-tile__utility">AVISTA</div>
-        <div class="case-tile__title">EV intelligence + heat pump BTM targeting + DER grid planning</div>
-        <p class="case-tile__copy">A combined deployment that unified Avista's electrification marketing and grid planning teams around a single appliance-level view of the territory.</p>
-        <a class="case-tile__cta" href="#">Read the Case Study <img src="{{ asset_base }}/icon-feathericons-arrow-up-right-4.svg" alt=""></a>
-      </article>
-      <article class="case-tile">
-        <div class="case-tile__utility">HYDRO ONE</div>
-        <div class="case-tile__title">EV detection and grid impact analysis</div>
-        <p class="case-tile__copy">Hydro One used Bidgely to flag where EV charging was concentrating at the feeder level before it caused transformer stress — enabling proactive upgrades instead of reactive spend.</p>
-        <a class="case-tile__cta" href="#">Read the Case Study <img src="{{ asset_base }}/icon-feathericons-arrow-up-right-4.svg" alt=""></a>
-      </article>
-    </div>
-  </div>
-</section>
-        {% end_module_attribute %}
-      {% end_dnd_module %}
+                <div class="case-also">
+                  <article class="case-tile">
+                    <div class="case-tile__utility">NV ENERGY</div>
+                    <div class="case-tile__title">EV detection, targeting &amp; 3X recruitment lift</div>
+                    <p class="case-tile__copy">Featured in a joint Bidgely + Utility Dive campaign — how NV Energy used AMI-based EV detection to find thousands of unknown EV households and enroll them in managed charging.</p>
+                    <a class="case-tile__cta link-arrow" href="#">Read the Case Study <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                  </article>
+                  <article class="case-tile">
+                    <div class="case-tile__utility">AVISTA</div>
+                    <div class="case-tile__title">EV intelligence + heat pump BTM targeting + DER grid planning</div>
+                    <p class="case-tile__copy">A combined deployment that unified Avista's electrification marketing and grid planning teams around a single appliance-level view of the territory.</p>
+                    <a class="case-tile__cta link-arrow" href="#">Read the Case Study <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                  </article>
+                  <article class="case-tile">
+                    <div class="case-tile__utility">HYDRO ONE</div>
+                    <div class="case-tile__title">EV detection and grid impact analysis</div>
+                    <p class="case-tile__copy">Hydro One used Bidgely to flag where EV charging was concentrating at the feeder level before it caused transformer stress — enabling proactive upgrades instead of reactive spend.</p>
+                    <a class="case-tile__cta link-arrow" href="#">Read the Case Study <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
+                  </article>
+                </div>
+              </div>
+            </section>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/resources-hubdb.module"
+          label="Resources"
+          ce_resources_eyebrow="Resources"
+          filter_value="CX"
+          hubdb_limit=3
+        %}
+        {% end_dnd_module %}
       {% end_dnd_row %}
     {% end_dnd_column %}
   {% end_dnd_section %}
 
 {% end_dnd_area %}
 
-{# Resources (HubDB): hubdb_row_ids → curated rows only (ignores tag). Else → tag filter; newest hs_updated_at first. hubdb_limit=max cards. #}
-{% module "resources_electrification" path="../modules/resources-hubdb.module",
-  ce_resources_eyebrow="Resources",
-  filter_value="CX",
-  hubdb_limit=3 %}
-
 {% module "site_footer" path="../modules/global-footer.module" %}
 
-{{ standard_footer_includes }}
 <script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
-
+{{ standard_footer_includes }}
 </body>
 </html>
