@@ -1,0 +1,351 @@
+/* Leadership HubDB grid + cards (scoped to this module only) */
+
+.leadership-hubdb .section--grid {
+  background-image: url('https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-leadership.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: var(--bg-gray);
+}
+
+/* ── Grids ── */
+.leadership-hubdb .leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1100px) {
+  .leadership-hubdb .leadership-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .leadership-hubdb .leadership-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .leadership-hubdb .leadership-grid { grid-template-columns: 1fr; }
+}
+
+.leadership-hubdb .leadership-grid--featured {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1200px) {
+  .leadership-hubdb .leadership-grid--featured { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .leadership-hubdb .leadership-grid--featured { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+@media (max-width: 480px) {
+  .leadership-hubdb .leadership-grid--featured { grid-template-columns: 1fr; }
+}
+
+.leadership-hubdb .leadership-empty {
+  text-align: center;
+  color: var(--nile-52);
+  font-size: 16px;
+  padding: 48px 0;
+}
+
+/* ── Leader cards ── */
+.leadership-hubdb .leader-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid rgba(21, 45, 73, 0.06);
+  box-shadow: 0 4px 24px rgba(21, 45, 73, 0.08);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.leadership-hubdb .leader-card:hover,
+.leadership-hubdb .leader-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(21, 45, 73, 0.12);
+}
+.leadership-hubdb .leader-card.is-active {
+  box-shadow: 0 0 0 2px var(--azure), 0 12px 32px rgba(21, 45, 73, 0.12);
+}
+
+.leadership-hubdb .leader-card__photo-wrap {
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background-color: var(--border-soft);
+  border-radius: 12px 12px 0 0;
+}
+.leadership-hubdb .leader-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  filter: grayscale(100%);
+  transition: transform 0.35s ease;
+}
+.leadership-hubdb .leader-card:hover .leader-card__photo,
+.leadership-hubdb .leader-card:focus-visible .leader-card__photo {
+  transform: scale(1.03);
+}
+.leadership-hubdb .leader-card__photo--placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  background: linear-gradient(135deg, var(--bg-soft) 0%, var(--border-soft) 100%);
+}
+
+.leadership-hubdb .leader-card__meta {
+  padding: 20px 18px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.leadership-hubdb .leader-card__name {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--nile);
+  margin: 0 0 8px;
+  line-height: 1.35;
+}
+.leadership-hubdb .leader-card__title {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--nile-52);
+  margin: 0 0 30px;
+  line-height: 1.45;
+  flex: 1;
+}
+
+.leadership-hubdb .leader-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-top: 1px solid #e8ecf0;
+  padding-top: 12px;
+  margin-top: auto;
+  min-height: 28px;
+}
+.leadership-hubdb .leader-card__footer .leader-card__linkedin {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--azure);
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+.leadership-hubdb .leader-card__linkedin:hover {
+  color: var(--nile);
+}
+.leadership-hubdb .leader-card__linkedin-icon-arrow {
+  flex-shrink: 0;
+  display: block;
+}
+
+/* ── Bio modal (leader detail overlay; markup in module.html) ── */
+.bio-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: rgba(21, 45, 73, 0.45);
+  backdrop-filter: blur(4px);
+}
+.bio-modal[hidden] {
+  display: none;
+}
+
+.bio-modal__dialog {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow:
+    0 24px 64px rgba(21, 45, 73, 0.12),
+    0 8px 24px rgba(21, 45, 73, 0.08);
+  max-width: 1080px;
+  width: 100%;
+  max-height: min(90vh, 880px);
+  overflow-y: auto;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: clamp(24px, 4vw, 40px);
+  padding: 30px;
+  animation: leadership-bio-modal-in 0.28s ease forwards;
+}
+@keyframes leadership-bio-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.bio-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: #a8b4c0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.bio-modal__close:hover,
+.bio-modal__close:focus-visible {
+  background: rgba(21, 45, 73, 0.06);
+  color: var(--nile);
+  outline: none;
+}
+
+.bio-modal__photo-wrap {
+  flex: 0 0 40%;
+  max-width: 360px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: var(--border-soft);
+  aspect-ratio: 1 / 1;
+  align-self: flex-start;
+}
+.bio-modal__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  filter: grayscale(100%);
+}
+
+.bio-modal__content {
+  flex: 1;
+  min-width: 0;
+  padding-right: 8px;
+  padding-top: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bio-modal__name {
+  font-family: Montserrat, system-ui, sans-serif;
+  font-size: clamp(22px, 2.4vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--nile);
+  margin: 0 0 10px;
+  padding-right: 48px;
+  line-height: 1.25;
+}
+.bio-modal__title {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--nile-52);
+  margin: 0 0 15px;
+  line-height: 1.5;
+}
+.bio-modal__bio {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--nile);
+  margin: 0;
+}
+.bio-modal__bio p {
+  margin: 0 0 12px;
+}
+.bio-modal__bio p:last-child {
+  margin-bottom: 0;
+}
+
+.bio-modal__content-inner {
+  flex: 1;
+  min-height: 0;
+}
+
+.bio-modal__footer {
+  flex-shrink: 0;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e8ecf0;
+}
+
+.bio-modal__footer .bio-modal__linkedin,
+.bio-modal__footer .bio-modal__linkedin:visited {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  font-family: Montserrat, system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--azure);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.bio-modal__footer .bio-modal__linkedin:hover,
+.bio-modal__footer .bio-modal__linkedin:focus-visible {
+  color: var(--nile);
+  outline: none;
+  text-decoration: none;
+}
+.bio-modal__footer .bio-modal__linkedin--no-url,
+.bio-modal__footer .bio-modal__linkedin--no-url:visited {
+  color: var(--azure);
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.55;
+}
+.bio-modal__linkedin-label {
+  display: inline;
+}
+.bio-modal__linkedin-arrow {
+  flex-shrink: 0;
+  display: block;
+  color: currentColor;
+}
+
+@media (max-width: 720px) {
+  .bio-modal__dialog {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 48px 28px 32px;
+    gap: 24px;
+    max-height: 92vh;
+  }
+  .bio-modal__photo-wrap {
+    flex: none;
+    max-width: none;
+    width: 100%;
+  }
+  .bio-modal__content {
+    padding-right: 0;
+  }
+  .bio-modal__name {
+    padding-right: 40px;
+  }
+}
