@@ -1,0 +1,579 @@
+<!--
+  templateType: "page"
+  isAvailableForNewContent: true
+  label: "Webinar B1 Template"
+-->
+{# HubSpot Dynamic Webinar B1 Template #}
+{# This template combines webinar hero with PDF download form #}
+{# URL Pattern: /webinar/{slug} #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="HubSpot">
+  <title>{% if content.html_title %}{{ content.html_title }}{% else %}Webinar{% endif %}</title>
+  {% if content.meta_description %}
+  <meta name="description" content="{{ content.meta_description }}">
+  {% endif %}
+  
+  {# Google Fonts - Montserrat #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  {# HubSpot Required Head Tags #}
+  {{ standard_header_includes }}
+  
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+  <style>
+    .webinar-b1-hero { width: 100%; min-height: 469px; background: linear-gradient(0deg, #F2F8FC 0%, #F2F8FC 100%); position: relative; display: flex; align-items: center; padding: 100px 20px; margin-bottom: 30px; }
+    .webinar-b1-hero-content { max-width: 1140px; width: 100%; margin: 0 auto; }
+    .webinar-b1-badge { padding: 8px 20px; background: #499ED7; border-radius: 5px; display: inline-block; margin-bottom: 20px; }
+    .webinar-b1-badge-text { color: #fff; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.12px; }
+    .webinar-b1-title { color: #152D49; font-size: 56px; font-weight: 400; line-height: 72px; margin-bottom: 0; }
+    .webinar-b1-title .highlight { color: #499ED7; }
+    .webinar-b1-logos { display: flex; justify-content: flex-start; align-items: center; gap: 20px; margin: 30px 0 20px; flex-wrap: wrap; }
+    .webinar-b1-logo { width: 190px; height: 58px; background: #fff; border-radius: 11px; display: flex; align-items: center; justify-content: center; padding: 10px; box-shadow: 0 2px 4px rgba(0,0,0,.1); }
+    .webinar-b1-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .webinar-b1-date { color: #152D49; font-size: 20px; font-weight: 400; line-height: 30px; margin-top: 10px; }
+
+    .webinar-b1-main-content { max-width: 1140px; margin: 0 auto; padding: 0 20px 80px; display: grid; grid-template-columns: 1fr 420px; gap: 40px; }
+    .webinar-b1-description-section { min-width: 0; }
+    .webinar-b1-description-title { color: #152D49; font-size: 36px; font-weight: 400; line-height: 54px; margin-bottom: 24px; }
+    .webinar-b1-description-text { color: #152D49; font-size: 18px; font-weight: 400; line-height: 30px; }
+    .webinar-b1-description-text strong { font-weight: 700; }
+    .webinar-b1-description-text p, .webinar-b1-description-text ul, .webinar-b1-description-text ol { margin: 0 0 16px; }
+    .webinar-b1-description-text p:last-child { margin-bottom: 0; }
+    .webinar-b1-description-text li { margin-bottom: 8px; }
+
+    .webinar-b1-form-container { background: #F9FBFD; border: 1px solid #D9E7F2; border-radius: 8px; padding: 24px; align-self: start; }
+    .webinar-b1-form .hs-form-field { margin-bottom: 18px; }
+    .webinar-b1-form .hs-form-field label { color: #152D49; font-size: 14px; font-weight: 600; margin-bottom: 8px; display: block; }
+    .webinar-b1-form .hs-form-field label .hs-form-required { color: #499ED7; }
+    .webinar-b1-form .hs-form-field input[type="text"],
+    .webinar-b1-form .hs-form-field input[type="email"],
+    .webinar-b1-form .hs-form-field select { width: 100%; height: 48px; border: 1px solid #C7D7E4; border-radius: 5px; padding: 0 14px; font-size: 16px; color: #152D49; background: #fff; }
+    .webinar-b1-form .hs-form-checkbox { margin: 16px 0; display: flex; align-items: flex-start; gap: 10px; }
+    .webinar-b1-form .hs-form-checkbox input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; }
+    .webinar-b1-form .hs-form-checkbox label { color: #152D49; font-size: 14px; line-height: 22px; margin: 0; }
+    .webinar-b1-form .hs-form-checkbox label a { color: #499ED7; text-decoration: underline; }
+    .webinar-b1-form .hs-submit { margin-top: 12px; }
+    .webinar-b1-form .hs-button { display: inline-flex !important; align-items: center; justify-content: center; width: 100%; height: 48px; border: 0; border-radius: 5px; background: #499ED7; color: #fff; font-size: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; cursor: pointer; }
+    .webinar-b1-form .hs-button:hover { background: #3a8bb8; }
+
+    .features { background: #F2F8FC; padding: 78px 0; }
+    .features-content { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .feature-card { background: #fff; border-radius: 8px; padding: 25px 30px; min-height: 334px; display: flex; flex-direction: column; }
+    .feature-icon { width: 100%; height: 66px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
+    .feature-icon-img { max-width: 65px; max-height: 66px; width: auto; height: auto; object-fit: contain; }
+    .feature-title { color: #152D49; font-size: 24px; font-weight: 500; line-height: 32px; margin-bottom: 15px; text-align: center; }
+    .feature-description { color: #152D49; font-size: 18px; font-weight: 400; line-height: 30px; text-align: center; }
+
+    .related-resources { background: #F2F8FC; padding: 80px 0; }
+    .related-resources-title { text-align: center; color: #152D49; font-size: 36px; font-weight: 300; line-height: 56px; margin-bottom: 60px; }
+    .related-resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    .related-resource-card { background: #fff; border-radius: 8px; padding: 30px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 6px -4px rgba(0,0,0,.1); transition: transform .3s, box-shadow .3s; }
+    .related-resource-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,.2); }
+    .related-resource-image { width: 100%; height: 186px; background: #000; border-radius: 8px; overflow: hidden; position: relative; }
+    .related-resource-image img { width: 100%; height: 100%; object-fit: cover; }
+    .related-resource-badge { color: #499ED7; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.68px; line-height: 30px; }
+    .related-resource-title { color: #152D49; font-size: 20px; font-weight: 400; line-height: 36px; margin: 0; }
+    .related-resource-description { color: #152D49; font-size: 14px; font-weight: 400; line-height: 24px; margin: 0; }
+    .related-resource-button { display: inline-block; background: #499ED7; color: #fff; padding: 12px 25px; border-radius: 5px; font-size: 18px; font-weight: 500; text-decoration: none; text-align: center; margin-top: auto; transition: background .3s; }
+    .related-resource-button:hover { background: #449BD5; }
+
+    .webinar-b1-cta { background: #fff; padding: 80px 0; text-align: center; }
+    .pdf-cta-logo { margin-bottom: 20px; }
+    .pdf-cta-logo img { height: auto; max-width: 100%; display: block; margin: 0 auto; }
+    .pdf-cta-title { color: #152D49; font-size: 36px; font-weight: 400; line-height: 56px; margin-bottom: 20px; }
+    .pdf-cta-description { color: #000; font-size: 18px; font-weight: 300; line-height: 26px; max-width: 979px; margin: 0 auto 30px; }
+    .cta-demo-button { display: inline-flex !important; align-items: center; justify-content: center; width: 299px; height: 48px; background: #499ED7; border-radius: 5px; color: #fff !important; font-size: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; text-decoration: none; transition: background .3s; }
+    .cta-demo-button:hover { background: #3a8bb8; }
+
+    @media screen and (max-width: 1200px) {
+      .features-grid, .related-resources-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+      .webinar-b1-main-content { grid-template-columns: 1fr 380px; }
+    }
+    @media screen and (max-width: 992px) {
+      .webinar-b1-hero { padding: 80px 20px 60px; }
+      .webinar-b1-title { font-size: 42px; line-height: 54px; }
+      .webinar-b1-main-content { grid-template-columns: 1fr; gap: 30px; }
+    }
+    @media screen and (max-width: 768px) {
+      .features { padding: 50px 0; }
+      .features-grid, .related-resources-grid { grid-template-columns: 1fr; gap: 25px; }
+      .feature-card { min-height: auto; }
+      .webinar-b1-title { font-size: 36px; line-height: 48px; }
+      .webinar-b1-description-title { font-size: 30px; line-height: 42px; }
+      .webinar-b1-description-text { font-size: 17px; line-height: 28px; }
+      .pdf-cta-title { font-size: 30px; line-height: 42px; padding: 0 20px; }
+      .pdf-cta-description { font-size: 17px; padding: 0 20px; }
+    }
+    @media screen and (max-width: 480px) {
+      .webinar-b1-hero { padding: 60px 15px 40px; }
+      .webinar-b1-badge { padding: 6px 15px; }
+      .webinar-b1-title { font-size: 28px; line-height: 38px; }
+      .webinar-b1-date { font-size: 16px; line-height: 24px; }
+      .webinar-b1-main-content { padding: 0 15px 60px; }
+      .webinar-b1-description-title { font-size: 24px; line-height: 34px; }
+      .related-resources { padding: 50px 0; }
+      .related-resources-title { font-size: 28px; line-height: 40px; margin-bottom: 40px; padding: 0 15px; }
+      .related-resources-grid { padding: 0 15px; gap: 20px; }
+      .related-resource-card { padding: 25px 20px; }
+      .pdf-cta-title { font-size: 24px; line-height: 34px; margin-bottom: 15px; padding: 0 15px; }
+      .pdf-cta-description { font-size: 16px; line-height: 24px; margin-bottom: 25px; padding: 0 15px; }
+      .cta-demo-button { width: 100%; max-width: 280px; height: 46px; font-size: 16px; line-height: 46px; }
+    }
+  </style>
+</head>
+<body>
+  {% include "template-type-redirect.html" %}
+  {# Header Module #}
+  {% module "site_header" path="../modules/global-header.module" %}
+
+  {# Main Content #}
+  <main>
+    {# Use dynamic page row data #}
+    {% if dynamic_page_hubdb_row %}
+      {% set webinar = dynamic_page_hubdb_row %}
+    {% else %}
+      {% set webinar = null %}
+    {% endif %}
+    
+    <!-- DEBUG: Final webinar status = {{ 'Found' if webinar else 'Not Found' }} -->
+    
+    {% if webinar %}
+      <!-- DEBUG: Webinar data found -->
+      <!-- DEBUG: hs_name = {{ webinar.hs_name|default('empty') }} -->
+      <!-- DEBUG: h1_title = {{ webinar.h1_title|default('empty') }} -->
+      <!-- DEBUG: name = {{ webinar.name|default('empty') }} -->
+      <!-- DEBUG: h2_title = {{ webinar.h2_title|default('empty') }} -->
+      <!-- DEBUG: short_description = {{ webinar.short_description|default('empty') }} -->
+      <!-- DEBUG: long_description = {{ webinar.long_description|default('empty') }} -->
+      <!-- DEBUG: date = {{ webinar.date|default('empty') }} -->
+      <!-- DEBUG: asset_picklist_tag = {{ webinar.asset_picklist_tag|default('empty') }} -->
+      <!-- DEBUG: logo_svgs = {{ webinar.logo_svgs|default('empty') }} -->
+      
+      {# Webinar Hero Section #}
+      <section class="webinar-b1-hero">
+        <div class="webinar-b1-hero-content">
+          <div class="webinar-b1-badge">
+            <span class="webinar-b1-badge-text">{{webinar.asset_picklist_tag|default(webinar.asset_type|default('WEBINAR'))|upper}}</span>
+          </div>
+          {% set webinar_title = webinar.h1_title|default(webinar.hs_name|default('Default Webinar Title')) %}
+          <h1 class="webinar-b1-title">
+            {{ webinar_title|safe }}
+          </h1>
+          
+          {# Partner Logos - Dynamic from HubDB #}
+          <div class="webinar-b1-logos">
+            {% if webinar.logo_svgs %}
+              {# Split comma-separated logo filenames #}
+              {% set logo_files = webinar.logo_svgs.split(',') %}
+              {% for logo_file in logo_files %}
+                {% set logo_filename = logo_file.strip() %}
+                {% if logo_filename %}
+                  <div class="webinar-b1-logo">
+                    <img src="https://explore.bidgely.com/hubfs/244460873/resources/Customer%20Logos/{{ logo_filename }}" alt="Partner Logo" onerror="this.parentElement.style.display='none'" />
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              {# Fallback to default logos if no logo_svgs field #}
+              <div class="webinar-b1-logo">
+                <img src="https://explore.bidgely.com/hubfs/244460873/resources/tep-logo.png" alt="TEP Logo" />
+              </div>
+              <div class="webinar-b1-logo">
+                <img src="https://explore.bidgely.com/hubfs/244460873/resources/infosys-logo.png" alt="Infosys Logo" />
+              </div>
+              <div class="webinar-b1-logo">
+                <img src="https://explore.bidgely.com/hubfs/244460873/resources/cap-logo.png" alt="CAP Logo" />
+              </div>
+            {% endif %}
+          </div>
+          
+          {% if webinar.date %}
+            <div class="webinar-b1-date">
+              {{ webinar.date|datetimeformat('%B %d, %Y') }}{% if webinar.time %} | {{ webinar.time }}{% else %}  |  12PM ET{% endif %}
+            </div>
+          {% else %}
+            <div class="webinar-b1-date">Date TBD | 2PM ET</div>
+          {% endif %}
+        </div>
+      </section>
+
+      {# Main Content Section #}
+      <section class="webinar-b1-main-content">
+        {# Left Column - Description #}
+        <div class="webinar-b1-description-section">
+          {% set description_title = webinar.h2_title|default(webinar.short_description|default('')) %}
+          <h2 class="webinar-b1-description-title">
+            {% if webinar.h2_title %}
+              {{ webinar.h2_title|safe }}
+            {% elif webinar.short_description %}
+              {{ webinar.short_description|striptags|truncate(100) }}
+            {% else %}
+              The Future of Utility CX is Personalized, Predictive, and Always On
+            {% endif %}
+          </h2>
+          
+          <div class="webinar-b1-description-text">
+            {% if webinar.long_description %}
+              {{ webinar.long_description|safe }}
+            {% elif webinar.short_description %}
+              {{ webinar.short_description|safe }}
+            {% else %}
+              TEP is transforming Customer Experience (CX) into CX-Plus, a new era of dynamic, data-driven engagement where every interaction is personalized, timely, and interconnected.<br/><br/>Join Lori Boyer from Tucson Electric Power (TEP) as she shares how her team is redefining customer experience and delivering outstanding results:<br/><br/><strong>Smarter, next-gen home energy reports</strong> that have delivered <strong>100% forecast savings</strong> in 2023 and 2024 while earning <strong>85% like rates.<br/>Better digital engagement</strong> including a new visually impactful <strong>budget tool</strong> lets customers set spending goals and receive <strong>email alerts at 50%, 75%, and 100%</strong> of consumption—helping them change behaviors, reduce usage, or detect appliance issues to avoid bill shock.<br/><strong>Empowered call center agents:</strong> TEP agents are now equipped with the <strong>same appliance-level insights</strong> available to customers, enabling faster and more effective issue resolution.<br/><br/>Join us to learn how pairing AI-powered insights with personalized customer support, can transform static communication into a living, adaptive dialogue—empowering customers to act, agents to advise, and utilities to build deeper energy engagement.
+            {% endif %}
+          </div>
+        </div>
+        
+        {# Right Column - Form #}
+        <div class="webinar-b1-form-container">
+          <div class="webinar-b1-form">
+            {# HubSpot Form - Dynamic form based on webinar #}
+            {% if webinar.hubspot_form_id %}
+              {% form "webinar_registration_form", form_to_use="da3882a7-4680-452c-8ff0-204962635f53" %}
+            {% else %}
+              {# Default form - replace with your actual form ID #}
+              {% form "webinar_registration_form", form_to_use="da3882a7-4680-452c-8ff0-204962635f53" %}
+            {% endif %}
+          </div>
+        </div>
+      </section>
+
+      {# Value Prop / Features Section (dynamic from HubDB - same as PDF) #}
+      {% set icons_base = 'https://explore.bidgely.com/hubfs/244460873/resources/icons/' %}
+      {% set has_value_prop_1 = webinar.value_prop_1_headline or webinar.value_prop_1_description or webinar.value_prop_card_icon_1 %}
+      {% set has_value_prop_2 = webinar.value_prop_2_headline or webinar.value_prop_2_description or webinar.value_prop_card_icon_2 %}
+      {% set has_value_prop_3 = webinar.value_prop_3_headline or webinar.value_prop_3_description or webinar.value_prop_card_icon_3 %}
+      {% if has_value_prop_1 or has_value_prop_2 or has_value_prop_3 %}
+      <section class="features">
+        <div class="features-content">
+          <div class="features-grid">
+            {% if has_value_prop_1 %}
+            <div class="feature-card">
+              <div class="feature-icon">
+                {% set icon1_src = '' %}
+                {% if webinar.value_prop_card_icon_1 %}
+                  {% if webinar.value_prop_card_icon_1.url %}{% set icon1_src = webinar.value_prop_card_icon_1.url %}
+                  {% elif webinar.value_prop_card_icon_1 is string %}{% set icon1_src = icons_base ~ webinar.value_prop_card_icon_1 %}{% endif %}
+                {% endif %}
+                {% if icon1_src %}<img src="{{ icon1_src }}" alt="{{ webinar.value_prop_1_headline|default('') }}" class="feature-icon-img">{% endif %}
+              </div>
+              {% if webinar.value_prop_1_headline %}<h3 class="feature-title">{{ webinar.value_prop_1_headline }}</h3>{% endif %}
+              {% if webinar.value_prop_1_description %}<p class="feature-description">{{ webinar.value_prop_1_description|striptags }}</p>{% endif %}
+            </div>
+            {% endif %}
+            {% if has_value_prop_2 %}
+            <div class="feature-card">
+              <div class="feature-icon">
+                {% set icon2_src = '' %}
+                {% if webinar.value_prop_card_icon_2 %}
+                  {% if webinar.value_prop_card_icon_2.url %}{% set icon2_src = webinar.value_prop_card_icon_2.url %}
+                  {% elif webinar.value_prop_card_icon_2 is string %}{% set icon2_src = icons_base ~ webinar.value_prop_card_icon_2 %}{% endif %}
+                {% endif %}
+                {% if icon2_src %}<img src="{{ icon2_src }}" alt="{{ webinar.value_prop_2_headline|default('') }}" class="feature-icon-img">{% endif %}
+              </div>
+              {% if webinar.value_prop_2_headline %}<h3 class="feature-title">{{ webinar.value_prop_2_headline }}</h3>{% endif %}
+              {% if webinar.value_prop_2_description %}<p class="feature-description">{{ webinar.value_prop_2_description|striptags }}</p>{% endif %}
+            </div>
+            {% endif %}
+            {% if has_value_prop_3 %}
+            <div class="feature-card">
+              <div class="feature-icon">
+                {% set icon3_src = '' %}
+                {% if webinar.value_prop_card_icon_3 %}
+                  {% if webinar.value_prop_card_icon_3.url %}{% set icon3_src = webinar.value_prop_card_icon_3.url %}
+                  {% elif webinar.value_prop_card_icon_3 is string %}{% set icon3_src = icons_base ~ webinar.value_prop_card_icon_3 %}{% endif %}
+                {% endif %}
+                {% if icon3_src %}<img src="{{ icon3_src }}" alt="{{ webinar.value_prop_3_headline|default('') }}" class="feature-icon-img">{% endif %}
+              </div>
+              {% if webinar.value_prop_3_headline %}<h3 class="feature-title">{{ webinar.value_prop_3_headline }}</h3>{% endif %}
+              {% if webinar.value_prop_3_description %}<p class="feature-description">{{ webinar.value_prop_3_description|striptags }}</p>{% endif %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+    {% else %}
+      {# Placeholder content when no webinar found #}
+      <section class="webinar-b1-hero">
+        <div class="webinar-b1-hero-content">
+          <div class="webinar-b1-badge">
+            <span class="webinar-b1-badge-text">WEBINAR</span>
+          </div>
+          <h1 class="webinar-b1-title">
+            CX-Plus: How Tucson Electric Power is Powering <span class="highlight">the Next Evolution of Customer Experience</span>
+          </h1>
+          
+          {# Partner Logos - Default for placeholder #}
+          <div class="webinar-b1-logos">
+            <div class="webinar-b1-logo">
+              <img src="https://explore.bidgely.com/hubfs/244460873/resources/tep-logo.png" alt="TEP Logo" />
+            </div>
+            <div class="webinar-b1-logo">
+              <img src="https://explore.bidgely.com/hubfs/244460873/resources/infosys-logo.png" alt="Infosys Logo" />
+            </div>
+            <div class="webinar-b1-logo">
+              <img src="https://explore.bidgely.com/hubfs/244460873/resources/cap-logo.png" alt="CAP Logo" />
+            </div>
+          </div>
+          
+          <div class="webinar-b1-date">November 19, 2025 | 2PM ET</div>
+        </div>
+      </section>
+
+      <section class="webinar-b1-main-content">
+        <div class="webinar-b1-description-section">
+          <h2 class="webinar-b1-description-title">The Future of Utility CX is Personalized, Predictive, and Always On</h2>
+          <div class="webinar-b1-description-text">
+            TEP is transforming Customer Experience (CX) into CX-Plus, a new era of dynamic, data-driven engagement where every interaction is personalized, timely, and interconnected.<br/><br/>Join Lori Boyer from Tucson Electric Power (TEP) as she shares how her team is redefining customer experience and delivering outstanding results:<br/><br/><strong>Smarter, next-gen home energy reports</strong> that have delivered <strong>100% forecast savings</strong> in 2023 and 2024 while earning <strong>85% like rates.<br/>Better digital engagement</strong> including a new visually impactful <strong>budget tool</strong> lets customers set spending goals and receive <strong>email alerts at 50%, 75%, and 100%</strong> of consumption—helping them change behaviors, reduce usage, or detect appliance issues to avoid bill shock.<br/><strong>Empowered call center agents:</strong> TEP agents are now equipped with the <strong>same appliance-level insights</strong> available to customers, enabling faster and more effective issue resolution.<br/><br/>Join us to learn how pairing AI-powered insights with personalized customer support, can transform static communication into a living, adaptive dialogue—empowering customers to act, agents to advise, and utilities to build deeper energy engagement.
+          </div>
+        </div>
+        
+        <div class="webinar-b1-form-container">
+          <div class="webinar-b1-form">
+            {# Default form - replace with your actual form ID #}
+            {% form "webinar_registration_form", form_to_use="da3882a7-4680-452c-8ff0-204962635f53" %}
+          </div>
+        </div>
+      </section>
+    {% endif %}
+    
+    {# Related Resources: main post = current page (by slug/hs_path). solution_tags = one text field, comma-separated (e.g. "DR, Flex Demand" or "EV Intelligence, Grid Planning"). Show up to 3 most recent (by date) assets that share ANY solution tag; fallback to same asset type if no tag matches. #}
+    {% set related_all = hubdb_table_rows('assets', 'limit=10000')|sort('date', 'desc') %}
+    {% set current_obj = dynamic_page_hubdb_row %}
+    
+    {# Parse main post solution_tags: split by comma, trim each value #}
+    {% set current_solution_tags_raw = current_obj.solution_tags if current_obj else '' %}
+    {% set current_asset_type = current_obj.asset_picklist_tag|default(current_obj.asset_type|default(''))|lower|trim if current_obj else '' %}
+    
+    {# Parse current page solution_tags: split by comma, trim each value (namespace so appends persist) #}
+    {% set current_tag_ns = namespace(values=[]) %}
+    {% if current_solution_tags_raw %}
+      {% set current_tags_str = (current_solution_tags_raw ~ '')|trim %}
+      {% if current_tags_str %}
+        {% set parts = current_tags_str.split(',') %}
+        {% for part in parts %}
+          {% set tag_val = part|trim %}
+          {% if tag_val %}
+            {% do current_tag_ns.values.append(tag_val) %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+    {% set current_solution_tag_values = current_tag_ns.values %}
+    {# Use namespace so list appends persist after the loop (HubL/Jinja scoping) #}
+    {% set related_ns = namespace(priority_matches=[], fallback_matches=[]) %}
+    
+    {% for resource in related_all %}
+        {% set is_current = false %}
+        {% if current_obj %}
+            {% set is_current = (resource.hs_id and current_obj.hs_id and resource.hs_id == current_obj.hs_id) or (resource.slug and current_obj.slug and resource.slug == current_obj.slug) or (resource.hs_path and current_obj.hs_path and resource.hs_path == current_obj.hs_path) %}
+        {% endif %}
+        {% if not is_current %}
+            {% set res_solution_tags = resource.solution_tags %}
+            {% set res_asset_type = resource.asset_picklist_tag|default(resource.asset_type|default(''))|lower|trim %}
+            
+            {# Parse resource solution_tags: split by comma, trim each value (namespace so appends persist) #}
+            {% set res_tag_ns = namespace(values=[]) %}
+            {% if res_solution_tags %}
+              {% set res_tags_str = (res_solution_tags ~ '')|trim %}
+              {% if res_tags_str %}
+                {% set r_parts = res_tags_str.split(',') %}
+                {% for part in r_parts %}
+                  {% set tag_val = part|trim %}
+                  {% if tag_val %}
+                    {% do res_tag_ns.values.append(tag_val) %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endif %}
+            {% set res_solution_tag_values = res_tag_ns.values %}
+            
+            {# Match: show related if ANY split tag from current page is in resource's split tag list (namespace so match persists after inner loop in HubL) #}
+            {% set match_ns = namespace(flags=[]) %}
+            {% if current_solution_tag_values|length > 0 and res_solution_tag_values|length > 0 %}
+              {% for c_val in current_solution_tag_values %}
+                {% if c_val in res_solution_tag_values %}
+                  {% do match_ns.flags.append(1) %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            
+            {% if match_ns.flags|length > 0 %}
+                {% do related_ns.priority_matches.append(resource) %}
+            {% elif current_asset_type and res_asset_type == current_asset_type %}
+                {% do related_ns.fallback_matches.append(resource) %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    
+    {# Use solution-tag matches first. Only if none exist, fall back to asset type matches #}
+    {% if related_ns.priority_matches|length > 0 %}
+      {% set final_related = related_ns.priority_matches %}
+    {% else %}
+      {% set final_related = related_ns.fallback_matches %}
+    {% endif %}
+    
+    <section class="related-resources">
+      <div class="container">
+        <h2 class="related-resources-title">Related Resources</h2>
+        {% if final_related and final_related|length > 0 %}
+          <div class="related-resources-grid">
+            {% set related_count = 0 %}
+            {% for resource in final_related %}
+              {% if related_count >= 3 %}
+                {% break %}
+              {% endif %}
+              {% set related_count = related_count + 1 %}
+                  <div class="related-resource-card">
+                    {% set image_url = '' %}
+                    {% set resource_title = resource.h1_title|default(resource.hs_name|default(resource.name|default(''))) %}
+                    {# Priority 1: HubDB file objects or string filenames #}
+                    {% if resource.feature_image %}
+                      {% if resource.feature_image.url %}
+                        {% set image_url = resource.feature_image.url %}
+                      {% elif resource.feature_image and resource.feature_image != '' %}
+                        {% set file_name = resource.feature_image %}
+                        {% set has_ext = '.jpg' in file_name or '.jpeg' in file_name or '.png' in file_name or '.gif' in file_name or '.webp' in file_name %}
+                        {% if not has_ext %}
+                          {% set file_name = file_name ~ '.jpeg' %}
+                        {% endif %}
+                        {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ file_name %}
+                      {% endif %}
+                    {% elif resource.pdf_thumbnail_image %}
+                      {% if resource.pdf_thumbnail_image.url %}
+                        {% set image_url = resource.pdf_thumbnail_image.url %}
+                      {% elif resource.pdf_thumbnail_image and resource.pdf_thumbnail_image != '' %}
+                        {% set file_name = resource.pdf_thumbnail_image %}
+                        {% set has_ext = '.jpg' in file_name or '.jpeg' in file_name or '.png' in file_name or '.gif' in file_name or '.webp' in file_name %}
+                        {% if not has_ext %}
+                          {% set file_name = file_name ~ '.jpeg' %}
+                        {% endif %}
+                        {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ file_name %}
+                      {% endif %}
+                    {% else %}
+                      {# Priority 2: Generate HubSpot Hub Files URL from title #}
+                      {% if resource_title and resource_title != '' %}
+                        {% set image_filename = resource_title|lower|replace(' ', '-')|replace(':', '-')|replace(',', '-')|replace('.', '')|replace('!', '')|replace('?', '')|replace("'", '')|replace('"', '')|replace('&', 'and')|replace('(', '')|replace(')', '')|replace('[', '')|replace(']', '')|replace('{', '')|replace('}', '')|replace('--', '-')|trim ~ '-feature.jpg' %}
+                        {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ image_filename %}
+                      {% endif %}
+                    {% endif %}
+                    
+                    {% if image_url %}
+                      <div class="related-resource-image">
+                        <img src="{{ image_url }}" alt="{{ resource_title }}" onerror="this.parentElement.style.background='#e0e0e0'; this.style.display='none';">
+                      </div>
+                    {% else %}
+                      <div class="related-resource-image" style="background: #e0e0e0;"></div>
+                    {% endif %}
+                    
+                    <div class="related-resource-badge">
+                      {{ resource.asset|default(resource.asset_picklist_tag|default(resource.asset_type|default('RESOURCE')))|upper }}
+                    </div>
+                    <h3 class="related-resource-title">{{ resource_title }}</h3>
+                    <p class="related-resource-description">
+                      {% if resource.long_description %}
+                        {{ resource.long_description|striptags|truncate(100) }}
+                      {% elif resource.short_description %}
+                        {{ resource.short_description|striptags|truncate(100) }}
+                      {% endif %}
+                    </p>
+                    
+                    {# Link Construction #}
+              {% set resource_slug = resource.slug|default('') %}
+              {% if resource.hs_path %}{% set resource_slug = resource.hs_path %}{% endif %}
+              
+              {% set resource_link = '#' %}
+              {% set resource_page_tpl = resource.page_template|default('')|lower|trim %}
+              {% set resource_type = resource.asset_picklist_tag|default(resource.asset_type|default(''))|lower %}
+              
+              {% set is_podcast = resource_type == 'podcast' %}
+              {% set is_webinar = resource_type == 'webinar' %}
+              {% set is_video = resource_type == 'video' %}
+              {% set is_playbook = resource_type in ['playbook', 'white paper', 'case study', 'solution brief', 'industry analysis', 'pdf', 'whitepaper', 'white-paper', 'case-study', 'solution-brief', 'brief', 'industry-analysis'] %}
+              
+              {% if resource_slug %}
+                  {% if resource_page_tpl == 'live webinar' %}
+                      {% set resource_link = '/webinar-b1-v1/' ~ resource_slug %}
+                  {% elif resource_page_tpl == 'webinar' %}
+                      {% set resource_link = '/webinar/' ~ resource_slug %}
+                  {% elif resource_page_tpl == 'podcast' %}
+                      {% set resource_link = '/podcast/' ~ resource_slug %}
+                  {% elif resource_page_tpl == 'video' %}
+                      {% set resource_link = '/video/' ~ resource_slug %}
+                  {% elif resource_page_tpl in ['pdf', 'playbook', 'white paper', 'case study', 'solution brief', 'whitepaper'] %}
+                      {% set resource_link = '/pdf/' ~ resource_slug %}
+                  {% elif is_podcast %}
+                      {% set resource_link = '/podcast/' ~ resource_slug %}
+                  {% elif is_webinar %}
+                      {% set resource_link = '/webinar/' ~ resource_slug %}
+                  {% elif is_video %}
+                      {% set resource_link = '/video/' ~ resource_slug %}
+                  {% elif is_playbook %}
+                      {% set resource_link = '/pdf/' ~ resource_slug %}
+                  {% else %}
+                      {% set resource_link = '/resource/' ~ resource_slug %}
+                  {% endif %}
+              {% elif resource.url and 'publish' not in resource.url|lower and 'hs-sites' not in resource.url|lower %}
+                  {% set resource_link = resource.url %}
+              {% endif %}
+                    
+                    <a href="{{ resource_link }}" class="related-resource-button">
+                        {% if 'video' in resource_page_tpl or 'webinar' in resource_page_tpl or 'podcast' in resource_page_tpl or is_video or is_webinar or is_podcast %}
+                          WATCH NOW
+                        {% elif 'playbook' in resource_page_tpl or 'pdf' in resource_page_tpl or is_playbook %}
+                          DOWNLOAD NOW
+                        {% else %}
+                          READ NOW
+                        {% endif %}
+                    </a>
+                  </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </section>
+    
+    {# CTA Section #}
+    <section class="webinar-b1-cta">
+  <div class="container">
+    <div class="pdf-cta-logo">
+      <img 
+        src="https://explore.bidgely.com/hubfs/244460873/Bidgely%20Logo_Small.png" 
+        alt="Bidgely Logo"
+        style="width:250px;height:auto;display:block;margin:0 auto;"
+      >
+    </div>
+
+    <h2 class="pdf-cta-title">Ready to Start Your Journey With UtilityAI?</h2>
+
+    <p class="pdf-cta-description">
+      Don't let your operational investments stall. Find out how to unlock ROI, reliability, and resilience across your utility.<br />
+&nbsp;    </p>
+
+    <a href="https://demo.bidgely.com" class="cta-demo-button">EXPLORE LIVE DEMO</a>
+  </div>
+</section>
+
+  </main>
+
+  {{ standard_footer_includes }}
+  {% module "site_footer" path="../modules/global-footer.module" %}
+
+<script>
+(function(d,b,a,s,e){ var t = b.createElement(a),
+  fs = b.getElementsByTagName(a)[0]; t.async=1; t.id=e; t.src=s;
+  fs.parentNode.insertBefore(t, fs); })
+(window,document,'script','https://tag.demandbase.com/6777fbd385590f90.min.js','demandbase_js_lib');  
+</script>
+
+
+</body>
+</html>

@@ -749,7 +749,7 @@ background: #FFFFFF;
   .resource__title { font-size: 14px; font-weight: 700; color: var(--nile); margin: 0 0 10px; line-height: 1.35; }
   .resource__copy  { font-size: 13px; color: var(--nile-52); line-height: 1.55; }
   .resource__foot  { padding: 16px 24px; border-top: 1px solid rgba(21,45,73,.08); }
-  .resource__cta {
+  .resource__foot .resource__cta {
     color: var(--azure); font-weight: 600; font-size: 13px;
     display: inline-flex; align-items: center; gap: 6px;
   }

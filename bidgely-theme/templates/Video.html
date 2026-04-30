@@ -1,0 +1,1387 @@
+<!--
+  templateType: "page"
+  isAvailableForNewContent: true
+  label: "Video Detail Page"
+-->
+{# HubSpot Dynamic Video Detail Template #}
+{# This template displays individual video details based on slug #}
+{# URL Pattern: /video/{slug} #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="HubSpot">
+  <title>{% if content.html_title %}{{ content.html_title }}{% else %}Video{% endif %}</title>
+  {% if content.meta_description %}
+  <meta name="description" content="{{ content.meta_description }}">
+  {% endif %}
+  
+  {# Google Fonts - Montserrat #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+  
+  {# HubSpot Required Head Tags #}
+  {{ standard_header_includes }}
+  
+  <style>
+    /* ========== Video Detail Styles ========== */
+    .highlight {
+      color: #499ED7;
+    }
+
+    /* Video Hero Section */
+    .video-hero {
+      background: linear-gradient(0deg, #F2F8FC 0%, #F2F8FC 100%);
+      padding: 100px 0 100px;
+      position: relative;
+    }
+
+    .video-hero-content {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .video-badge {
+      padding: 8px 20px;
+      background: #499ED7;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.12px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .video-title-subtitle {
+      color: #152D49;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 56px;
+      margin-bottom: 20px;
+    }
+
+    .video-title-main {
+      font-size: 56px;
+      font-weight: 400;
+      line-height: 72px;
+    }
+
+    .video-title-main .highlight {
+      color: #499ED7;
+    }
+
+    /* Video Player Section */
+    .video-player-section {
+      background: white;
+      box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.10);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: -70px auto;
+      max-width: 1110px;
+      position: relative;
+      padding-top: 20px;
+      text-align: center;
+    }
+
+    .video-player-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .video-player-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-player-container wistia-player {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .video-play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 96px;
+      height: 96px;
+      background: rgba(255, 255, 255, 0.90);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 0px 13.24px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.3s;
+    }
+
+    .video-play-button:hover {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .video-play-icon {
+      width: 0;
+      height: 0;
+      border-left: 20px solid #152D49;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      margin-left: 5px;
+    }
+
+    .video-player-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(21, 45, 73, 0.50);
+      z-index: 5;
+    }
+
+    .video-player-overlay.hidden {
+      display: none;
+    }
+
+    .video-description {
+      padding: 40px;
+      color: #152D49;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 26px;
+      text-align: left;
+    }
+
+    .video-description .highlight {
+      font-weight: 700;
+    }
+
+    /* Stats Section */
+    .video-stats {
+      background: #F9F9F9;
+      padding: 150px 0;
+    }
+
+    .video-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .video-stat-card {
+      background: white;
+      border-radius: 8px;
+      padding: 25px 30px 25px;
+      text-align: center;
+      box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.10);
+    }
+
+    .video-stat-icon {
+      margin: 0 auto 20px;
+    }
+
+    .video-stat-icon img {
+      max-width: 83px;
+      max-height: 83px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .video-stat-title {
+      color: #152D49;
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 32px;
+      margin-bottom: 15px;
+    }
+
+    .video-stat-description {
+      color: #152D49;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 26px;
+    }
+
+    /* Stats Text Section */
+    .video-stats-text-section {
+      background: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .video-stats-text {
+      color: #152D49;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 56px;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    @keyframes bg-scrolling-reverse {
+      100% { background-position: 4000px 0; }
+    }
+
+    .video-stats-image-container {
+      width: 100%;
+      height: 120px;
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+    }
+
+    .video-image-container {
+      width: 4000px;
+      height: 120px;
+      background: url(https://www.bidgely.com/wp-content/uploads/2023/05/bidgely-logo-sprite-international.jpg?_t=1685186532) repeat-x 0 0;
+      background-size: contain;
+      animation: bg-scrolling-reverse 100s infinite linear;
+    }
+
+    /* CTA Section */
+    .video-cta {
+      background: white;
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .video-cta-logo {
+      margin-bottom: 20px;
+    }
+
+    .video-cta-logo img {
+      height: auto;
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .pdf-cta-logo {
+      margin-bottom: 20px;
+    }
+
+    .pdf-cta-logo img {
+      max-width: 250px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .video-cta-title,
+    .pdf-cta-title {
+      color: #152D49;
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 56px;
+      margin-bottom: 20px;
+    }
+
+    .video-cta-description,
+    .pdf-cta-description {
+      color: #000;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 26px;
+      margin-bottom: 30px;
+      max-width: 979px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .video-cta-button,
+    .cta-demo-button {
+      display: inline-block;
+      background: #499ED7;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .video-cta-button:hover,
+    .cta-demo-button:hover {
+      background: #449BD5;
+    }
+
+    /* Related Resources */
+    .related-resources {
+      background: #F2F8FC;
+      padding: 80px 0;
+    }
+
+    .related-resources-title {
+      text-align: center;
+      color: #152D49;
+      font-size: 36px;
+      font-weight: 300;
+      line-height: 56px;
+      margin-bottom: 60px;
+    }
+
+    .related-resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .related-resource-card {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: 0px 4px 6px -4px rgba(0, 0, 0, 0.10);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .related-resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .related-resource-image {
+      width: 100%;
+      height: 186px;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .related-resource-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .related-resource-badge {
+      color: #499ED7;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.68px;
+      line-height: 30px;
+    }
+
+    .related-resource-title {
+      color: #152D49;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 36px;
+      margin: 0;
+    }
+
+    .related-resource-description {
+      color: #152D49;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      margin: 0;
+    }
+
+    .related-resource-button {
+      display: inline-block;
+      background: #499ED7;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: 500;
+      text-decoration: none;
+      text-align: center;
+      margin-top: auto;
+      transition: background 0.3s;
+    }
+
+    .related-resource-button:hover {
+      background: #449BD5;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 1200px) {
+      .related-resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+      
+      .video-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+    }
+
+    @media screen and (max-width: 992px) {
+      .video-hero {
+        padding: 80px 0 50px;
+      }
+      
+      .video-player-section {
+        margin: -60px auto;
+        padding-top: 50px;
+      }
+      
+      .video-stats {
+        padding: 120px 0;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .video-hero {
+        padding: 60px 0 40px;
+        min-height: auto;
+      }
+      
+      .video-hero-content {
+        padding: 0 20px;
+      }
+      
+      .video-title-main {
+        font-size: 36px;
+        line-height: 48px;
+        margin-bottom: 15px;
+      }
+      
+      .video-title-subtitle {
+        font-size: 24px;
+        line-height: 36px;
+        margin-bottom: 15px;
+      }
+      
+      .video-player-section {
+        margin: -50px 20px 0;
+        padding-top: 40px;
+        border-radius: 8px;
+      }
+      
+      .video-player-container {
+        margin: 0 20px;
+      }
+      
+      .video-description {
+        padding: 30px 20px;
+        font-size: 17px;
+        line-height: 26px;
+      }
+      
+      .video-stats {
+        padding: 100px 0;
+      }
+      
+      .video-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 20px;
+      }
+      
+      .video-stat-card {
+        padding: 25px 20px;
+      }
+      
+      .video-stat-title {
+        font-size: 24px;
+        line-height: 30px;
+      }
+      
+      .video-stat-description {
+        font-size: 16px;
+        line-height: 24px;
+      }
+      
+      .video-stats-text-section {
+        padding: 50px 0;
+      }
+      
+      .video-stats-text {
+        font-size: 30px;
+        line-height: 42px;
+        padding: 0 20px;
+      }
+      
+      .video-stats-image-container {
+        height: 100px;
+        margin-top: 30px;
+      }
+      
+      .video-image-container {
+        height: 100px;
+        background-size: auto 100px;
+      }
+      
+      .related-resources {
+        padding: 60px 0;
+      }
+      
+      .related-resources-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+      
+      .video-cta {
+        padding: 60px 0;
+      }
+      
+      .video-cta-logo {
+        margin-bottom: 15px;
+      }
+      
+      .video-cta-title {
+        font-size: 30px;
+        line-height: 42px;
+        padding: 0 20px;
+      }
+      
+      .video-cta-description {
+        font-size: 17px;
+        padding: 0 20px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .video-hero {
+        padding: 50px 0 30px;
+        min-height: auto;
+      }
+      
+      .video-title-main {
+        font-size: 28px;
+        line-height: 40px;
+      }
+      
+      .related-resources-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <script>
+  (function(){
+    // Force Wistia and other components to use open shadow DOM so we can access forms inside them
+    var orig = Element.prototype.attachShadow;
+    Element.prototype.attachShadow = function(init){
+      if(init && init.mode === 'closed') init = Object.assign({}, init, {mode: 'open'});
+      return orig.call(this, init);
+    };
+  })();
+  </script>
+</head>
+<body>
+  {% include "template-type-redirect.html" %}
+  {# Header Module #}
+  {% module "site_header" path="../modules/global-header.module" %}
+
+  {# Main Content #}
+  <main>
+    {# Use dynamic page row data #}
+    {% if dynamic_page_hubdb_row %}
+      {% set video = dynamic_page_hubdb_row %}
+    {% else %}
+      {% set video = null %}
+    {% endif %}
+    
+    {% if video %}
+      {# Video Hero Section #}
+      <section class="video-hero">
+        <div class="video-hero-content">
+          <div class="video-badge testing">{{ video.asset_picklist_tag|default(video.asset_type|default('VIDEO'))|upper }}</div>
+          {% set video_title = video.h1_title|default(video.hs_name|default(video.name|default('Video Title'))) %}
+          {% set video_subtitle = video.h2_title|default('') %}
+          {% set title_words = video_title|split(' ') %}
+
+          <h1 class="video-title-main test">
+            <span class="highlight">{{ video_title }}</span>
+          </h1>
+        </div>
+      </section>
+
+      {# Video Player Section #}
+      <section class="container container2">
+        <div class="video-player-section">
+          <div class="video-player-section-content">
+          <h2 class="video-player-section-content-title">{{video.h2_title}}</h2>
+          </div>
+          <div class="video-player-container" id="videoPlayerContainer">
+            {% if video.wistia_video_embed and video.wistia_video_embed != '' %}
+              {# Extract media ID from database (should just be the ID like "c094rt9dby") #}
+              {% set media_id_raw = video.wistia_video_embed|trim|striptags %}
+              {% set media_id = media_id_raw|trim|replace('"', '')|replace("'", '')|replace('=', '')|replace('>', '')|replace('<', '')|replace('%22', '')|trim %}
+              {# Generate Wistia embed code from media ID #}
+              {% if media_id != '' and media_id|length < 20 %}
+                <script src="https://fast.wistia.com/player.js" async></script>
+                <script src="https://fast.wistia.com/embed/{{ media_id }}.js" async type="module"></script>
+                <style>wistia-player[media-id='{{ media_id }}']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/{{ media_id }}/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
+                <wistia-player media-id="{{ media_id }}" aspect="1.7777777777777777"></wistia-player>
+              {% else %}
+                {# Fallback: use raw embed code if media ID extraction failed #}
+                {{ video.wistia_video_embed|safe }}
+              {% endif %}
+            {% elif video.source_file and video.source_file != '' %}
+              {# Fallback to source_file if wistia_video_embed is not available #}
+              {% set video_url = video.source_file %}
+              <iframe class="video-player-iframe" src="{{ video_url }}" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            {% else %}
+              {# Placeholder when no video available #}
+              <div class="video-player-overlay">
+                <div class="video-play-button">
+                  <div class="video-play-icon"></div>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+          
+          {% if video.long_description %}
+            <div class="video-description">
+              {{ video.long_description|safe }}
+            </div>
+          {% elif video.short_description %}
+            <div class="video-description">
+              {{ video.short_description|safe }}
+            </div>
+          {% else %}
+            <div class="video-description">
+              <span class="highlight">Bidgely CRO explains why vertical AI built on load disaggregation creates a 'multiplier effect' that empowers customers while safeguarding the </span><span class="highlight">three S's: standards, safety, and security.</span>
+            </div>
+          {% endif %}
+        </div>
+      </section>
+
+      {# Stats Section - dynamic from HubDB (value_prop_*) #}
+      {% set icons_base = 'https://explore.bidgely.com/hubfs/244460873/resources/icons/' %}
+      {% set has_value_prop_1 = video.value_prop_1_headline or video.value_prop_1_description or video.value_prop_card_icon_1 %}
+      {% set has_value_prop_2 = video.value_prop_2_headline or video.value_prop_2_description or video.value_prop_card_icon_2 %}
+      {% set has_value_prop_3 = video.value_prop_3_headline or video.value_prop_3_description or video.value_prop_card_icon_3 %}
+      {% if has_value_prop_1 or has_value_prop_2 or has_value_prop_3 %}
+      <section class="video-stats">
+        <div class="video-stats-grid">
+          {% if has_value_prop_1 %}
+          <div class="video-stat-card">
+            <div class="video-stat-icon">
+              {% set icon1_src = '' %}
+              {% if video.value_prop_card_icon_1 %}
+                {% if video.value_prop_card_icon_1.url %}{% set icon1_src = video.value_prop_card_icon_1.url %}
+                {% elif video.value_prop_card_icon_1 is string %}{% set icon1_src = icons_base ~ video.value_prop_card_icon_1 %}{% endif %}
+              {% endif %}
+              {% if icon1_src %}<img src="{{ icon1_src }}" alt="{{ video.value_prop_1_headline|default('') }}">{% endif %}
+            </div>
+            {% if video.value_prop_1_headline %}<h3 class="video-stat-title">{{ video.value_prop_1_headline }}</h3>{% endif %}
+            {% if video.value_prop_1_description %}<p class="video-stat-description">{{ video.value_prop_1_description|striptags }}</p>{% endif %}
+          </div>
+          {% endif %}
+          {% if has_value_prop_2 %}
+          <div class="video-stat-card">
+            <div class="video-stat-icon">
+              {% set icon2_src = '' %}
+              {% if video.value_prop_card_icon_2 %}
+                {% if video.value_prop_card_icon_2.url %}{% set icon2_src = video.value_prop_card_icon_2.url %}
+                {% elif video.value_prop_card_icon_2 is string %}{% set icon2_src = icons_base ~ video.value_prop_card_icon_2 %}{% endif %}
+              {% endif %}
+              {% if icon2_src %}<img src="{{ icon2_src }}" alt="{{ video.value_prop_2_headline|default('') }}">{% endif %}
+            </div>
+            {% if video.value_prop_2_headline %}<h3 class="video-stat-title">{{ video.value_prop_2_headline }}</h3>{% endif %}
+            {% if video.value_prop_2_description %}<p class="video-stat-description">{{ video.value_prop_2_description|striptags }}</p>{% endif %}
+          </div>
+          {% endif %}
+          {% if has_value_prop_3 %}
+          <div class="video-stat-card">
+            <div class="video-stat-icon">
+              {% set icon3_src = '' %}
+              {% if video.value_prop_card_icon_3 %}
+                {% if video.value_prop_card_icon_3.url %}{% set icon3_src = video.value_prop_card_icon_3.url %}
+                {% elif video.value_prop_card_icon_3 is string %}{% set icon3_src = icons_base ~ video.value_prop_card_icon_3 %}{% endif %}
+              {% endif %}
+              {% if icon3_src %}<img src="{{ icon3_src }}" alt="{{ video.value_prop_3_headline|default('') }}">{% endif %}
+            </div>
+            {% if video.value_prop_3_headline %}<h3 class="video-stat-title">{{ video.value_prop_3_headline }}</h3>{% endif %}
+            {% if video.value_prop_3_description %}<p class="video-stat-description">{{ video.value_prop_3_description|striptags }}</p>{% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </section>
+      {% endif %}
+
+      {# Stats Text Section (Above Related Resources) #}
+      <section class="video-stats-text-section">
+        <div class="video-stats-text">Fueling insights for 45+ utilities and over 38 million consumers.</div>
+        <div class="video-stats-image-container">
+          <div class="video-image-container"></div>
+        </div>
+      </section>
+
+      {# Related Resources: main post = current page (by slug/hs_path). solution_tags = one text field, comma-separated (e.g. "DR, Flex Demand" or "EV Intelligence, Grid Planning"). Show up to 3 most recent (by date) assets that share ANY solution tag; fallback to same asset type if no tag matches. #}
+      {% set related_all = hubdb_table_rows('assets', 'limit=10000')|sort('date', 'desc') %}
+      {% set current_obj = dynamic_page_hubdb_row %}
+      
+      {# Parse main post solution_tags: split by comma, trim each value #}
+      {% set current_solution_tags_raw = current_obj.solution_tags if current_obj else '' %}
+      {% set current_asset_type = current_obj.asset_picklist_tag|default(current_obj.asset_type|default(''))|lower|trim if current_obj else '' %}
+      
+      {# Parse current page solution_tags: split by comma, trim each value (namespace so appends persist) #}
+      {% set current_tag_ns = namespace(values=[]) %}
+      {% if current_solution_tags_raw %}
+        {% set current_tags_str = (current_solution_tags_raw ~ '')|trim %}
+        {% if current_tags_str %}
+          {% set parts = current_tags_str.split(',') %}
+          {% for part in parts %}
+            {% set tag_val = part|trim %}
+            {% if tag_val %}
+              {% do current_tag_ns.values.append(tag_val) %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+      {% set current_solution_tag_values = current_tag_ns.values %}
+      {# Use namespace so list appends persist after the loop (HubL/Jinja scoping) #}
+      {% set related_ns = namespace(priority_matches=[], fallback_matches=[]) %}
+      
+      {% for resource in related_all %}
+        {% set is_current = false %}
+        {% if current_obj %}
+            {% set is_current = (resource.hs_id and current_obj.hs_id and resource.hs_id == current_obj.hs_id) or (resource.slug and current_obj.slug and resource.slug == current_obj.slug) or (resource.hs_path and current_obj.hs_path and resource.hs_path == current_obj.hs_path) %}
+        {% endif %}
+          {% if not is_current %}
+              {% set res_solution_tags = resource.solution_tags %}
+              {% set res_asset_type = resource.asset_picklist_tag|default(resource.asset_type|default(''))|lower|trim %}
+              
+              {# Parse resource solution_tags: split by comma, trim each value (namespace so appends persist) #}
+              {% set res_tag_ns = namespace(values=[]) %}
+              {% if res_solution_tags %}
+                {% set res_tags_str = (res_solution_tags ~ '')|trim %}
+                {% if res_tags_str %}
+                  {% set r_parts = res_tags_str.split(',') %}
+                  {% for part in r_parts %}
+                    {% set tag_val = part|trim %}
+                    {% if tag_val %}
+                      {% do res_tag_ns.values.append(tag_val) %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endif %}
+              {% set res_solution_tag_values = res_tag_ns.values %}
+              
+              {# Match: show related if ANY split tag from current page is in resource's split tag list (namespace so match persists after inner loop in HubL) #}
+              {% set match_ns = namespace(flags=[]) %}
+              {% if current_solution_tag_values|length > 0 and res_solution_tag_values|length > 0 %}
+                {% for c_val in current_solution_tag_values %}
+                  {% if c_val in res_solution_tag_values %}
+                    {% do match_ns.flags.append(1) %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              
+              {% if match_ns.flags|length > 0 %}
+                  {% do related_ns.priority_matches.append(resource) %}
+              {% elif current_asset_type and res_asset_type == current_asset_type %}
+                  {% do related_ns.fallback_matches.append(resource) %}
+              {% endif %}
+          {% endif %}
+      {% endfor %}
+      
+      {# Use solution-tag matches first. Only if none exist, fall back to asset type matches #}
+      {% if related_ns.priority_matches|length > 0 %}
+        {% set final_related = related_ns.priority_matches %}
+      {% else %}
+        {% set final_related = related_ns.fallback_matches %}
+      {% endif %}
+      
+      {% if final_related|length > 0 %}
+      <section class="related-resources">
+        <div class="container">
+          <h2 class="related-resources-title">Related Resources</h2>
+          <div class="related-resources-grid">
+            {% set related_count = 0 %}
+            {% for resource in final_related %}
+              {% if related_count >= 3 %}
+                {% break %}
+              {% endif %}
+              {% set related_count = related_count + 1 %}
+            <div class="related-resource-card">
+              {% set image_url = '' %}
+              {% set resource_title = resource.h1_title|default(resource.hs_name|default(resource.name|default(''))) %}
+              {# Priority 1: HubDB file objects or string filenames #}
+              {% if resource.feature_image %}
+                {% if resource.feature_image.url %}
+                  {% set image_url = resource.feature_image.url %}
+                {% elif resource.feature_image and resource.feature_image != '' %}
+                  {% set file_name = resource.feature_image %}
+                  {% set has_ext = '.jpg' in file_name or '.jpeg' in file_name or '.png' in file_name or '.gif' in file_name or '.webp' in file_name %}
+                  {% if not has_ext %}
+                    {% set file_name = file_name ~ '.jpeg' %}
+                  {% endif %}
+                  {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ file_name %}
+                {% endif %}
+              {% elif resource.pdf_thumbnail_image %}
+                {% if resource.pdf_thumbnail_image.url %}
+                  {% set image_url = resource.pdf_thumbnail_image.url %}
+                {% elif resource.pdf_thumbnail_image and resource.pdf_thumbnail_image != '' %}
+                  {% set file_name = resource.pdf_thumbnail_image %}
+                  {% set has_ext = '.jpg' in file_name or '.jpeg' in file_name or '.png' in file_name or '.gif' in file_name or '.webp' in file_name %}
+                  {% if not has_ext %}
+                    {% set file_name = file_name ~ '.jpeg' %}
+                  {% endif %}
+                  {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ file_name %}
+                {% endif %}
+              {% else %}
+                {# Priority 2: Generate HubSpot Hub Files URL from title #}
+                {% if resource_title and resource_title != '' %}
+                  {% set image_filename = resource_title|lower|replace(' ', '-')|replace(':', '-')|replace(',', '-')|replace('.', '')|replace('!', '')|replace('?', '')|replace("'", '')|replace('"', '')|replace('&', 'and')|replace('(', '')|replace(')', '')|replace('[', '')|replace(']', '')|replace('{', '')|replace('}', '')|replace('--', '-')|trim ~ '-feature.jpg' %}
+                  {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ image_filename %}
+                {% endif %}
+              {% endif %}
+              
+              {% if image_url %}
+              <div class="related-resource-image">
+                <img src="{{ image_url }}" alt="{{ resource_title }}" onerror="this.parentElement.style.background='#e0e0e0'; this.style.display='none';">
+              </div>
+              {% else %}
+              <div class="related-resource-image" style="background: #e0e0e0;"></div>
+              {% endif %}
+              
+              <div class="related-resource-badge">
+                {{ resource.asset|default(resource.asset_picklist_tag|default(resource.asset_type|default('RESOURCE')))|upper }}
+              </div>
+              <h3 class="related-resource-title">{{ resource_title }}</h3>
+              <p class="related-resource-description">
+                {% if resource.long_description %}
+                  {{ resource.long_description|striptags|truncate(100) }}
+                {% elif resource.short_description %}
+                  {{ resource.short_description|striptags|truncate(100) }}
+                {% endif %}
+              </p>
+              
+              {# Link Construction #}
+              {% set resource_slug = resource.slug|default('') %}
+              {% if resource.hs_path %}{% set resource_slug = resource.hs_path %}{% endif %}
+              
+              {% set resource_link = '#' %}
+              {% set resource_page_tpl = resource.page_template|default('')|lower|trim %}
+              {% set resource_type = resource.asset_picklist_tag|default(resource.asset_type|default(''))|lower %}
+              
+              {% set is_podcast = resource_type == 'podcast' %}
+              {% set is_webinar = resource_type == 'webinar' %}
+              {% set is_video = resource_type == 'video' %}
+              {% set is_playbook = resource_type in ['playbook', 'white paper', 'case study', 'solution brief', 'industry analysis', 'pdf', 'whitepaper', 'white-paper', 'case-study', 'solution-brief', 'brief', 'industry-analysis'] %}
+              
+              {% if resource_slug %}
+                  {% if resource_page_tpl == 'live webinar' %}
+                      {% set resource_link = '/webinar-v1/' ~ resource_slug %}
+                  {% elif resource_page_tpl == 'webinar' %}
+                      {% set resource_link = '/webinar/' ~ resource_slug %}
+                  {% elif resource_page_tpl == 'podcast' %}
+                      {% set resource_link = '/podcast/' ~ resource_slug %}
+                  {% elif resource_page_tpl == 'video' %}
+                      {% set resource_link = '/video/' ~ resource_slug %}
+                  {% elif resource_page_tpl in ['pdf', 'playbook', 'white paper', 'case study', 'solution brief', 'whitepaper'] %}
+                      {% set resource_link = '/pdf/' ~ resource_slug %}
+                  {% elif is_podcast %}
+                      {% set resource_link = '/podcast/' ~ resource_slug %}
+                  {% elif is_webinar %}
+                      {% set resource_link = '/webinar/' ~ resource_slug %}
+                  {% elif is_video %}
+                      {% set resource_link = '/video/' ~ resource_slug %}
+              {% elif is_playbook %}
+                      {% set resource_link = '/pdf/' ~ resource_slug %}
+                  {% else %}
+                      {% set resource_link = '/resource/' ~ resource_slug %}
+                  {% endif %}
+              {% elif resource.url and 'publish' not in resource.url|lower and 'hs-sites' not in resource.url|lower %}
+                  {% set resource_link = resource.url %}
+              {% endif %}
+              
+              {# Determine CTA label based on resource type/page template #}
+              {% set resource_asset_label = resource.asset|default(resource.asset_picklist_tag|default(resource.asset_type|default(''))) %}
+              {% set resource_asset_type = resource_asset_label|lower %}
+              {% set type_string = resource_type if resource_type else resource_asset_type %}
+              {% set is_watch = false %}
+              {% if 'video' in type_string or 'podcast' in type_string or 'webinar' in type_string %}
+                {% set is_watch = true %}
+              {% elif 'video' in resource_page_tpl or 'podcast' in resource_page_tpl or 'webinar' in resource_page_tpl %}
+                {% set is_watch = true %}
+              {% elif resource.wistia_video_embed %}
+                {% set is_watch = true %}
+              {% endif %}
+              
+              {% set is_download = false %}
+              {% if 'playbook' in type_string or 'pdf' in type_string or 'white paper' in type_string or 'whitepaper' in type_string
+                    or 'case study' in type_string or 'case-study' in type_string
+                    or 'solution brief' in type_string or 'solution-brief' in type_string
+                    or 'brief' in type_string %}
+                {% set is_download = true %}
+              {% elif 'pdf' in resource_page_tpl or 'playbook' in resource_page_tpl %}
+                {% set is_download = true %}
+              {% endif %}
+              
+              <a href="{{ resource_link }}" class="related-resource-button">
+                {% if is_watch %}
+                  WATCH NOW
+                {% elif is_download %}
+                  DOWNLOAD NOW
+                {% else %}
+                  READ NOW
+                {% endif %}
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+    {% else %}
+      {# Placeholder content when no video found #}
+      <section class="video-hero">
+        <div class="video-hero-content">
+          <div class="video-badge">VIDEO</div>
+          <div class="video-title-subtitle">The Multiplier Effect</div>
+          <h1 class="video-title-main">
+            <span class="highlight">How GenAI Empowers</span>
+            <span> Customers and Utilities to Achieve Their Goals</span>
+          </h1>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="video-player-section">
+          <div class="video-player-container">
+            {# Placeholder when no video found #}
+            <div class="video-player-overlay">
+              <div class="video-play-button">
+                <div class="video-play-icon"></div>
+              </div>
+            </div>
+          </div>
+          <div class="video-description">
+            <span class="highlight">Bidgely CRO explains why vertical AI built on load disaggregation creates a 'multiplier effect' that empowers customers while safeguarding the </span><span class="highlight">three S's: standards, safety, and security.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="video-stats">
+        <div class="video-stats-grid">
+          <div class="video-stat-card">
+            <div class="video-stat-icon">
+              <svg width="56" height="73" viewBox="0 0 56 73" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="56" height="73" stroke="#499ED7" stroke-width="2.5"/>
+                <circle cx="28" cy="24" r="3.5" stroke="#499ED7" stroke-width="2.5"/>
+                <circle cx="28" cy="40" r="3.5" stroke="#499ED7" stroke-width="2.5"/>
+                <circle cx="28" cy="56" r="3.5" stroke="#499ED7" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h3 class="video-stat-title">Standards</h3>
+            <p class="video-stat-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+          
+          <div class="video-stat-card">
+            <div class="video-stat-icon">
+              <svg width="66" height="80" viewBox="0 0 66 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="66" height="80" stroke="#499ED7" stroke-width="2.5"/>
+                <rect x="20" y="30" width="20" height="14" stroke="#499ED7" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h3 class="video-stat-title">Safety</h3>
+            <p class="video-stat-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+          
+          <div class="video-stat-card">
+            <div class="video-stat-icon">
+              <svg width="55" height="49" viewBox="0 0 55 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="0" width="55" height="49" rx="6" stroke="#499ED7" stroke-width="2.5"/>
+                <circle cx="27.5" cy="24.5" r="6" stroke="#499ED7" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h3 class="video-stat-title">Security</h3>
+            <p class="video-stat-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="video-cta">
+        <div class="container">
+          <div class="video-cta-logo">
+            <img src="https://explore.bidgely.com/hubfs/244460873/resources/cta%20logo.png" alt="Bidgely Logo">
+          </div>
+          <h2 class="video-cta-title">Ready to Start Your Journey With UtilityAI Pro?</h2>
+          <p class="video-cta-description">Don't let your AI investments stall. Find out how to unlock ROI, reliability, and resilience across your utility.</p>
+          <a href="#" class="video-cta-button">SCHEDULE A DEMO</a>
+        </div>
+      </section>
+
+      {# Related Resources Placeholder #}
+      {% set related_all = hubdb_table_rows('assets', 'limit=10000') %}
+      {% if related_all and related_all|length > 0 %}
+      <section class="related-resources">
+        <div class="container">
+          <h2 class="related-resources-title">Related Resources</h2>
+          <div class="related-resources-grid">
+            {% set related_count = 0 %}
+            {% for resource in related_all|sort('date', 'desc') %}
+              {% if related_count >= 3 %}
+                {% break %}
+              {% endif %}
+              {% set related_count = related_count + 1 %}
+            <div class="related-resource-card">
+              {% set image_url = '' %}
+              {% set resource_title = resource.h1_title|default(resource.hs_name|default(resource.name|default('Resource Title'))) %}
+              {% if resource.feature_image %}
+                {% if resource.feature_image.url %}
+                  {% set image_url = resource.feature_image.url %}
+                {% elif resource.feature_image and resource.feature_image != '' %}
+                  {% set file_name = resource.feature_image %}
+                  {% set has_ext = '.jpg' in file_name or '.jpeg' in file_name or '.png' in file_name or '.gif' in file_name or '.webp' in file_name %}
+                  {% if not has_ext %}
+                    {% set file_name = file_name ~ '.jpeg' %}
+                  {% endif %}
+                  {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ file_name %}
+                {% endif %}
+              {% elif resource.pdf_thumbnail_image %}
+                {% if resource.pdf_thumbnail_image.url %}
+                  {% set image_url = resource.pdf_thumbnail_image.url %}
+                {% elif resource.pdf_thumbnail_image and resource.pdf_thumbnail_image != '' %}
+                  {% set file_name = resource.pdf_thumbnail_image %}
+                  {% set has_ext = '.jpg' in file_name or '.jpeg' in file_name or '.png' in file_name or '.gif' in file_name or '.webp' in file_name %}
+                  {% if not has_ext %}
+                    {% set file_name = file_name ~ '.jpeg' %}
+                  {% endif %}
+                  {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ file_name %}
+                {% endif %}
+              {% else %}
+                {% if resource_title and resource_title != '' %}
+                  {% set image_filename = resource_title|lower|replace(' ', '-')|replace(':', '-')|replace(',', '-')|replace('.', '')|replace('!', '')|replace('?', '')|replace("'", '')|replace('"', '')|replace('&', 'and')|replace('(', '')|replace(')', '')|replace('[', '')|replace(']', '')|replace('{', '')|replace('}', '')|replace('--', '-')|trim ~ '-feature.jpg' %}
+                  {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ image_filename %}
+                {% endif %}
+              {% endif %}
+              
+              {% if image_url %}
+              <div class="related-resource-image">
+                <img src="{{ image_url }}" alt="{{ resource_title }}" onerror="this.parentElement.style.background='#e0e0e0'; this.style.display='none';">
+              </div>
+              {% else %}
+              <div class="related-resource-image" style="background: #e0e0e0;"></div>
+              {% endif %}
+              
+              <div class="related-resource-badge">
+                {{ resource.asset|default(resource.asset_picklist_tag|default(resource.asset_type|default('RESOURCE')))|upper }}
+              </div>
+              <h3 class="related-resource-title">{{ resource_title }}</h3>
+              <p class="related-resource-description">
+                {% if resource.long_description and resource.long_description != '' %}
+                  {{ resource.long_description|striptags|truncate(100) }}
+                {% elif resource.short_description and resource.short_description != '' %}
+                  {{ resource.short_description|striptags|truncate(100) }}
+                {% else %}
+                  Explore this resource to learn more about industry insights and best practices.
+                {% endif %}
+              </p>
+              {% set resource_slug = resource.slug|default('') %}
+              {% set resource_hs_path = resource.hs_path|default('') %}
+              {% set resource_title_for_slug = resource.h1_title|default(resource.hs_name|default(resource.name|default(''))) %}
+              {# Use hs_path if available, otherwise use slug, otherwise generate from title #}
+              {% if resource_hs_path and resource_hs_path != '' %}
+                {% set resource_slug = resource_hs_path %}
+              {% elif resource_slug == '' and resource_title_for_slug != '' %}
+                {% set temp_slug = resource_title_for_slug|lower|replace(' ', '-')|replace(':', '-')|replace(',', '-')|replace('.', '')|replace('!', '')|replace('?', '')|replace("'", '')|replace('"', '')|replace('&', 'and')|replace('(', '')|replace(')', '')|replace('[', '')|replace(']', '')|replace('{', '')|replace('}', '')|replace('--', '-')|trim %}
+                {% set resource_slug = temp_slug %}
+              {% endif %}
+              {% set res_asset_type = resource.asset_picklist_tag|default(resource.asset_type|default(''))|lower %}
+              {% set is_podcast_resource = res_asset_type == 'podcast' %}
+              {% set is_video_resource = res_asset_type in ['video', 'webinar'] %}
+              {% set resource_link = '#' %}
+              {% if is_podcast_resource and resource_slug %}
+                {% set resource_link = '/podcast/' ~ resource_slug %}
+              {% elif is_video_resource and resource_slug %}
+                {% set resource_link = '/video/' ~ resource_slug %}
+              {% elif resource_slug %}
+                {% set resource_link = '/resource/' ~ resource_slug %}
+              {% elif resource.url and 'publish' not in resource.url|lower and 'hs-sites' not in resource.url|lower %}
+                {% set resource_link = resource.url %}
+              {% endif %}
+              <a href="{{ resource_link }}" class="related-resource-button">
+                {% if is_video_resource or is_podcast_resource %}
+                  WATCH NOW
+                {% else %}
+                  READ NOW
+                {% endif %}
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+    {% endif %}
+    {# CTA Section #}
+    <section class="video-cta">
+    <div class="container">
+    <div class="pdf-cta-logo">
+      <img 
+        src="https://explore.bidgely.com/hubfs/244460873/Bidgely%20Logo_Small.png" 
+        alt="Bidgely Logo"
+        style="width:250px;height:auto;display:block;margin:0 auto;"
+      >
+    </div>
+
+    <h2 class="pdf-cta-title">Ready to Start Your Journey With UtilityAI?</h2>
+
+    <p class="pdf-cta-description">
+      Don't let your operational investments stall. Find out how to unlock ROI, reliability, and resilience across your utility.<br />
+&nbsp;    </p>
+
+    <a href="https://demo.bidgely.com" class="cta-demo-button">EXPLORE LIVE DEMO</a>
+  </div>
+</section>
+
+  </main>
+
+  {# Footer Module #}
+ 
+  {{ standard_footer_includes }}
+  {# Video Player JavaScript - Wistia embed code handles video playback automatically #}
+  {# Email domain whitelist for Wistia video gate HubSpot form #}
+
+<script>
+(function() {
+  // --- WHITE LIST LOCATION ---
+  // This array contains all approved utility domains for email validation.
+  const whitelistDomains = [
+    "a2a.eu", "acea.it", "aelp.com", "aep.com", "aepohio.com", "aeptexas.com", "aglresources.com", "alabamapower.com", "alectra.com", "alectrautilities.com", "algonquinpower.com", "allete.com", "alliantenergy.com", "altagas.ca", "ameren.com", "andel.dk", "appalachianpower.com", "aps.com", "aptim.com", "aseme.it", "atco.com", "atcoelectric.com", "atcoenergy.com", "atlanticcityelectric.com", "atmosenergy.com", "austinenergy.com", "avaenergy.org", "avangrid.com", "avistacorp.com", "bchydro.com", "berkshirehathawayenergyco.com", "bge.com", "bidgely.com", "blackhillscorp.com", "blpc.com.bb", "bluenergygroup.com", "bordgaisenergy.ie", "burlingtonelectric.com", "cenhud.com", "centerpointenergy.com", "cez.cz", "chcenergia.it", "cleco.com", "cmpco.com", "cmsenergy.com", "columbiagasky.com", "columbiagasmd.com", "columbiagasohio.com", "columbiagaspa.com", "columbiagasva.com", "comed.com", "coned.com", "consumersenergy.com", "cpsenergy.com", "csu.org", "delmarva.com", "directenergy.com", "dolomitienergia.it", "dominionenergy.com", "dominionenergysc.com", "dteenergy.com", "duke-energy.com", "duquesnelight.com", "ebce.org", "econoler.com", "edfenergy.com", "edp.com", "efficiencymaine.com", "efficiencymb.ca", "efficiencyone.ca", "electrica.ro", "electricireland.ie", "elexiconenergy.com", "ellevio.se", "emera.com", "enbridgegas.com", "endesa.com", "enel.com", "enel.it", "energa.pl", "energy.ri.gov", "energyontario.ca", "engie.com", "eni.com", "enmax.com", "enovapower.ca", "enovapower.com", "enovos.eu", "entergy-arkansas.com", "entergy-louisiana.com", "entergy-mississippi.com", "entergy-neworleans.com", "entergy-texas.com", "entergy.com", "eon-energia.it", "eon-energie.ro", "eon.com", "eon.se", "eonenergy.com", "epb.com", "epcor.com", "epelectric.com", "ercot.com", "esb.ie", "essexpower.ca", "evergy.com", "eversource.com", "evn.at", "ewa.pl", "exeloncorp.com", "festivalhydro.com", "firstenergycorp.com", "fjordkraft.no", "fortisalberta.com", "fortisbc.com", "fortisinc.com", "fortum.com", "fortum.pl", "fpl.com", "galagroup.com", "galp.com", "gasalberta.com", "georgianaturalgas.com", "georgiapower.com", "gexaenergy.com", "goodenergy.co.uk", "gotrhythm.com", "gov.bc.ca", "greenmountainpower.com", "gruppohera.it", "gulfpower.com", "hafslundstrom.no", "hawaiianelectric.com", "helen.fi", "heritagegas.com", "hydro.mb.ca", "hydroone.com", "hydroottawa.com", "hydroottawaholding.com", "hydroquebec.com", "iberdrola.com", "idahopower.com", "ignitus.org", "illumia.it", "indianamichiganpower.com", "iren.it", "jea.com", "jpsco.com", "kaihen.ca", "kansasgasservice.com", "kentuckypower.com", "kub.org", "ladwp.com", "latvenergo.lv", "les.com", "lge-ku.com", "libertyutilities.com", "loisteenergia.fi", "london.ca", "londonhydro.com", "losenergi.se", "lumaenergy.com", "lumapr.com", "malarenergi.se", "mcecleanenergy.org", "meridian.coop", "midamerican.com", "midamericanenergy.com", "miltonhydro.com", "minnesotaenergyresources.com", "mississippipower.com", "mlgw.com", "mnpower.com", "montana-dakota.com", "mtemc.com", "myavista.com", "mytpu.org", "nationalgridus.com", "naturgy.com", "nbpower.com", "nelson.ca", "nespower.com", "newfoundlandpower.com", "nexteraenergy.com", "nicorgas.com", "nipsco.com", "nisc.coop", "nisource.com", "njng.com", "nmgco.com", "norlys.dk", "northbayhydro.com", "northshoregasdelivery.com", "northwesternenergy.com", "nrg.com", "nrgi.dk", "nspower.ca", "ntpower.ca", "nvenergy.com", "nwnatural.com", "nyseg.com", "oakvillehydro.com", "oeb.ca", "oge.com", "oklahomanaturalgas.com", "omvpetrom.com", "oncor.com", "onegas.com", "oppd.com", "optimatik.de", "opuc.on.ca", "oru.com", "oshawapuc.com", "otpco.com", "ottawa.ca", "ouc.com", "pacificorp.com", "pacificpower.net", "peco.com", "peoples-gas.com", "pepco.com", "pepcoholdings.com", "pge.com", "pge.pl", "piedmontng.com", "pnm.com", "portlandgeneral.com", "ppc.gr", "pplweb.com", "pse.com", "pseg.com", "psegliny.com", "psoklahoma.com", "reliant.com", "repsol.com", "rge.com", "rienergy.com", "rockymountainpower.net", "romande-energie.ch", "sanjosecleanenergy.org", "santeecooper.com", "saskpower.com", "sce.com", "scottishpower.com", "sdcommunitypower.org", "sdge.com", "seattle.gov", "seattle.gov/city-light", "sempra.com", "sjenergy.com", "skagerakenergi.no", "smeco.coop", "smud.org", "snopud.com", "socalgas.com", "soconngas.com", "sonomacleanpower.org", "southernco.com", "southerncompany.com", "southerncompanygas.com", "southjerseygas.com", "spireenergy.com", "spsxcel.com", "srpnet.com", "steiermark.com", "svcleanenergy.org", "swepco.com", "swgasholdings.com", "talgov.com", "tauron.pl", "tecoenergy.com", "tekniskaverken.se", "tep.com", "texasgasservice.com", "tnmp.com", "torontohydro.com", "totalenergies.com", "tva.com", "txu.com", "uinet.com", "unitil.com", "utilitieskingston.com", "vattenfall.com", "vattenfall.se", "vectren.com", "verbund.com", "versantpower.com", "virginianaturalgas.com", "vistracorp.com", "washingtongas.com", "we-energies.com", "wecenergygroup.com", "wienenergie.at", "wisconsinpublicservice.com", "xcelenergy.com", "zse.sk"
+  ];
+
+  function showValidationError() {
+    const contactUrl = "https://www.bidgely.com/contact-us-form/";
+    const alertId = 'bidgely-email-validation-alert';
+    
+    // Remove existing alert if any
+    const existing = document.getElementById(alertId);
+    if (existing) existing.remove();
+
+    const alertBox = document.createElement('div');
+    alertBox.id = alertId;
+    alertBox.style.cssText = `
+      position: fixed;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      color: #333;
+      padding: 16px 24px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      z-index: 100000;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      border-left: 5px solid #499ED7;
+      min-width: 320px;
+      max-width: 90%;
+      animation: bidgelyFadeDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    `;
+
+    // Add animation style
+    if (!document.getElementById('bidgely-alert-styles')) {
+      const style = document.createElement('style');
+      style.id = 'bidgely-alert-styles';
+      style.textContent = `
+        @keyframes bidgelyFadeDown {
+          from { opacity: 0; transform: translate(-50%, -20px); }
+          to { opacity: 1; transform: translate(-50%, 0); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    alertBox.innerHTML = `
+      <div style="flex-grow: 1;">
+        Please enter a valid subscriber email. <a href="${contactUrl}" target="_blank" style="color: #499ED7; text-decoration: underline; font-weight: 600;">Not a subscriber?</a>
+      </div>
+      <button onclick="this.parentElement.remove()" style="background: none; border: none; cursor: pointer; color: #999; font-size: 18px; padding: 0 5px;">&times;</button>
+    `;
+
+    document.body.appendChild(alertBox);
+
+    // Auto-remove after 8 seconds
+    setTimeout(() => {
+      if (alertBox.parentElement) alertBox.remove();
+    }, 8000);
+  }
+
+
+  function findInShadows(selector, root = document) {
+    try {
+      let el = root.querySelector(selector);
+      if (el) return el;
+      const all = root.querySelectorAll('*');
+      for (const item of all) {
+        if (item.shadowRoot) {
+          el = findInShadows(selector, item.shadowRoot);
+          if (el) return el;
+        }
+      }
+    } catch(e) {}
+    return null;
+  }
+
+  function validateEmailValue(email, onInvalid) {
+    if (!email || !email.includes("@")) return true;
+    const parts = email.trim().toLowerCase().split("@");
+    const domain = parts[1];
+    if (!domain || !domain.includes(".")) return true;
+    
+    // Only validate if domain appears complete (has a TLD of at least 2 chars)
+    const domainParts = domain.split(".");
+    if (domainParts.length >= 2 && domainParts.pop().length >= 2) {
+      if (!whitelistDomains.includes(domain)) {
+        onInvalid();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function setupApiValidation(formInstance) {
+    if (!formInstance || formInstance._domainValidationActive) return;
+    formInstance._domainValidationActive = true;
+    let lastStableValue = "";
+
+    // Use a poller with stability check (debounce) to avoid interrupting typing
+    setInterval(() => {
+      try {
+        const val = formInstance.getFieldValue("0-1/email");
+        
+        const process = (email) => {
+          email = (email || "").trim();
+          // Only validate if value is stable (hasn't changed since last poll)
+          if (email && email === lastStableValue) {
+            validateEmailValue(email, () => {
+              formInstance.setFieldValue("0-1/email", "");
+              showValidationError();
+            });
+          }
+          lastStableValue = email;
+        };
+
+        if (val && typeof val.then === 'function') {
+          val.then(process);
+        } else {
+          process(val);
+        }
+      } catch(e) {}
+    }, 2000);
+  }
+
+  function setupDomValidation(emailInput, formInstance) {
+    if (!emailInput || emailInput.dataset.domainValidated) return;
+    emailInput.dataset.domainValidated = "true";
+
+    const handleValidation = function(e) {
+      const email = e.target.value;
+      validateEmailValue(email, () => {
+        e.target.value = "";
+        showValidationError();
+        if (formInstance && typeof formInstance.setFieldValue === 'function') {
+          formInstance.setFieldValue(emailInput.name || "0-1/email", "");
+        }
+        e.target.dispatchEvent(new Event('input', { bubbles: true }));
+        e.target.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    };
+
+    emailInput.addEventListener("change", handleValidation);
+    emailInput.addEventListener("blur", handleValidation);
+  }
+
+  window.addEventListener("hs-form-event:on-ready", event => {
+    const hsAPI = window.HubSpotFormsV4 || window.HubspotFormsV4;
+    let formInstance = null;
+    if (hsAPI && typeof hsAPI.getFormFromEvent === 'function') {
+      formInstance = hsAPI.getFormFromEvent(event);
+    }
+
+    if (formInstance) {
+      setupApiValidation(formInstance);
+      
+      // Final check on submission
+      window.addEventListener("hs-form-event:on-before-submit", e => {
+        if (e.detail.formId === formInstance.getFormId()) {
+          const val = formInstance.getFieldValue("0-1/email");
+          const checkSubmit = (email) => {
+            validateEmailValue(email, () => {
+              formInstance.setFieldValue("0-1/email", "");
+              showValidationError();
+            });
+          };
+          if (val && typeof val.then === 'function') val.then(checkSubmit);
+          else checkSubmit(val);
+        }
+      });
+    }
+
+    // Still try DOM fallback in case it's not an iframe or Shadow DOM Hack worked
+    setTimeout(() => {
+      const emailInput = findInShadows('input[type="email"]') || 
+                         findInShadows('input[name*="email"]');
+      if (emailInput) {
+        setupDomValidation(emailInput, formInstance);
+      }
+    }, 1000);
+  });
+
+  // Global poller to catch any forms that missed the on-ready event
+  setInterval(() => {
+    const hsAPI = window.HubSpotFormsV4 || window.HubspotFormsV4;
+    if (hsAPI && typeof hsAPI.getForms === 'function') {
+      const forms = hsAPI.getForms();
+      forms.forEach(setupApiValidation);
+    }
+    
+    const emailInput = findInShadows('input[type="email"]') || 
+                       findInShadows('input[name*="email"]');
+    if (emailInput && !emailInput.dataset.domainValidated) {
+      setupDomValidation(emailInput, null);
+    }
+  }, 3000);
+})();
+</script>
+
+<script>
+(function(d,b,a,s,e){ var t = b.createElement(a),
+  fs = b.getElementsByTagName(a)[0]; t.async=1; t.id=e; t.src=s;
+  fs.parentNode.insertBefore(t, fs); })
+(window,document,'script','https://tag.demandbase.com/6777fbd385590f90.min.js','demandbase_js_lib');  
+</script>
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+</body>
+</html>
+

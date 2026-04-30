@@ -1,0 +1,805 @@
+<!--
+  templateType: "page"
+  isAvailableForNewContent: true
+  label: "Podcast Detail Page"
+-->
+{# HubSpot Dynamic Podcast Detail Template #}
+{# This template displays individual podcast details based on slug #}
+{# URL Pattern: /podcast/{slug} #}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="HubSpot">
+  <title>{% if content.html_title %}{{ content.html_title }}{% else %}Podcast{% endif %}</title>
+  {% if content.meta_description %}
+  <meta name="description" content="{{ content.meta_description }}">
+  {% endif %}
+  
+  {# Google Fonts - Montserrat #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  {# HubSpot Required Head Tags #}
+  {{ standard_header_includes }}
+  
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+  <style>
+    /* ========== Podcast Detail Page-Specific Styles ========== */
+    .podcast-hero { width: 100%; height: 422px; position: relative; display: flex; align-items: center; justify-content: center; padding: 0 20px; }
+    .podcast-hero-content { max-width: 1140px; width: 100%; position: relative; padding-top: 100px; }
+    .podcast-badge { padding: 8px 20px; background: #499ED7; border-radius: 5px; display: inline-block; margin-bottom: 20px; }
+    .podcast-badge-text { color: white; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.12px; }
+    .podcast-title { color: #499ED7; font-size: 56px; font-weight: 400; line-height: 72px; margin-bottom: 0; }
+    .podcast-title-main { color: #152D49; }
+    .podcast-main-card { max-width: 1169px; margin: -10px auto 50px; background: white; box-shadow: 0 2px 15px -3px #0000001A; border-radius: 8px; overflow: hidden; position: relative; z-index: 10; }
+    .podcast-card-content { display: flex; gap: 30px; padding: 75px 38px 80px; }
+    .podcast-left-column { flex: 1; max-width: 740px; display: flex; flex-direction: column; }
+    .podcast-video-section { width: 100%; position: relative; background: linear-gradient(180deg, #F2F8FC 0%, #BEDCF1 100%); border-radius: 8px; overflow: hidden; min-height: 415px; }
+    .podcast-video-bg { width: 100%; height: 100%; min-height: 286px; background: linear-gradient(180deg, #F2F8FC 0%, #BEDCF1 100%); position: relative; overflow: hidden; }
+    .podcast-video-badge { position: absolute; left: 30px; top: 30px; padding: 8px 20px; background: rgba(255, 255, 255, 0.5); border-radius: 5px; z-index: 2; }
+    .podcast-video-badge-text { color: #152B45; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.12px; }
+    .podcast-video-gradient { width: 678px; height: 107px; position: absolute; left: 30px; top: 89px; z-index: 1; }
+    .podcast-play-button { width: 64px; height: 64px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid white; background: #499ED7; cursor: pointer; z-index: 5; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); }
+    .podcast-play-icon { width: 0; height: 0; border-left: 20px solid white; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 4px; }
+    .podcast-video-embed { width: 100%; height: 100%; position: absolute; top: 0; left: 0; border: none; z-index: 10; }
+    .podcast-video-section wistia-player { width: 100%; height: 100%; display: block; position: absolute; top: 0; left: 0; z-index: 10; }
+    .podcast-guests-section { width: 100%; background: linear-gradient(135deg, #152D49 22%, #121D2A 100%); border-radius: 0 0 15px 15px; padding: 40px 30px; display: flex; gap: 60px; align-items: center; justify-content: center; flex-wrap: wrap; }
+    .podcast-guest { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 250px; }
+    .podcast-guest-avatar { width: 80px; height: 80px; border-radius: 50%; border: 2px solid white; object-fit: cover; background: #152D49; flex-shrink: 0; }
+    .podcast-guest-info { display: flex; flex-direction: column; gap: 5px; }
+    .podcast-guest-name { color: white; font-size: 22px; font-weight: 600; line-height: 1.2; margin: 0; }
+    .podcast-guest-title { color: white; font-size: 15px; font-weight: 300; line-height: 1.2; margin: 0; }
+    .podcast-guest-company { margin-top: 5px; display: flex; align-items: center; }
+    .podcast-guest-company-logo { max-height: 30px; max-width: 150px; object-fit: contain; filter: brightness(0) invert(1); }
+    .podcast-guest-company-text { color: white; font-size: 12px; font-weight: 400; text-transform: lowercase; }
+    .podcast-description { flex: 1; max-width: 321px; color: #152D49; font-size: 20px; font-weight: 400; line-height: 30px; }
+    .podcast-stats { width: 100%; background: white; padding: 50px 0; text-align: center; }
+    .podcast-stats-text { color: #152D49; font-size: 36px; font-weight: 400; line-height: 56px; max-width: 1140px; margin: 0 auto; }
+    .podcast-stats-image-container { width: 100%; height: 120px; overflow: hidden; display: flex; justify-content: flex-start; align-items: center; position: relative; }
+    .podcast-image-container { width: 4000px; height: 120px; background: url(https://www.bidgely.com/wp-content/uploads/2023/05/bidgely-logo-sprite-international.jpg?_t=1685186532) repeat-x 0 0; background-size: contain; animation: bg-scrolling-reverse 100s infinite linear; }
+    .features { background: #F2F8FC; padding: 78px 0; }
+    .features-content { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+    .feature-card { background: white; border-radius: 8px; padding: 25px 30px; min-height: 334px; display: flex; flex-direction: column; }
+    .feature-icon { width: 100%; height: 66px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
+    .feature-icon-img { max-width: 65px; max-height: 66px; width: auto; height: auto; object-fit: contain; }
+    .feature-title { color: #152D49; font-size: 24px; font-weight: 500; line-height: 32px; margin-bottom: 15px; text-align: center; }
+    .feature-description { color: #152D49; font-size: 18px; font-weight: 400; line-height: 30px; text-align: center; }
+    .related-resources { background: #F2F8FC; padding: 80px 0; }
+    .related-resources-title { text-align: center; color: #152D49; font-size: 36px; font-weight: 300; line-height: 56px; margin-bottom: 60px; }
+    .related-resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    .related-resource-card { background: white; border-radius: 8px; padding: 30px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 6px -4px rgba(0, 0, 0, 0.1); transition: transform 0.3s, box-shadow 0.3s; }
+    .related-resource-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
+    .related-resource-image { width: 100%; height: 186px; background: #000; border-radius: 8px; overflow: hidden; position: relative; }
+    .related-resource-image img { width: 100%; height: 100%; object-fit: cover; }
+    .related-resource-badge { color: #499ED7; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.68px; line-height: 30px; }
+    .related-resource-title { color: #152D49; font-size: 20px; font-weight: 400; line-height: 36px; margin: 0; }
+    .related-resource-description { color: #152D49; font-size: 14px; font-weight: 400; line-height: 24px; margin: 0; }
+    .related-resource-button { display: inline-block; background: #499ED7; color: white; padding: 12px 25px; border-radius: 5px; font-size: 18px; font-weight: 500; text-decoration: none; text-align: center; margin-top: auto; transition: background 0.3s; }
+    .related-resource-button:hover { background: #449BD5; }
+    .podcast-cta { background: white; padding: 133px 0; text-align: center; }
+    .podcast-cta-logo { margin-bottom: 20px; }
+    .podcast-cta-logo img { height: auto; max-width: 100%; display: block; margin: 0 auto; }
+    .podcast-cta-title { color: #152D49; font-size: 36px; font-weight: 400; line-height: 56px; margin-bottom: 20px; }
+    .podcast-cta-description { color: #000; font-size: 18px; font-weight: 300; line-height: 26px; max-width: 979px; margin: 0 auto 30px; }
+    .pdf-cta-logo { margin-bottom: 20px; }
+    .pdf-cta-logo img { height: auto; max-width: 100%; display: block; margin: 0 auto; }
+    .pdf-cta-title { color: #152D49; font-size: 36px; font-weight: 400; line-height: 56px; margin-bottom: 20px; }
+    .pdf-cta-description { color: #000; font-size: 18px; font-weight: 300; line-height: 26px; max-width: 979px; margin: 0 auto 30px; }
+    .cta-demo-button { display: inline-flex !important; align-items: center; justify-content: center; width: 299px; height: 48px; background: #499ED7; border-radius: 5px; color: #fff !important; font-size: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; text-decoration: none; transition: background 0.3s; }
+    .cta-demo-button:hover { background: #3a8bb8; }
+
+    @keyframes bg-scrolling-reverse { 100% { background-position: 4000px 0; } }
+
+    @media screen and (max-width: 1200px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+      .podcast-card-content { gap: 25px; }
+      .podcast-description { max-width: 100%; }
+      .related-resources-grid { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+      .podcast-main-card { margin: -10px 20px 0; }
+    }
+    @media screen and (max-width: 992px) {
+      .podcast-hero { padding: 80px 20px; }
+      .podcast-hero-content { padding-top: 80px; }
+      .podcast-card-content { flex-direction: column; gap: 30px; }
+      .podcast-description { margin-top: 0; }
+    }
+    @media screen and (max-width: 768px) {
+      .features { padding: 50px 0; }
+      .features-grid { grid-template-columns: 1fr; gap: 25px; }
+      .feature-card { min-height: auto; }
+      .podcast-hero { height: auto; min-height: auto; padding: 60px 20px 40px; }
+      .podcast-hero-content { padding-top: 60px; }
+      .podcast-badge { padding: 6px 18px; margin-bottom: 15px; }
+      .podcast-badge-text { font-size: 13px; }
+      .podcast-title { font-size: 36px; line-height: 48px; }
+      .podcast-main-card { margin: -30px 20px 0; border-radius: 8px; }
+      .podcast-card-content { padding: 40px 25px; flex-direction: column; gap: 30px; }
+      .podcast-left-column { max-width: 100%; }
+      .podcast-video-section, .podcast-video-bg { min-height: 250px; }
+      .podcast-video-section { border-radius: 8px 8px 0 0; }
+      .podcast-video-badge { left: 20px; top: 20px; padding: 6px 15px; }
+      .podcast-video-badge-text { font-size: 12px; }
+      .podcast-video-gradient { left: 20px; top: 70px; width: calc(100% - 40px); max-width: 500px; }
+      .podcast-play-button { width: 56px; height: 56px; }
+      .podcast-play-icon { border-left: 18px solid white; border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
+      .podcast-guests-section { padding: 30px 20px; gap: 30px; border-radius: 0 0 12px 12px; flex-wrap: wrap; }
+      .podcast-guest { min-width: calc(50% - 15px); gap: 15px; }
+      .podcast-guest-avatar { width: 70px; height: 70px; }
+      .podcast-guest-name { font-size: 18px; }
+      .podcast-guest-title { font-size: 14px; }
+      .podcast-guest-company-logo { max-height: 25px; max-width: 120px; }
+      .podcast-description { font-size: 18px; line-height: 26px; max-width: 100%; }
+      .related-resources { padding: 60px 0; }
+      .related-resources-grid { grid-template-columns: 1fr; gap: 25px; }
+      .related-resource-button { width: 100%; }
+      .podcast-stats { padding-top: 50px; }
+      .podcast-stats-text { font-size: 28px; line-height: 40px; padding: 0 20px; }
+      .podcast-stats-image-container { height: 100px; margin-top: 30px; }
+      .podcast-image-container { height: 100px; background-size: auto 100px; }
+      .podcast-cta { padding: 80px 0; }
+      .podcast-cta-title { font-size: 30px; line-height: 42px; padding: 0 20px; }
+      .podcast-cta-description { font-size: 17px; padding: 0 20px; }
+      .pdf-cta-title { font-size: 30px; line-height: 42px; padding: 0 20px; }
+      .pdf-cta-description { font-size: 17px; padding: 0 20px; }
+    }
+    @media screen and (max-width: 480px) {
+      .features { padding: 40px 0; }
+      .features-grid { gap: 20px; }
+      .feature-card { padding: 25px 20px; }
+      .podcast-hero { padding: 50px 15px 30px; }
+      .podcast-hero-content { padding-top: 50px; }
+      .podcast-badge { padding: 5px 15px; margin-bottom: 12px; }
+      .podcast-badge-text { font-size: 12px; }
+      .podcast-title { font-size: 28px; line-height: 36px; }
+      .podcast-main-card { margin: -25px 15px 0; border-radius: 8px; }
+      .podcast-card-content { padding: 30px 20px; gap: 25px; }
+      .podcast-video-section, .podcast-video-bg { min-height: 220px; }
+      .podcast-video-section { border-radius: 8px 8px 0 0; }
+      .podcast-video-badge { left: 15px; top: 15px; padding: 5px 12px; }
+      .podcast-video-badge-text { font-size: 11px; }
+      .podcast-video-gradient { left: 15px; top: 60px; width: calc(100% - 30px); max-width: 400px; }
+      .podcast-play-button { width: 50px; height: 50px; }
+      .podcast-play-icon { border-left: 16px solid white; border-top: 9px solid transparent; border-bottom: 9px solid transparent; }
+      .podcast-guests-section { padding: 25px 15px; gap: 25px; border-radius: 0 0 10px 10px; flex-direction: column; }
+      .podcast-guest { min-width: 100%; gap: 12px; }
+      .podcast-guest-avatar { width: 60px; height: 60px; }
+      .podcast-guest-name { font-size: 17px; }
+      .podcast-guest-title { font-size: 13px; }
+      .podcast-guest-company-logo { max-height: 22px; max-width: 100px; }
+      .podcast-description { font-size: 17px; line-height: 26px; }
+      .related-resources { padding: 50px 0; }
+      .related-resources-title { font-size: 28px; line-height: 40px; margin-bottom: 40px; padding: 0 15px; }
+      .related-resources-grid { padding: 0 15px; gap: 20px; }
+      .related-resource-card { padding: 25px 20px; }
+      .podcast-stats { padding-top: 40px; }
+      .podcast-stats-text { font-size: 24px; line-height: 32px; padding: 0 15px; }
+      .podcast-stats-image-container { height: 80px; margin-top: 25px; }
+      .podcast-image-container { height: 80px; background-size: auto 80px; }
+      .podcast-cta { padding: 60px 0; }
+      .podcast-cta-logo { margin-bottom: 15px; }
+      .podcast-cta-logo img { max-width: 200px; }
+      .podcast-cta-title { font-size: 24px; line-height: 34px; margin-bottom: 15px; padding: 0 15px; }
+      .podcast-cta-description { font-size: 16px; line-height: 24px; margin-bottom: 25px; padding: 0 15px; }
+      .pdf-cta-title { font-size: 24px; line-height: 34px; margin-bottom: 15px; padding: 0 15px; }
+      .pdf-cta-description { font-size: 16px; line-height: 24px; margin-bottom: 25px; padding: 0 15px; }
+      .cta-demo-button { width: 100%; max-width: 280px; height: 46px; font-size: 16px; line-height: 46px; }
+    }
+  </style>
+</head>
+<body>
+  {% include "template-type-redirect.html" %}
+  {# Header Module #}
+  {% module "site_header" path="../modules/global-header.module" %}
+
+  {# Main Content - Dynamic Podcast Detail #}
+  <main>
+    {# Use dynamic page row data #}
+    {% if dynamic_page_hubdb_row %}
+      {% set podcast = dynamic_page_hubdb_row %}
+    {% else %}
+      {% set podcast = null %}
+    {% endif %}
+    
+    {% if podcast %}
+      {# Podcast Hero Section #}
+      <section class="podcast-hero">
+        <div class="podcast-hero-content">
+          <div class="podcast-badge">
+            <span class="podcast-badge-text">{{ podcast.asset_picklist_tag|default(podcast.asset_type|default('PODCAST'))|upper }}</span>
+          </div>
+          <h1 class="podcast-title">
+            <span class="podcast-title-main">{{ podcast.h1_title|default(podcast.hs_name|default('Podcast Title')) }}</span>
+          </h1>
+        </div>
+      </section>
+
+      {# Main Podcast Card #}
+      <section class="podcast-main-card">
+        <div class="podcast-card-content">
+          {# Left Column - Video and Speakers #}
+          <div class="podcast-left-column">
+            {# Video Section #}
+            <div class="podcast-video-section" id="podcastVideoSection">
+
+              {% if podcast.wistia_video_embed and podcast.wistia_video_embed != '' %}
+                {# Extract media ID from database (should just be the ID like "c094rt9dby" or a small snippet) #}
+                {% set media_id_raw = podcast.wistia_video_embed|trim|striptags %}
+                {% set media_id = media_id_raw|trim|replace('"', '')|replace("'", '')|replace('=', '')|replace('>', '')|replace('<', '')|replace('%22', '')|trim %}
+                {# Generate Wistia embed code from media ID when it looks like an ID #}
+                {% if media_id != '' and media_id|length < 20 %}
+                  <script src="https://fast.wistia.com/player.js" async></script>
+                  <script src="https://fast.wistia.com/embed/{{ media_id }}.js" async type="module"></script>
+                  <style>wistia-player[media-id='{{ media_id }}']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/{{ media_id }}/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
+                  <wistia-player media-id="{{ media_id }}" aspect="1.7777777777777777"></wistia-player>
+                {% else %}
+                  {# Fallback: use raw embed code if media ID extraction failed #}
+                  {{ podcast.wistia_video_embed|safe }}
+                {% endif %}
+              {% elif podcast.source_file and podcast.source_file != '' %}
+                {# Fallback to source_file if wistia_video_embed is not available #}
+                {% if 'wistia.com' in podcast.source_file or 'wistia.net' in podcast.source_file %}
+                  {% if 'embed' in podcast.source_file %}
+                    <iframe class="podcast-video-embed" src="{{ podcast.source_file }}" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                  {% elif 'wistia.com/medias/' in podcast.source_file %}
+                    {% set video_id = podcast.source_file|split('/medias/')|last|split('?')|first|split('#')|first %}
+                    <iframe class="podcast-video-embed" src="https://fast.wistia.net/embed/iframe/{{ video_id }}" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                  {% else %}
+                    <iframe class="podcast-video-embed" src="{{ podcast.source_file }}" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                  {% endif %}
+                {% else %}
+                  <iframe class="podcast-video-embed" src="{{ podcast.source_file }}" allow="autoplay; fullscreen" allowfullscreen></iframe>
+                {% endif %}
+              {% else %}
+                {# Placeholder with play button (no video) #}
+                <div class="podcast-video-bg">
+                  <div class="podcast-video-badge">
+                    <span class="podcast-video-badge-text">{{ podcast.asset_picklist_tag|default(podcast.asset_type|default('PODCAST'))|upper }}</span>
+                  </div>
+                  
+                  <div class="podcast-video-gradient">
+                    <img src="https://explore.bidgely.com/hubfs/244460873/resources/svg-gradient.svg" height="107" width="678">
+                  </div>
+                  <div class="podcast-play-button">
+                    <div class="podcast-play-icon"></div>
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+            
+            {# Guests Section - Below Video on Dark Blue Background #}
+            {% if podcast.guests or podcast.host or podcast.guest_name or podcast.guest_name_2 %}
+            <div class="podcast-guests-section" style="display: none;">
+              {# Guest 1 #}
+              {% if podcast.guest_name or podcast.guests %}
+                {% if podcast.guests %}
+                  {% set guests_list = podcast.guests|split(',') %}
+                  {% set first_guest = guests_list[0]|split('|') %}
+                  <div class="podcast-guest">
+                    {% if podcast.guest_image %}
+                    <img src="{{ podcast.guest_image.url|default(podcast.guest_image) }}" alt="{{ first_guest[0]|trim|default(podcast.guest_name) }}" class="podcast-guest-avatar">
+                    {% else %}
+                    <div class="podcast-guest-avatar" style="background: #152D49;"></div>
+                    {% endif %}
+                    <div class="podcast-guest-info">
+                      <h3 class="podcast-guest-name">{{ first_guest[0]|trim|default(podcast.guest_name|default('Guest Speaker')) }}</h3>
+                      <p class="podcast-guest-title">{{ first_guest[1]|trim|default(podcast.guest_title|default('Industry Expert')) }}</p>
+                      {% if podcast.guest_company_logo %}
+                      <div class="podcast-guest-company">
+                        <img src="{{ podcast.guest_company_logo.url|default(podcast.guest_company_logo) }}" alt="{{ podcast.guest_company|default('') }}" class="podcast-guest-company-logo">
+                      </div>
+                      {% elif podcast.guest_company %}
+                      <div class="podcast-guest-company">
+                        <span class="podcast-guest-company-text">{{ podcast.guest_company }}</span>
+                      </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% else %}
+                  <div class="podcast-guest">
+                    {% if podcast.guest_image %}
+                    <img src="{{ podcast.guest_image.url|default(podcast.guest_image) }}" alt="{{ podcast.guest_name }}" class="podcast-guest-avatar">
+                    {% else %}
+                    <div class="podcast-guest-avatar" style="background: #152D49;"></div>
+                    {% endif %}
+                    <div class="podcast-guest-info">
+                      <h3 class="podcast-guest-name">{{ podcast.guest_name|default('Guest Speaker') }}</h3>
+                      <p class="podcast-guest-title">{{ podcast.guest_title|default('Industry Expert') }}</p>
+                      {% if podcast.guest_company_logo %}
+                      <div class="podcast-guest-company">
+                        <img src="{{ podcast.guest_company_logo.url|default(podcast.guest_company_logo) }}" alt="{{ podcast.guest_company|default('') }}" class="podcast-guest-company-logo">
+                      </div>
+                      {% elif podcast.guest_company %}
+                      <div class="podcast-guest-company">
+                        <span class="podcast-guest-company-text">{{ podcast.guest_company }}</span>
+                      </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% elif podcast.host %}
+              <div class="podcast-guest">
+                {% if podcast.host_image %}
+                <img src="{{ podcast.host_image.url|default(podcast.host_image) }}" alt="{{ podcast.host }}" class="podcast-guest-avatar">
+                {% else %}
+                <div class="podcast-guest-avatar" style="background: #152D49;"></div>
+                {% endif %}
+                <div class="podcast-guest-info">
+                  <h3 class="podcast-guest-name">{{ podcast.host }}</h3>
+                  {% if podcast.host_title %}
+                  <p class="podcast-guest-title">{{ podcast.host_title }}</p>
+                  {% endif %}
+                </div>
+              </div>
+              {% endif %}
+              
+              {# Guest 2 #}
+              {% if podcast.guest_name_2 or (podcast.guests and podcast.guests|split(',')|length > 1) %}
+                {% if podcast.guests %}
+                  {% set guests_list = podcast.guests|split(',') %}
+                  {% if guests_list|length > 1 %}
+                    {% set second_guest = guests_list[1]|split('|') %}
+                    <div class="podcast-guest">
+                      {% if podcast.guest_image_2 %}
+                      <img src="{{ podcast.guest_image_2.url|default(podcast.guest_image_2) }}" alt="{{ second_guest[0]|trim|default(podcast.guest_name_2) }}" class="podcast-guest-avatar">
+                      {% else %}
+                      <div class="podcast-guest-avatar" style="background: #231F20;"></div>
+                      {% endif %}
+                      <div class="podcast-guest-info">
+                        <h3 class="podcast-guest-name">{{ second_guest[0]|trim|default(podcast.guest_name_2|default('Guest Speaker')) }}</h3>
+                        <p class="podcast-guest-title">{{ second_guest[1]|trim|default(podcast.guest_title_2|default('Industry Expert')) }}</p>
+                        {% if podcast.guest_company_logo_2 %}
+                        <div class="podcast-guest-company">
+                          <img src="{{ podcast.guest_company_logo_2.url|default(podcast.guest_company_logo_2) }}" alt="{{ podcast.guest_company_2|default('') }}" class="podcast-guest-company-logo">
+                        </div>
+                        {% elif podcast.guest_company_2 %}
+                        <div class="podcast-guest-company">
+                          <span class="podcast-guest-company-text">{{ podcast.guest_company_2 }}</span>
+                        </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% else %}
+                  <div class="podcast-guest">
+                    {% if podcast.guest_image_2 %}
+                    <img src="{{ podcast.guest_image_2.url|default(podcast.guest_image_2) }}" alt="{{ podcast.guest_name_2 }}" class="podcast-guest-avatar">
+                    {% else %}
+                    <div class="podcast-guest-avatar" style="background: #231F20;"></div>
+                    {% endif %}
+                    <div class="podcast-guest-info">
+                      <h3 class="podcast-guest-name">{{ podcast.guest_name_2|default('Guest Speaker') }}</h3>
+                      <p class="podcast-guest-title">{{ podcast.guest_title_2|default('Industry Expert') }}</p>
+                      {% if podcast.guest_company_logo_2 %}
+                      <div class="podcast-guest-company">
+                        <img src="{{ podcast.guest_company_logo_2.url|default(podcast.guest_company_logo_2) }}" alt="{{ podcast.guest_company_2|default('') }}" class="podcast-guest-company-logo">
+                      </div>
+                      {% elif podcast.guest_company_2 %}
+                      <div class="podcast-guest-company">
+                        <span class="podcast-guest-company-text">{{ podcast.guest_company_2 }}</span>
+                      </div>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            </div>
+            {% else %}
+            {# Placeholder guests #}
+            <div class="podcast-guests-section" style="display: none;">
+              <div class="podcast-guest">
+                <div class="podcast-guest-avatar" style="background: #152D49;"></div>
+                <div class="podcast-guest-info">
+                  <h3 class="podcast-guest-name">Guest Speaker</h3>
+                  <p class="podcast-guest-title">Industry Expert</p>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+          
+          {# Right Column - Description #}
+          <div class="podcast-description">
+            {% if podcast.long_description and podcast.long_description != '' %}
+              {{ podcast.long_description|striptags }}
+            {% elif podcast.short_description and podcast.short_description != '' %}
+              {{ podcast.short_description|striptags }}
+            {% else %}
+              <p>This podcast episode explores important topics and insights. Listen to learn more about the latest trends and discussions in the industry.</p>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+
+      {# Value Prop / Features Section (dynamic from HubDB - same as PDF) #}
+      {% set icons_base = 'https://explore.bidgely.com/hubfs/244460873/resources/icons/' %}
+      {% set has_value_prop_1 = podcast.value_prop_1_headline or podcast.value_prop_1_description or podcast.value_prop_card_icon_1 %}
+      {% set has_value_prop_2 = podcast.value_prop_2_headline or podcast.value_prop_2_description or podcast.value_prop_card_icon_2 %}
+      {% set has_value_prop_3 = podcast.value_prop_3_headline or podcast.value_prop_3_description or podcast.value_prop_card_icon_3 %}
+      {% if has_value_prop_1 or has_value_prop_2 or has_value_prop_3 %}
+      <section class="features">
+        <div class="features-content">
+          <div class="features-grid">
+            {% if has_value_prop_1 %}
+            <div class="feature-card">
+              <div class="feature-icon">
+                {% set icon1_src = '' %}
+                {% if podcast.value_prop_card_icon_1 %}
+                  {% if podcast.value_prop_card_icon_1.url %}{% set icon1_src = podcast.value_prop_card_icon_1.url %}
+                  {% elif podcast.value_prop_card_icon_1 is string %}{% set icon1_src = icons_base ~ podcast.value_prop_card_icon_1 %}{% endif %}
+                {% endif %}
+                {% if icon1_src %}<img src="{{ icon1_src }}" alt="{{ podcast.value_prop_1_headline|default('') }}" class="feature-icon-img">{% endif %}
+              </div>
+              {% if podcast.value_prop_1_headline %}<h3 class="feature-title">{{ podcast.value_prop_1_headline }}</h3>{% endif %}
+              {% if podcast.value_prop_1_description %}<p class="feature-description">{{ podcast.value_prop_1_description|striptags }}</p>{% endif %}
+            </div>
+            {% endif %}
+            {% if has_value_prop_2 %}
+            <div class="feature-card">
+              <div class="feature-icon">
+                {% set icon2_src = '' %}
+                {% if podcast.value_prop_card_icon_2 %}
+                  {% if podcast.value_prop_card_icon_2.url %}{% set icon2_src = podcast.value_prop_card_icon_2.url %}
+                  {% elif podcast.value_prop_card_icon_2 is string %}{% set icon2_src = icons_base ~ podcast.value_prop_card_icon_2 %}{% endif %}
+                {% endif %}
+                {% if icon2_src %}<img src="{{ icon2_src }}" alt="{{ podcast.value_prop_2_headline|default('') }}" class="feature-icon-img">{% endif %}
+              </div>
+              {% if podcast.value_prop_2_headline %}<h3 class="feature-title">{{ podcast.value_prop_2_headline }}</h3>{% endif %}
+              {% if podcast.value_prop_2_description %}<p class="feature-description">{{ podcast.value_prop_2_description|striptags }}</p>{% endif %}
+            </div>
+            {% endif %}
+            {% if has_value_prop_3 %}
+            <div class="feature-card">
+              <div class="feature-icon">
+                {% set icon3_src = '' %}
+                {% if podcast.value_prop_card_icon_3 %}
+                  {% if podcast.value_prop_card_icon_3.url %}{% set icon3_src = podcast.value_prop_card_icon_3.url %}
+                  {% elif podcast.value_prop_card_icon_3 is string %}{% set icon3_src = icons_base ~ podcast.value_prop_card_icon_3 %}{% endif %}
+                {% endif %}
+                {% if icon3_src %}<img src="{{ icon3_src }}" alt="{{ podcast.value_prop_3_headline|default('') }}" class="feature-icon-img">{% endif %}
+              </div>
+              {% if podcast.value_prop_3_headline %}<h3 class="feature-title">{{ podcast.value_prop_3_headline }}</h3>{% endif %}
+              {% if podcast.value_prop_3_description %}<p class="feature-description">{{ podcast.value_prop_3_description|striptags }}</p>{% endif %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+      {# Stats Section (Above Related Resources) #}
+      <section class="podcast-stats">
+        <div class="podcast-stats-text">Fueling insights for 45+ utilities and over 38 million consumers.</div>
+        <div class="podcast-stats-image-container">
+          <div class="podcast-image-container"></div>
+        </div>
+      </section>
+
+      {# Related Resources: main post = current page (by slug/hs_path). solution_tags = one text field, comma-separated (e.g. "DR, Flex Demand" or "EV Intelligence, Grid Planning"). Show up to 3 most recent (by date) assets that share ANY solution tag; fallback to same asset type if no tag matches. #}
+      {% set related_all = hubdb_table_rows('assets', 'limit=10000')|sort('date', 'desc') %}
+      {% set current_obj = dynamic_page_hubdb_row %}
+      
+      {# Parse main post solution_tags: split by comma, trim each value #}
+      {% set current_solution_tags_raw = current_obj.solution_tags if current_obj else '' %}
+      {% set current_asset_type = current_obj.asset_picklist_tag|default(current_obj.asset_type|default(''))|lower|trim if current_obj else '' %}
+      
+      {# Parse current page solution_tags: split by comma, trim each value (namespace so appends persist) #}
+      {% set current_tag_ns = namespace(values=[]) %}
+      {% if current_solution_tags_raw %}
+        {% set current_tags_str = (current_solution_tags_raw ~ '')|trim %}
+        {% if current_tags_str %}
+          {% set parts = current_tags_str.split(',') %}
+          {% for part in parts %}
+            {% set tag_val = part|trim %}
+            {% if tag_val %}
+              {% do current_tag_ns.values.append(tag_val) %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+      {% set current_solution_tag_values = current_tag_ns.values %}
+      {# Use namespace so list appends persist after the loop (HubL/Jinja scoping) #}
+      {% set related_ns = namespace(priority_matches=[], fallback_matches=[]) %}
+      
+      {% for resource in related_all %}
+        {% set is_current = false %}
+        {% if current_obj %}
+            {% set is_current = (resource.hs_id and current_obj.hs_id and resource.hs_id == current_obj.hs_id) or (resource.slug and current_obj.slug and resource.slug == current_obj.slug) or (resource.hs_path and current_obj.hs_path and resource.hs_path == current_obj.hs_path) %}
+        {% endif %}
+          {% if not is_current %}
+              {% set res_solution_tags = resource.solution_tags %}
+              {% set res_asset_type = resource.asset_picklist_tag|default(resource.asset_type|default(''))|lower|trim %}
+              
+              {# Parse resource solution_tags: split by comma, trim each value (namespace so appends persist) #}
+              {% set res_tag_ns = namespace(values=[]) %}
+              {% if res_solution_tags %}
+                {% set res_tags_str = (res_solution_tags ~ '')|trim %}
+                {% if res_tags_str %}
+                  {% set r_parts = res_tags_str.split(',') %}
+                  {% for part in r_parts %}
+                    {% set tag_val = part|trim %}
+                    {% if tag_val %}
+                      {% do res_tag_ns.values.append(tag_val) %}
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endif %}
+              {% set res_solution_tag_values = res_tag_ns.values %}
+              
+              {# Match: show related if ANY split tag from current page is in resource's split tag list (namespace so match persists after inner loop in HubL) #}
+              {% set match_ns = namespace(flags=[]) %}
+              {% if current_solution_tag_values|length > 0 and res_solution_tag_values|length > 0 %}
+                {% for c_val in current_solution_tag_values %}
+                  {% if c_val in res_solution_tag_values %}
+                    {% do match_ns.flags.append(1) %}
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              
+              {% if match_ns.flags|length > 0 %}
+                  {% do related_ns.priority_matches.append(resource) %}
+              {% elif current_asset_type and res_asset_type == current_asset_type %}
+                  {% do related_ns.fallback_matches.append(resource) %}
+              {% endif %}
+          {% endif %}
+      {% endfor %}
+      
+      {# Use solution-tag matches first. Only if none exist, fall back to asset type matches #}
+      {% if related_ns.priority_matches|length > 0 %}
+        {% set final_related = related_ns.priority_matches %}
+      {% else %}
+        {% set final_related = related_ns.fallback_matches %}
+      {% endif %}
+      
+      {% if final_related|length > 0 %}
+      <section class="related-resources">
+        <div class="container">
+          <h2 class="related-resources-title">Related Resources</h2>
+          <div class="related-resources-grid">
+            {% set related_count = 0 %}
+            {% for resource in final_related %}
+              {% if related_count >= 3 %}
+                {% break %}
+              {% endif %}
+              {% set related_count = related_count + 1 %}
+            <div class="related-resource-card">
+              {% set image_url = '' %}
+              {% set resource_title = resource.h1_title|default(resource.hs_name|default(resource.name|default(''))) %}
+              {# Priority 1: HubDB file objects or string filenames #}
+              {% if resource.feature_image %}
+                {% if resource.feature_image.url %}
+                  {% set image_url = resource.feature_image.url %}
+                {% elif resource.feature_image and resource.feature_image != '' %}
+                  {% set file_name = resource.feature_image %}
+                  {% set has_ext = '.jpg' in file_name or '.jpeg' in file_name or '.png' in file_name or '.gif' in file_name or '.webp' in file_name %}
+                  {% if not has_ext %}
+                    {% set file_name = file_name ~ '.jpeg' %}
+                  {% endif %}
+                  {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ file_name %}
+                {% endif %}
+              {% elif resource.pdf_thumbnail_image %}
+                {% if resource.pdf_thumbnail_image.url %}
+                  {% set image_url = resource.pdf_thumbnail_image.url %}
+                {% elif resource.pdf_thumbnail_image and resource.pdf_thumbnail_image != '' %}
+                  {% set file_name = resource.pdf_thumbnail_image %}
+                  {% set has_ext = '.jpg' in file_name or '.jpeg' in file_name or '.png' in file_name or '.gif' in file_name or '.webp' in file_name %}
+                  {% if not has_ext %}
+                    {% set file_name = file_name ~ '.jpeg' %}
+                  {% endif %}
+                  {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ file_name %}
+                {% endif %}
+              {% else %}
+                {# Priority 2: Generate HubSpot Hub Files URL from title #}
+                {% if resource_title and resource_title != '' %}
+                  {% set image_filename = resource_title|lower|replace(' ', '-')|replace(':', '-')|replace(',', '-')|replace('.', '')|replace('!', '')|replace('?', '')|replace("'", '')|replace('"', '')|replace('&', 'and')|replace('(', '')|replace(')', '')|replace('[', '')|replace(']', '')|replace('{', '')|replace('}', '')|replace('--', '-')|trim ~ '-feature.jpg' %}
+                  {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ image_filename %}
+                {% endif %}
+              {% endif %}
+              
+              {% if image_url %}
+              <div class="related-resource-image">
+                <img src="{{ image_url }}" alt="{{ resource_title }}" onerror="this.parentElement.style.background='#e0e0e0'; this.style.display='none';">
+              </div>
+              {% else %}
+              <div class="related-resource-image" style="background: #e0e0e0;"></div>
+              {% endif %}
+              
+              <div class="related-resource-badge">
+                {{ resource.asset|default(resource.asset_picklist_tag|default(resource.asset_type|default('RESOURCE')))|upper }}
+              </div>
+              <h3 class="related-resource-title">{{ resource_title }}</h3>
+              <p class="related-resource-description">
+                {% if resource.long_description %}
+                  {{ resource.long_description|striptags|truncate(100) }}
+                {% elif resource.short_description %}
+                  {{ resource.short_description|striptags|truncate(100) }}
+                {% endif %}
+              </p>
+              
+              {# Link Construction #}
+              {% set resource_slug = resource.slug|default('') %}
+              {% if resource.hs_path %}{% set resource_slug = resource.hs_path %}{% endif %}
+              
+              {% set resource_link = '#' %}
+              {% set resource_page_tpl = resource.page_template|default('')|lower|trim %}
+              {% set resource_type = resource.asset_picklist_tag|default(resource.asset_type|default(''))|lower %}
+              
+              {% set is_podcast = resource_type == 'podcast' %}
+              {% set is_webinar = resource_type == 'webinar' %}
+              {% set is_video = resource_type == 'video' %}
+              {% set is_playbook = resource_type in ['playbook', 'white paper', 'case study', 'solution brief', 'industry analysis', 'pdf', 'whitepaper', 'white-paper', 'case-study', 'solution-brief', 'brief', 'industry-analysis'] %}
+              
+              {% if resource_slug %}
+                  {% if resource_page_tpl == 'live webinar' %}
+                      {% set resource_link = '/webinar-v1/' ~ resource_slug %}
+                  {% elif resource_page_tpl == 'webinar' %}
+                      {% set resource_link = '/webinar/' ~ resource_slug %}
+                  {% elif resource_page_tpl == 'podcast' %}
+                      {% set resource_link = '/podcast/' ~ resource_slug %}
+                  {% elif resource_page_tpl == 'video' %}
+                      {% set resource_link = '/video/' ~ resource_slug %}
+                  {% elif resource_page_tpl in ['pdf', 'playbook', 'white paper', 'case study', 'solution brief', 'whitepaper'] %}
+                      {% set resource_link = '/pdf/' ~ resource_slug %}
+                  {% elif is_podcast %}
+                      {% set resource_link = '/podcast/' ~ resource_slug %}
+                  {% elif is_webinar %}
+                      {% set resource_link = '/webinar/' ~ resource_slug %}
+                  {% elif is_video %}
+                      {% set resource_link = '/video/' ~ resource_slug %}
+              {% elif is_playbook %}
+                      {% set resource_link = '/pdf/' ~ resource_slug %}
+                  {% else %}
+                      {% set resource_link = '/resource/' ~ resource_slug %}
+                  {% endif %}
+              {% elif resource.url and 'publish' not in resource.url|lower and 'hs-sites' not in resource.url|lower %}
+                  {% set resource_link = resource.url %}
+              {% endif %}
+              
+              {# Determine CTA label based on resource type/page template #}
+              {% set resource_asset_label = resource.asset|default(resource.asset_picklist_tag|default(resource.asset_type|default(''))) %}
+              {% set resource_asset_type = resource_asset_label|lower %}
+              {% set type_string = resource_type if resource_type else resource_asset_type %}
+              {% set is_watch = false %}
+              {% if 'video' in type_string or 'podcast' in type_string or 'webinar' in type_string %}
+                {% set is_watch = true %}
+              {% elif 'video' in resource_page_tpl or 'podcast' in resource_page_tpl or 'webinar' in resource_page_tpl %}
+                {% set is_watch = true %}
+              {% elif resource.wistia_video_embed %}
+                {% set is_watch = true %}
+              {% endif %}
+              
+              {% set is_download = false %}
+              {% if 'playbook' in type_string or 'pdf' in type_string or 'white paper' in type_string or 'whitepaper' in type_string
+                    or 'case study' in type_string or 'case-study' in type_string
+                    or 'solution brief' in type_string or 'solution-brief' in type_string
+                    or 'brief' in type_string %}
+                {% set is_download = true %}
+              {% elif 'pdf' in resource_page_tpl or 'playbook' in resource_page_tpl %}
+                {% set is_download = true %}
+              {% endif %}
+              
+              <a href="{{ resource_link }}" class="related-resource-button">
+                  {% if is_watch %}
+                    WATCH NOW
+                  {% elif is_download %}
+                    DOWNLOAD NOW
+                  {% else %}
+                    READ NOW
+                  {% endif %}
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+    {% else %}
+      {# Podcast Not Found - Show Placeholder Content #}
+      <section class="podcast-hero">
+        <div class="podcast-hero-content">
+          <div class="podcast-badge">
+            <span class="podcast-badge-text">PODCAST</span>
+          </div>
+          <h1 class="podcast-title">
+            <span class="podcast-title-main">Podcast Episode</span>
+          </h1>
+        </div>
+      </section>
+
+      {# Main Podcast Card - Placeholder #}
+      <section class="podcast-main-card">
+        <div class="podcast-card-content">
+          {# Left Column - Video and Speakers #}
+          <div class="podcast-left-column">
+            {# Video Section - Placeholder #}
+            <div class="podcast-video-section">
+              <div class="podcast-video-bg">
+                <div class="podcast-video-badge">
+                  <span class="podcast-video-badge-text">PODCAST</span>
+                </div>
+                <div class="podcast-video-gradient">
+                  <img src="https://explore.bidgely.com/hubfs/244460873/resources/svg-gradient.svg" height="107" width="678">
+</div>
+              <div class="podcast-play-button">
+                <div class="podcast-play-icon"></div>
+              </div>
+            </div>
+            
+            {# Guests Section - Placeholder #}
+            <div class="podcast-guests-section">
+              <div class="podcast-guest">
+                <div class="podcast-guest-avatar" style="background: #152D49;"></div>
+                <div class="podcast-guest-info">
+                  <h3 class="podcast-guest-name">Guest Speaker</h3>
+                  <p class="podcast-guest-title">Industry Expert</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {# Right Column - Description #}
+          <div class="podcast-description">
+            <p>This podcast episode features insightful discussions and expert perspectives on current industry trends. Tune in to hear valuable insights and engaging conversations.</p>
+          </div>
+        </div>
+      </section>
+
+      {# Stats Section #}
+      <section class="podcast-stats">
+        <div class="podcast-stats-text">Fueling insights for 45+ utilities and over 38 million consumers.</div>
+        <div class="podcast-stats-image-container">
+          <div class="podcast-image-container"></div>
+        </div>
+      </section>
+
+      
+      {# CTA Section #}
+      <section class="podcast-cta">
+        <div class="container">
+          <div class="podcast-cta-logo">
+            <img src="https://explore.bidgely.com/hubfs/244460873/resources/cta%20logo.png" alt="Bidgely Logo">
+          </div>
+          <h2 class="podcast-cta-title">Ready to Start Your Journey With UtilityAI Pro?</h2>
+          <p class="podcast-cta-description">Don't let your AI investments stall. Find out how to unlock ROI, reliability, and resilience across your utility.</p>
+          <a href="#" class="podcast-cta-button">SCHEDULE A DEMO</a>
+        </div>
+      </section>
+    {% endif %}
+   {# CTA Section #}
+   
+      <section class="podcast-cta">
+  <div class="container">
+    <div class="pdf-cta-logo">
+      <img 
+        src="https://explore.bidgely.com/hubfs/244460873/Bidgely%20Logo_Small.png" 
+        alt="Bidgely Logo"
+        style="width:250px;height:auto;display:block;margin:0 auto;"
+      >
+    </div>
+
+    <h2 class="pdf-cta-title">Ready to Start Your Journey With UtilityAI?</h2>
+
+    <p class="pdf-cta-description">
+      Don't let your operational investments stall. Find out how to unlock ROI, reliability, and resilience across your utility.
+    </p>
+
+    <a href="https://demo.bidgely.com" class="cta-demo-button">EXPLORE LIVE DEMO</a>
+  </div>
+</section>
+
+      {% endif %}
+  </main>
+
+  {{ standard_footer_includes }}
+  {# Footer Module #}
+  {% module "site_footer" path="../modules/global-footer.module" %}
+  
+  {# Video Player JavaScript - Wistia embed code handles video playback automatically #}
+</body>
+</html>
+
