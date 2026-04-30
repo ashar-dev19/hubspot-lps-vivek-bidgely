@@ -87,6 +87,7 @@
 .leadership-hubdb .leader-card:hover .leader-card__photo,
 .leadership-hubdb .leader-card:focus-visible .leader-card__photo {
   transform: scale(1.03);
+  filter: none;
 }
 .leadership-hubdb .leader-card__photo--placeholder {
   width: 100%;
@@ -226,13 +227,26 @@
   aspect-ratio: 1 / 1;
   align-self: flex-start;
 }
+.bio-modal__photo-wrap.bio-modal__photo-wrap--loading {
+  background-image: linear-gradient(90deg, var(--border-soft) 25%, #eef1f4 37%, var(--border-soft) 63%);
+  background-size: 400% 100%;
+  animation: leadership-photo-shimmer 0.9s ease infinite;
+}
+@keyframes leadership-photo-shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 .bio-modal__photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
   display: block;
-  filter: grayscale(100%);
+  opacity: 1;
+  transition: opacity 0.12s ease;
+}
+.bio-modal__photo.bio-modal__photo--swapping {
+  opacity: 0;
 }
 
 .bio-modal__content {
