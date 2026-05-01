@@ -89,7 +89,7 @@
   "display_width" : null,
   "type" : "image",
   "default" : {
-    "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/banner-ce.svg",
+    "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ce-banner-2.png",
     "alt" : "Customer engagement",
     "loading" : "lazy"
   }

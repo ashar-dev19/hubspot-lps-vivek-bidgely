@@ -10,6 +10,32 @@
   "type" : "text",
   "default" : "Request a demo"
 }, {
+  "id" : "section_background",
+  "name" : "section_background",
+  "label" : "Background",
+  "help_text" : "Nile: default dark strip (same as before). Azure: adds theme classes section section--azure on the band.",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "nile", "Nile" ], [ "azure", "Azure" ] ],
+  "multiple" : false,
+  "reordering_enabled" : false,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice",
+  "default" : "nile"
+}, {
+  "id" : "additional_section_classes",
+  "name" : "additional_section_classes",
+  "label" : "Additional section classes (optional)",
+  "help_text" : "Space-separated extra classes on the outer <section>, e.g. tup-cta-strip for technology page typography.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text",
+  "default" : ""
+}, {
   "id" : "section_heading",
   "name" : "section_heading",
   "label" : "Heading",

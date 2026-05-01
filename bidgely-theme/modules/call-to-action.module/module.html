@@ -1,5 +1,5 @@
 {#
-  call-to-action.module — Uses main.css: .cta-strip, .cta-strip__inner, .body-sm, .mt-2, .btn, .btn--*.
+  call-to-action.module — Uses main.css: .cta-strip, .cta-strip__inner, .section--azure, .body-sm, .mt-2, .btn, .btn--*.
 
   {% module "call_to_action"
     path="../modules/call-to-action.module"
@@ -8,6 +8,16 @@
 
 {% set heading_id = 'call-to-action-h-' ~ (name|default('module')|replace(' ', '-')|replace('.', '-')|replace('/', '-')) %}
 {% set heading_trim = module.section_heading|default('')|trim %}
+{% set bg = module.section_background|default('nile') %}
+{% if bg == 'azure' %}
+  {% set cta_section_class = 'cta-strip section section--azure' %}
+{% else %}
+  {% set cta_section_class = 'cta-strip' %}
+{% endif %}
+{% set extra_classes = module.additional_section_classes|default('')|trim %}
+{% if extra_classes %}
+  {% set cta_section_class = cta_section_class ~ ' ' ~ extra_classes %}
+{% endif %}
 {% set style = module.button_style|default('white') %}
 {% if style == 'navy' %}
   {% set btn_class = 'btn btn--navy' %}
@@ -21,7 +31,7 @@
 {% set cta_label = module.cta_text|default('Talk to Sales')|trim %}
 
 <section
-  class="cta-strip"
+  class="{{ cta_section_class }}"
   {% if heading_trim %}
     aria-labelledby="{{ heading_id|escape }}"
   {% elif module.section_aria_label|trim %}

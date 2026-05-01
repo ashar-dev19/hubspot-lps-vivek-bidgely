@@ -1,0 +1,4 @@
+/* CTA strip + section utilities: avoid .section default border on colored bands */
+.cta-strip.section.section--azure {
+  border-bottom: none;
+}
