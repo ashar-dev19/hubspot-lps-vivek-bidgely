@@ -22,13 +22,35 @@
   "id": "headline",
   "name": "headline",
   "label": "Headline",
-  "help_text": "Use a line break in the field for a manual <br> (same as other hero modules).",
+  "help_text": "Use a line break for <br>. When Headline accent is set, this is the text before <span class=\"accent\"> (same line breaks; a space is added before the accent when this is non-empty).",
   "required": false,
   "locked": false,
   "allow_new_line": true,
   "display_width": null,
   "type": "text",
   "default": "Pre-Built for Utilities. Configurable for Yours."
+}, {
+  "id": "headline_accent",
+  "name": "headline_accent",
+  "label": "Headline accent",
+  "help_text": "When set, renders inside <span class=\"accent\">…</span> after the Headline text (Headline is not shown twice).",
+  "required": false,
+  "locked": false,
+  "allow_new_line": false,
+  "display_width": null,
+  "type": "text",
+  "default": ""
+}, {
+  "id": "headline_after_accent",
+  "name": "headline_after_accent",
+  "label": "Headline (after accent)",
+  "help_text": "Optional text after the accent span. Line breaks become <br>.",
+  "required": false,
+  "locked": false,
+  "allow_new_line": true,
+  "display_width": null,
+  "type": "text",
+  "default": ""
 }, {
   "id": "subcopy",
   "name": "subcopy",

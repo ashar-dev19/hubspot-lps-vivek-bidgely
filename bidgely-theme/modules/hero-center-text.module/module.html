@@ -29,9 +29,24 @@
     {% endif %}
 
     <h1>
-      {% for line in module.headline|default('')|trim|split('\n') %}
-        {% if not loop.first %}<br>{% endif %}{{ line|trim|escape }}
-      {% endfor %}
+      {% set accent_t = module.headline_accent|default('')|trim %}
+      {% if accent_t %}
+        {% set before_raw = module.headline|default('')|trim %}
+        {% set after_raw = module.headline_after_accent|default('')|trim %}
+        {% for line in before_raw|split('\n') %}
+          {% if not loop.first %}<br>{% endif %}{{ line|escape }}
+        {% endfor %}
+        {% if before_raw %} {% endif %}<span class="accent">{{ accent_t|escape }}</span>
+        {% if after_raw %}
+          {% for line in after_raw|split('\n') %}
+            {% if not loop.first %}<br>{% endif %}{{ line|escape }}
+          {% endfor %}
+        {% endif %}
+      {% else %}
+        {% for line in module.headline|default('')|trim|split('\n') %}
+          {% if not loop.first %}<br>{% endif %}{{ line|trim|escape }}
+        {% endfor %}
+      {% endif %}
     </h1>
 
     {% set sub_trim = module.subcopy|default('')|striptags|trim %}
