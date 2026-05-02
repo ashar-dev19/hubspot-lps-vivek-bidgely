@@ -17,9 +17,10 @@
 {% endif %}
 {% set cta_label = module.cta_text|default('')|trim %}
 {% set href = module.cta_link.url.href|default('')|trim %}
+{% set below_src = module.below_cta_image.src|default('')|trim %}
 
 <section
-  class="hero hero-center-text-module tup-hero"
+  class="hero hero-center-text-module tup-hero{% if below_src %} hero-center-text-module--below-img{% endif %}"
   {% if aria %}aria-label="{{ aria|escape }}"{% endif %}
 >
   <div class="container">
@@ -69,6 +70,19 @@
       >
         {{ cta_label|escape }}
       </a>
+    {% endif %}
+
+    {% if below_src %}
+      <div class="hero-center-text-module__below-cta">
+        <img
+          class="hero-center-text-module__below-cta-img"
+          src="{{ below_src|escape }}"
+          alt="{{ module.below_cta_image.alt|default('')|escape }}"
+          {% set bload = module.below_cta_image.loading|default('lazy') %}
+          {% if bload and bload != 'disabled' %}loading="{{ bload|escape }}"{% endif %}
+          decoding="async"
+        >
+      </div>
     {% endif %}
   </div>
 </section>

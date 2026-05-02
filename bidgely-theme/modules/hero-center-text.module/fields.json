@@ -107,4 +107,21 @@
     "sponsored" : false,
     "user_generated_content" : false
   }
+}, {
+  "id" : "below_cta_image",
+  "name" : "below_cta_image",
+  "label" : "Image below CTA",
+  "help_text" : "Optional diagram or illustration under the button (max-width 850px). Leave unset or remove image in the editor to hide.",
+  "required" : false,
+  "locked" : false,
+  "responsive" : false,
+  "resizable" : false,
+  "show_loading" : false,
+  "display_width" : null,
+  "type" : "image",
+  "default" : {
+    "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/agentic-ai-diagrm-1%20(1).svg",
+    "alt" : "",
+    "loading" : "lazy"
+  }
 } ]

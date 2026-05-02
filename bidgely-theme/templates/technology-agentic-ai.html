@@ -32,138 +32,9 @@ section.section.section--blue.tup-platform.how-work img {
 }
 section.section.section--blue.tup-platform.how-work .tup-platform__head {
     margin: 0px !important;
-
 }
-
-
-/* ================================================================
-       AGENTIC AI page — scoped styles (.tag-*)
-       No rules conflict with main.css or other templates
-       ================================================================ */
-
-    /* ── AGENTS SECTION — dark navy, left text + right peek slider ── */
-    .tag-agents {
-      background: var(--nile);
-      padding: 80px 0;
-      overflow: hidden;
-    }
-
-    /* Two-col layout: left copy | right slider */
-    .tag-agents__inner {
-      display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 60px;
-      align-items: center;
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 0 var(--gutter);
-    }
-
-    .tag-agents__copy h2 {
-      font-size: 36px; font-weight: 800; color: #fff;
-      line-height: 1.2; letter-spacing: -1px; margin: 10px 0 0;
-    }
-
-    /* Right: slider wrapper — clips side cards */
-    .tag-slider-wrap {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Track — cards sit side by side, slides via translateX */
-    .tag-slider__track {
-      display: flex;
-      gap: 16px;
-      transition: transform .45s cubic-bezier(.4,0,.2,1);
-      /* Start offset so prev card peeks from left */
-      padding-left: 60px;
-      padding-top:50px;
-    }
-
-    /* Individual card */
-    .tag-slider__card {
-      flex: 0 0 320px;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 14px;
-      padding: 24px 22px 20px;
-      transition: opacity .35s ease, transform .35s ease, background .35s ease;
-      opacity: .45;
-      transform: scale(.95);
-    }
-
-    /* Active card */
-    .tag-slider__card.is-active {
-      opacity: 1;
-      transform: scale(1);
-      background: rgba(255,255,255,.11);
-      border-color: rgba(255,255,255,.18);
-      transform: scale(1.25);
-    }
-
-    /* Card header row: icon + title + avatar */
-    .tag-card__header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-    .tag-card__title-wrap {
-      display: flex; align-items: flex-start; gap: 10px;
-    }
-    .tag-card__icon {
-      width: 32px; height: 32px; flex-shrink: 0; opacity: .8;
-    }
-    .tag-card__title {
-      font-size: 13px; font-weight: 700; color: #fff;
-      line-height: 1.35; margin: 0;
-    }
-    
-
-    /* Agent list */
-    .tag-card__list {
-      list-style: none; margin: 0; padding: 0;
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .tag-card__list li {
-      display: flex; align-items: flex-start; gap: 8px;
-      font-size: 12px; color: rgba(255,255,255,.7);
-      line-height: 1.4;
-    }
-    .tag-card__list li::before {
-      content: "";
-      flex-shrink: 0; width: 14px; height: 14px; margin-top: 1px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23499ed7' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3Cpolyline points='12 5 19 12 12 19'/%3E%3C/svg%3E");
-      background-size: contain; background-repeat: no-repeat;
-    }
-
-    /* Navigation arrows */
-    .tag-slider__nav {
-      display: flex; gap: 10px;
-      margin-top: 50px;
-    align-items: center;
-    justify-content: center;
-    }
-    .tag-slider__btn {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.18);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      transition: background .2s ease;
-    }
-    .tag-slider__btn:hover { background: rgba(255,255,255,.2); }
-    .tag-slider__btn svg {
-      stroke: #fff; width: 16px; height: 16px;
-    }
-    .tag-slider__btn:disabled { opacity: .3; cursor: default; }
-
-    @media (max-width: 860px) {
-      .tag-agents__inner { grid-template-columns: 1fr; gap: 36px; }
-      .tag-agents__copy h2 { font-size: 28px; }
-      .tag-slider__track { padding-left: 0; }
-      .tag-slider__nav { padding-left: 0; }
+.section--pale .tup-cloud__card {
+      background: #fff;
     }
 </style>
 </head>
@@ -242,89 +113,42 @@ section.section.section--blue.tup-platform.how-work .tup-platform__head {
       {% end_dnd_column %}
     {% end_dnd_section %}
 
-    {# ----- 4. Agents slider ----- #}
+    {# ----- 4. Agents slider (Technology Slider module) ----- #}
     {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
       {% dnd_column width=12 %}
         {% dnd_row %}
-          {% dnd_module path="@hubspot/rich_text" label="Agents slider" %}
+          {% dnd_module path="../modules/technology-slider.module" label="Technology Slider" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ----- 5. One deployment — pale 3 cards ----- #}
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text" label="One deployment — 3 cards" %}
             {% module_attribute "html" %}
-<section class="tag-agents">
-  <div class="tag-agents__inner">
-    <div class="tag-agents__copy">
-      <span class="eyebrow">What Ships with the Platform</span>
-      <h2>The agents your teams need most, ready on day one.</h2>
+<section class="section section--pale tup-cloud-section">
+  <div class="container">
+    <div class="tup-cloud__head">
+      <h2 class="h2">One deployment. Every agent. Every team.</h2>
     </div>
-    <div class="tag-slider-wrap" id="tag-slider">
-      <div class="tag-slider__track" id="tag-track">
-        <div class="tag-slider__card">
-          <div class="tag-card__header">
-            <div class="tag-card__title-wrap">
-              <img class="tag-card__icon" src="{{ ab }}/agentic-ai-icon-4.svg" alt="">
-              <p class="tag-card__title">For Customer Experience, Call Center</p>
-            </div>
-          </div>
-          <ul class="tag-card__list">
-            <li>High bill complaint analysis agent</li>
-            <li>Ink personalization agent</li>
-            <li>Program enrollment recommendation agent</li>
-            <li>Marketing campaign fact integration</li>
-            <li>Customer-facing chatbot</li>
-          </ul>
-        </div>
-        <div class="tag-slider__card is-active">
-          <div class="tag-card__header">
-            <div class="tag-card__title-wrap">
-              <img class="tag-card__icon" src="{{ ab }}/agentic-ai-icon-5.svg" alt="">
-              <p class="tag-card__title">For Grid Planning and Operations</p>
-            </div>
-          </div>
-          <ul class="tag-card__list">
-            <li>Transformer loading monitoring agent</li>
-            <li>Outage root cause analysis agent</li>
-            <li>Non-wire alternatives recommendation agent</li>
-            <li>Current-state DER analysis agent</li>
-          </ul>
-        </div>
-        <div class="tag-slider__card">
-          <div class="tag-card__header">
-            <div class="tag-card__title-wrap">
-              <img class="tag-card__icon" src="{{ ab }}/agentic-ai-icon-6.svg" alt="">
-              <p class="tag-card__title">For Regulatory and Rates</p>
-            </div>
-          </div>
-          <ul class="tag-card__list">
-            <li>Integrated Resource Planning agent</li>
-            <li>Market potential studies agent</li>
-            <li>Cost and benefit analyzer for regulatory filings</li>
-            <li>Rate analysis and design agent</li>
-          </ul>
-        </div>
-        <div class="tag-slider__card">
-          <div class="tag-card__header">
-            <div class="tag-card__title-wrap">
-              <img class="tag-card__icon" src="{{ ab }}/agentic-ai-icon-4.svg" alt="">
-              <p class="tag-card__title">For Customer Experience and Call Center</p>
-            </div>
-          </div>
-          <ul class="tag-card__list">
-            <li>High bill complaint analysis agent</li>
-            <li>IVR personalization agent</li>
-            <li>Program enrollment recommendation agent</li>
-            <li>Customer-facing energy assistant</li>
-          </ul>
-        </div>
+    <div class="tup-cloud__cards">
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/agentic-ai-icon-7.svg" alt="">
+        <h3>Runs inside your environment</h3>
+        <p>Deploys on AWS, Azure, or GCP. Your data never leaves your infrastructure. Your security and governance policies apply to every agent, every workflow, and every output.</p>
       </div>
-      <div class="tag-slider__nav">
-        <button type="button" class="tag-slider__btn" id="tag-prev" aria-label="Previous">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="15 18 9 12 15 6"/>
-          </svg>
-        </button>
-        <button type="button" class="tag-slider__btn" id="tag-next" aria-label="Next">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="9 18 15 12 9 6"/>
-          </svg>
-        </button>
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/agentic-ai-icon-8.svg" alt="">
+        <h3>Integrates with the systems your teams already use</h3>
+        <p>Prebuilt integrations with CRM, DERMS, ADMS, and BI platforms mean agents surface where your teams already work. No new interface to learn. No separate tool to adopt.</p>
+      </div>
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/agentic-ai-icon-9.svg" alt="">
+        <h3>One approval covers every use case</h3>
+        <p>Your CIO approves once. Every team gets access. Every new agent inherits the same data governance and security posture as the rest of the UtilityAI Platform.</p>
       </div>
     </div>
   </div>
@@ -335,7 +159,7 @@ section.section.section--blue.tup-platform.how-work .tup-platform__head {
       {% end_dnd_column %}
     {% end_dnd_section %}
 
-    {# ----- 5. Bottom CTA ----- #}
+    {# ----- 6. Bottom CTA ----- #}
     {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
       {% dnd_column width=12 %}
         {% dnd_row %}
@@ -362,7 +186,7 @@ section.section.section--blue.tup-platform.how-work .tup-platform__head {
       {% end_dnd_column %}
     {% end_dnd_section %}
 
-    {# ----- 6. Resources (HubDB) ----- #}
+    {# ----- 7. Resources (HubDB) ----- #}
     {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
       {% dnd_column width=12 %}
         {% dnd_row %}
@@ -384,43 +208,6 @@ section.section.section--blue.tup-platform.how-work .tup-platform__head {
 {% module "site_footer" path="../modules/global-footer.module" %}
 
 <script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
-<script>
-  /* ── Agents peek slider — scoped to #tag-slider ── */
-  (function () {
-    var track   = document.getElementById('tag-track');
-    var btnPrev = document.getElementById('tag-prev');
-    var btnNext = document.getElementById('tag-next');
-    if (!track) return;
-
-    var cards     = Array.from(track.querySelectorAll('.tag-slider__card'));
-    var cardWidth = 320 + 16; /* card flex-basis + gap */
-    var current   = 1;        /* start on card index 1 (active by default) */
-
-    function update() {
-      var offset = current * cardWidth - 60;
-      track.style.transform = 'translateX(-' + offset + 'px)';
-
-      cards.forEach(function(c, i) {
-        c.classList.toggle('is-active', i === current);
-      });
-    }
-
-    if (btnPrev) {
-      btnPrev.addEventListener('click', function () {
-        current = (current - 1 + cards.length) % cards.length;
-        update();
-      });
-    }
-    if (btnNext) {
-      btnNext.addEventListener('click', function () {
-        current = (current + 1) % cards.length;
-        update();
-      });
-    }
-
-    update();
-  })();
-</script>
 {{ standard_footer_includes }}
 </body>
 </html>
