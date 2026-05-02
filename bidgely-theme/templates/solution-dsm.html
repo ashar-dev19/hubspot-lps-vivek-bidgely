@@ -1,7 +1,7 @@
 <!--
   templateType: page
   isAvailableForNewContent: true
-  label: Bidgely Solution – DSM
+  label: 260429 Bidgely Solution – DSM
   screenshotPath: ../images/template-previews/bidgely-solution-dsm.png
 -->
 
@@ -280,7 +280,7 @@
     {% end_dnd_column %}
   {% end_dnd_section %}
 
-  {# Inline agents_intro (not a set-block — avoids CX defaults). Do not put \\n inside this JSON blob: upload validator breaks the string. Two-line intent: before + accent (leading space on accent, same pattern as affordability “ prove impact”). #}
+  {# Inline agents_intro (no {% set %} — avoids CX defaults). Do not put \\n inside this JSON blob: upload validator breaks the string and errors on \\. Two-line intent: before + accent (leading space on accent, same pattern as affordability “ prove impact”). #}
   {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
     {% dnd_column width=12 %}
       {% dnd_row %}

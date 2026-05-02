@@ -25,17 +25,6 @@
   "type" : "choice",
   "default" : "nile"
 }, {
-  "id" : "additional_section_classes",
-  "name" : "additional_section_classes",
-  "label" : "Additional section classes (optional)",
-  "help_text" : "Space-separated extra classes on the outer <section>, e.g. tup-cta-strip for technology page typography.",
-  "required" : false,
-  "locked" : false,
-  "allow_new_line" : false,
-  "display_width" : null,
-  "type" : "text",
-  "default" : ""
-}, {
   "id" : "section_heading",
   "name" : "section_heading",
   "label" : "Heading",

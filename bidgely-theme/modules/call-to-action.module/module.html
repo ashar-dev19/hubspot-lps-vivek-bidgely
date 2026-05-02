@@ -14,10 +14,6 @@
 {% else %}
   {% set cta_section_class = 'cta-strip' %}
 {% endif %}
-{% set extra_classes = module.additional_section_classes|default('')|trim %}
-{% if extra_classes %}
-  {% set cta_section_class = cta_section_class ~ ' ' ~ extra_classes %}
-{% endif %}
 {% set style = module.button_style|default('white') %}
 {% if style == 'navy' %}
   {% set btn_class = 'btn btn--navy' %}

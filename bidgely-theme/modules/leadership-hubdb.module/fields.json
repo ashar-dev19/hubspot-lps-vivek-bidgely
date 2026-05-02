@@ -5,10 +5,11 @@
   "help_text" : "Numeric table ID for the leadership directory.",
   "required" : true,
   "locked" : false,
-  "allow_new_line" : false,
+  "display" : "text",
+  "min" : 0,
+  "step" : 1,
   "display_width" : null,
   "type" : "number",
-  "min" : 0,
   "default" : 2019803880
 }, {
   "id" : "headshot_base",
