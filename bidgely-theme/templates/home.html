@@ -256,11 +256,13 @@
 <section class="w-full bg-soft py-20">
   <div class="mx-auto max-w-[1300px] px-6">
     <p class="eyebrow">{% text "tabs_eyebrow" value="Solutions" no_wrapper=True %}</p>
-    <div class="mt-4 max-w-2xl">
-      {% image "tabs_heading_img" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/heading-2-every-meter-becomes-a-decision.png" alt="Every meter becomes a decision." class="h-10 md:h-12 w-auto" %}
+    <div class="mt-4">
+      <h2 class="h2">
+        {% rich_text "tabs_heading" html="Turn meter data into <span class=\"accent\">enterprise intelligence.</span>" no_wrapper=True %}
+      </h2>
     </div>
-    <p class="mt-3 body-sm text-nile max-w-xl">
-      {% text "tabs_subcopy" value="The data you need is already behind every meter. Decode it and put it to work." no_wrapper=True %}
+    <p class="mt-3 body-sm text-nile">
+      {% text "tabs_subcopy" value="Go beyond aggregate data with appliance-level insights that drive everything from personalized customer engagement to smarter grid decisions." no_wrapper=True %}
     </p>
     <div class="mt-10 grid grid-cols-1 md:grid-cols-[220px,1fr] gap-6">
       {# tab list #}
@@ -277,15 +279,15 @@
         <div id="panel-0" class="tab-panel grid grid-cols-1 md:grid-cols-2 gap-6" role="tabpanel" aria-labelledby="tab-0">
           <div>
             <h3 class="text-[27px] leading-[32.4px] font-bold tracking-[-0.68px] text-nile">
-              {% rich_text "tab0_heading" html="Personalize every customer interaction." no_wrapper=True %}
+              {% rich_text "tab0_heading" html="Resolve high-bill issues before customers call." no_wrapper=True %}
             </h3>
             <p class="mt-4 body-sm text-nile max-w-md">
-              {% rich_text "tab0_desc" html="Billing, programs, and service informed by appliance-level intelligence, not just demographics." no_wrapper=True %}
+              {% rich_text "tab0_desc" html="Trigger personalized High Bill Alerts &mdash; giving customers answers before they pick up the phone." no_wrapper=True %}
             </p>
             <ul class="mt-6 space-y-4">
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab0_bullet_1" html="50%+ reduction in high-bill call volume through proactive outreach" no_wrapper=True %}</span></li>
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab0_bullet_2" html="2+ quartile JD Power improvement seen by reference utilities" no_wrapper=True %}</span></li>
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab0_bullet_3" html="80%+ CSAT across tools and programs" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab0_bullet_1" html="50%+ reduction in high bill call volume" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab0_bullet_2" html="80%+ CSAT across CX tools" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab0_bullet_3" html="2+ quartile JD Power lift seen by reference utilities" no_wrapper=True %}</span></li>
             </ul>
             <div class="mt-8 pt-4 border-t border-nile-10">
               <a href="{% text "tab0_link_href" value="#" no_wrapper=True %}" class="link-arrow text-azure">
@@ -295,18 +297,17 @@
             </div>
           </div>
           <div class="flex items-center justify-center">
-            {% image "tab0_image" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/cx-screen.svg" alt="Customer engagement screen" class="w-full h-auto max-h-[350px] object-contain" %}
+            {% image "tab0_image" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/hom-tab-cs.svg" alt="Customer engagement screen" class="w-full h-auto max-h-[350px] object-contain" %}
           </div>
         </div>
         {# panel 1 #}
         <div id="panel-1" class="tab-panel grid grid-cols-1 md:grid-cols-2 gap-6" role="tabpanel" aria-labelledby="tab-1" hidden>
           <div>
-            <h3 class="text-[27px] leading-[32.4px] font-bold tracking-[-0.68px] text-nile">{% rich_text "tab1_heading" html="Plan your grid with confidence." no_wrapper=True %}</h3>
-            <p class="mt-4 body-sm text-nile max-w-md">{% rich_text "tab1_desc" html="Forecast load growth, identify constraints, and prioritize investments with meter-level precision." no_wrapper=True %}</p>
+            <h3 class="text-[27px] leading-[32.4px] font-bold tracking-[-0.68px] text-nile">{% rich_text "tab1_heading" html="See what&apos;s behind every transformer." no_wrapper=True %}</h3>
+            <p class="mt-4 body-sm text-nile max-w-md">{% rich_text "tab1_desc" html="Disaggregate every load behind every meter &mdash; see EVs, HVAC and large appliances driving transformer stress before they trip it." no_wrapper=True %}</p>
             <ul class="mt-6 space-y-4">
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab1_bullet_1" html="30%+ improvement in load forecast accuracy" no_wrapper=True %}</span></li>
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab1_bullet_2" html="Identify grid stress points before they become outages" no_wrapper=True %}</span></li>
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab1_bullet_3" html="Reduce capital deferral risk" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab1_bullet_1" html="Pinpoint localized transformer overloads before they occur" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab1_bullet_2" html="Uncover hidden BTM solar and EV loads" no_wrapper=True %}</span></li>
             </ul>
             <div class="mt-8 pt-4 border-t border-nile-10">
               <a href="{% text "tab1_link_href" value="#" no_wrapper=True %}" class="link-arrow text-azure">
@@ -316,18 +317,18 @@
             </div>
           </div>
           <div class="flex items-center justify-center">
-            {% image "tab1_image" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/cx-screen.svg" alt="Grid planning screen" class="w-full h-auto max-h-[350px] object-contain" %}
+            {% image "tab1_image" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/home-tab-gp.svg" alt="Grid planning screen" class="w-full h-auto max-h-[350px] object-contain" %}
           </div>
         </div>
         {# panel 2 #}
         <div id="panel-2" class="tab-panel grid grid-cols-1 md:grid-cols-2 gap-6" role="tabpanel" aria-labelledby="tab-2" hidden>
           <div>
-            <h3 class="text-[27px] leading-[32.4px] font-bold tracking-[-0.68px] text-nile">{% rich_text "tab2_heading" html="Drive measurable energy savings." no_wrapper=True %}</h3>
-            <p class="mt-4 body-sm text-nile max-w-md">{% rich_text "tab2_desc" html="Target the right customers with the right programs using appliance-level disaggregation." no_wrapper=True %}</p>
+            <h3 class="text-[27px] leading-[32.4px] font-bold tracking-[-0.68px] text-nile">{% rich_text "tab2_heading" html="Stop blasting rebates. Start placing them." no_wrapper=True %}</h3>
+            <p class="mt-4 body-sm text-nile max-w-md">{% rich_text "tab2_desc" html="Move beyond demographics. Identify the homes with the highest savings potential based on actual appliance usage and degradation." no_wrapper=True %}</p>
             <ul class="mt-6 space-y-4">
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab2_bullet_1" html="20%+ increase in program enrollment rates" no_wrapper=True %}</span></li>
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab2_bullet_2" html="Verified savings reporting for regulators and stakeholders" no_wrapper=True %}</span></li>
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab2_bullet_3" html="Reduce energy waste at scale" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab2_bullet_1" html="3X increase in HVAC early replacements" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab2_bullet_2" html="70% increased enrollment in HVAC upgrades" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab2_bullet_3" html="Lower cost per acquisition vs. mass outreach" no_wrapper=True %}</span></li>
             </ul>
             <div class="mt-8 pt-4 border-t border-nile-10">
               <a href="{% text "tab2_link_href" value="#" no_wrapper=True %}" class="link-arrow text-azure">
@@ -337,18 +338,18 @@
             </div>
           </div>
           <div class="flex items-center justify-center">
-            {% image "tab2_image" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/cx-screen.svg" alt="Energy efficiency screen" class="w-full h-auto max-h-[350px] object-contain" %}
+            {% image "tab2_image" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/home-tab-ee.svg" alt="Energy efficiency screen" class="w-full h-auto max-h-[350px] object-contain" %}
           </div>
         </div>
         {# panel 3 #}
         <div id="panel-3" class="tab-panel grid grid-cols-1 md:grid-cols-2 gap-6" role="tabpanel" aria-labelledby="tab-3" hidden>
           <div>
-            <h3 class="text-[27px] leading-[32.4px] font-bold tracking-[-0.68px] text-nile">{% rich_text "tab3_heading" html="Prepare your grid for electrification." no_wrapper=True %}</h3>
-            <p class="mt-4 body-sm text-nile max-w-md">{% rich_text "tab3_desc" html="Detect EV adoption early, manage charging loads, and plan for a zero-carbon future." no_wrapper=True %}</p>
+            <h3 class="text-[27px] leading-[32.4px] font-bold tracking-[-0.68px] text-nile">{% rich_text "tab3_heading" html="Find every EV. Without asking a single customer." no_wrapper=True %}</h3>
+            <p class="mt-4 body-sm text-nile max-w-md">{% rich_text "tab3_desc" html="Automatically detect new EVs and heat pumps on the grid, then guide customers toward grid-friendly charging and rate plans." no_wrapper=True %}</p>
             <ul class="mt-6 space-y-4">
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab3_bullet_1" html="Detect EV adoption 6+ months before grid impact" no_wrapper=True %}</span></li>
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab3_bullet_2" html="Managed charging programs that reduce peak demand" no_wrapper=True %}</span></li>
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab3_bullet_3" html="Support decarbonization goals" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab3_bullet_1" html="2X increase in EV Managed Charging enrollment" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab3_bullet_2" html="70% drop in on-peak EV charging via TOU coaching" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab3_bullet_3" html="Identify EV-ready customers without a single survey" no_wrapper=True %}</span></li>
             </ul>
             <div class="mt-8 pt-4 border-t border-nile-10">
               <a href="{% text "tab3_link_href" value="#" no_wrapper=True %}" class="link-arrow text-azure">
@@ -358,18 +359,18 @@
             </div>
           </div>
           <div class="flex items-center justify-center">
-            {% image "tab3_image" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/cx-screen.svg" alt="EV electrification screen" class="w-full h-auto max-h-[350px] object-contain" %}
+            {% image "tab3_image" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/home-tab-e%26e.svg" alt="EV electrification screen" class="w-full h-auto max-h-[350px] object-contain" %}
           </div>
         </div>
         {# panel 4 #}
         <div id="panel-4" class="tab-panel grid grid-cols-1 md:grid-cols-2 gap-6" role="tabpanel" aria-labelledby="tab-4" hidden>
           <div>
-            <h3 class="text-[27px] leading-[32.4px] font-bold tracking-[-0.68px] text-nile">{% rich_text "tab4_heading" html="Make rates work for everyone." no_wrapper=True %}</h3>
-            <p class="mt-4 body-sm text-nile max-w-md">{% rich_text "tab4_desc" html="Design equitable rates, identify vulnerable customers, and improve affordability outcomes." no_wrapper=True %}</p>
+            <h3 class="text-[27px] leading-[32.4px] font-bold tracking-[-0.68px] text-nile">{% rich_text "tab4_heading" html="Match every customer to the right rate &mdash; and safety net." no_wrapper=True %}</h3>
+            <p class="mt-4 body-sm text-nile max-w-md">{% rich_text "tab4_desc" html="Proactively identify energy burden and match customers to the right Time-of-Use rates or assistance programs before bill shock hits." no_wrapper=True %}</p>
             <ul class="mt-6 space-y-4">
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab4_bullet_1" html="Identify bill-burdened customers before they churn" no_wrapper=True %}</span></li>
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab4_bullet_2" html="Model rate impacts at the customer level" no_wrapper=True %}</span></li>
-              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab4_bullet_3" html="Improve low-income program uptake" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab4_bullet_1" html="50% higher LMI program enrollment" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab4_bullet_2" html="3X higher TOU retention with shift-coaching" no_wrapper=True %}</span></li>
+              <li class="check-bullet"><span class="dot"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 20 7"></polyline></svg></span><span class="body-sm">{% rich_text "tab4_bullet_3" html="Identify &quot;Savers with Shift&quot; to maximize TOU adoption" no_wrapper=True %}</span></li>
             </ul>
             <div class="mt-8 pt-4 border-t border-nile-10">
               <a href="{% text "tab4_link_href" value="#" no_wrapper=True %}" class="link-arrow text-azure">
@@ -379,7 +380,7 @@
             </div>
           </div>
           <div class="flex items-center justify-center">
-            {% image "tab4_image" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/cx-screen.svg" alt="Rates and affordability screen" class="w-full h-auto max-h-[350px] object-contain" %}
+            {% image "tab4_image" src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/home-tab-ra.svg" alt="Rates and affordability screen" class="w-full h-auto max-h-[350px] object-contain" %}
           </div>
         </div>
       </div>
