@@ -1,0 +1,95 @@
+[ {
+  "id" : "section_aria_label",
+  "name" : "section_aria_label",
+  "label" : "Section accessible name (optional)",
+  "help_text" : "Used as aria-label when no heading is set.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text",
+  "default" : "Request a demo"
+}, {
+  "id" : "section_background",
+  "name" : "section_background",
+  "label" : "Background",
+  "help_text" : "Nile: default dark strip (same as before). Azure: adds theme classes section section--azure on the band.",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "nile", "Nile" ], [ "azure", "Azure" ] ],
+  "multiple" : false,
+  "reordering_enabled" : false,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice",
+  "default" : "nile"
+}, {
+  "id" : "section_heading",
+  "name" : "section_heading",
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : true,
+  "display_width" : null,
+  "type" : "text",
+  "default" : "Ready to Start Your Journey With UtilityAI?"
+}, {
+  "id" : "subcopy",
+  "name" : "subcopy",
+  "label" : "Subcopy (below heading)",
+  "help_text" : "Optional. Leave blank to hide. Example: Join the utilities delivering individual-level intelligence across every customer, meter, and grid asset.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text",
+  "default" : "Don't let your operational investments stall. Find out how to unlock ROI, reliability, and resilience across your utility."
+}, {
+  "id" : "cta_text",
+  "name" : "cta_text",
+  "label" : "Button text",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text",
+  "default" : "EXPLORE LIVE DEMO"
+}, {
+  "id" : "button_style",
+  "name" : "button_style",
+  "label" : "Button style",
+  "help_text" : "Uses theme button classes from main.css (.btn--white, .btn--navy, .btn--blue, .btn--gradient).",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "white", "White" ], [ "navy", "Navy" ], [ "blue", "Blue" ], [ "gradient", "Blue gradient" ] ],
+  "multiple" : false,
+  "reordering_enabled" : false,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice",
+  "default" : "white"
+}, {
+  "id" : "cta_link",
+  "name" : "cta_link",
+  "label" : "Button link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "display_width" : null,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "content_id" : null,
+      "href" : "https://demo.bidgely.com",
+      "href_with_scheme" : "https://demo.bidgely.com"
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false,
+    "sponsored" : false,
+    "user_generated_content" : false
+  }
+} ]

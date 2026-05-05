@@ -1,0 +1,6 @@
+.cta-strip a.btn.btn--white {
+    color: var(--nile);
+}
+.cta-strip__inner > div {
+    max-width: 800px;
+}
