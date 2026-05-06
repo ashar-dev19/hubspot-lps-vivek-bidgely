@@ -1,0 +1,60 @@
+/* Scoped to this module. Resource cards use main.css (.resource, .resource__*).
+   Splide theme comes from CDN; we only tweak layout + pagination. */
+
+section.section.resources-hubdb {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.resources-hubdb__splide {
+  margin-top: 2.5rem;
+  padding-bottom: 2.75rem;
+}
+
+.resources-hubdb .splide__slide {
+  height: auto;
+}
+
+.resources-hubdb .splide__slide > .resource {
+  height: 100%;
+}
+
+/* Dots only — Splide arrows disabled in JS; hide any arrow UI defensively */
+.resources-hubdb .splide__arrows {
+  display: none !important;
+}
+
+.resources-hubdb .splide__pagination {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: none;
+  padding: 0;
+}
+
+.resources-hubdb .splide__pagination__page {
+  background: rgba(21, 45, 73, 0.22);
+  opacity: 1;
+}
+
+.resources-hubdb .splide__pagination__page.is-active {
+  background: var(--azure, #499ed7);
+  transform: scale(1.15);
+}
+
+.resources-hubdb .splide__pagination__page:hover {
+  background: rgba(73, 158, 215, 0.55);
+}
+
+.resources-hubdb__desc p {
+  margin: 0;
+}
+
+.resources-hubdb__desc p + p {
+  margin-top: 0.5rem;
+}
+
+.resources-hubdb .resource__cta svg {
+  flex-shrink: 0;
+}

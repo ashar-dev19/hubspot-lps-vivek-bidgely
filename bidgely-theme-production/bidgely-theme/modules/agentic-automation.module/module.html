@@ -1,0 +1,79 @@
+{#
+  Agentic Automation — main.css: .section--navy, .agentic-head, .agentic-pill, .agent-cards, .agent-card
+  Field model matches CeAgentsSection (groupCeAgentsIntro, groupCeAgentsValue, groupCeAgentCards).
+#}
+
+{% macro br_text(text) -%}
+  {%- for line in text|default('')|split('\n') -%}
+    {%- if not loop.first -%}<br>{%- endif -%}{{ line|escape }}
+  {%- endfor -%}
+{%- endmacro %}
+
+<section class="section section--navy agentic-automation-module">
+  <div class="container">
+    {% set intro = module.agents_intro %}
+    {% set val = module.agents_value %}
+    <div class="agentic-head">
+      <div>
+        {% if intro and intro.ce_agents_eyebrow|default('')|trim %}
+          <p class="eyebrow">{{ intro.ce_agents_eyebrow|escape }}</p>
+        {% endif %}
+        {% if intro %}
+          {% set heading_before = intro.ce_agents_heading_before|default('') %}
+          {% set heading_accent = intro.ce_agents_heading_accent|default('') %}
+          {% set heading_after = intro.ce_agents_heading_after|default('') %}
+          {% if heading_before|trim or heading_accent|trim or heading_after|trim %}
+            <h2 class="h2">
+              {{ br_text(heading_before) }}{% if heading_accent|trim %}<span class="accent"> {{ br_text(heading_accent) }} </span>{% endif %}{{ br_text(heading_after) }}
+            </h2>
+          {% endif %}
+        {% endif %}
+        {% if intro and intro.ce_agents_lede %}
+          <div class="lede">{{ intro.ce_agents_lede }}</div>
+        {% endif %}
+      </div>
+      <div class="agentic-pill">
+        {% if val and val.ce_agents_value_eyebrow|default('')|trim %}
+          <div class="label">{{ val.ce_agents_value_eyebrow|escape }}</div>
+        {% endif %}
+        {% if val and val.ce_agents_value_num|default('')|trim %}
+          <div class="val">{{ val.ce_agents_value_num|escape }}</div>
+        {% endif %}
+        {% if val and val.ce_agents_value_desc %}
+          <div class="sub">{{ val.ce_agents_value_desc }}</div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% if module.agent_cards %}
+      <div class="agent-cards">
+        {% for card in module.agent_cards %}
+          <article class="agent-card">
+            <div class="agent-card-inner">
+            {% if card.card_icon and card.card_icon.src %}
+              {% set ic = card.card_icon %}
+              <img
+                src="{{ ic.src|escape }}"
+                alt="{{ ic.alt|default('')|escape }}"
+                width="{{ ic.width|default(42) }}"
+                height="{{ ic.height|default(42) }}"
+                {% set iload = ic.loading|default('lazy') %}
+                {% if iload and iload != 'disabled' %}loading="{{ iload|escape }}"{% endif %}
+                decoding="async">
+            {% endif %}
+            {% if card.card_title|default('')|trim %}
+              <h4>{{ card.card_title|escape }}</h4>
+            {% endif %}
+            {% if card.card_body %}
+              {{ card.card_body }}
+            {% endif %}
+          </div>
+            {% if card.card_stat|default('')|trim %}
+              <div class="meta">{{ card.card_stat|escape }}</div>
+            {% endif %}
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>

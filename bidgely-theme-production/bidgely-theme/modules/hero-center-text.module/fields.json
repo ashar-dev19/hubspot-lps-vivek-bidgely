@@ -1,0 +1,127 @@
+[ {
+  "id" : "section_aria_label",
+  "name" : "section_aria_label",
+  "label" : "Section accessible name (optional)",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text",
+  "default" : "Hero"
+}, {
+  "id" : "eyebrow",
+  "name" : "eyebrow",
+  "label" : "Eyebrow",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text",
+  "default" : "Agentic Automation Fabric"
+}, {
+  "id" : "headline",
+  "name" : "headline",
+  "label" : "Headline",
+  "help_text" : "Use a line break for <br>. When Headline accent is set, this is the text before <span class=\"accent\"> (same line breaks; a space is added before the accent when this is non-empty).",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : true,
+  "display_width" : null,
+  "type" : "text",
+  "default" : "Pre-Built for Utilities. Configurable for Yours."
+}, {
+  "id" : "headline_accent",
+  "name" : "headline_accent",
+  "label" : "Headline accent",
+  "help_text" : "When set, renders inside <span class=\"accent\">…</span> after the Headline text (Headline is not shown twice).",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text",
+  "default" : ""
+}, {
+  "id" : "headline_after_accent",
+  "name" : "headline_after_accent",
+  "label" : "Headline (after accent)",
+  "help_text" : "Optional text after the accent span. Line breaks become <br>.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : true,
+  "display_width" : null,
+  "type" : "text",
+  "default" : ""
+}, {
+  "id" : "subcopy",
+  "name" : "subcopy",
+  "label" : "Subcopy",
+  "required" : false,
+  "locked" : false,
+  "display_width" : null,
+  "type" : "richtext",
+  "default" : "<p>Your teams shouldn't wait months for AI to be useful. The Agentic Automation Fabric ships production-ready agents for the workflows utilities run every day and the infrastructure to build any new agent you need, running on pre-trained utility models.</p>"
+}, {
+  "id" : "cta_text",
+  "name" : "cta_text",
+  "label" : "Button text",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "display_width" : null,
+  "type" : "text",
+  "default" : "Get a Demo"
+}, {
+  "id" : "button_style",
+  "name" : "button_style",
+  "label" : "Button style",
+  "help_text" : "Theme button classes from main.css.",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "navy", "Navy" ], [ "white", "White" ], [ "blue", "Blue" ], [ "gradient", "Blue gradient" ] ],
+  "multiple" : false,
+  "reordering_enabled" : false,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice",
+  "default" : "navy"
+}, {
+  "id" : "cta_link",
+  "name" : "cta_link",
+  "label" : "Button link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "display_width" : null,
+  "type" : "link",
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "content_id" : null,
+      "href" : "#",
+      "href_with_scheme" : "#"
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false,
+    "sponsored" : false,
+    "user_generated_content" : false
+  }
+}, {
+  "id" : "below_cta_image",
+  "name" : "below_cta_image",
+  "label" : "Image below CTA",
+  "help_text" : "Optional diagram or illustration under the button (max-width 850px). Leave unset or remove image in the editor to hide.",
+  "required" : false,
+  "locked" : false,
+  "responsive" : false,
+  "resizable" : false,
+  "show_loading" : false,
+  "display_width" : null,
+  "type" : "image",
+  "default" : {
+    "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/agentic-ai-diagrm-1%20(1).svg",
+    "alt" : "",
+    "loading" : "lazy"
+  }
+} ]

@@ -1,0 +1,170 @@
+/* Technology Slider — agents deck (.tag-*), scoped to module root */
+
+.technology-slider-module.tag-agents {
+  background: var(--nile);
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.technology-slider-module .tag-agents__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  align-items: center;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.technology-slider-module .tag-agents__copy h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  margin: 10px 0 0;
+}
+
+.technology-slider-module .tag-slider-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.technology-slider-module .tag-slider__track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-left: 60px;
+  padding-top: 50px;
+}
+
+.technology-slider-module .tag-slider__card {
+  flex: 0 0 320px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 24px 22px 20px;
+  transition: opacity 0.35s ease, transform 0.35s ease, background 0.35s ease;
+  opacity: 0.45;
+  transform: scale(0.95);
+}
+
+.technology-slider-module .tag-slider__card.is-active {
+  opacity: 1;
+  transform: scale(1.25);
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.technology-slider-module .tag-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.technology-slider-module .tag-card__title-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.technology-slider-module .tag-card__icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+.technology-slider-module .tag-card__title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.technology-slider-module .tag-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.technology-slider-module .tag-card__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+}
+
+.technology-slider-module .tag-card__list li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23499ed7' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='5' y1='12' x2='19' y2='12'/%3E%3Cpolyline points='12 5 19 12 12 19'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.technology-slider-module .tag-slider__nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.technology-slider-module .tag-slider__btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.technology-slider-module .tag-slider__btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.technology-slider-module .tag-slider__btn svg {
+  stroke: #fff;
+  width: 16px;
+  height: 16px;
+}
+
+.technology-slider-module .tag-slider__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+@media (max-width: 860px) {
+  .technology-slider-module .tag-agents__inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .technology-slider-module .tag-agents__copy h2 {
+    font-size: 28px;
+  }
+
+  .technology-slider-module .tag-slider__track {
+    padding-left: 0;
+  }
+
+  .technology-slider-module .tag-slider__nav {
+    padding-left: 0;
+  }
+}

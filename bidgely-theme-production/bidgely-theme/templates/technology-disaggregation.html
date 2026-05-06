@@ -1,0 +1,461 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: 260430 Bidgely Technology – Disaggregation
+  screenshotPath: ../images/template-previews/bidgely-technology-disaggregation.png
+-->
+
+{% set asset_base = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+</head>
+  <style>
+    /* Hero override (same pattern used on solution pages) */
+    .hero {
+      position: relative;
+      background: url(https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-4.svg);
+      background-size: cover;
+    }
+    .hero::before { display: none; }
+    .hero::after  { display: none; }
+
+    /* ---- Page-specific classes (Technology: Disaggregation) ---- */
+
+    /* 3-up card grid (mirrors .cards-4 from main.css) */
+    .cards-3 {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 1000px) { .cards-3 { grid-template-columns: 1fr; } }
+
+    /* "How we're different" box gets the brand gradient hover */
+    .diff-card .card__title { font-size: 19px; }
+    .diff-card .cap-card__icon-img {
+      width: 44px; height: 44px; object-fit: contain;
+      transition: filter .25s ease, transform .25s ease;
+    }
+    .cards-3 .diff-card:hover {
+      background: var(--gradient-135);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+    .cards-3 .diff-card:hover .card__title,
+    .cards-3 .diff-card:hover .card__copy { color: #fff; }
+    .cards-3 .diff-card:hover .cap-card__icon-img {
+      filter: brightness(0) invert(1);
+      transform: translateY(-1px) scale(1.03);
+    }
+
+    /* Use-case card: header + bulleted list, with team icon at top */
+    .uc-card { gap: 16px; }
+    .uc-card__icon-img {
+      width: 44px; height: 44px; object-fit: contain;
+    }
+    .uc-card__eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--azure-soft); margin: 0;
+    }
+    .uc-card__title {
+      font-size: 19px; line-height: 1.25; font-weight: 700;
+      color: var(--nile); margin: 0;
+    }
+    .uc-list {
+      margin: 0; padding-left: 18px;
+      font-size: 14px; line-height: 1.55;
+      color: var(--nile-52); font-weight: 500;
+    }
+    .uc-list li { margin-bottom: 10px; }
+    .uc-list li:last-child { margin-bottom: 0; }
+
+    /* Stats band (navy strip with 5 proof tiles) */
+    .stats-band { padding: 56px 0; }
+    .stats-band__grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+    .stat-tile {
+      text-align: center;
+      padding: 22px 14px;
+      background: rgba(68,155,213,.06);
+      border: 1px solid rgba(68,155,213,.18);
+      border-radius: var(--radius-lg);
+    }
+    .stat-tile__value {
+      font-size: 36px; font-weight: 800;
+      color: #fff; letter-spacing: -1px; line-height: 1;
+    }
+    .stat-tile__label {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--azure-tint);
+      margin-top: 10px;
+    }
+    .stat-tile__icon {
+      width: 36px; height: 36px;
+      margin: 0 auto 8px; display: block;
+    }
+    @media (max-width: 900px) {
+      .stats-band__grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-tile:last-child { grid-column: span 2; }
+    }
+
+    /* Section header (centered, used by sections w/o solutions-head) */
+    .tech-head {
+      text-align: center; max-width: 720px; margin: 0 auto 16px;
+    }
+    .tech-head .lede { margin: 14px auto 0; }
+
+    /* Resource tiles (PDF / video / report) */
+    .resource-tiles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 36px;
+    }
+    .resource-tile {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      border: 1px solid var(--nile-7);
+      transition: transform .25s ease, box-shadow .25s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+    .resource-tile:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-soft);
+    }
+    .resource-tile__media {
+      aspect-ratio: 16/9;
+      background: var(--bg-soft);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .resource-tile__media img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .resource-tile__body {
+      padding: 20px 22px;
+      flex: 1; display: flex; flex-direction: column; gap: 8px;
+    }
+    .resource-tile__type {
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--azure-soft);
+    }
+    .resource-tile__title {
+      font-size: 16px; font-weight: 700;
+      color: var(--nile); line-height: 1.3; margin: 0;
+    }
+    @media (max-width: 900px) {
+      .resource-tiles { grid-template-columns: 1fr; }
+    }
+
+    /* Bottom page CTA: navy section, centered content */
+    .page-cta { text-align: center; }
+    .page-cta__inner { max-width: 760px; margin: 0 auto; }
+    .page-cta h2 { color: #fff; }
+    .page-cta .lede { color: #fff; opacity: .85; margin-top: 14px; }
+    .page-cta .btn { margin-top: 28px; }
+  </style>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+{# =========================================================
+   HERO
+   ========================================================= #}
+<section class="hero">
+  <div class="hero__inner container">
+    <div class="hero__top">
+      <div>
+        <p class="eyebrow">{% text "hero_eyebrow" value="True Disaggregation" no_wrapper=True %}</p>
+        <h1>
+          {% rich_text "hero_heading" html="Appliance-Level Intelligence <span class='accent'>From Every Meter.</span>" no_wrapper=True %}
+        </h1>
+        <a class="btn btn--navy" href="{% text "hero_cta_link" value="#" no_wrapper=True %}">
+          {% text "hero_cta_label" value="Get a Demo" no_wrapper=True %}
+        </a>
+      </div>
+      <div class="hero__copy body-sm">
+        {% rich_text "hero_subhead" html="Bidgely pioneered behind-the-meter load disaggregation, also known as Non-Intrusive Load Monitoring. We analyze real-time, AMI, and non-AMI meter data to identify appliance signatures using advanced AI and machine learning models — turning raw usage data into actionable intelligence for every customer, premise, and grid asset." no_wrapper=True %}
+      </div>
+    </div>
+    <div class="hero-visual">
+      {% image "hero_visual" src="{{ asset_base }}/tech-disaggregation-hero.svg" alt="UtilityAI disaggregation hero — appliance-level decomposition of meter data" class="hero-visual__img" %}
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   STATS BAND — 5 proof tiles (We did it first, and we do it best)
+   ========================================================= #}
+<section class="section section--navy stats-band">
+  <div class="container">
+    <div class="stats-band__grid">
+      <div class="stat-tile">
+        <div class="stat-tile__value">{% text "stat1_value" value="100%" no_wrapper=True %}</div>
+        <div class="stat-tile__label">{% text "stat1_label" value="Built-in" no_wrapper=True %}</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-tile__value">{% text "stat2_value" value="16+" no_wrapper=True %}</div>
+        <div class="stat-tile__label">{% text "stat2_label" value="Patents" no_wrapper=True %}</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-tile__value">{% text "stat3_value" value="Zero" no_wrapper=True %}</div>
+        <div class="stat-tile__label">{% text "stat3_label" value="Sensors" no_wrapper=True %}</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-tile__value">{% text "stat4_value" value="ToU" no_wrapper=True %}</div>
+        <div class="stat-tile__label">{% text "stat4_label" value="Granularity" no_wrapper=True %}</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-tile__value">{% text "stat5_value" value="15%" no_wrapper=True %}</div>
+        <div class="stat-tile__label">{% text "stat5_label" value="Reduction in Residential Energy Consumption" no_wrapper=True %}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   HOW WE'RE DIFFERENT — 3 boxes with icons
+   ========================================================= #}
+<section class="section section--pale">
+  <div class="container">
+    <p class="eyebrow">{% text "diff_eyebrow" value="How we&#39;re different" no_wrapper=True %}</p>
+    <h2 class="h2">
+      {% rich_text "diff_heading" html="Not estimates. Not averages. <span class='accent'>True appliance-level intelligence.</span>" no_wrapper=True %}
+    </h2>
+
+    <div class="cards-3">
+      <article class="card diff-card">
+        {% image "diff1_icon" src="{{ asset_base }}/dtech26-for-regulators.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "diff1_title" html="Built on real disaggregation, not billing data" no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "diff1_copy" html="Bidgely identifies what is happening behind the meter by detecting appliance-level signatures from usage data — not by relying on generic load shapes, customer surveys, or billing averages." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card diff-card">
+        {% image "diff2_icon" src="{{ asset_base }}/ders-icon-v1.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "diff2_title" html="Works across AMI, non-AMI, and real-time data" no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "diff2_copy" html="UtilityAI uses real-time, AMI, and non-AMI meter data to reveal how customers actually use energy across major loads, devices, and usage patterns." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card diff-card">
+        {% image "diff3_icon" src="{{ asset_base }}/every-touchpoint.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "diff3_title" html="Proven across utility use cases" no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "diff3_copy" html="The same intelligence layer powers high-bill analysis, EV detection, TOU targeting, demand response, affordability programs, load research, grid planning, and SMB engagement." no_wrapper=True %}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   EVERY APPLIANCE HAS A FINGERPRINT — stripe with visual
+   ========================================================= #}
+<section class="section section--white">
+  <div class="container">
+    <div class="solutions-head">
+      <p class="eyebrow">{% text "fp_eyebrow" value="How it works" no_wrapper=True %}</p>
+      <h2 class="h2">{% rich_text "fp_heading" html="Every appliance has a <span class='accent'>fingerprint.</span>" no_wrapper=True %}</h2>
+    </div>
+
+    <div class="stripe">
+      <div class="stripe__copy">
+        <h3>{% text "fp_stripe_title" value="From whole-home meter to 12 distinct appliance loads" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "fp_stripe_sub" value="Sample-level signatures, not monthly averages." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "fp_stripe_quote" html="Bidgely uses meter data to detect the presence and use of 12 different appliance loads in homes — at the sample level, not the bill level. We can tell whether an electric heater was running during each 15-minute interval of the day, and how much energy it consumed in that interval." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "fp_stripe_bullets" html="<li>12 distinct appliance loads detected per home</li><li>15-minute interval granularity from AMI data</li><li>Trained on ground truth from tens of thousands of homes</li><li>Built on early experience with 5-second high-frequency data</li>" no_wrapper=True %}
+        </ul>
+      </div>
+      <div class="stripe__visual">
+        {% image "fp_stripe_img" src="{{ asset_base }}/tech-appliance-fingerprint.svg" alt="Appliance-level disaggregation: total meter signal decomposed into HVAC, water heating, EV, refrigeration, and other loads" class="stripe__img" %}
+      </div>
+    </div>
+
+    <div class="stripe stripe--reverse">
+      <div class="stripe__copy">
+        <h3>{% text "rt_stripe_title" value="Real-time, on-meter disaggregation" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "rt_stripe_sub" value="Detect EVs and major loads within minutes of plug-in." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "rt_stripe_quote" html="A miniaturized version of our disaggregation application runs directly on the meter — analyzing high-frequency signals available only on the meter itself to produce on-off detection events. Unlike AMI disaggregation, these real-time events can have a proactive impact on load shifting, DR, and EV programs." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "rt_stripe_bullets" html="<li>EV detection within minutes of plug-in</li><li>Real-time on-off events for load shifting and DR</li><li>Battle-tested across more than 15 countries</li><li>Worldwide portability — adapts to local weather, homes, and behavior</li>" no_wrapper=True %}
+        </ul>
+      </div>
+      <div class="stripe__visual">
+        {% image "rt_stripe_img" src="{{ asset_base }}/tech-realtime-disagg.svg" alt="Real-time on-meter disaggregation — high-frequency signal analysis at the meter" class="stripe__img" %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   BEYOND DISAGGREGATION — 4-card grid
+   ========================================================= #}
+<section class="section section--pale">
+  <div class="container">
+    <div class="tech-head">
+      <p class="eyebrow">{% text "beyond_eyebrow" value="Beyond Disaggregation" no_wrapper=True %}</p>
+      <h2 class="h2">{% rich_text "beyond_heading" html="A launchpad for capabilities that go <span class='accent'>far beyond a load breakdown.</span>" no_wrapper=True %}</h2>
+      <p class="lede">{% rich_text "beyond_lede" html="Bidgely&#39;s disaggregation engine is the foundation. The intelligence layered on top is what makes it actionable for every utility team." no_wrapper=True %}</p>
+    </div>
+
+    <div class="cards-4 mt-8">
+      <article class="card">
+        {% image "beyond1_icon" src="{{ asset_base }}/customer-experience-v1.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "beyond1_title" html="Fuel Type<br>Detection" no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "beyond1_copy" html="HVAC disaggregation algorithms detect the fuel type used by heating equipment — even with only electricity consumption data." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card">
+        {% image "beyond2_icon" src="{{ asset_base }}/target.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "beyond2_title" html="Equipment<br>Type" no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "beyond2_copy" html="Classification models detect HVAC equipment types — heat pumps, variable-speed pool pumps, and other major loads — with high confidence." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card">
+        {% image "beyond3_icon" src="{{ asset_base }}/explain-bill.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "beyond3_title" html="Inefficiency<br>Type" no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "beyond3_copy" html="Identify whether a home&#39;s inefficiency is building-, equipment-, or behavior-related — so recommendations are pinpoint, not generic." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card">
+        {% image "beyond4_icon" src="{{ asset_base }}/dtech26-for-regulators.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "beyond4_title" html="Theft<br>Detection" no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "beyond4_copy" html="AI algorithms leverage consumption patterns, current/voltage parameters, power factors, and meter events to flag tampering, bypass, and tariff misuse." no_wrapper=True %}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   USE CASES — 3 grouped use-case lists with team icons
+   ========================================================= #}
+<section class="section section--white">
+  <div class="container">
+    <div class="solutions-head">
+      <p class="eyebrow">{% text "uc_eyebrow" value="What you can build" no_wrapper=True %}</p>
+      <h2 class="h2">{% rich_text "uc_heading" html="One intelligence layer for <span class='accent'>every utility team.</span>" no_wrapper=True %}</h2>
+      <p class="lede">{% rich_text "uc_subhead" html="Disaggregation is the foundation of UtilityAI. Every product and workflow starts with the same premise-level view of what is actually happening behind the meter." no_wrapper=True %}</p>
+    </div>
+
+    <div class="cards-3">
+      {# Use Case Group 1 — Customer Experience and Call Center #}
+      <article class="card uc-card">
+        {% image "uc1_icon" src="{{ asset_base }}/customer-experience-v1.svg" alt="" class="uc-card__icon-img" %}
+        <p class="uc-card__eyebrow">{% text "uc1_eyebrow" value="For" no_wrapper=True %}</p>
+        <h3 class="uc-card__title">{% text "uc1_title" value="Customer Experience and Call Center" no_wrapper=True %}</h3>
+        <ul class="uc-list">
+          {% rich_text "uc1_bullets" html="<li>A CSR sees which appliances drove a customer&#39;s bill increase before the customer finishes explaining the problem.</li><li>A customer receives a clear explanation of why their bill changed, grounded in their actual usage.</li><li>A high-bill alert identifies whether HVAC, EV charging, water heating, or another major load caused the spike.</li><li>A digital self-service experience helps customers understand usage without requiring a call.</li>" no_wrapper=True %}
+        </ul>
+      </article>
+
+      {# Use Case Group 2 — Programs, Rates, and Customer Engagement #}
+      <article class="card uc-card">
+        {% image "uc2_icon" src="{{ asset_base }}/target.svg" alt="" class="uc-card__icon-img" %}
+        <p class="uc-card__eyebrow">{% text "uc2_eyebrow" value="For" no_wrapper=True %}</p>
+        <h3 class="uc-card__title">{% text "uc2_title" value="Programs, Rates, and Customer Engagement" no_wrapper=True %}</h3>
+        <ul class="uc-list">
+          {% rich_text "uc2_bullets" html="<li>A program manager identifies which customers are most likely to benefit from efficiency, electrification, TOU, DR, or affordability programs.</li><li>A rate team models bill impact using real appliance-level usage instead of broad averages.</li><li>A marketing team targets customers based on actual behavior, not demographic proxies.</li><li>A DSM team measures program performance using verified changes in load.</li>" no_wrapper=True %}
+        </ul>
+      </article>
+
+      {# Use Case Group 3 — Grid Planning and Operations #}
+      <article class="card uc-card">
+        {% image "uc3_icon" src="{{ asset_base }}/dtech26-for-regulators.svg" alt="" class="uc-card__icon-img" %}
+        <p class="uc-card__eyebrow">{% text "uc3_eyebrow" value="For" no_wrapper=True %}</p>
+        <h3 class="uc-card__title">{% text "uc3_title" value="Grid Planning and Operations" no_wrapper=True %}</h3>
+        <ul class="uc-list">
+          {% rich_text "uc3_bullets" html="<li>A planner identifies where EVs, heat pumps, HVAC, solar, storage, and other DERs are already affecting the grid.</li><li>An operations team sees what load is stressing a transformer, feeder, or substation.</li><li>A grid planning team supports forecasts with actual premise-level load composition.</li><li>A utility evaluates non-wires alternatives using demand-side flexibility grounded in real usage.</li>" no_wrapper=True %}
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   PATENTED TECHNOLOGY — stripe with bullet list
+   ========================================================= #}
+<section class="section section--pale">
+  <div class="container">
+    <div class="stripe">
+      <div class="stripe__copy">
+        <p class="eyebrow">{% text "patents_eyebrow" value="Patented Technology" no_wrapper=True %}</p>
+        <h3>{% text "patents_title" value="Protected by 16+ patents in disaggregation" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "patents_sub" value="Implementations safe from contention." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "patents_quote" html="Bidgely&#39;s patented machine learning algorithms cover the full spectrum of behind-the-meter intelligence — from AMI disaggregation to EV detection to anomaly detection on disaggregated data." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "patents_bullets" html="<li>Energy disaggregation techniques for AMI and smart-meter whole-house consumption data</li><li>Solar energy disaggregation for whole-house energy data</li><li>EV disaggregation techniques</li><li>Anomaly detection and bill comparison from disaggregated energy data</li><li>Low-frequency / non-smart-meter energy disaggregation techniques</li>" no_wrapper=True %}
+        </ul>
+        <a class="stripe__cta link-arrow" href="{% text "patents_cta_link" value="#" no_wrapper=True %}">
+          {% text "patents_cta_label" value="Read about our patents" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+      <div class="stripe__visual">
+        {% module "patents_video"
+          path="@hubspot/video"
+          label="Patents Video"
+        %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   RESOURCES — 3 tiles (PDF / Video / Report)
+   ========================================================= #}
+{% dnd_area "main" label="Resources" %}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/resources-hubdb.module"
+          label="Resources"
+          ce_resources_eyebrow="Resources"
+          filter_value="Disaggregation"
+          hubdb_limit=3
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+{% end_dnd_area %}
+
+{# =========================================================
+   PAGE CTA — navy block, centered, headline + body + CTA
+   ========================================================= #}
+<section class="section section--navy page-cta">
+  <div class="container">
+    <div class="page-cta__inner">
+      <h2 class="h2">
+        {% rich_text "cta_heading" html="See what true disaggregation <span class='accent'>makes possible.</span>" no_wrapper=True %}
+      </h2>
+      <p class="lede">
+        {% rich_text "cta_body" html="Disaggregation is the foundation of the UtilityAI Platform. One intelligence layer gives your customer, program, rate, and grid teams the appliance-level insight they need to act with precision." no_wrapper=True %}
+      </p>
+      <a class="btn btn--white" href="{% text "cta_btn_link" value="#" no_wrapper=True %}">
+        {% text "cta_btn_label" value="Get a Demo" no_wrapper=True %}
+      </a>
+    </div>
+  </div>
+</section>
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+<script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
+{{ standard_footer_includes }}
+</body>
+</html>

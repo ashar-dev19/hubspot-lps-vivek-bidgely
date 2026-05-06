@@ -1,0 +1,1081 @@
+<!--
+  templateType: "page"
+  isAvailableForNewContent: true
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="HubSpot">
+  <title>{% if content.html_title %}{{ content.html_title }}{% else %}Podcast{% endif %}</title>
+  {% if content.meta_description %}
+  <meta name="description" content="{{ content.meta_description }}">
+  {% endif %}
+  
+  {# Google Fonts - Montserrat #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+  
+  
+  {{ standard_header_includes }}
+  
+  <style>
+   
+
+    /* Hero Section - Grid background */
+    .podcast-hero--v2 {
+      background-color: #fff;
+      background-image: url("https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources/grid-2.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      padding: 88px 0 0;
+      border-bottom: 1px solid #e5f1f9;
+    }
+
+    .podcast-hero__intro {
+      margin-bottom: 36px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--azure);
+      margin: 0 0 14px;
+      display: inline-block;
+    }
+    .podcast-content-layout {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+  padding: 20px 0 40px;
+}
+/* Left Column - Player */
+.podcast-player-col {
+  flex: 1.2;
+  min-width: 0;
+}
+
+/* Right Column - Description */
+.podcast-description-col {
+  flex: 0.9;
+  min-width: 0;
+}
+
+    .podcast-title-v2 {
+      color: var(--nile);
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+      margin: 0 0 16px;
+      max-width: 100%;
+    }
+
+    .podcast-hero-lede {
+      margin: 0;
+      max-width: 800px;
+      color: var(--text-muted);
+      font-size: 17px;
+      line-height: 1.55;
+      font-weight: 400;
+    }
+
+    /* Player Section - Navy card */
+    .podcast-player-band--v2 {
+      background: transparent;
+      padding: 20px 0 40px;
+      width: 100%;
+    }
+
+    .podcast-player-shell--v2 {
+      background: #0B2A3B;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.25);
+    }
+
+    .podcast-player-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      background: #071e2c;
+      overflow: hidden;
+    }
+
+    .podcast-player-container iframe,
+    .podcast-player-container wistia-player {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .podcast-audio-placeholder {
+      background: linear-gradient(135deg, #0f2b3f 0%, #06212e 100%);
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      color: white;
+    }
+
+    
+
+    .wave-bar {
+      width: 6px;
+      background: var(--azure);
+      border-radius: 3px;
+      animation: wave 1s ease-in-out infinite;
+    }
+
+    @keyframes wave {
+      0%, 100% { height: 20px; }
+      50% { height: 50px; }
+    }
+
+    .podcast-play-btn-large {
+      width: 70px;
+      height: 70px;
+      background: rgba(73, 158, 215, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .podcast-play-btn-large:hover {
+      transform: scale(1.05);
+      background: var(--azure);
+    }
+
+    .podcast-chrome-bar--v2 {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 18px;
+      background: linear-gradient(180deg, #1c445e 0%, #0e2f44 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      color: rgba(255,255,255,0.85);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .chrome-play-icon {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 0 8px 12px;
+      border-color: transparent transparent transparent white;
+      opacity: 0.9;
+    }
+
+    .chrome-track {
+      flex: 1;
+      height: 5px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chrome-track::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 28%;
+      background: var(--azure);
+      border-radius: 4px;
+    }
+
+    /* Description & Guests */
+    .podcast-description-wrap--v2 {
+      background: #fff;
+      padding: 56px 0 48px;
+    }
+
+    .podcast-grid-layout {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 3rem;
+    }
+
+    @media (max-width: 900px) {
+      .podcast-grid-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .podcast-guests-modern {
+      background: var(--bg-soft);
+      border-radius: 24px;
+      padding: 1.5rem;
+    }
+
+    .guests-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--azure);
+      margin-bottom: 1rem;
+    }
+
+    .guest-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .guest-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .guest-avatar {
+      width: 56px;
+      height: 56px;
+      background: #cbd5e1;
+      border-radius: 100px;
+      object-fit: cover;
+    }
+
+    .guest-info h4 {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .guest-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .podcast-description-text {
+      color: #334155;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .podcast-description-text p {
+      margin-bottom: 1.2rem;
+    }
+
+    /* Value Props */
+    .value-props-v2 {
+      background-color: #F9F9F9;
+      background-image: url("https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Grid.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding: 72px 0 88px;
+    }
+
+    .value-props-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .value-prop-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 28px;
+      border: 1px solid rgba(21, 45, 73, 0.08);
+      box-shadow: 0 8px 24px rgba(21, 45, 73, 0.05);
+      transition: transform 0.2s;
+    }
+
+    .value-prop-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .value-prop-icon {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 20px;
+    }
+
+    .value-prop-icon img {
+      width: 100%;
+      height: auto;
+    }
+
+    .value-prop-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      color: var(--nile);
+    }
+
+    .value-prop-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 800px) {
+      .value-props-grid {
+        grid-template-columns: 1fr;
+      }
+      .podcast-title-v2 {
+        font-size: 32px;
+      }
+    }
+
+    /* Stats bar */
+    .podcast-stats-band {
+      background: white;
+      padding: 48px 0;
+      text-align: center;
+      border-top: 1px solid #eef2f6;
+      border-bottom: 1px solid #eef2f6;
+    }
+
+    .stats-text {
+      font-size: 15px;
+    font-weight: 600;
+    color: #499ED7;
+    letter-spacing: 0.55px;
+      margin-bottom: 24px;
+    }
+
+    .logo-strip {
+      width: 100%;
+      height: 80px;
+      overflow: hidden;
+    }
+
+    .logo-strip-inner {
+      width: 4000px;
+      height: 120px;
+      background: url(https://www.bidgely.com/wp-content/uploads/2023/05/bidgely-logo-sprite-international.jpg?_t=1685186532) repeat-x 0 0;
+      background-size: auto 80px;
+      animation: scrollLogos 80s infinite linear;
+    }
+
+    @keyframes scrollLogos {
+      100% { transform: translateX(-2000px); }
+    }
+
+    /* Related Resources */
+    .related-resources-v2 {
+      background: var(--bg-soft);
+      padding: 72px 0 88px;
+    }
+
+    .related-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 48px;
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .related-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: all 0.25s;
+    }
+
+    .related-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .related-img {
+      height: 180px;
+      background: #e2e8f0;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .related-content {
+      padding: 20px;
+    }
+
+    .related-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--azure);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .related-card h4 {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .related-desc {
+      font-size: 0.8rem;
+      color: #5c6d82;
+      margin-bottom: 16px;
+    }
+
+    .related-link {
+      font-weight: 600;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--azure);
+      text-decoration: none;
+    }
+
+
+/* Related Resources (pdf-v2 layout) */
+    .related-resources {
+      background: var(--bg-soft);
+      padding: 72px 0 88px;
+    }
+
+    .related-resources-kicker {
+      text-align: center;
+      margin: 0 auto 48px;
+      max-width: 1100px;
+      padding: 0 var(--gutter);
+    }
+
+    .related-resources-kicker.eyebrow {
+      display: block;
+      font-size: 15px;
+      letter-spacing: 0.14em;
+    }
+
+    .related-resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .related-resource-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(21, 45, 73, 0.08);
+      box-shadow: 0 4px 24px rgba(21, 45, 73, 0.07);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .related-resource-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(21, 45, 73, 0.12);
+    }
+
+    .related-resource-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+      position: relative;
+      background: #e8eef4;
+    }
+
+    .related-resource-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .related-resource-image--empty {
+      background: linear-gradient(145deg, #e5edf5 0%, #dce6f0 100%);
+    }
+.pdf-stats p.eyebrow {
+    font-size: 15px;
+}
+    .related-resource-body {
+      padding: 22px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .related-resource-eyebrow {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--azure);
+      line-height: 1.4;
+    }
+
+    .related-resource-title {
+      color: var(--nile);
+     font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    margin: 0;
+    }
+
+    .related-resource-description {
+      color: #5c6d82;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.5;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .related-resource-divider {
+      height: 1px;
+      margin: 10px 0 4px;
+      border: 0;
+      background: rgba(21, 45, 73, 0.12);
+    }
+
+    a.related-resource-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--azure);
+      text-decoration: none;
+      align-self: flex-start;
+      transition: color 0.2s ease;
+    }
+
+    .related-resource-cta:hover {
+      color: var(--azure-soft);
+    }
+
+    .related-resource-cta__icon {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
+      line-height: 0;
+    }
+
+    .related-resource-cta__icon svg {
+      display: block;
+    }
+
+
+    @media (max-width: 800px) {
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+   
+    }
+@media (max-width: 768px) {
+  .podcast-content-layout {
+    display: flex; /* ensure flex is active */
+    flex-direction: column;
+  }
+
+  .related-resources-grid {
+    display: grid; /* ensure grid is active */
+    grid-template-columns: 1fr;
+  }
+}
+    
+  </style>
+</head>
+<body>
+  {% include "template-type-redirect.html" %}
+  {# Header Module #}
+  {% module "site_header" path="../modules/global-header.module" %}
+
+  <main>
+    {% if dynamic_page_hubdb_row %}
+      {% set podcast = dynamic_page_hubdb_row %}
+    {% else %}
+      {% set podcast = null %}
+    {% endif %}
+
+    {% if podcast %}
+      {# Hero Section - v2 with grid background #}
+      {#
+  Podcast Detail Section
+  Left: Video/Audio Player
+  Right: Description text
+#}
+
+<section class="podcast-hero--v2">
+  <div class="container">
+    <div class="podcast-header">
+      <div class="eyebrow">{{ podcast.asset_picklist_tag|default(podcast.asset_type|default('PODCAST'))|upper }}</div>
+      <h1 class="podcast-title-v2">{{ podcast.h1_title|default(podcast.hs_name|default('Podcast Episode')) }}</h1>
+    </div>
+
+    <div class="podcast-content-layout">
+      {# LEFT COLUMN - Video/Audio Player #}
+      <div class="podcast-player-col">
+        <div class="podcast-player-shell--v2">
+          <div class="podcast-player-container" id="podcastPlayerContainer">
+            {% if podcast.wistia_video_embed and podcast.wistia_video_embed != '' %}
+              {% set media_id_raw = podcast.wistia_video_embed|trim|striptags %}
+              {% set media_id = media_id_raw|trim|replace('"', '')|replace("'", '')|replace('=', '')|replace('>', '')|replace('<', '')|replace('%22', '')|trim %}
+              {% if media_id != '' and media_id|length < 30 %}
+                <script src="https://fast.wistia.com/player.js" async></script>
+                <script src="https://fast.wistia.com/embed/{{ media_id }}.js" async type="module"></script>
+                <style>wistia-player[media-id='{{ media_id }}']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/{{ media_id }}/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
+                <wistia-player media-id="{{ media_id }}" aspect="1.7777777777777777"></wistia-player>
+              {% else %}
+                {{ podcast.wistia_video_embed|safe }}
+              {% endif %}
+            {% elif podcast.source_file %}
+              <iframe src="{{ podcast.source_file }}" allow="autoplay; fullscreen" allowfullscreen style="width:100%;height:100%;border:0;"></iframe>
+            {% else %}
+              <div class="podcast-audio-placeholder">
+      
+                <div class="podcast-play-btn-large">
+                  <svg width="28" height="32" viewBox="0 0 24 28" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M4 2.5L20 14L4 25.5V2.5Z" fill="white"/></svg>
+                </div>
+                <span style="font-size:14px; opacity:0.8;">Preview episode</span>
+              </div>
+            {% endif %}
+          </div>
+          <div class="podcast-chrome-bar--v2" aria-hidden="true">
+            <span class="chrome-play-icon"></span>
+            <span class="chrome-track"></span>
+            <span>EPISODE PREVIEW</span>
+          </div>
+        </div>
+      </div>
+
+      {# RIGHT COLUMN - Description #}
+      <div class="podcast-description-col">
+        <div class="podcast-description-text">
+          {% if podcast.long_description %}
+            {{ podcast.long_description|safe }}
+          {% elif podcast.short_description %}
+            {{ podcast.short_description|safe }}
+          {% else %}
+            <p>In this episode, we explore the future of utility AI, grid modernization, and customer-centric innovation. Industry experts share real-world strategies that drive operational resilience and decarbonization goals.</p>
+            <p>Listen to discover actionable insights from leading utilities that are transforming their customer experience and grid planning with advanced analytics.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      
+      {# Value Props #}
+      {% set icons_base = 'https://explore.bidgely.com/hubfs/244460873/resources/icons/' %}
+      {% set has_vp1 = podcast.value_prop_1_headline or podcast.value_prop_1_description %}
+      {% set has_vp2 = podcast.value_prop_2_headline or podcast.value_prop_2_description %}
+      {% set has_vp3 = podcast.value_prop_3_headline or podcast.value_prop_3_description %}
+      {% if has_vp1 or has_vp2 or has_vp3 %}
+      <section class="value-props-v2">
+        <div class="container">
+          <div class="value-props-grid">
+            {% if has_vp1 %}
+            <div class="value-prop-card">
+              <div class="value-prop-icon">
+                {% set icon_src = '' %}
+                {% if podcast.value_prop_card_icon_1 %}
+                  {% if podcast.value_prop_card_icon_1.url %}{% set icon_src = podcast.value_prop_card_icon_1.url %}
+                  {% elif podcast.value_prop_card_icon_1 is string %}{% set icon_src = icons_base ~ podcast.value_prop_card_icon_1 %}{% endif %}
+                {% endif %}
+                {% if icon_src %}<img src="{{ icon_src }}" alt="icon">{% else %}<img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources/icons/improve-grid%20planning.svg" alt="feature">{% endif %}
+              </div>
+              <h3 class="value-prop-title">{{ podcast.value_prop_1_headline|default('Actionable Intelligence') }}</h3>
+              <p class="value-prop-desc">{{ podcast.value_prop_1_description|striptags|default('Leverage AI to drive smarter decisions.') }}</p>
+            </div>
+            {% endif %}
+            {% if has_vp2 %}
+            <div class="value-prop-card">
+              <div class="value-prop-icon">
+                {% set icon_src = '' %}
+                {% if podcast.value_prop_card_icon_2 %}
+                  {% if podcast.value_prop_card_icon_2.url %}{% set icon_src = podcast.value_prop_card_icon_2.url %}
+                  {% elif podcast.value_prop_card_icon_2 is string %}{% set icon_src = icons_base ~ podcast.value_prop_card_icon_2 %}{% endif %}
+                {% endif %}
+                {% if icon_src %}<img src="{{ icon_src }}" alt="icon">{% else %}<img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources/icons/plan-for-ders.svg" alt="feature">{% endif %}
+              </div>
+              <h3 class="value-prop-title">{{ podcast.value_prop_2_headline|default('DER Visibility') }}</h3>
+              <p class="value-prop-desc">{{ podcast.value_prop_2_description|striptags|default('Plan for distributed energy resources with premise-level insight.') }}</p>
+            </div>
+            {% endif %}
+            {% if has_vp3 %}
+            <div class="value-prop-card">
+              <div class="value-prop-icon">
+                {% set icon_src = '' %}
+                {% if podcast.value_prop_card_icon_3 %}
+                  {% if podcast.value_prop_card_icon_3.url %}{% set icon_src = podcast.value_prop_card_icon_3.url %}
+                  {% elif podcast.value_prop_card_icon_3 is string %}{% set icon_src = icons_base ~ podcast.value_prop_card_icon_3 %}{% endif %}
+                {% endif %}
+                {% if icon_src %}<img src="{{ icon_src }}" alt="icon">{% else %}<img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources/icons/deliver-demand.svg" alt="feature">{% endif %}
+              </div>
+              <h3 class="value-prop-title">{{ podcast.value_prop_3_headline|default('Demand Flexibility') }}</h3>
+              <p class="value-prop-desc">{{ podcast.value_prop_3_description|striptags|default('Deliver demand programs that actually flex during peaks.') }}</p>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+      {# Stats bar #}
+      <section class="podcast-stats-band">
+        
+          <div class="stats-text"> Bidgely's AI fuels insights for 45+ utilities and their 38 million consumers. </div>
+          <div class="logo-strip"><div class="logo-strip-inner"></div></div>
+ 
+      </section>
+
+    {% else %}
+      {# Fallback when no podcast found #}
+      <section class="podcast-hero--v2">
+        <div class="container podcast-hero__intro">
+          <div class="eyebrow">PODCAST</div>
+          <h1 class="podcast-title-v2">Energy Transformed: AI & Utility Innovation</h1>
+          <p class="podcast-hero-lede">Insights from industry leaders on grid modernization, customer experience, and the future of energy.</p>
+        </div>
+        <div class="podcast-player-band--v2">
+          <div class="container">
+            <div class="podcast-player-shell--v2">
+              <div class="podcast-player-container">
+                <div class="podcast-audio-placeholder">
+                  
+                  <div class="podcast-play-btn-large"><svg width="28" height="32" viewBox="0 0 24 28" fill="white"><path d="M4 2.5L20 14L4 25.5V2.5Z" fill="white"/></svg></div>
+                </div>
+              </div>
+              <div class="podcast-chrome-bar--v2"><span class="chrome-play-icon"></span><span class="chrome-track"></span><span>PREVIEW</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="value-props-v2">
+        <div class="container">
+          <div class="value-props-grid">
+            <div class="value-prop-card"><div class="value-prop-icon"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources/icons/improve-grid%20planning.svg"></div><h3 class="value-prop-title">Grid Intelligence</h3><p class="value-prop-desc">Behind-the-meter visibility for modern planning.</p></div>
+            <div class="value-prop-card"><div class="value-prop-icon"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources/icons/plan-for-ders.svg"></div><h3 class="value-prop-title">DER Optimization</h3><p class="value-prop-desc">Plan for solar, storage, and flexible loads.</p></div>
+            <div class="value-prop-card"><div class="value-prop-icon"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources/icons/deliver-demand.svg"></div><h3 class="value-prop-title">Demand Response</h3><p class="value-prop-desc">Activate flexible load during peak events.</p></div>
+          </div>
+        </div>
+      </section>
+      <section class="podcast-stats-band">
+        <div class="container">
+          <div class="stats-text">Bidgely's AI fuels insights for 45+ utilities and 38 million consumers.</div>
+          <div class="logo-strip"><div class="logo-strip-inner"></div></div>
+        </div>
+      </section>
+    {% endif %}
+
+    {# Related Resources (same HubDB filter as video detail / pdf-v2: solution_tags comma-separated; prefer rows sharing ANY tag with current asset; else same asset type; exclude current row. Sorted list preserves newest-first within each bucket. If nothing matches, show preview placeholders. #}
+    {% set related_all = hubdb_table_rows('assets', 'limit=10000')|sort('date', 'desc') %}
+    {% set current_obj = dynamic_page_hubdb_row %}
+
+    {% set current_solution_tags_raw = current_obj.solution_tags if current_obj else '' %}
+    {% set current_asset_type = current_obj.asset_picklist_tag|default(current_obj.asset_type|default(''))|lower|trim if current_obj else '' %}
+
+    {% set current_tag_ns = namespace(values=[]) %}
+    {% if current_solution_tags_raw %}
+      {% set current_tags_str = (current_solution_tags_raw ~ '')|trim %}
+      {% if current_tags_str %}
+        {% set parts = current_tags_str.split(',') %}
+        {% for part in parts %}
+          {% set tag_val = part|trim %}
+          {% if tag_val %}
+            {% do current_tag_ns.values.append(tag_val) %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endif %}
+    {% set current_solution_tag_values = current_tag_ns.values %}
+
+    {% set related_ns = namespace(priority_matches=[], fallback_matches=[]) %}
+
+    {% for resource in related_all %}
+      {% set is_current = false %}
+      {% if current_obj %}
+        {% set is_current = (resource.hs_id and current_obj.hs_id and resource.hs_id == current_obj.hs_id) or (resource.slug and current_obj.slug and resource.slug == current_obj.slug) or (resource.hs_path and current_obj.hs_path and resource.hs_path == current_obj.hs_path) %}
+      {% endif %}
+
+      {% if not is_current %}
+        {% set res_solution_tags = resource.solution_tags %}
+        {% set res_asset_type = resource.asset_picklist_tag|default(resource.asset_type|default(''))|lower|trim %}
+
+        {% set res_tag_ns = namespace(values=[]) %}
+        {% if res_solution_tags %}
+          {% set res_tags_str = (res_solution_tags ~ '')|trim %}
+          {% if res_tags_str %}
+            {% set r_parts = res_tags_str.split(',') %}
+            {% for part in r_parts %}
+              {% set tag_val = part|trim %}
+              {% if tag_val %}
+                {% do res_tag_ns.values.append(tag_val) %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endif %}
+        {% set res_solution_tag_values = res_tag_ns.values %}
+
+        {% set match_ns = namespace(flags=[]) %}
+        {% if current_solution_tag_values|length > 0 and res_solution_tag_values|length > 0 %}
+          {% for c_val in current_solution_tag_values %}
+            {% if c_val in res_solution_tag_values %}
+              {% do match_ns.flags.append(1) %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        {% if match_ns.flags|length > 0 %}
+          {% do related_ns.priority_matches.append(resource) %}
+        {% elif current_asset_type and res_asset_type == current_asset_type %}
+          {% do related_ns.fallback_matches.append(resource) %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if related_ns.priority_matches|length > 0 %}
+      {% set final_related = related_ns.priority_matches %}
+    {% else %}
+      {% set final_related = related_ns.fallback_matches %}
+    {% endif %}
+
+    {% set related_preview_placeholder = final_related|length == 0 %}
+
+    <section class="related-resources">
+      <div class="container">
+        <p class="related-resources-kicker eyebrow">Related Resources</p>
+        <div class="related-resources-grid">
+          {% if not related_preview_placeholder %}
+            {% set related_count = 0 %}
+            {% for resource in final_related %}
+              {% if related_count >= 3 %}
+                {% break %}
+              {% endif %}
+              {% set related_count = related_count + 1 %}
+          <article class="related-resource-card">
+            {% set image_url = '' %}
+            {% set resource_title = resource.h1_title|default(resource.hs_name|default(resource.name|default(''))) %}
+            {# Priority 1: HubDB file objects or string filenames #}
+            {% if resource.feature_image %}
+              {% if resource.feature_image.url %}
+                {% set image_url = resource.feature_image.url %}
+              {% elif resource.feature_image is string %}
+                {% set raw_img = resource.feature_image %}
+                {% if 'http' in raw_img %}
+                  {% set image_url = raw_img %}
+                {% else %}
+                  {% set file_name = raw_img %}
+                  {% set has_ext = '.jpg' in file_name or '.jpeg' in file_name or '.png' in file_name or '.gif' in file_name or '.webp' in file_name %}
+                  {% if not has_ext %}
+                    {% set file_name = file_name ~ '.jpeg' %}
+                  {% endif %}
+                  {% if '/hubfs/' in file_name %}
+                    {% set image_url = 'https://explore.bidgely.com' ~ file_name %}
+                  {% else %}
+                    {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ file_name %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+            {# Priority 2: Check other image fields if feature_image is empty #}
+            {% if not image_url and resource.image %}
+              {% if resource.image.url %}
+                {% set image_url = resource.image.url %}
+              {% elif resource.image is string %}
+                {% set raw_img = resource.image %}
+                {% if 'http' in raw_img %}
+                  {% set image_url = raw_img %}
+                {% else %}
+                  {% set file_name = raw_img %}
+                  {% set has_ext = '.jpg' in file_name or '.jpeg' in file_name or '.png' in file_name or '.gif' in file_name or '.webp' in file_name %}
+                  {% if not has_ext %}
+                    {% set file_name = file_name ~ '.jpeg' %}
+                  {% endif %}
+                  {% if '/hubfs/' in file_name %}
+                    {% set image_url = 'https://explore.bidgely.com' ~ file_name %}
+                  {% else %}
+                    {% set image_url = 'https://explore.bidgely.com/hubfs/244460873/resources/' ~ file_name %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+            {% if image_url %}
+            <div class="related-resource-image">
+              <img src="{{ image_url }}" alt="{{ resource_title }}" loading="lazy">
+            </div>
+            {% else %}
+            <div class="related-resource-image">
+              <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources/resource-preview.png" alt="{{ resource_title }}" loading="lazy">
+            </div>
+            {% endif %}
+            {% set has_customer_logo = resource.logo_svgs %}
+            {% if has_customer_logo %}
+              {% set related_badge = 'CASE STUDY' %}
+            {% else %}
+              {% set related_badge = resource.asset_picklist_tag|default(resource.asset_type|default('RESOURCE'))|upper %}
+            {% endif %}
+            <div class="related-resource-body">
+            <p class="related-resource-eyebrow">{{ related_badge }}</p>
+            <h3 class="related-resource-title">{{ resource_title }}</h3>
+            <p class="related-resource-description">
+              {% if resource.long_description %}
+              {{ resource.long_description|striptags|truncate(120) }}
+              {% elif resource.short_description %}
+              {{ resource.short_description|striptags|truncate(120) }}
+              {% endif %}
+            </p>
+            <hr class="related-resource-divider">
+                        {# Link Construction #}
+              {% set resource_slug = resource.slug|default('') %}
+              {% if resource.hs_path %}{% set resource_slug = resource.hs_path %}{% endif %}
+              
+              {% set resource_link = '#' %}
+              {% set resource_page_tpl = resource.page_template|default('')|lower|trim %}
+              {% set resource_type = resource.asset_picklist_tag|default(resource.asset_type|default(''))|lower %}
+              
+              {% set is_podcast = resource_type == 'podcast' %}
+              {% set is_webinar = resource_type == 'webinar' %}
+              {% set is_video = resource_type == 'video' %}
+              {% set is_playbook = resource_type in ['playbook', 'white paper', 'case study', 'solution brief', 'industry analysis', 'pdf', 'whitepaper', 'white-paper', 'case-study', 'solution-brief', 'brief', 'industry-analysis'] %}
+              
+              {% if resource_slug %}
+                  {% if resource_page_tpl == 'live webinar' %}
+                      {% set resource_link = '/webinar-v1/' ~ resource_slug %}
+                  {% elif resource_page_tpl == 'webinar' %}
+                      {% set resource_link = '/webinar/' ~ resource_slug %}
+                  {% elif resource_page_tpl == 'podcast' %}
+                      {% set resource_link = '/podcast/' ~ resource_slug %}
+                  {% elif resource_page_tpl == 'video' %}
+                      {% set resource_link = '/video/' ~ resource_slug %}
+                  {% elif resource_page_tpl in ['pdf', 'playbook', 'white paper', 'case study', 'solution brief', 'whitepaper'] %}
+                      {% set resource_link = '/pdf/' ~ resource_slug %}
+                  {% elif is_podcast %}
+                      {% set resource_link = '/podcast/' ~ resource_slug %}
+                  {% elif is_webinar %}
+                      {% set resource_link = '/webinar/' ~ resource_slug %}
+                  {% elif is_video %}
+                      {% set resource_link = '/video/' ~ resource_slug %}
+              {% elif is_playbook %}
+                      {% set resource_link = '/pdf/' ~ resource_slug %}
+                  {% else %}
+                      {% set resource_link = '/resource/' ~ resource_slug %}
+                  {% endif %}
+              {% elif resource.url and 'publish' not in resource.url|lower and 'hs-sites' not in resource.url|lower %}
+                  {% set resource_link = resource.url %}
+              {% endif %}
+            
+            {# Determine CTA label based on resource type/page template #}
+            {% set resource_asset_label = resource.asset|default(resource.asset_picklist_tag|default(resource.asset_type|default(''))) %}
+            {% set resource_asset_type = resource_asset_label|lower %}
+            {% set type_string = resource_type if resource_type else resource_asset_type %}
+            {% set is_watch = false %}
+            {% if 'video' in type_string or 'podcast' in type_string or 'webinar' in type_string %}
+              {% set is_watch = true %}
+            {% elif 'video' in resource_page_tpl or 'podcast' in resource_page_tpl or 'webinar' in resource_page_tpl %}
+              {% set is_watch = true %}
+            {% elif resource.wistia_video_embed %}
+              {% set is_watch = true %}
+            {% endif %}
+            
+            {% set is_download = false %}
+            {% if 'playbook' in type_string or 'pdf' in type_string or 'white paper' in type_string or 'whitepaper' in type_string
+                  or 'case study' in type_string or 'case-study' in type_string
+                  or 'solution brief' in type_string or 'solution-brief' in type_string
+                  or 'brief' in type_string %}
+              {% set is_download = true %}
+            {% elif 'pdf' in resource_page_tpl or 'playbook' in resource_page_tpl %}
+              {% set is_download = true %}
+            {% endif %}
+            {% set cta_label = 'READ NOW' %}
+            {% if is_watch %}
+              {% set cta_label = 'WATCH NOW' %}
+            {% elif is_download %}
+              {% set cta_label = 'DOWNLOAD NOW' %}
+            {% endif %}
+            <a href="{{ resource_link }}" class="related-resource-cta">
+              <span class="related-resource-cta__label">{{ cta_label }}</span>
+              <span class="related-resource-cta__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.66797 11.3327L11.3346 4.66602" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.66797 4.66602H11.3346V11.3327" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+            </div>
+          </article>
+            {% endfor %}
+          {% else %}
+          {# Design Manager / empty HubDB: sample cards match layout spec #}
+          <article class="related-resource-card">
+            <div class="related-resource-image">
+              <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources/resource-preview.png" alt="" loading="lazy">
+            </div>
+            <div class="related-resource-body">
+              <p class="related-resource-eyebrow">DEMO</p>
+              <h3 class="related-resource-title">Personalized Customer Experience</h3>
+              <p class="related-resource-description">Preview placeholder — HubDB assets replace these cards when data is available.</p>
+              <hr class="related-resource-divider">
+              <a href="#" class="related-resource-cta"><span class="related-resource-cta__label">DOWNLOAD NOW</span><span class="related-resource-cta__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.66797 11.3327L11.3346 4.66602" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.66797 4.66602H11.3346V11.3327" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            </div>
+          </article>
+          <article class="related-resource-card">
+            <div class="related-resource-image">
+              <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources/resource-preview.png" alt="" loading="lazy">
+            </div>
+            <div class="related-resource-body">
+              <p class="related-resource-eyebrow">DEMO</p>
+              <h3 class="related-resource-title">Integrated Grid Planning for Future-Ready Systems</h3>
+              <p class="related-resource-description">Preview placeholder — three newest assets list here on live pages.</p>
+              <hr class="related-resource-divider">
+              <a href="#" class="related-resource-cta"><span class="related-resource-cta__label">WATCH NOW</span><span class="related-resource-cta__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.66797 11.3327L11.3346 4.66602" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.66797 4.66602H11.3346V11.3327" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            </div>
+          </article>
+          <article class="related-resource-card">
+            <div class="related-resource-image">
+              <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources/resource-preview.png" alt="" loading="lazy">
+            </div>
+            <div class="related-resource-body">
+              <p class="related-resource-eyebrow">DEMO</p>
+              <h3 class="related-resource-title">Non-Wires Alternatives (NWA)</h3>
+              <p class="related-resource-description">Preview placeholder — current video row is excluded from related items.</p>
+              <hr class="related-resource-divider">
+              <a href="#" class="related-resource-cta"><span class="related-resource-cta__label">READ NOW</span><span class="related-resource-cta__icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.66797 11.3327L11.3346 4.66602" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.66797 4.66602H11.3346V11.3327" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            </div>
+          </article>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% module "site_footer" path="../modules/call-to-action.module" %}
+  
+  </main>
+
+  {{ standard_footer_includes }}
+  {% module "site_footer" path="../modules/global-footer.module" %}
+
+  <script>
+    (function() {
+      if (window.Wistia) return;
+      var wistiaScript = document.createElement('script');
+      wistiaScript.src = "https://fast.wistia.com/player.js";
+      wistiaScript.async = true;
+      document.head.appendChild(wistiaScript);
+    })();
+  </script>
+</body>
+</html>

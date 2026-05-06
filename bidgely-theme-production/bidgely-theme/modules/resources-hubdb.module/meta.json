@@ -1,0 +1,7 @@
+{
+  "global" : false,
+  "content_types" : [ "WEB_INTERACTIVE" ],
+  "host_template_types" : [ "PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "module_id" : 341868155614,
+  "is_available_for_new_content" : true
+}

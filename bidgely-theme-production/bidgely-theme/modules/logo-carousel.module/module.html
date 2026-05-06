@@ -1,0 +1,185 @@
+<style>
+.bly-lc {
+  background: #F2F8FC;
+  padding: 48px 0 32px;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+.bly-lc__heading {
+  text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #499ED7;
+    margin: 0 0 18px;
+    line-height: 17.6px;
+    letter-spacing: 0.55px;
+}
+.bly-lc__heading em {
+  font-style: normal;
+  color: #499ed7;
+}
+
+/* ── Marquee track ── */
+.bly-lc__overflow {
+  overflow: hidden;
+  position: relative;
+    margin: 0 auto;
+}
+
+
+.bly-lc__track {
+  display: flex;
+  width: max-content;
+  animation: bly-marquee 35s linear infinite;
+}
+.bly-lc__track:hover { animation-play-state: paused; }
+@keyframes bly-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ── Logo card ── */
+.bly-lc__item {
+  position: relative;
+  height: 72px;
+  width: 176px;
+  flex-shrink: 0;
+  margin: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+.bly-lc__item img {
+  max-width: 150px;
+  max-height: 44px;
+  object-fit: contain;
+  display: block;
+  padding: 0 12px;
+  transition: transform .25s ease;
+  margin-bottom: 8px;
+}
+.bly-lc__item:hover img {
+  transform: translateY(-6px);
+}
+
+/* ── Bottom case-study label (slides up on hover) ── */
+.bly-lc__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform .25s ease;
+  padding-bottom: 6px;
+}
+.bly-lc__item:hover .bly-lc__overlay {
+  transform: translateY(0);
+}
+.bly-lc__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #499ed7;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  white-space: nowrap;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+</style>
+
+{% set ab = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+{% set speed = module.speed | default(35) %}
+{% set has_logos = module.logos and module.logos|length > 0 and module.logos[0].image.src %}
+
+{% set fallback = [
+  {"src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/pg-e-logo-w-text-color.png"},
+  {"src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/g6.png"},
+  {"src":  "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Oklahoma_Gas_&_Electric_Logo%201.png"},
+  {"src":  "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Layer_1-2.png"},
+  {"src":  "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/avista-logo-color.png"},
+  {"src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/nv-energy-logo-color.png"}
+ 
+] %}
+
+<section class="bly-lc">
+
+  <p class="bly-lc__heading">
+    {% if module.label_text %}
+      {{ module.label_text }}
+    {% else %}
+      TRUSTED BY LEADING UTILITIES ON 4 CONTINENTS
+    {% endif %}
+  </p>
+
+  <div class="bly-lc__overflow" aria-hidden="true">
+    <div class="bly-lc__track" style="animation-duration:{{ speed }}s;">
+
+      {% if has_logos %}
+        {# Pass 1 #}
+        {% for logo in module.logos %}{% if logo.image.src %}
+          <div class="bly-lc__item">
+            <img src="{{ logo.image.src }}" alt="{{ logo.image.alt | default('') }}" loading="lazy">
+            <div class="bly-lc__overlay">
+              <a href="{{ logo.cta_url.href | default('#') }}"
+                 {% if logo.cta_url.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+                 class="bly-lc__cta">
+                {{ logo.cta_label | default("Case study") }}
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </div>
+          </div>
+        {% endif %}{% endfor %}
+        {# Pass 2 – duplicate for seamless loop #}
+        {% for logo in module.logos %}{% if logo.image.src %}
+          <div class="bly-lc__item">
+            <img src="{{ logo.image.src }}" alt="{{ logo.image.alt | default('') }}" loading="lazy">
+            <div class="bly-lc__overlay">
+              <a href="{{ logo.cta_url.href | default('#') }}"
+                 {% if logo.cta_url.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+                 class="bly-lc__cta">
+                {{ logo.cta_label | default("Case study") }}
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </div>
+          </div>
+        {% endif %}{% endfor %}
+
+      {% else %}
+        {# Fallback – Pass 1 #}
+        {% for logo in fallback %}
+          <div class="bly-lc__item">
+            <img src="{{ logo.src }}" alt="{{ logo.alt }}" loading="lazy">
+            <div class="bly-lc__overlay">
+              <a href="/resources/?assetType=Case+Study" class="bly-lc__cta">
+                Case study
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+        {# Fallback – Pass 2 #}
+        {% for logo in fallback %}
+          <div class="bly-lc__item">
+            <img src="{{ logo.src }}" alt="{{ logo.alt }}" loading="lazy">
+            <div class="bly-lc__overlay">
+              <a href="#" class="bly-lc__cta">
+                Case study
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+    </div>
+  </div>
+
+</section>

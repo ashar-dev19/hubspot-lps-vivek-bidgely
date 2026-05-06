@@ -1,0 +1,88 @@
+{#
+  Hero Center Text — centered hero using main.css .hero, .tup-hero, .btn--*.
+
+  {% module "hero_center" path="../modules/hero-center-text.module" %}
+#}
+
+{% set aria = module.section_aria_label|default('Hero')|trim %}
+{% set style = module.button_style|default('navy') %}
+{% if style == 'white' %}
+  {% set btn_class = 'btn btn--white' %}
+{% elif style == 'blue' %}
+  {% set btn_class = 'btn btn--blue' %}
+{% elif style == 'gradient' %}
+  {% set btn_class = 'btn btn--gradient' %}
+{% else %}
+  {% set btn_class = 'btn btn--navy' %}
+{% endif %}
+{% set cta_label = module.cta_text|default('')|trim %}
+{% set href = module.cta_link.url.href|default('')|trim %}
+{% set below_src = module.below_cta_image.src|default('')|trim %}
+
+<section
+  class="hero hero-center-text-module tup-hero{% if below_src %} hero-center-text-module--below-img{% endif %}"
+  {% if aria %}aria-label="{{ aria|escape }}"{% endif %}
+>
+  <div class="container">
+    {% set eyebrow_trim = module.eyebrow|default('')|trim %}
+    {% if eyebrow_trim %}
+      <span class="eyebrow">{{ eyebrow_trim|escape }}</span>
+    {% endif %}
+
+    <h1>
+      {% set accent_t = module.headline_accent|default('')|trim %}
+      {% if accent_t %}
+        {% set before_raw = module.headline|default('')|trim %}
+        {% set after_raw = module.headline_after_accent|default('')|trim %}
+        {% for line in before_raw|split('\n') %}
+          {% if not loop.first %}<br>{% endif %}{{ line|escape }}
+        {% endfor %}
+        {% if before_raw %} {% endif %}<span class="accent">{{ accent_t|escape }}</span>
+        {% if after_raw %}
+          {% for line in after_raw|split('\n') %}
+            {% if not loop.first %}<br>{% endif %}{{ line|escape }}
+          {% endfor %}
+        {% endif %}
+      {% else %}
+        {% for line in module.headline|default('')|trim|split('\n') %}
+          {% if not loop.first %}<br>{% endif %}{{ line|trim|escape }}
+        {% endfor %}
+      {% endif %}
+    </h1>
+
+    {% set sub_trim = module.subcopy|default('')|striptags|trim %}
+    {% if sub_trim %}
+      <div class="tup-hero__sub hero__copy hero-center-text-module__sub">
+        {{ module.subcopy }}
+      </div>
+    {% endif %}
+
+    {% if cta_label %}
+      <a
+        class="{{ btn_class }}"
+        href="{% if href %}{{ href|escape }}{% else %}#{% endif %}"
+        {% if module.cta_link.open_in_new_tab %}
+          target="_blank"
+          {% if module.cta_link.no_follow %}rel="noopener nofollow"{% else %}rel="noopener"{% endif %}
+        {% elif module.cta_link.no_follow %}
+          rel="nofollow"
+        {% endif %}
+      >
+        {{ cta_label|escape }}
+      </a>
+    {% endif %}
+
+    {% if below_src %}
+      <div class="hero-center-text-module__below-cta">
+        <img
+          class="hero-center-text-module__below-cta-img"
+          src="{{ below_src|escape }}"
+          alt="{{ module.below_cta_image.alt|default('')|escape }}"
+          {% set bload = module.below_cta_image.loading|default('lazy') %}
+          {% if bload and bload != 'disabled' %}loading="{{ bload|escape }}"{% endif %}
+          decoding="async"
+        >
+      </div>
+    {% endif %}
+  </div>
+</section>

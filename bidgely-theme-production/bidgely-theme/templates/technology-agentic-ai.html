@@ -1,0 +1,213 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Bidgely Technology — Agentic AI
+  screenshotPath: ../images/template-previews/bidgely-technology-agentic-ai.png
+-->
+
+{% set ab = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+<style>
+section.section.section--blue.tup-platform.how-work {
+    background: #F2F8FC;
+}
+section.section.section--blue.tup-platform.how-work h2 {
+    color: var(--nile);
+}
+section.section.section--blue.tup-platform.how-work img {
+    max-width: 850px;
+    margin: 0 auto;
+   margin-top: 30px;
+}
+section.section.section--blue.tup-platform.how-work .tup-platform__head {
+    margin: 0px !important;
+}
+.section--pale .tup-cloud__card {
+      background: #fff;
+    }
+</style>
+</head>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+  {# ===== Page body: single DnD area (header/footer stay global) ===== #}
+  {% dnd_area "page_content" label="Page content" %}
+
+    {# ----- 1. Hero ----- #}
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/hero-center-text.module" label="Hero" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ----- 2. Built for your environment (3 cards) ----- #}
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text" label="Built for your environment" %}
+            {% module_attribute "html" %}
+<section class="section section--white tup-cloud-section">
+  <div class="container">
+    <div class="tup-cloud__head">
+      <h2 class="h2">Agents that know what a meter means</h2>
+    </div>
+    <div class="tup-cloud__cards">
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/agentic-ai-icon-1.svg" alt="">
+        <h3>Built on utility intelligence, not billing records</h3>
+        <p>Every agent draws on the same pre-trained utility models that power the UtilityAI Platform. Appliance-level data, behavioral profiles, DER signals. Not CIS records. Not general-purpose AI.</p>
+      </div>
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/agentic-ai-icon-2.svg" alt="">
+        <h3>Ready to deploy, not ready to configure</h3>
+        <p>Prebuilt agents ship ready for production, not as templates that require months of configuration. Your teams can be running on day one of deployment.</p>
+      </div>
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/agentic-ai-icon-3.svg" alt="">
+        <h3>Unlimited custom agents</h3>
+        <p>When your workflows don&rsquo;t fit a prebuilt agent, build your own. Every custom agent inherits the same utility intelligence, the same data environment, and the same governance posture as the rest of the platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ----- 3. How it works ----- #}
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text" label="How it works" %}
+            {% module_attribute "html" %}
+<section class="section section--blue tup-platform how-work">
+  <div class="container">
+    <div class="tup-platform__head">
+      <p class="eyebrow">HOW IT WORKS</p>
+      <h2>From the meter to every workflow that matters</h2>
+      <p>Every agent runs on the same pre-trained models and the same deployment your CIO already approved.</p>
+      <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/agentic-ai-diagrm-1%20(1).svg" alt="">
+    </div>
+  </div>
+</section>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ----- 4. Agents slider (Technology Slider module) ----- #}
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="../modules/technology-slider.module" label="Technology Slider" %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ----- 5. One deployment — pale 3 cards ----- #}
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text" label="One deployment — 3 cards" %}
+            {% module_attribute "html" %}
+<section class="section section--pale tup-cloud-section">
+  <div class="container">
+    <div class="tup-cloud__head">
+      <h2 class="h2">One deployment. Every agent. Every team.</h2>
+    </div>
+    <div class="tup-cloud__cards">
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/agentic-ai-icon-7.svg" alt="">
+        <h3>Runs inside your environment</h3>
+        <p>Deploys on AWS, Azure, or GCP. Your data never leaves your infrastructure. Your security and governance policies apply to every agent, every workflow, and every output.</p>
+      </div>
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/agentic-ai-icon-8.svg" alt="">
+        <h3>Integrates with the systems your teams already use</h3>
+        <p>Prebuilt integrations with CRM, DERMS, ADMS, and BI platforms mean agents surface where your teams already work. No new interface to learn. No separate tool to adopt.</p>
+      </div>
+      <div class="tup-cloud__card">
+        <img src="{{ ab }}/agentic-ai-icon-9.svg" alt="">
+        <h3>One approval covers every use case</h3>
+        <p>Your CIO approves once. Every team gets access. Every new agent inherits the same data governance and security posture as the rest of the UtilityAI Platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ----- 6. Bottom CTA ----- #}
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/call-to-action.module"
+            label="Bottom CTA"
+            section_aria_label="Call to action"
+            section_background="azure"
+            additional_section_classes="tup-cta-strip"
+            section_heading="Ready to see it in your environment?"
+            subcopy=""
+            cta_text="Talk to an Expert"
+            button_style="white"
+            cta_link={
+              "url": {"type": "EXTERNAL", "href": "#", "href_with_scheme": "#"},
+              "open_in_new_tab": false,
+              "no_follow": false,
+              "sponsored": false,
+              "user_generated_content": false
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {# ----- 7. Resources (HubDB) ----- #}
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/resources-hubdb.module"
+            label="Resources"
+            ce_resources_eyebrow="Resources"
+            filter_value="CX"
+            hubdb_limit=4
+            hubdb_row_ids="313538825931,313538825932,313538825933,313538825934"
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+<script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
+{{ standard_footer_includes }}
+</body>
+</html>
