@@ -21,7 +21,6 @@
     background: url({{ asset_base }}/grid-4.svg);
   }
   .card__title { margin: 0; }
-
   .trust-strip {
     display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
     gap: 40px 56px; padding: 24px 32px; margin: 0 0 36px;
@@ -35,8 +34,9 @@
   .trust-strip__logo { max-height: 32px; width: auto; object-fit: contain; opacity: .72; transition: opacity .2s ease; }
   .trust-strip__logo:hover { opacity: 1; }
 
+  /* Case study card — featured on top, secondary proof on bottom */
   .pr-case {
-    display: grid; grid-template-columns: 1fr 1fr;
+    display: flex; flex-direction: column;
     border-radius: var(--radius-xl); overflow: hidden;
     border: 1px solid var(--nile-7); box-shadow: var(--shadow-soft);
     background: #fff;
@@ -74,7 +74,7 @@
   }
   .pr-case__featured-metrics {
     list-style: none; padding: 0; margin: 0;
-    display: grid; gap: 10px;
+    display: grid; gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .pr-case__featured-metrics li {
     position: relative; padding-left: 26px;
@@ -95,26 +95,42 @@
   .pr-case__featured-cta svg { transition: transform .2s ease; }
   .pr-case__featured-cta:hover svg { transform: translate(2px,-2px); }
 
+  /* Bottom proofs row */
   .pr-case__proofs {
-    padding: 44px; display: flex; flex-direction: column;
-    justify-content: center; min-width: 0;
-  }
-  .pr-case__proof { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-  .pr-case__proof + .pr-case__proof {
-    margin-top: 28px; padding-top: 28px;
+    padding: 24px 44px;
+    background: var(--bg-soft);
     border-top: 1px solid var(--nile-7);
+  }
+  .pr-case__proof {
+    display: flex; align-items: center; gap: 28px; min-width: 0;
+  }
+  .pr-case__proof + .pr-case__proof {
+    margin-top: 20px; padding-top: 20px;
+    border-top: 1px solid var(--nile-7);
+  }
+  .pr-case__proof-logo {
+    flex: 0 0 auto;
+    min-height: 40px; display: flex; align-items: center;
+  }
+  .pr-case__proof-logo img {
+    max-height: 40px; width: auto; max-width: 160px;
+    object-fit: contain; display: block;
+  }
+  .pr-case__proof-body {
+    flex: 1 1 auto; min-width: 0;
+    display: flex; flex-direction: column; gap: 4px;
   }
   .pr-case__proof-label {
     font-size: 10px; letter-spacing: .8px; color: var(--nile-52);
     text-transform: uppercase; font-weight: 600;
   }
-  .pr-case__proof-logo { min-height: 40px; display: flex; align-items: center; }
-  .pr-case__proof-logo img { max-height: 40px; width: auto; max-width: 200px; object-fit: contain; display: block; }
   .pr-case__proof-copy { font-size: 14px; line-height: 1.6; color: var(--nile-80); margin: 0; }
 
-  @media (max-width: 1100px) {
-    .pr-case { grid-template-columns: 1fr; }
-    .pr-case__featured, .pr-case__proofs { padding: 32px; }
+  @media (max-width: 720px) {
+    .pr-case__featured { padding: 32px; }
+    .pr-case__featured-metrics { grid-template-columns: 1fr; }
+    .pr-case__proofs { padding: 20px 24px; }
+    .pr-case__proof { flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 
   .footnotes {
@@ -122,9 +138,8 @@
     background: var(--bg-soft); border-radius: var(--radius);
     font-size: 11px; line-height: 1.55; color: var(--nile-52);
   }
-  .footnotes strong { color: var(--nile); font-weight: 700; }
-
-  </style>
+  .footnotes strong { color: var(--nile), 700; font-weight: 700; }
+</style>
 </head>
 <body>
 
@@ -143,7 +158,7 @@
                   <div>
                     <p class="eyebrow">IMPROVE PEAK LOAD SHAPING &amp; SHIFTING</p>
                     <h1>Stop Hoping Customers Will Shift. Start Knowing Which Ones Can. And Proving They Did.</h1>
-                    <a class="btn btn--navy" href="#">Talk to an Expert</a>
+                    <a class="btn btn--navy" href="https://www.bidgely.com/contact-us-form/">Talk to an Expert</a>
                   </div>
                   <div class="hero__copy body-sm">
                     TOU and DR programs run on assumptions: generic outreach, stale baselines, and hope. The customers who can actually reshape your load curve are already in your territory. Bidgely finds them, coaches them to shift, and proves they did.
@@ -441,7 +456,7 @@
 
                   <div class="pr-case__proofs">
                     <div class="pr-case__proof">
-                      <div class="pr-case__proof-label">SECONDARY PROOF POINT</div>
+                      <div class="pr-case__proof-label">CASE STUDY</div>
                       <div class="pr-case__proof-logo">
                         <img src="{{ asset_base }}/desc-logo-color.svg" alt="DESC" loading="lazy" decoding="async">
                       </div>

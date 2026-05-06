@@ -138,6 +138,7 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+      height: 100%;
     }
     .bly-dd-featured__icon { width: 46px; height: 46px; object-fit: contain; }
     .bly-dd-featured__label { font-size: 14px; font-weight: 700; color: #152d49; line-height: 1.3; }
@@ -259,7 +260,7 @@
                     <a href="https://245139178.hs-sites-na2.com/bidgely-solution-dsm" class="bly-dd-grid-item"><img src="{{ ab }}/explain-bill.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">DSM Performance</div><div class="bly-dd-grid-item__desc">Improve efficiency outcomes with targeted programs and personalized HERs.</div></div></a>
                     <a href="https://245139178.hs-sites-na2.com/customer-engagement-solutions" class="bly-dd-grid-item"><img src="{{ ab }}/customer-experience-v1.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Customer Engagement</div><div class="bly-dd-grid-item__desc">Drive proactive engagement with alerts, bill insights, and self-service tools.</div></div></a>
                     <a href="https://245139178.hs-sites-na2.com/load-shaping" class="bly-dd-grid-item"><img src="{{ ab }}/target.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Load Flexibility</div><div class="bly-dd-grid-item__desc">Optimize TOU, DR, and load shifting with precision targeting.</div></div></a>
-                    <a href="https://245139178.hs-sites-na2.com/electrification" class="bly-dd-grid-item"><img src="{{ ab }}/every-touchpoint.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Electrification</div><div class="bly-dd-grid-item__desc">Target and scale EV and electrification programs end to end.</div></div></a>
+                    <a href="https://245139178.hs-sites-na2.com/electrification-1" class="bly-dd-grid-item"><img src="{{ ab }}/every-touchpoint.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Electrification</div><div class="bly-dd-grid-item__desc">Target and scale EV and electrification programs end to end.</div></div></a>
                     <a href="https://245139178.hs-sites-na2.com/der-grid-planning" class="bly-dd-grid-item"><img src="{{ ab }}/ders-icon-v1.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Grid Resiliency</div><div class="bly-dd-grid-item__desc">Plan and optimize grid capacity with DER-aware intelligence.</div></div></a>
                     <a href="https://245139178.hs-sites-na2.com/affordability" class="bly-dd-grid-item"><img src="{{ ab }}/daas-v2.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Affordability Programs</div><div class="bly-dd-grid-item__desc">Identify and enroll income-qualified customers with precision.</div></div></a>
                   </div>
@@ -282,19 +283,47 @@
             </button>
             <div class="bly-nav__dropdown">
               <div class="bly-dd-featured">
-                <div class="bly-dd-featured__left">
-                  {% if module.nav_items and module.nav_items[1] and module.nav_items[1].featured_icon.src %}
-                    <img src="{{ module.nav_items[1].featured_icon.src }}" alt="" class="bly-dd-featured__icon">
-                  {% else %}
-                    <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Group%20(2).svg" alt="" class="bly-dd-featured__icon">
-                  {% endif %}
-                  <div class="bly-dd-featured__label">{% if module.nav_items and module.nav_items[1] and module.nav_items[1].featured_label %}{{ module.nav_items[1].featured_label }}{% else %}UtilityAI Pro{% endif %}</div>
-                  <div class="bly-dd-featured__desc">{% if module.nav_items and module.nav_items[1] and module.nav_items[1].featured_description %}{{ module.nav_items[1].featured_description }}{% else %}Deploy Bidgely's advanced machine learning models directly on your cloud for generality and improved CX, grid reliability and speed of innovation.{% endif %}</div>
-                  <a href="{% if module.nav_items and module.nav_items[1] %}{{ module.nav_items[1].featured_cta_url.href | default('https://245139178.hs-sites-na2.com/utility-ai-pro') }}{% else %}https://245139178.hs-sites-na2.com/utility-ai-pro{% endif %}" class="bly-dd-featured__cta">
-                    {% if module.nav_items and module.nav_items[1] and module.nav_items[1].featured_cta_label %}{{ module.nav_items[1].featured_cta_label }}{% else %}Learn More{% endif %}
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-                  </a>
-                </div>
+                <a href="{% if module.nav_items and module.nav_items[1] %}{{ module.nav_items[1].featured_cta_url.href | default('https://245139178.hs-sites-na2.com/utility-ai-pro') }}{% else %}https://245139178.hs-sites-na2.com/utility-ai-pro{% endif %}" class="bly-dd-featured__link">
+
+  <div class="bly-dd-featured__left">
+    
+    {% if module.nav_items and module.nav_items[1] and module.nav_items[1].featured_icon.src %}
+      <img src="{{ module.nav_items[1].featured_icon.src }}" alt="" class="bly-dd-featured__icon">
+    {% else %}
+      <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Group%20(2).svg" alt="" class="bly-dd-featured__icon">
+    {% endif %}
+
+    <div class="bly-dd-featured__label">
+      {% if module.nav_items and module.nav_items[1] and module.nav_items[1].featured_label %}
+        {{ module.nav_items[1].featured_label }}
+      {% else %}
+        UtilityAI Pro
+      {% endif %}
+    </div>
+
+    <div class="bly-dd-featured__desc">
+      {% if module.nav_items and module.nav_items[1] and module.nav_items[1].featured_description %}
+        {{ module.nav_items[1].featured_description }}
+      {% else %}
+        Deploy Bidgely's advanced machine learning models directly on your cloud for generality and improved CX, grid reliability and speed of innovation.
+      {% endif %}
+    </div>
+
+    <div class="bly-dd-featured__cta">
+      {% if module.nav_items and module.nav_items[1] and module.nav_items[1].featured_cta_label %}
+        {{ module.nav_items[1].featured_cta_label }}
+      {% else %}
+        Learn More
+      {% endif %}
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="7" y1="17" x2="17" y2="7"/>
+        <polyline points="7 7 17 7 17 17"/>
+      </svg>
+    </div>
+
+  </div>
+
+</a>
                 <div class="bly-dd-featured__right">
                   {% if module.nav_items and module.nav_items[1] and module.nav_items[1].side_items and module.nav_items[1].side_items|length > 0 %}
                     {% for si in module.nav_items[1].side_items %}
@@ -305,7 +334,7 @@
                     {% endfor %}
                   {% else %}
                     {# Fallback Technology side items #}
-                    <a href="https://www.bidgely.com/technology/disaggregation/" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/home-disaggregation-icon.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">True Disaggregation</div><div class="bly-dd-side-item__desc">The tech behind the meter intelligence platform.</div></div></a>
+                    <a href="https://245139178.hs-sites-na2.com/disaggregation/" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/home-disaggregation-icon.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">True Disaggregation</div><div class="bly-dd-side-item__desc">The tech behind the meter intelligence platform.</div></div></a>
                     <a href="https://245139178.hs-sites-na2.com/agentic-automation" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/agentic.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">Agentic AI</div><div class="bly-dd-side-item__desc">Autonomous AI deployment for your enterprise.</div></div></a>
                     <a href="https://245139178.hs-sites-na2.com/gen-ai" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/genai.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">GenAI</div><div class="bly-dd-side-item__desc">Embedded NLU intelligence for your ecosystem.</div></div></a>
                   {% endif %}
@@ -356,7 +385,7 @@
       <div class="bly-nav__mobile" id="bly-mobile-menu" aria-hidden="true">
         <button class="bly-nav__m-link" data-m-trigger>Solutions <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="bly-nav__m-sub" data-m-sub>
-          <a href="https://245139178.hs-sites-na2.com/electrification">Energy Efficiency</a>
+          <a href="https://245139178.hs-sites-na2.com/electrification-1">Energy Efficiency</a>
           <a href="https://245139178.hs-sites-na2.com/customer-engagement-solutions">Customer Engagement</a>
           <a href="https://245139178.hs-sites-na2.com/load-shaping">Flex Demand</a>
           <a href="https://245139178.hs-sites-na2.com/ev-programs">EV Programs</a>
