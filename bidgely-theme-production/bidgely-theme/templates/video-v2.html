@@ -176,12 +176,12 @@
     }
     .video-title-v2 {
       color: #152D49;
-      font-size: 36px;
-      font-weight: 700;
-      line-height: 1.25;
-      letter-spacing: -0.02em;
-      margin: 0 0 16px;
-      max-width: 920px;
+    font-size: 52px;
+    font-weight: 700;
+    line-height: 57.2px;
+    letter-spacing: -2px;
+    margin: 0 0 16px;
+    max-width: 100%;
     }
     .video-hero-lede {
       margin: 0;
@@ -304,7 +304,7 @@
 
     /* Placeholder only: pdf-style three-column value props over Grid.svg (no form) */
     .video-v2-value-props {
-      background-color: var(--bg-soft);
+      background-color: #F9F9F9;
       background-image: url("https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Grid.svg");
       background-repeat: no-repeat;
       background-size: cover;
@@ -506,7 +506,7 @@
 
     .related-resources-kicker.eyebrow {
       display: block;
-      font-size: 13px;
+      font-size: 15px;
       letter-spacing: 0.14em;
     }
 
@@ -552,7 +552,9 @@
     .related-resource-image--empty {
       background: linear-gradient(145deg, #e5edf5 0%, #dce6f0 100%);
     }
-
+.pdf-stats p.eyebrow {
+    font-size: 15px;
+}
     .related-resource-body {
       padding: 22px 22px 24px;
       display: flex;
@@ -573,10 +575,10 @@
 
     .related-resource-title {
       color: var(--nile);
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.35;
-      margin: 0;
+     font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    margin: 0;
     }
 
     .related-resource-description {
@@ -990,52 +992,126 @@
       {% set has_value_prop_2 = video.value_prop_2_headline or video.value_prop_2_description or video.value_prop_card_icon_2 %}
       {% set has_value_prop_3 = video.value_prop_3_headline or video.value_prop_3_description or video.value_prop_card_icon_3 %}
       {% if has_value_prop_1 or has_value_prop_2 or has_value_prop_3 %}
-      <section class="video-stats">
-        <div class="video-stats-grid">
-          {% if has_value_prop_1 %}
-          <div class="video-stat-card">
-            <div class="video-stat-icon">
-              {% set icon1_src = '' %}
-              {% if video.value_prop_card_icon_1 %}
-                {% if video.value_prop_card_icon_1.url %}{% set icon1_src = video.value_prop_card_icon_1.url %}
-                {% elif video.value_prop_card_icon_1 is string %}{% set icon1_src = icons_base ~ video.value_prop_card_icon_1 %}{% endif %}
-              {% endif %}
-              {% if icon1_src %}<img src="{{ icon1_src }}" alt="{{ video.value_prop_1_headline|default('') }}">{% endif %}
-            </div>
-            {% if video.value_prop_1_headline %}<h3 class="video-stat-title">{{ video.value_prop_1_headline }}</h3>{% endif %}
-            {% if video.value_prop_1_description %}<p class="video-stat-description">{{ video.value_prop_1_description|striptags }}</p>{% endif %}
-          </div>
+      <section class="video-v2-value-props" aria-label="Key capabilities">
+  <div class="video-v2-value-props__inner">
+    <div class="video-v2-value-props__grid">
+
+      {% if has_value_prop_1 %}
+      <div class="video-v2-value-prop-card">
+        <div class="video-v2-value-prop-icon">
+          {% set icon1_src = '' %}
+          {% if video.value_prop_card_icon_1 %}
+            {% if video.value_prop_card_icon_1.url %}
+              {% set icon1_src = video.value_prop_card_icon_1.url %}
+            {% elif video.value_prop_card_icon_1 is string %}
+              {% set icon1_src = icons_base ~ video.value_prop_card_icon_1 %}
+            {% endif %}
           {% endif %}
-          {% if has_value_prop_2 %}
-          <div class="video-stat-card">
-            <div class="video-stat-icon">
-              {% set icon2_src = '' %}
-              {% if video.value_prop_card_icon_2 %}
-                {% if video.value_prop_card_icon_2.url %}{% set icon2_src = video.value_prop_card_icon_2.url %}
-                {% elif video.value_prop_card_icon_2 is string %}{% set icon2_src = icons_base ~ video.value_prop_card_icon_2 %}{% endif %}
-              {% endif %}
-              {% if icon2_src %}<img src="{{ icon2_src }}" alt="{{ video.value_prop_2_headline|default('') }}">{% endif %}
-            </div>
-            {% if video.value_prop_2_headline %}<h3 class="video-stat-title">{{ video.value_prop_2_headline }}</h3>{% endif %}
-            {% if video.value_prop_2_description %}<p class="video-stat-description">{{ video.value_prop_2_description|striptags }}</p>{% endif %}
-          </div>
-          {% endif %}
-          {% if has_value_prop_3 %}
-          <div class="video-stat-card">
-            <div class="video-stat-icon">
-              {% set icon3_src = '' %}
-              {% if video.value_prop_card_icon_3 %}
-                {% if video.value_prop_card_icon_3.url %}{% set icon3_src = video.value_prop_card_icon_3.url %}
-                {% elif video.value_prop_card_icon_3 is string %}{% set icon3_src = icons_base ~ video.value_prop_card_icon_3 %}{% endif %}
-              {% endif %}
-              {% if icon3_src %}<img src="{{ icon3_src }}" alt="{{ video.value_prop_3_headline|default('') }}">{% endif %}
-            </div>
-            {% if video.value_prop_3_headline %}<h3 class="video-stat-title">{{ video.value_prop_3_headline }}</h3>{% endif %}
-            {% if video.value_prop_3_description %}<p class="video-stat-description">{{ video.value_prop_3_description|striptags }}</p>{% endif %}
-          </div>
+
+          {% if icon1_src %}
+            <img src="{{ icon1_src }}"
+                 alt="{{ video.value_prop_1_headline|default('') }}"
+                 class="video-v2-value-prop-icon-img"
+                 width="56"
+                 height="56"
+                 loading="lazy"
+                 decoding="async">
           {% endif %}
         </div>
-      </section>
+
+        {% if video.value_prop_1_headline %}
+          <h3 class="video-v2-value-prop-title">
+            {{ video.value_prop_1_headline }}
+          </h3>
+        {% endif %}
+
+        {% if video.value_prop_1_description %}
+          <p class="video-v2-value-prop-description">
+            {{ video.value_prop_1_description|striptags }}
+          </p>
+        {% endif %}
+      </div>
+      {% endif %}
+
+
+      {% if has_value_prop_2 %}
+      <div class="video-v2-value-prop-card">
+        <div class="video-v2-value-prop-icon">
+          {% set icon2_src = '' %}
+          {% if video.value_prop_card_icon_2 %}
+            {% if video.value_prop_card_icon_2.url %}
+              {% set icon2_src = video.value_prop_card_icon_2.url %}
+            {% elif video.value_prop_card_icon_2 is string %}
+              {% set icon2_src = icons_base ~ video.value_prop_card_icon_2 %}
+            {% endif %}
+          {% endif %}
+
+          {% if icon2_src %}
+            <img src="{{ icon2_src }}"
+                 alt="{{ video.value_prop_2_headline|default('') }}"
+                 class="video-v2-value-prop-icon-img"
+                 width="56"
+                 height="56"
+                 loading="lazy"
+                 decoding="async">
+          {% endif %}
+        </div>
+
+        {% if video.value_prop_2_headline %}
+          <h3 class="video-v2-value-prop-title">
+            {{ video.value_prop_2_headline }}
+          </h3>
+        {% endif %}
+
+        {% if video.value_prop_2_description %}
+          <p class="video-v2-value-prop-description">
+            {{ video.value_prop_2_description|striptags }}
+          </p>
+        {% endif %}
+      </div>
+      {% endif %}
+
+
+      {% if has_value_prop_3 %}
+      <div class="video-v2-value-prop-card">
+        <div class="video-v2-value-prop-icon">
+          {% set icon3_src = '' %}
+          {% if video.value_prop_card_icon_3 %}
+            {% if video.value_prop_card_icon_3.url %}
+              {% set icon3_src = video.value_prop_card_icon_3.url %}
+            {% elif video.value_prop_card_icon_3 is string %}
+              {% set icon3_src = icons_base ~ video.value_prop_card_icon_3 %}
+            {% endif %}
+          {% endif %}
+
+          {% if icon3_src %}
+            <img src="{{ icon3_src }}"
+                 alt="{{ video.value_prop_3_headline|default('') }}"
+                 class="video-v2-value-prop-icon-img"
+                 width="56"
+                 height="56"
+                 loading="lazy"
+                 decoding="async">
+          {% endif %}
+        </div>
+
+        {% if video.value_prop_3_headline %}
+          <h3 class="video-v2-value-prop-title">
+            {{ video.value_prop_3_headline }}
+          </h3>
+        {% endif %}
+
+        {% if video.value_prop_3_description %}
+          <p class="video-v2-value-prop-description">
+            {{ video.value_prop_3_description|striptags }}
+          </p>
+        {% endif %}
+      </div>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
       {% endif %}
 
       {# Stats Text Section (Above Related Resources) #}
