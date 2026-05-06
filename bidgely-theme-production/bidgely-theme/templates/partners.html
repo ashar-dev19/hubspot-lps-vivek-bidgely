@@ -1,0 +1,454 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Bidgely - Partners
+-->
+
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+  <style>
+    .partners-feature-strip {
+      background: var(--bg-soft);
+      padding: 80px 0;
+    }
+    .partners-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .partners-feature-card {
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #e2edf6;
+      padding: 30px 25px;
+      box-shadow: 0 2px 12px rgba(21, 45, 73, 0.05);
+    }
+    .partners-feature-icon {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      margin-bottom: 14px;
+    }
+    .partners-feature-title {
+      margin: 0 0 8px;
+      font-size: 19px;
+      line-height: 1.2;
+      color: #152d49;
+    }
+    .partners-feature-description {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      color: #5c6d82;
+    }
+    .partners-map-section {
+      background: var(--nile);
+      padding: 72px 0 84px;
+    }
+    .partners-map-heading {
+      margin-bottom: 60px;
+      color: var(--nile-white);
+    }
+    .partners-map-image {
+      width: 100%;
+    }
+    .bly-lc {
+      background: var(--nile-white);
+      padding: 40px 0 32px;
+      overflow: hidden;
+    }
+    .bly-lc__overflow {
+      overflow: hidden;
+      position: relative;
+      margin: 20px auto 0;
+    }
+    .bly-lc__track {
+      display: flex;
+      width: max-content;
+      animation: bly-marquee 35s linear infinite;
+    }
+    .bly-lc__track:hover {
+      animation-play-state: paused;
+    }
+    @keyframes bly-marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .bly-lc__item {
+      flex-shrink: 0;
+      margin: 0 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bly-lc__item img {
+      object-fit: contain;
+      display: block;
+      padding: 0 30px;
+    }
+    /* What's In It For You — partners */
+    .partners-wiify {
+      background: var(--nile);
+      color: rgba(255, 255, 255, 0.92);
+      padding: 80px 0 88px;
+    }
+    .partners-wiify .h2 {
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .partners-wiify__lede {
+      margin: 0 auto 48px;
+      max-width: 640px;
+      font-size: 16px;
+      line-height: 1.55;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.88);
+      text-align: center;
+    }
+    .partners-wiify__grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .partners-wiify-card {
+      grid-column: span 2;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      padding: 24px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .partners-wiify-card:nth-child(7) {
+      grid-column: 2 / span 2;
+    }
+    .partners-wiify-card:nth-child(8) {
+      grid-column: 4 / span 2;
+    }
+    .partners-wiify-card__icon {
+      flex-shrink: 0;
+      width: 55px;
+      height: 55px;
+      color: var(--azure-tint);
+    }
+    .partners-wiify-card__icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .partners-wiify-card__title {
+      margin: 0 0 8px;
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--azure-tint);
+    }
+    .partners-wiify-card__body {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    @media (max-width: 991px) {
+      .partners-feature-grid { grid-template-columns: 1fr; }
+      .partners-map-section { padding: 56px 0 64px; }
+      .partners-map-heading { margin-bottom: 24px; }
+      .bly-lc { padding: 28px 0 24px; }
+      .partners-wiify { padding: 56px 0 64px; }
+      .partners-wiify__grid {
+        grid-template-columns: 1fr;
+      }
+      .partners-wiify-card,
+      .partners-wiify-card:nth-child(7),
+      .partners-wiify-card:nth-child(8) {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+  {% dnd_area "page_content" label="Page content" %}
+
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/hero-center-text.module"
+            label="Partners Hero"
+            section_aria_label="Partners hero"
+            eyebrow="Powered Together."
+            headline="Partnering to Build the Future of Energy"
+            subcopy="<p>Our partner network is at the heart of how we deliver transformative, AI-powered energy solutions. Together, we extend our unique ability to turn AMI and customer data into actionable intelligence that drives grid reliability, operational efficiency, and customer satisfaction for utilities worldwide.</p>"
+            cta_text="Become a Partner"
+            button_style="navy"
+            cta_link={
+              "url": {"type": "EXTERNAL", "href": "#", "href_with_scheme": "#"},
+              "open_in_new_tab": false,
+              "no_follow": false,
+              "sponsored": false,
+              "user_generated_content": false
+            },
+            below_cta_image={
+              "src": "",
+              "alt": "",
+              "loading": "disabled"
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text" label="Partners feature strip" %}
+            {% module_attribute "html" %}
+              <section class="partners-feature-strip">
+                <div class="container">
+                  <div class="partners-feature-grid">
+                    <article class="partners-feature-card">
+                      <img class="partners-feature-icon" src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/unlock.svg" alt="Unlock data icon">
+                      <h4 class="partners-feature-title">Unlock Data</h4>
+                      <p class="partners-feature-description">Device-level visibility powered by patented AI for population-level insight on EVs, HVAC, and more.</p>
+                    </article>
+                    <article class="partners-feature-card">
+                      <img class="partners-feature-icon" src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/innovation.svg" alt="Accelerate innovation icon">
+                      <h4 class="partners-feature-title">Accelerate Innovation</h4>
+                      <p class="partners-feature-description">A complete toolkit of solutions for every behind-the-meter challenge, now and for the future.</p>
+                    </article>
+                    <article class="partners-feature-card">
+                      <img class="partners-feature-icon" src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/scale.svg" alt="Scale impact icon">
+                      <h4 class="partners-feature-title">Scale Impact</h4>
+                      <p class="partners-feature-description">Domain expertise to help leading utilities scale faster and co-innovate for measurable impact.</p>
+                    </article>
+                  </div>
+                </div>
+              </section>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text" label="Partners logo carousel inline" %}
+            {% module_attribute "html" %}
+              <section class="bly-lc" aria-label="Our partners">
+                  <p class="eyebrow text-center">Our Partners</p>
+                  <div class="bly-lc__overflow" aria-hidden="true">
+                    <div class="bly-lc__track">
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/pacific-power-logo.svg" alt="Pacific Power" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/edison-logo.svg" alt="Edison" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/sorgenia-logo.svg" alt="Sorgenia" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/rocky-mountain-power-logo.svg" alt="Rocky Mountain Power" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/tep-logo.svg" alt="TEP" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/the-electric-company-logo.svg" alt="The Electric Company" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/SoCalGas-logo.svg" alt="SoCalGas" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/ameren-logo.svg" alt="Ameren" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/nova-scotia-power-logo.svg" alt="Nova Scotia Power" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/avista-logo.svg" alt="Avista" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/pacific-power-logo.svg" alt="Pacific Power" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/edison-logo.svg" alt="Edison" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/sorgenia-logo.svg" alt="Sorgenia" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/rocky-mountain-power-logo.svg" alt="Rocky Mountain Power" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/tep-logo.svg" alt="TEP" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/the-electric-company-logo.svg" alt="The Electric Company" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/SoCalGas-logo.svg" alt="SoCalGas" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/ameren-logo.svg" alt="Ameren" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/nova-scotia-power-logo.svg" alt="Nova Scotia Power" loading="lazy"></div>
+                      <div class="bly-lc__item"><img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/Partner%20Logos/avista-logo.svg" alt="Avista" loading="lazy"></div>
+                    </div>
+                  </div>
+              </section>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text" label="Partners service map" %}
+            {% module_attribute "html" %}
+              <section class="partners-map-section">
+                <div class="container">
+                  <h2 class="h2 text-center partners-map-heading">How Bidgely Serves Every Partner Type</h2>
+                  <img class="partners-map-image" src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/partner-steps.png" alt="How Bidgely serves every partner type diagram">
+                </div>
+              </section>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text" label="Partners feature strip" %}
+            {% module_attribute "html" %}
+              <section class="partners-feature-strip">
+                <div class="container">
+                  <div class="partners-feature-grid">
+                    <article class="partners-feature-card">
+                      <img class="partners-feature-icon" src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/eye-phone.svg" alt="Unlock data icon">
+                      <p class="partners-feature-description">We work together to accelerate market entry and unlock new opportunities for innovation in a rapidly evolving energy landscape.</p>
+                    </article>
+                    <article class="partners-feature-card">
+                      <img class="partners-feature-icon" src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/slu.svg" alt="Accelerate innovation icon">
+                      <p class="partners-feature-description">A complete toolkit of solutions for every behind-the-meter challenge, now and for the future. </p>
+                    </article>
+                    <article class="partners-feature-card">
+                      <img class="partners-feature-icon" src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/cloude.svg" alt="Scale impact icon">
+                      <p class="partners-feature-description">Domain expertise to help leading utilities scale faster and co-innovate for measurable impact.</p>
+                    </article>
+                  </div>
+                </div>
+              </section>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text" label="Partners what's in it for you" %}
+            {% module_attribute "html" %}
+              <section class="partners-wiify" aria-labelledby="partners-wiify-heading">
+                <div class="container">
+                  <h2 id="partners-wiify-heading" class="h2 text-center">What&rsquo;s In It For You?</h2>
+                  <p class="partners-wiify__lede">Here&rsquo;s what partners gain from joining Bidgely&rsquo;s ecosystem:</p>
+                  <div class="partners-wiify__grid">
+                    <article class="partners-wiify-card">
+                      <div class="partners-wiify-card__icon">
+                        <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/expended-service.svg" alt="" width="40" height="40" loading="lazy" decoding="async">
+                      </div>
+                      <div>
+                        <h3 class="partners-wiify-card__title">Expanded Service Offerings</h3>
+                        <p class="partners-wiify-card__body">Access advanced analytics and AI-powered tools to diversify and strengthen your utility solutions.</p>
+                      </div>
+                    </article>
+                    <article class="partners-wiify-card">
+                      <div class="partners-wiify-card__icon">
+                        <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/acc-rev.svg" alt="" width="40" height="40" loading="lazy" decoding="async">
+                      </div>
+                      <div>
+                        <h3 class="partners-wiify-card__title">Accelerated Revenue Growth</h3>
+                        <p class="partners-wiify-card__body">Boost margin and win more bids with integrated solutions and proven technology partners trust.</p>
+                      </div>
+                    </article>
+                    <article class="partners-wiify-card">
+                      <div class="partners-wiify-card__icon">
+                        <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/deeper.svg" alt="" width="40" height="40" loading="lazy" decoding="async">
+                      </div>
+                      <div>
+                        <h3 class="partners-wiify-card__title">Deeper Utility Relationships</h3>
+                        <p class="partners-wiify-card__body">Build credibility with utilities through next-gen analytics and actionable energy insights.</p>
+                      </div>
+                    </article>
+                    <article class="partners-wiify-card">
+                      <div class="partners-wiify-card__icon">
+                        <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/joint.svg" alt="" width="40" height="40" loading="lazy" decoding="async">
+                      </div>
+                      <div>
+                        <h3 class="partners-wiify-card__title">Joint Go-to-Market Planning</h3>
+                        <p class="partners-wiify-card__body">Align on messaging, collateral, and account strategy so your team shows up as one cohesive solution.</p>
+                      </div>
+                    </article>
+                    <article class="partners-wiify-card">
+                      <div class="partners-wiify-card__icon">
+                        <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/sales.svg" alt="" width="40" height="40" loading="lazy" decoding="async">
+                      </div>
+                      <div>
+                        <h3 class="partners-wiify-card__title">Sales Enablement &amp; Support</h3>
+                        <p class="partners-wiify-card__body">Leverage targeted sales training and dedicated marketing resources.</p>
+                      </div>
+                    </article>
+                    <article class="partners-wiify-card">
+                      <div class="partners-wiify-card__icon">
+                        <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/real-diff.svg" alt="" width="40" height="40" loading="lazy" decoding="async">
+                      </div>
+                      <div>
+                        <h3 class="partners-wiify-card__title">Real Differentiation</h3>
+                        <p class="partners-wiify-card__body">Offer unique, fit-for-purpose, market solutions&mdash;load shifting, customer insights, EV intelligence, and more.</p>
+                      </div>
+                    </article>
+                    <article class="partners-wiify-card">
+                      <div class="partners-wiify-card__icon">
+                        <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/tech-inte.svg" alt="" width="40" height="40" loading="lazy" decoding="async">
+                      </div>
+                      <div>
+                        <h3 class="partners-wiify-card__title">Technology Integration</h3>
+                        <p class="partners-wiify-card__body">Connect metering and data systems from the edge to the cloud.</p>
+                      </div>
+                    </article>
+                    <article class="partners-wiify-card">
+                      <div class="partners-wiify-card__icon">
+                        <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/win.svg" alt="" width="40" height="40" loading="lazy" decoding="async">
+                      </div>
+                      <div>
+                        <h3 class="partners-wiify-card__title">Win-Win Model</h3>
+                        <p class="partners-wiify-card__body">Deliver more value to your portfolio to accelerate business growth.</p>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </section>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module
+            path="../modules/call-to-action.module"
+            label="Partners CTA"
+            section_aria_label="Ready to partner"
+            section_background="azure"
+            section_heading="Ready to Partner?"
+            subcopy="<p>Whether you're looking to strengthen your current offerings, break into new markets, or deliver breakthrough innovation for your utility customers, Bidgely is ready to help you win, together.</p><p>Let's create something better! Reach out to our Channel Partnerships Team to discuss how a partnership with Bidgely can drive growth, deliver measurable results, and set a new standard for energy transformation.</p><p><strong>Contact us today to start the conversation and learn more!</strong></p>"
+            cta_text="Contact Us"
+            button_style="white"
+            cta_link={
+              "url": {"type": "EXTERNAL", "href": "#", "href_with_scheme": "#"},
+              "open_in_new_tab": false,
+              "no_follow": false,
+              "sponsored": false,
+              "user_generated_content": false
+            }
+          %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+
+  {% end_dnd_area %}
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+<script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
+{{ standard_footer_includes }}
+</body>
+</html>

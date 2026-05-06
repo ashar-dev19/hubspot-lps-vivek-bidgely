@@ -1,5 +1,6 @@
 {#
   call-to-action.module — Uses main.css: .cta-strip, .cta-strip__inner, .section--azure, .body-sm, .mt-2, .btn, .btn--*.
+  Subcopy is richtext (HTML); output is not escaped — HubSpot sanitizes editor content.
 
   {% module "call_to_action"
     path="../modules/call-to-action.module"
@@ -46,10 +47,11 @@
         </h2>
       {% endif %}
 
-      {% if module.subcopy %}
-        <p class="mt-2 body-sm">
-          {{ module.subcopy|escape }}
-        </p>
+      {% set subcopy_raw = module.subcopy|default('') %}
+      {% if subcopy_raw|striptags|trim %}
+        <div class="mt-2 body-sm cta-strip__subcopy">
+          {{ subcopy_raw }}
+        </div>
       {% endif %}
     </div>
 

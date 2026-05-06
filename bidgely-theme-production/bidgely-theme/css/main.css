@@ -1784,8 +1784,6 @@ a[href*="/podcast/"],
 a[href*="/resource/"],
 a[href*="http"] {
   text-decoration: none;
-  color: inherit;
-  display: block;
 }
 
 a[href*="/podcast/"]:hover .resource-card,

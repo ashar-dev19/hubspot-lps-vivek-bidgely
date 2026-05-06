@@ -38,13 +38,12 @@
   "id" : "subcopy",
   "name" : "subcopy",
   "label" : "Subcopy (below heading)",
-  "help_text" : "Optional. Leave blank to hide. Example: Join the utilities delivering individual-level intelligence across every customer, meter, and grid asset.",
+  "help_text" : "Optional rich text. Leave blank to hide.",
   "required" : false,
   "locked" : false,
-  "allow_new_line" : false,
   "display_width" : null,
-  "type" : "text",
-  "default" : "Don't let your operational investments stall. Find out how to unlock ROI, reliability, and resilience across your utility."
+  "type" : "richtext",
+  "default" : "<p>Don't let your operational investments stall. Find out how to unlock ROI, reliability, and resilience across your utility.</p>"
 }, {
   "id" : "cta_text",
   "name" : "cta_text",
