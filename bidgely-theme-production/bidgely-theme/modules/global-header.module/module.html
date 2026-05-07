@@ -162,12 +162,10 @@
     /* ── Company dropdown (Figma-style layout) ── */
     .bly-nav__item.company > .bly-nav__dropdown {
       padding: 0;
-      min-width: 858px;
-      max-width: 858px;
       overflow: hidden;
     }
     .bly-nav__item.company .bly-dd-featured {
-      width: 100%;
+      width: 570px;
     }
     .bly-nav__item.company .bly-dd-featured__left {
       width: 31%;
@@ -421,7 +419,7 @@
     <nav class="bly-nav" aria-label="Main navigation">
       <div class="bly-nav__inner">
     
-        <a href="https://245139178.hs-sites-na2.com/home-1" class="bly-nav__logo" aria-label="Bidgely home">
+        <a href="https://bidgely.ai" class="bly-nav__logo" aria-label="Bidgely home">
           <img src="{{ logo_src }}" alt="{{ module.logo.alt | default('Bidgely') }}" height="34" loading="eager">
         </a>
     
@@ -458,18 +456,18 @@
                 {% else %}
                   {# Fallback — top 6 primary solutions #}
                   <div class="bly-dd-grid">
-                    <a href="https://245139178.hs-sites-na2.com/bidgely-solution-dsm" class="bly-dd-grid-item"><img src="{{ ab }}/explain-bill.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">DSM Performance</div><div class="bly-dd-grid-item__desc">Improve efficiency outcomes with targeted programs and personalized HERs.</div></div></a>
-                    <a href="https://245139178.hs-sites-na2.com/customer-engagement-solutions" class="bly-dd-grid-item"><img src="{{ ab }}/customer-experience-v1.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Customer Engagement</div><div class="bly-dd-grid-item__desc">Drive proactive engagement with alerts, bill insights, and self-service tools.</div></div></a>
-                    <a href="https://245139178.hs-sites-na2.com/load-shaping" class="bly-dd-grid-item"><img src="{{ ab }}/target.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Load Flexibility</div><div class="bly-dd-grid-item__desc">Optimize TOU, DR, and load shifting with precision targeting.</div></div></a>
-                    <a href="https://245139178.hs-sites-na2.com/electrification-1" class="bly-dd-grid-item"><img src="{{ ab }}/every-touchpoint.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Electrification</div><div class="bly-dd-grid-item__desc">Target and scale EV and electrification programs end to end.</div></div></a>
-                    <a href="https://245139178.hs-sites-na2.com/der-grid-planning" class="bly-dd-grid-item"><img src="{{ ab }}/ders-icon-v1.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Grid Resiliency</div><div class="bly-dd-grid-item__desc">Plan and optimize grid capacity with DER-aware intelligence.</div></div></a>
-                    <a href="https://245139178.hs-sites-na2.com/affordability" class="bly-dd-grid-item"><img src="{{ ab }}/daas-v2.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Affordability Programs</div><div class="bly-dd-grid-item__desc">Identify and enroll income-qualified customers with precision.</div></div></a>
+                    <a href="https://bidgely.ai/bidgely-solution-dsm" class="bly-dd-grid-item"><img src="{{ ab }}/explain-bill.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">DSM Performance</div><div class="bly-dd-grid-item__desc">Improve efficiency outcomes with targeted programs and personalized HERs.</div></div></a>
+                    <a href="https://bidgely.ai/customer-engagement-solutions" class="bly-dd-grid-item"><img src="{{ ab }}/customer-experience-v1.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Customer Engagement</div><div class="bly-dd-grid-item__desc">Drive proactive engagement with alerts, bill insights, and self-service tools.</div></div></a>
+                    <a href="https://bidgely.ai/load-shaping" class="bly-dd-grid-item"><img src="{{ ab }}/target.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Load Flexibility</div><div class="bly-dd-grid-item__desc">Optimize TOU, DR, and load shifting with precision targeting.</div></div></a>
+                    <a href="https://bidgely.ai/electrification-1" class="bly-dd-grid-item"><img src="{{ ab }}/every-touchpoint.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Electrification</div><div class="bly-dd-grid-item__desc">Target and scale EV and electrification programs end to end.</div></div></a>
+                    <a href="https://bidgely.ai/der-grid-planning" class="bly-dd-grid-item"><img src="{{ ab }}/ders-icon-v1.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Grid Resiliency</div><div class="bly-dd-grid-item__desc">Plan and optimize grid capacity with DER-aware intelligence.</div></div></a>
+                    <a href="https://bidgely.ai/affordability" class="bly-dd-grid-item"><img src="{{ ab }}/daas-v2.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Affordability Programs</div><div class="bly-dd-grid-item__desc">Identify and enroll income-qualified customers with precision.</div></div></a>
                   </div>
                   {# Fallback — bottom 3 secondary solutions #}
                   <div class="bly-dd-grid-footer">
-                    <a href="https://245139178.hs-sites-na2.com/gas-disaggregation" class="bly-dd-grid-item bly-dd-grid-item--sm"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/gas-solutions.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Gas Solutions</div><div class="bly-dd-grid-item__desc">A full spectrum of solutions for CX, energy efficiency and demand management.</div></div></a>
-                    <a href="https://245139178.hs-sites-na2.com/smb-solutions" class="bly-dd-grid-item bly-dd-grid-item--sm"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/smb-solutions%20(1).svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">SMB Solutions</div><div class="bly-dd-grid-item__desc">Serve your Small-to-Medium Business customers better.</div></div></a>
-                    <a href="https://245139178.hs-sites-na2.com/theft-detection" class="bly-dd-grid-item bly-dd-grid-item--sm"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/theft-detection.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Energy Theft Detection</div><div class="bly-dd-grid-item__desc">Discover and remedy energy theft to prevent revenue leakage.</div></div></a>
+                    <a href="https://bidgely.ai/gas-disaggregation" class="bly-dd-grid-item bly-dd-grid-item--sm"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/gas-solutions.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Gas Solutions</div><div class="bly-dd-grid-item__desc">A full spectrum of solutions for CX, energy efficiency and demand management.</div></div></a>
+                    <a href="https://bidgely.ai/smb-solutions" class="bly-dd-grid-item bly-dd-grid-item--sm"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/smb-solutions%20(1).svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">SMB Solutions</div><div class="bly-dd-grid-item__desc">Serve your Small-to-Medium Business customers better.</div></div></a>
+                    <a href="https://bidgely.ai/theft-detection" class="bly-dd-grid-item bly-dd-grid-item--sm"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/theft-detection.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Energy Theft Detection</div><div class="bly-dd-grid-item__desc">Discover and remedy energy theft to prevent revenue leakage.</div></div></a>
                   </div>
                 {% endif %}
               </div>
@@ -484,7 +482,7 @@
             </button>
             <div class="bly-nav__dropdown">
               <div class="bly-dd-featured">
-               <a href="{% if module.nav_items and module.nav_items[1] %}{{ module.nav_items[1].featured_cta_url.href | default('https://245139178.hs-sites-na2.com/utility-ai-pro') }}{% else %}https://245139178.hs-sites-na2.com/utility-ai-pro{% endif %}" class="bly-dd-featured__link">
+               <a href="{% if module.nav_items and module.nav_items[1] %}{{ module.nav_items[1].featured_cta_url.href | default('https://bidgely.ai/utility-ai-pro') }}{% else %}https://bidgely.ai/utility-ai-pro{% endif %}" class="bly-dd-featured__link">
 
   <div class="bly-dd-featured__left">
     
@@ -535,9 +533,9 @@
                     {% endfor %}
                   {% else %}
                     {# Fallback Technology side items #}
-                    <a href="https://www.bidgely.com/technology/disaggregation/" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/home-disaggregation-icon.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">True Disaggregation</div><div class="bly-dd-side-item__desc">The tech behind the meter intelligence platform.</div></div></a>
-                    <a href="https://245139178.hs-sites-na2.com/agentic-automation" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/agentic.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">Agentic AI</div><div class="bly-dd-side-item__desc">Autonomous AI deployment for your enterprise.</div></div></a>
-                    <a href="https://245139178.hs-sites-na2.com/gen-ai" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/genai.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">GenAI</div><div class="bly-dd-side-item__desc">Embedded NLU intelligence for your ecosystem.</div></div></a>
+                    <a href="https://bidgely.ai/disaggregation" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/home-disaggregation-icon.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">True Disaggregation</div><div class="bly-dd-side-item__desc">The tech behind the meter intelligence platform.</div></div></a>
+                    <a href="https://bidgely.ai/agentic-automation" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/agentic.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">Agentic AI</div><div class="bly-dd-side-item__desc">Autonomous AI deployment for your enterprise.</div></div></a>
+                    <a href="https://bidgely.ai/gen-ai" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/genai.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">GenAI</div><div class="bly-dd-side-item__desc">Embedded NLU intelligence for your ecosystem.</div></div></a>
                   {% endif %}
                 </div>
               </div>
@@ -580,7 +578,7 @@
                     {% else %}
                       <a href="#" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/leadership-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Leadership</div><div class="bly-dd-side-item__desc">Meet the people who fuel our success</div></div></a>
                       <a href="#" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/careers-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Careers</div><div class="bly-dd-side-item__desc">Join a team of smart, supportive experts</div></div></a>
-                      <a href="#" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/customer-success-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Customer Success</div><div class="bly-dd-side-item__desc">Leading utilities working with us to accelerate a clean energy future</div></div></a>
+                      <a href="https://bidgely.ai/resources?assetType=Case+Study" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/customer-success-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Customer Success</div><div class="bly-dd-side-item__desc">Leading utilities working with us to accelerate a clean energy future</div></div></a>
                       <a href="https://bidgely.ai/partners" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/partners-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Partners</div><div class="bly-dd-side-item__desc">Meet our partner ecosystem</div></div></a>
                       <a href="https://bidgely.ai/news-press" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/press-news-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Press and News</div><div class="bly-dd-side-item__desc">Extra extra, read all about us</div></div></a>
                     {% endif %}
@@ -596,9 +594,9 @@
                     </div>
                   </a>
                   
-                  <a href="https://www.bidgely.com/customer-engagement-solutions/" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="Bidgely Engage" title="Bidgely Engage"><img src="https://bidgely.ai/hubfs/default-header/bidgely-engage.svg" alt="Bidgely Engage" class="bly-dd-grid-item__icon"></a>
+                  <a href="https://bidgely.ai/customer-engagement-solutions/" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="Bidgely Engage" title="Bidgely Engage"><img src="https://bidgely.ai/hubfs/default-header/bidgely-engage.svg" alt="Bidgely Engage" class="bly-dd-grid-item__icon"></a>
                   
-                  <a href="https://www.bidgely.com/utilityai-platform/" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="UtilityAI Pro" title="UtilityAI Pro"><img src="https://bidgely.ai/hubfs/default-header/bidgely-utility-ai.svg" alt="UtilityAI Pro" class="bly-dd-grid-item__icon"></a>
+                  <a href="https://bidgely.ai/utility-ai-pro" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="UtilityAI Pro" title="UtilityAI Pro"><img src="https://bidgely.ai/hubfs/default-header/bidgely-utility-ai.svg" alt="UtilityAI Pro" class="bly-dd-grid-item__icon"></a>
 
                   <a href="https://www.bidgely.com/empower-ai/" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="Empower AI" title="Empower AI"><img src="https://bidgely.ai/hubfs/default-header/empower-logo.svg" alt="Empower AI" class="bly-dd-grid-item__icon"></a>
                   
@@ -639,7 +637,7 @@
                   <div class="bly-dd-featured__right">
                     <a href="#" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/leadership-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Leadership</div><div class="bly-dd-side-item__desc">Meet the people who fuel our success</div></div></a>
                     <a href="#" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/careers-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Careers</div><div class="bly-dd-side-item__desc">Join a team of smart, supportive experts</div></div></a>
-                    <a href="#" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/customer-success-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Customer Success</div><div class="bly-dd-side-item__desc">Leading utilities working with us to accelerate a clean energy future</div></div></a>
+                    <a href="https://bidgely.ai/resources?assetType=Case+Study" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/customer-success-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Customer Success</div><div class="bly-dd-side-item__desc">Leading utilities working with us to accelerate a clean energy future</div></div></a>
                     <a href="https://bidgely.ai/partners" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/partners-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Partners</div><div class="bly-dd-side-item__desc">Meet our partner ecosystem</div></div></a>
                     <a href="https://bidgely.ai/news-press" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/press-news-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Press and News</div><div class="bly-dd-side-item__desc">Extra extra, read all about us</div></div></a>
                   </div>
@@ -661,7 +659,7 @@
                 {% endif %}
               </div>
             </li>
-            <li class="bly-nav__item"><a href="https://www.bidgely.com/resources/">Resources</a></li>
+            <li class="bly-nav__item"><a href="https://bidgely.ai/resources">Resources</a></li>
           {% endif %}
     
         </ul>
@@ -680,32 +678,32 @@
       <div class="bly-nav__mobile" id="bly-mobile-menu" aria-hidden="true">
         <button class="bly-nav__m-link" data-m-trigger>Solutions <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="bly-nav__m-sub" data-m-sub>
-          <a href="https://245139178.hs-sites-na2.com/electrification-1">Energy Efficiency</a>
-          <a href="https://245139178.hs-sites-na2.com/customer-engagement-solutions">Customer Engagement</a>
-          <a href="https://245139178.hs-sites-na2.com/load-shaping">Flex Demand</a>
-          <a href="https://245139178.hs-sites-na2.com/ev-programs">EV Programs</a>
-          <a href="https://245139178.hs-sites-na2.com/der-grid-planning">DER Grid Planning</a>
-          <a href="https://245139178.hs-sites-na2.com/bidgely-solution-dsm">BTM Targeting</a>
-          <a href="https://245139178.hs-sites-na2.com/gas-disaggregation">Gas Solutions</a>
-          <a href="https://245139178.hs-sites-na2.com/smb-solutions">SMB Solutions</a>
-          <a href="https://245139178.hs-sites-na2.com/theft-detection">Energy Theft Detector</a>
+          <a href="https://bidgely.ai/electrification-1">Energy Efficiency</a>
+          <a href="https://bidgely.ai/customer-engagement-solutions">Customer Engagement</a>
+          <a href="https://bidgely.ai/load-shaping">Flex Demand</a>
+          <a href="https://bidgely.ai/ev-programs">EV Programs</a>
+          <a href="https://bidgely.ai/der-grid-planning">DER Grid Planning</a>
+          <a href="https://bidgely.ai/bidgely-solution-dsm">BTM Targeting</a>
+          <a href="https://bidgely.ai/gas-disaggregation">Gas Solutions</a>
+          <a href="https://bidgely.ai/smb-solutions">SMB Solutions</a>
+          <a href="https://bidgely.ai/theft-detection">Energy Theft Detector</a>
         </div>
         <button class="bly-nav__m-link" data-m-trigger>Technology <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="bly-nav__m-sub" data-m-sub>
-          <a href="https://245139178.hs-sites-na2.com/disaggregation">True Disaggregation</a>
-          <a href="https://245139178.hs-sites-na2.com/agentic-automation">Agentic AI</a>
-          <a href="https://245139178.hs-sites-na2.com/gen-ai">GenAI</a>
-          <a href="https://245139178.hs-sites-na2.com/utility-ai-pro">UtilityAI Pro</a>
+          <a href="https://bidgely.ai/disaggregation">True Disaggregation</a>
+          <a href="https://bidgely.ai/agentic-automation">Agentic AI</a>
+          <a href="https://bidgely.ai/gen-ai">GenAI</a>
+          <a href="https://bidgely.ai/utility-ai-pro">UtilityAI Pro</a>
         </div>
         <button class="bly-nav__m-link" data-m-trigger>Company <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="bly-nav__m-sub" data-m-sub>
           <a href="#">Leadership</a>
           <a href="#">Careers</a>
-          <a href="#">Customer Success</a>
+          <a href="https://bidgely.ai/resources?assetType=Case+Study">Customer Success</a>
           <a href="https://bidgely.ai/partners">Partners</a>
           <a href="https://bidgely.ai/news-press">Press and News</a>
         </div>
-        <a href="https://245139178.hs-sites-na2.com/resources-1" class="bly-nav__m-link">Resources</a>
+        <a href="https://bidgely.ai/resources" class="bly-nav__m-link">Resources</a>
         <a href="#" class="bly-nav__m-link">Events</a>
         <div class="bly-nav__m-actions">
           <a href="{{ login_href }}" class="bly-nav__login" style="border:1px solid #e8eaed;border-radius:8px;padding:10px 0;">{{ login_label }}</a>
