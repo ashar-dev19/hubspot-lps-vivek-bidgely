@@ -1,350 +1,368 @@
-{# =============================================================================
-   HubDB → resource cards
-   FILTER PRIORITY:
-   1) hubdb_row_ids — If this field has any comma-separated numeric row IDs, ONLY
-      those rows are shown (in the order listed). Tag filter is IGNORED.
-   2) Otherwise — filter_column + filter_value (token match in comma-separated tags).
-   SORTING (tag mode only):
-   Rows are fetched with orderBy=-hs_updated_at (newest HubDB update first), then
-   the tag filter is applied in that order. (HubDB tables include hs_updated_at by default.)
-   ID mode loads a larger window then matches by hs_id; display order follows your ID list.
-   ============================================================================= #}
-{% set table_id_raw = module.hubdb_table_id|default("")|trim %}
-{% set table_id_digits = table_id_raw|replace(",", "")|replace(" ", "") %}
-{% set table_id = table_id_digits|int %}
-{% set limit = module.hubdb_limit|default(3)|int %}
-{% set filter_col = module.filter_column|default("")|trim %}
-{% set filter_val = module.filter_value|default("")|trim %}
-{% set filter_active = filter_col and filter_val %}
-{% set fetch_limit = limit %}
-{% if filter_active %}
-  {% set fetch_limit = 500 %}
-{% endif %}
-{% set col_type = module.col_type|default("page_template")|trim %}
-{% set col_image = module.col_image|default("feature_image")|trim %}
-{% set image_base = module.image_base_url|default("")|trim %}
-{% set col_title = module.col_title|default("hs_name")|trim %}
-{% set col_desc = module.col_desc|default("long_description")|trim %}
-{% set col_cta_label = module.col_cta_label|default("")|trim %}
-{% set col_cta_link = module.col_cta_link|default("url")|trim %}
+<style>
+/* ── Solutions Tabs ── */
+.bly-st {
+  background: #F9F9F9;
+  padding: 72px 0 80px;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+}
+.bly-st__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.bly-st__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #499ed7;
+  margin: 0 0 18px;
+}
+.bly-st__header {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  align-items: start;
+  margin: 0 0 52px;
+}
+.bly-st__h2 {
+  font-size: 38px;
+  font-weight: 800;
+  color: #152d49;
+  line-height: 1.2;
+  margin: 0;
+}
+.bly-st__h2 em,
+.bly-st__h2 strong em,
+.bly-st__h2 em strong {
+  font-style: normal;
+  font-weight: 800;
+  color: #499ed7;
+}
+.bly-st__subtext {
+  font-size: 15px;
+  color: #152d49;
+  line-height: 1.7;
+  margin: 6px 0 0;
+  opacity: .8;
+text-align: left;
+}
+/* Layout */
+.bly-st__body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 36px;
+  align-items: start;
+}
+/* Tab list */
+.bly-st__tablist {
+  display: flex;
+  flex-direction: column;
+}
+.bly-st__tab {
+  all: unset;
+  cursor: pointer;
+  display: block;
+  padding: 13px 16px 13px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #152D49;
+  border-left: 3px solid transparent;
+  transition: color .2s, border-color .2s, font-weight .1s;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  line-height: 1.35;
+  border-radius: 0 4px 4px 0;
+}
+.bly-st__tab:hover { color: #152d49; }
+.bly-st__tab[aria-selected="true"] {
+  color: #152d49;
+  font-weight: 700;
+  border-left-color: #499ed7;
+  background: white;
+    border-radius: 8px;
+}
+/* Panels */
+.bly-st__panels { min-height: 400px; }
+.bly-st__panel {
+  display: none;
+  background: #fff;
+  border-radius: 12px;
+  padding: 40px;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.bly-st__panel.is-active { display: grid; }
+/* Copy */
+.bly-st__panel-heading {
+  font-size: 22px;
+  font-weight: 800;
+  color: #152d49;
+  line-height: 1.3;
+  margin: 0 0 14px;
+}
+.bly-st__panel-desc {
+  font-size: 14px;
+  color: #152d49;
+  line-height: 1.75;
+  margin: 0 0 22px;
+  
+}
+.bly-st__bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bly-st__bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: #152d49;
+  line-height: 1.5;
+}
+.bly-st__check {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  color: #499ed7;
+}
+.bly-st__panel-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #499ed7;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  border-top: 1px solid #e6f0f8;
+  padding-top: 20px;
+  width: 100%;
+}
+.bly-st__panel-cta:hover { text-decoration: underline; }
+/* Image */
+.bly-st__panel-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bly-st__panel-img img {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: contain;
+  box-shadow: 0 2px 16px rgba(21,45,73,.1);
+}
+/* Responsive */
+@media (max-width: 960px) {
+  .bly-st__header { grid-template-columns: 1fr; gap: 16px; }
+  .bly-st__body   { grid-template-columns: 1fr; }
+  .bly-st__tablist { flex-direction: row; overflow-x: auto; gap: 4px; padding-bottom: 4px; }
+  .bly-st__tab    { border-left: none; border-bottom: 3px solid transparent; white-space: nowrap; border-radius: 4px 4px 0 0; }
+  .bly-st__tab[aria-selected="true"] { border-left-color: transparent; border-bottom-color: #499ed7; background: transparent; }
+  .bly-st__panel  { grid-template-columns: 1fr; gap: 24px; }
+  .bly-st__h2     { font-size: 28px; }
+  .bly-st__inner  { padding: 0 20px; }
+}
+</style>
 
-{# Optional: comma-separated HubDB row IDs — takes priority over tag filter #}
-{% set ids_raw = module.hubdb_row_ids|default("")|trim %}
-{% set id_list = [] %}
-{% if ids_raw %}
-  {% for piece in ids_raw|split(",") %}
-    {% set segment = piece|trim|replace(" ", "") %}
-    {% if segment %}
-      {% set clean_id = segment|replace(",", "") %}
-      {% if clean_id|int > 0 %}
-        {% do id_list.append(clean_id|int) %}
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-{% endif %}
-{% set use_row_ids = id_list|length > 0 %}
+{% set ab = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+{% set has_tabs = module.tabs and module.tabs|length > 0 and module.tabs[0].label %}
 
-{% set resource_rows = [] %}
+{% set fallback_tabs = [
+  {
+    "label": "Customer Engagement",
+    "heading": "Turn every bill into a conversation.",
+    "desc": "Deliver hyper-personalized energy insights that drive action — from efficiency nudges to time-of-use coaching — at utility scale.",
+    "bullets": ["Personalized home energy reports", "Proactive alerts and next-best actions", "Self-service efficiency recommendations"],
+    "cta": "Explore Customer Engagement",
+    "img": ab ~ "/cx-screen.svg"
+  },
+  {
+    "label": "Energy Disaggregation",
+    "heading": "See every appliance behind the meter.",
+    "desc": "Bidgely's patented AI disaggregation identifies individual appliance signatures from interval data — no new hardware required.",
+    "bullets": ["Sub-meter accuracy from smart-meter data", "Detects 20+ appliance categories", "Works with 15-min and hourly intervals"],
+    "cta": "Explore Disaggregation",
+    "img": ab ~ "/cx-screen.svg"
+  },
+  {
+    "label": "Grid Edge Analytics",
+    "heading": "Forecast demand before it happens.",
+    "desc": "Aggregate disaggregated load data into actionable grid intelligence — pinpoint DER locations, predict peak, and plan proactively.",
+    "bullets": ["Transformer-level load forecasting", "Distributed solar and EV detection", "Automated feeder-risk scoring"],
+    "cta": "Explore Grid Edge",
+    "img": ab ~ "/cx-screen.svg"
+  },
+  {
+    "label": "EV Intelligence",
+    "heading": "Every EV is a grid event you can manage.",
+    "desc": "Identify EV adopters, model charging behavior, and deliver smart-charging programs before grid stress peaks.",
+    "bullets": ["Passive EV detection — no enrollment", "Charging pattern & time-of-use modeling", "Targeted smart-charging offers"],
+    "cta": "Explore EV Intelligence",
+    "img": ab ~ "/cx-screen.svg"
+  },
+  {
+    "label": "Demand Response",
+    "heading": "Enroll smarter. Dispatch faster.",
+    "desc": "Use appliance-level intelligence to recruit the right customers into DR programs and trigger precise, reliable demand reductions.",
+    "bullets": ["AI-driven customer segmentation for DR", "Real-time dispatch confirmation", "Post-event measurement & verification"],
+    "cta": "Explore Demand Response",
+    "img": ab ~ "/cx-screen.svg"
+  }
+] %}
 
-{% if table_id > 0 %}
-  {% if use_row_ids %}
-    {# --- Curated rows by ID (tag filter skipped) --- #}
-    {% set hubdb_rows = hubdb_table_rows(table_id, "limit=3000") %}
-    {% for rid in id_list %}
-      {% if resource_rows|length >= limit %}
-        {% break %}
-      {% endif %}
-      {% for r in hubdb_rows %}
-        {% if (r.hs_id|int) == (rid|int) %}
-          {% set raw_link = r[col_cta_link] %}
-          {% if raw_link is mapping and raw_link.url %}
-            {% set href = raw_link.url %}
-          {% else %}
-            {% set href = raw_link %}
-          {% endif %}
+<section class="bly-st">
+  <div class="bly-st__inner">
 
-          {% set raw_image = none %}
-          {% if col_image %}
-            {% set raw_image = r[col_image] %}
-          {% endif %}
-          {% set img_src = "" %}
-          {% set img_alt = "" %}
-          {% if raw_image %}
-            {% if raw_image is mapping %}
-              {% if raw_image.url %}
-                {% set img_src = raw_image.url %}
-              {% elif raw_image.src %}
-                {% set img_src = raw_image.src %}
-              {% endif %}
-              {% if img_src == "" %}
-                {% set fid = "" %}
-                {% if raw_image.fileId %}
-                  {% set fid = raw_image.fileId %}
-                {% elif raw_image.file_id %}
-                  {% set fid = raw_image.file_id %}
-                {% endif %}
-                {% if fid %}
-                  {% set fb = file_by_id(fid) %}
-                  {% if fb %}
-                    {% if fb.url %}
-                      {% set img_src = fb.url %}
-                    {% elif fb.friendlyUrl %}
-                      {% set img_src = fb.friendlyUrl %}
-                    {% endif %}
-                  {% endif %}
-                {% endif %}
-              {% endif %}
-              {% if raw_image.altText %}
-                {% set img_alt = raw_image.altText %}
-              {% elif raw_image.alt %}
-                {% set img_alt = raw_image.alt %}
-              {% endif %}
-            {% elif raw_image is string %}
-              {% set raw_str = raw_image|trim %}
-              {% if image_base %}
-                {% set base = image_base %}
-                {% if base|length > 0 and not (base|regex_match("/$")) %}
-                  {% set base = base ~ "/" %}
-                {% endif %}
-                {% set fname = raw_str|trim %}
-                {% if fname|regex_match("^/") %}
-                  {% set fname = fname|regex_replace("^/", "") %}
-                {% endif %}
-                {% set img_src = base ~ fname %}
-              {% else %}
-                {% set img_src = raw_str %}
-              {% endif %}
-            {% endif %}
-          {% endif %}
+    <p class="bly-st__eyebrow">
+      {% if module.eyebrow %}{{ module.eyebrow }}{% else %}Solutions{% endif %}
+    </p>
 
-          {% set raw_desc = r[col_desc] %}
-          {% set desc_str = "" %}
-          {% if raw_desc is mapping %}
-            {% if raw_desc.html %}
-              {% set desc_str = raw_desc.html %}
-            {% elif raw_desc.content %}
-              {% set desc_str = raw_desc.content %}
-            {% else %}
-              {% set desc_str = raw_desc|string %}
-            {% endif %}
-          {% else %}
-            {% set desc_str = raw_desc ~ "" %}
-          {% endif %}
-
-          {% if img_src is string and img_src|regex_match("^//") %}
-            {% set img_src = "https:" ~ img_src %}
-          {% endif %}
-
-          {% set cta_lab = "" %}
-          {% if col_cta_label %}
-            {% set cta_lab = r[col_cta_label] ~ "" %}
-          {% endif %}
-          {% if cta_lab|trim == "" %}
-            {% set cta_lab = "Read More" %}
-          {% endif %}
-
-          {% set row = {
-            "type": r[col_type] ~ "",
-            "image_src": img_src ~ "",
-            "image_alt": img_alt ~ "",
-            "title": r[col_title] ~ "",
-            "description": desc_str,
-            "cta_label": cta_lab,
-            "cta_href": href ~ ""
-          } %}
-          {% do resource_rows.append(row) %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    {% endfor %}
-
-  {% else %}
-    {# --- Tag (or no) filter; newest first via hs_updated_at --- #}
-    {% set hubdb_query = "limit=" ~ fetch_limit ~ "&orderBy=-hs_updated_at" %}
-    {% set hubdb_rows = hubdb_table_rows(table_id, hubdb_query) %}
-    {% for r in hubdb_rows %}
-      {% if resource_rows|length >= limit %}
-        {% break %}
-      {% endif %}
-
-      {% set row_match = namespace(ok=true) %}
-      {% if filter_active %}
-        {% set row_match.ok = false %}
-        {% set cell_norm = (r[filter_col] ~ "")|replace(" ", "") %}
-        {% for part in cell_norm|split(",") %}
-          {% if part|trim == filter_val %}
-            {% set row_match.ok = true %}
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-
-      {% if row_match.ok %}
-        {% set raw_link = r[col_cta_link] %}
-        {% if raw_link is mapping and raw_link.url %}
-          {% set href = raw_link.url %}
+    <div class="bly-st__header">
+      <h2 class="bly-st__h2">
+        {% if module.heading %}
+          {{ module.heading }}
         {% else %}
-          {% set href = raw_link %}
+          Every meter becomes a <em>decision.</em>
         {% endif %}
+      </h2>
+      <p class="bly-st__subtext">
+        {% if module.subtext %}{{ module.subtext }}{% else %}The data you need is already behind every meter. Decode it and put it to work across every team and program.{% endif %}
+      </p>
+    </div>
 
-        {% set raw_image = none %}
-        {% if col_image %}
-          {% set raw_image = r[col_image] %}
-        {% endif %}
-        {% set img_src = "" %}
-        {% set img_alt = "" %}
-        {% if raw_image %}
-          {% if raw_image is mapping %}
-            {% if raw_image.url %}
-              {% set img_src = raw_image.url %}
-            {% elif raw_image.src %}
-              {% set img_src = raw_image.src %}
-            {% endif %}
-            {% if img_src == "" %}
-              {% set fid = "" %}
-              {% if raw_image.fileId %}
-                {% set fid = raw_image.fileId %}
-              {% elif raw_image.file_id %}
-                {% set fid = raw_image.file_id %}
-              {% endif %}
-              {% if fid %}
-                {% set fb = file_by_id(fid) %}
-                {% if fb %}
-                  {% if fb.url %}
-                    {% set img_src = fb.url %}
-                  {% elif fb.friendlyUrl %}
-                    {% set img_src = fb.friendlyUrl %}
-                  {% endif %}
-                {% endif %}
-              {% endif %}
-            {% endif %}
-            {% if raw_image.altText %}
-              {% set img_alt = raw_image.altText %}
-            {% elif raw_image.alt %}
-              {% set img_alt = raw_image.alt %}
-            {% endif %}
-          {% elif raw_image is string %}
-            {% set raw_str = raw_image|trim %}
-            {% if image_base %}
-              {% set base = image_base %}
-              {% if base|length > 0 and not (base|regex_match("/$")) %}
-                {% set base = base ~ "/" %}
-              {% endif %}
-              {% set fname = raw_str|trim %}
-              {% if fname|regex_match("^/") %}
-                {% set fname = fname|regex_replace("^/", "") %}
-              {% endif %}
-              {% set img_src = base ~ fname %}
-            {% else %}
-              {% set img_src = raw_str %}
-            {% endif %}
-          {% endif %}
-        {% endif %}
+    <div class="bly-st__body">
 
-        {% set raw_desc = r[col_desc] %}
-        {% set desc_str = "" %}
-        {% if raw_desc is mapping %}
-          {% if raw_desc.html %}
-            {% set desc_str = raw_desc.html %}
-          {% elif raw_desc.content %}
-            {% set desc_str = raw_desc.content %}
-          {% else %}
-            {% set desc_str = raw_desc|string %}
-          {% endif %}
+      <!-- Tab list -->
+      <div class="bly-st__tablist" role="tablist" aria-label="Solutions">
+        {% if has_tabs %}
+          {% for tab in module.tabs %}
+            <button
+              class="bly-st__tab"
+              role="tab"
+              aria-selected="{{ 'true' if loop.first else 'false' }}"
+              aria-controls="bly-st-panel-{{ loop.index }}"
+              id="bly-st-tab-{{ loop.index }}"
+              data-tab="{{ loop.index }}">
+              {{ tab.label }}
+            </button>
+          {% endfor %}
         {% else %}
-          {% set desc_str = raw_desc ~ "" %}
+          {% for t in fallback_tabs %}
+            <button
+              class="bly-st__tab"
+              role="tab"
+              aria-selected="{{ 'true' if loop.first else 'false' }}"
+              aria-controls="bly-st-panel-{{ loop.index }}"
+              id="bly-st-tab-{{ loop.index }}"
+              data-tab="{{ loop.index }}">
+              {{ t.label }}
+            </button>
+          {% endfor %}
         {% endif %}
+      </div>
 
-        {% if img_src is string and img_src|regex_match("^//") %}
-          {% set img_src = "https:" ~ img_src %}
-        {% endif %}
+      <!-- Panels -->
+      <div class="bly-st__panels">
+        {% if has_tabs %}
+          {% for tab in module.tabs %}
+            <div
+              class="bly-st__panel{% if loop.first %} is-active{% endif %}"
+              id="bly-st-panel-{{ loop.index }}"
+              role="tabpanel"
+              aria-labelledby="bly-st-tab-{{ loop.index }}">
 
-        {% set cta_lab = "" %}
-        {% if col_cta_label %}
-          {% set cta_lab = r[col_cta_label] ~ "" %}
-        {% endif %}
-        {% if cta_lab|trim == "" %}
-          {% set cta_lab = "Read More" %}
-        {% endif %}
-
-        {% set row = {
-          "type": r[col_type] ~ "",
-          "image_src": img_src ~ "",
-          "image_alt": img_alt ~ "",
-          "title": r[col_title] ~ "",
-          "description": desc_str,
-          "cta_label": cta_lab,
-          "cta_href": href ~ ""
-        } %}
-        {% do resource_rows.append(row) %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-{% endif %}
-
-<section class="section resources-hubdb section--pale" aria-labelledby="resources-hubdb-heading-{{ name }}">
-  <div class="container">
-    <p class="eyebrow" id="resources-hubdb-heading-{{ name }}">{{ module.ce_resources_eyebrow }}</p>
-
-    {% if resource_rows|length > 0 %}
-    {# Splide (CDN) — dots only, no arrows; inited in module.js #}
-    <div
-      id="resources-hubdb-splide-{{ name }}"
-      class="splide resources-hubdb__splide"
-      data-resources-hubdb-carousel
-      role="region"
-      aria-roledescription="carousel"
-      aria-label="{{ module.ce_resources_eyebrow|escape }}">
-      <div class="splide__track">
-        <ul class="splide__list">
-          {% for row in resource_rows %}
-          <li class="splide__slide">
-            <article class="resource">
-              <div class="resource__media">
-                {% if row.type|trim %}
-                  <span class="resource__badge">{{ row.type }}</span>
+              <div class="bly-st__panel-copy">
+                <div class="bly-st__panel-heading">{{ tab.heading | default('') }}</div>
+                {% if tab.description %}
+                  <div class="bly-st__panel-desc">{{ tab.description }}</div>
                 {% endif %}
-                {% if row.image_src|trim %}
-                  <img src="{{ row.image_src }}" alt="{{ row.image_alt }}" loading="lazy" decoding="async">
+                {% if tab.bullets and tab.bullets|length > 0 %}
+                  <ul class="bly-st__bullets">
+                    {% for bullet in tab.bullets %}
+                      <li class="bly-st__bullet">
+                        <svg class="bly-st__check" viewBox="0 0 20 20" fill="none" stroke="#499ed7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="9"/><polyline points="6 10 9 13 14 7"/></svg>
+                        <span>{{ bullet.text }}</span>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+                {% if tab.cta_label %}
+                  <a href="{{ tab.cta_url.href | default('#') }}"
+                     {% if tab.cta_url.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
+                     class="bly-st__panel-cta">
+                    Explore {{ tab.label }}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                  </a>
                 {% endif %}
               </div>
-              <div class="resource__body">
-                <h3 class="resource__title">{{ row.title }}</h3>
-                {% if row.description %}
-                  {# Teaser: strip tags, collapse whitespace, max 50 words + " ..." if longer. #}
-                  {% set plain = row.description|striptags|regex_replace("\\s+", " ")|trim %}
-                  {% set wlist = [] %}
-                  {% for w in plain|split(" ") %}
-                    {% if w|trim != "" %}
-                      {% do wlist.append(w|trim) %}
-                    {% endif %}
+
+              {% if tab.image.src %}
+                <div class="bly-st__panel-img">
+                  <img src="{{ tab.image.src }}" alt="{{ tab.image.alt | default('') }}" loading="lazy">
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+
+        {% else %}
+          {% for t in fallback_tabs %}
+            <div
+              class="bly-st__panel{% if loop.first %} is-active{% endif %}"
+              id="bly-st-panel-{{ loop.index }}"
+              role="tabpanel"
+              aria-labelledby="bly-st-tab-{{ loop.index }}">
+
+              <div class="bly-st__panel-copy">
+                <div class="bly-st__panel-heading">{{ t.heading }}</div>
+                <p class="bly-st__panel-desc">{{ t.desc }}</p>
+                <ul class="bly-st__bullets">
+                  {% for b in t.bullets %}
+                    <li class="bly-st__bullet">
+                      <svg class="bly-st__check" viewBox="0 0 20 20" fill="none" stroke="#499ed7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="9"/><polyline points="6 10 9 13 14 7"/></svg>
+                      <span>{{ b }}</span>
+                    </li>
                   {% endfor %}
-                  {% set teaser_parts = [] %}
-                  {% for w in wlist %}
-                    {% if teaser_parts|length < 50 %}
-                      {% do teaser_parts.append(w) %}
-                    {% endif %}
-                  {% endfor %}
-                  {% set teaser = teaser_parts|join(" ") %}
-                  {% if wlist|length > 50 %}
-                    {% set teaser = teaser ~ " ..." %}
-                  {% endif %}
-                  <div class="resource__copy resources-hubdb__desc">{{ teaser }}</div>
-                {% endif %}
-              </div>
-              <div class="resource__foot">
-                <a class="resource__cta" href="{{ row.cta_href }}" rel="noopener">
-                  {{ row.cta_label }}
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M4.667 11.333 11.333 4.667M11.333 4.667H5.333M11.333 4.667V10.667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
+                </ul>
+                <a href="#" class="bly-st__panel-cta">
+                  {{ t.cta }}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
                 </a>
               </div>
-            </article>
-          </li>
+
+              <div class="bly-st__panel-img">
+                <img src="{{ t.img }}" alt="{{ t.label }} dashboard" loading="lazy">
+              </div>
+            </div>
           {% endfor %}
-        </ul>
+        {% endif %}
       </div>
+
     </div>
-    {% endif %}
   </div>
 </section>
+
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.bly-st__tab');
+  var panels = document.querySelectorAll('.bly-st__panel');
+  if (!tabs.length) return;
+  tabs.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var idx = btn.getAttribute('data-tab');
+      tabs.forEach(function (t) { t.setAttribute('aria-selected', 'false'); });
+      panels.forEach(function (p) { p.classList.remove('is-active'); });
+      btn.setAttribute('aria-selected', 'true');
+      var panel = document.getElementById('bly-st-panel-' + idx);
+      if (panel) panel.classList.add('is-active');
+    });
+  });
+})();
+</script>

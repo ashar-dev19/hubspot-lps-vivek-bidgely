@@ -11,8 +11,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "Agentic Automation in CX"
   }, {
     "id" : "agents_intro.ce_agents_heading_before",
@@ -21,8 +21,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : true,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "AI that acts.\nNot just advises."
   }, {
     "id" : "agents_intro.ce_agents_heading_accent",
@@ -31,8 +31,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : true,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : ""
   }, {
     "id" : "agents_intro.ce_agents_heading_after",
@@ -41,8 +41,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : true,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : ""
   }, {
     "id" : "agents_intro.ce_agents_lede",
@@ -50,15 +50,15 @@
     "label" : "Lead paragraph",
     "required" : false,
     "locked" : false,
-    "display_width" : null,
     "type" : "richtext",
+    "display_width" : null,
     "default" : "<p>Bidgely's agentic layer runs the workflows your team currently does manually across every customer touchpoint. From IVR personalization to campaign triggers, agents work continuously without adding headcount.</p>"
   } ],
   "tab" : "CONTENT",
   "expanded" : true,
   "group_occurrence_meta" : null,
-  "display_width" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "ce_agents_eyebrow" : "Agentic Automation in CX",
     "ce_agents_heading_before" : "AI that acts.\nNot just advises.",
@@ -79,8 +79,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "Agentic Value, Modeled"
   }, {
     "id" : "agents_value.ce_agents_value_num",
@@ -89,8 +89,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "$3–7M/year"
   }, {
     "id" : "agents_value.ce_agents_value_desc",
@@ -98,15 +98,15 @@
     "label" : "Description",
     "required" : false,
     "locked" : false,
-    "display_width" : null,
     "type" : "richtext",
+    "display_width" : null,
     "default" : "<p>From deflected calls, improved enrollment, and automated DSM workflows</p>"
   } ],
   "tab" : "CONTENT",
   "expanded" : true,
   "group_occurrence_meta" : null,
-  "display_width" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "ce_agents_value_eyebrow" : "Agentic Value, Modeled",
     "ce_agents_value_num" : "$3–7M/year",
@@ -133,8 +133,8 @@
     "responsive" : false,
     "resizable" : false,
     "show_loading" : true,
-    "display_width" : null,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/dtech26-for-regulators.svg",
       "alt" : "",
@@ -149,8 +149,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "IVR Personalization Agent"
   }, {
     "id" : "agent_cards.card_body",
@@ -158,8 +158,8 @@
     "label" : "Body",
     "required" : false,
     "locked" : false,
-    "display_width" : null,
     "type" : "richtext",
+    "display_width" : null,
     "default" : "<p>Detects the likely call reason before the customer finishes speaking — pulling from their live appliance profile and billing delta. Routes and resolves at the IVR level without a CSR.</p>"
   }, {
     "id" : "agent_cards.card_stat",
@@ -168,15 +168,15 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "Up to 50,000 at-risk customers handled per program cycle"
   } ],
   "tab" : "CONTENT",
   "expanded" : true,
   "group_occurrence_meta" : null,
-  "display_width" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ {
     "card_icon" : {
       "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/dtech26-for-regulators.svg",

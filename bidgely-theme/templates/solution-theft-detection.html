@@ -46,8 +46,8 @@
         <h1>
           {% rich_text "hero_heading" html="Detect Theft Early. <span class='accent'>Prevent Losses Faster.</span>" no_wrapper=True %}
         </h1>
-        <a class="btn btn--navy" href="{% text "hero_cta_link" value="#" no_wrapper=True %}">
-          {% text "hero_cta_label" value="Watch Demo / Talk to an Expert" no_wrapper=True %}
+        <a class="btn btn--navy" href="{% text "hero_cta_link" value="/contact-us-form" no_wrapper=True %}">
+          {% text "hero_cta_label" value="Talk to an Expert" no_wrapper=True %}
         </a>
       </div>
       <div class="hero__copy body-sm">
@@ -73,8 +73,8 @@
 <section class="cta-strip">
   <div class="cta-strip__inner container">
     <h2>{% text "strip_heading" value="See AI-driven theft detection in action." no_wrapper=True %}</h2>
-    <a class="btn btn--white" href="{% text "strip_cta_link" value="#" no_wrapper=True %}">
-      {% text "strip_cta_label" value="Talk to Sales" no_wrapper=True %}
+    <a class="btn btn--white" href="{% text "strip_cta_link" value="/pdf/energy-theft-detection-technical-brief" no_wrapper=True %}">
+      {% text "strip_cta_label" value="Technical Brief" no_wrapper=True %}
     </a>
   </div>
 </section>
@@ -140,8 +140,8 @@
         <ul class="stripe__bullets">
           {% rich_text "stripe1_bullets" html="<li>Detect anomalies using AI models</li><li>Flag high-probability theft cases</li><li>Reduce investigation time</li>" no_wrapper=True %}
         </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe1_cta_link" value="#" no_wrapper=True %}">
-          {% text "stripe1_cta_label" value="Explore Theft Detection" no_wrapper=True %}
+        <a class="stripe__cta link-arrow" href="{% text "stripe1_cta_link" value="/pdf/energy-theft-detection-solution-brief" no_wrapper=True %}">
+          {% text "stripe1_cta_label" value="Read the Solution Brief" no_wrapper=True %}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
@@ -159,8 +159,8 @@
         <ul class="stripe__bullets">
           {% rich_text "stripe2_bullets" html="<li>Identify losses earlier</li><li>Improve recovery outcomes</li><li>Reduce ongoing leakage</li>" no_wrapper=True %}
         </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe2_cta_link" value="#" no_wrapper=True %}">
-          {% text "stripe2_cta_label" value="Explore Revenue Protection" no_wrapper=True %}
+        <a class="stripe__cta link-arrow" href="{% text "stripe2_cta_link" value="/video/energy-theft-detection-overview-video" no_wrapper=True %}">
+          {% text "stripe2_cta_label" value="Watch Video" no_wrapper=True %}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
@@ -178,8 +178,8 @@
         <ul class="stripe__bullets">
           {% rich_text "stripe3_bullets" html="<li>Prioritize investigations</li><li>Improve hit rate</li><li>Reduce cost per case</li>" no_wrapper=True %}
         </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe3_cta_link" value="#" no_wrapper=True %}">
-          {% text "stripe3_cta_label" value="Explore Field Operations" no_wrapper=True %}
+        <a class="stripe__cta link-arrow" href="{% text "stripe3_cta_link" value="/pdf/energy-theft-detection-playbook" no_wrapper=True %}">
+          {% text "stripe3_cta_label" value="Download Playbook" no_wrapper=True %}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
@@ -232,108 +232,6 @@
     </div>
   </div>
 </section>
-
-{# =========================================================
-   GENAI
-   ========================================================= #}
-<section class="section section--gray">
-  <div class="container">
-    <div class="genai__head">
-      <p class="eyebrow">{% text "genai_eyebrow" value="GenAI for Revenue Protection" no_wrapper=True %}</p>
-      <h2 class="h2">{% rich_text "genai_heading" html="Explain anomalies <span class='accent'>with context.</span>" no_wrapper=True %}</h2>
-      <p class="lede">{% rich_text "genai_lede" html="Provide investigators and CSRs with clear explanations of suspicious patterns — grounded in the same data driving detection." no_wrapper=True %}</p>
-    </div>
-
-    <div class="genai">
-      <div class="genai__cards">
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/ders-icon-v1.svg');"></div>
-          <div>
-            <h4>{% text "genai_card1_title" value="Investigator Copilot" no_wrapper=True %}</h4>
-            <p>{% rich_text "genai_card1_copy" html="Surfaces a plain-language explanation of why each account was flagged — the specific anomaly, the supporting evidence, and the recommended next step. No more digging through dashboards to build the case." no_wrapper=True %}</p>
-          </div>
-        </div>
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/iucx-icon-05-1.svg');"></div>
-          <div>
-            <h4>{% text "genai_card2_title" value="CSR Anomaly Explainer" no_wrapper=True %}</h4>
-            <p>{% rich_text "genai_card2_copy" html="Gives CSRs context for accounts under review — clear, customer-safe language to handle inbound questions without compromising the investigation." no_wrapper=True %}</p>
-          </div>
-        </div>
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/daas-v2.svg');"></div>
-          <div>
-            <h4>{% text "genai_card3_title" value="Pattern & Anomaly Visualizer" no_wrapper=True %}</h4>
-            <p>{% rich_text "genai_card3_copy" html="Consumption charts with embedded natural-language explanations of suspicious patterns — investigators tap any spike or gap and get a plain-English reason grounded in the underlying meter data." no_wrapper=True %}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="genai__visual">
-        {% image "genai_visual" src="{{ asset_base }}/theft-grounded-conversations.svg" alt="Theft detection grounded conversations preview" class="genai__img" %}
-      </div>
-    </div>
-  </div>
-</section>
-
-{# =========================================================
-   PROVEN RESULTS (case study)
-   ========================================================= #}
-<section class="section section--white">
-  <div class="container">
-    <div class="results-head">
-      <div>
-        <p class="eyebrow">{% text "results_eyebrow" value="Proven Results" no_wrapper=True %}</p>
-        <h2 class="h2">{% rich_text "results_heading" html="Reducing losses with <span class='accent'>precision detection.</span>" no_wrapper=True %}</h2>
-      </div>
-    </div>
-
-    <div class="peers">
-      <span>{% text "peers_label" value="Peer Utilities:" no_wrapper=True %}</span>
-      {% image "peers_logos" src="{{ asset_base }}/frame-2147227076.svg" alt="Peer utility logos" width="734" height="38" %}
-    </div>
-
-    {# NOTE: Default stat values are placeholders. Replace with the
-       theft-detection case metrics once the case study is finalized. #}
-    <div class="case">
-      <div class="case__left">
-        <div class="case__eyebrow">{% text "case_eyebrow" value="Theft Detection · Revenue Protection" no_wrapper=True %}</div>
-        <h3 class="case__title">{% text "case_title" value="Large Investor-Owned Utility" no_wrapper=True %}</h3>
-        <p class="case__copy">{% rich_text "case_copy" html="Manual investigation methods were missing subtle patterns and burning field crew hours on low-probability cases. Bidgely&#39;s AI-driven detection turned anomaly identification into an always-on background process — and prioritized the cases worth working." no_wrapper=True %}</p>
-        <div class="case__hero">
-          <div class="v">{% text "case_hero_value" value="AI-Driven" no_wrapper=True %}</div>
-          <div class="l">{% text "case_hero_label" value="Continuous detection across the full meter base" no_wrapper=True %}</div>
-        </div>
-      </div>
-      <div class="case__right">
-        <p class="case__quote">{% rich_text "case_quote" html="\"Bidgely turned theft detection from a reactive, manual process into an always-on capability. Our investigators work higher-confidence leads, and our recovery rates are climbing.\"" no_wrapper=True %}</p>
-        <div class="case__stats">
-          <div class="case__stat">
-            <div class="v">{% text "stat1_v" value="Higher" no_wrapper=True %}</div>
-            <div class="l">{% text "stat1_l" value="Detection accuracy vs. manual methods (placeholder — confirm with case)" no_wrapper=True %}</div>
-          </div>
-          <div class="case__stat">
-            <div class="v">{% text "stat2_v" value="Faster" no_wrapper=True %}</div>
-            <div class="l">{% text "stat2_l" value="Investigation cycles (placeholder — confirm with case)" no_wrapper=True %}</div>
-          </div>
-          <div class="case__stat">
-            <div class="v">{% text "stat3_v" value="Lower" no_wrapper=True %}</div>
-            <div class="l">{% text "stat3_l" value="Non-technical losses (placeholder — confirm with case)" no_wrapper=True %}</div>
-          </div>
-          <div class="case__stat">
-            <div class="v">{% text "stat4_v" value="Higher" no_wrapper=True %}</div>
-            <div class="l">{% text "stat4_l" value="Field team hit rate per investigation (placeholder — confirm with case)" no_wrapper=True %}</div>
-          </div>
-        </div>
-        <a class="case__cta link-arrow" href="{% text "case_cta_link" value="#" no_wrapper=True %}">
-          {% text "case_cta_label" value="Download the Full Case Study PDF" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 {# =========================================================
    ADDITIONAL CONTENT — BEFORE RESOURCES

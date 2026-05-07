@@ -164,6 +164,7 @@ section.section--hero strong {
     transition: transform .15s ease, opacity .15s ease;
     white-space: nowrap; position: relative; overflow: hidden;
     transform: translateY(0); box-shadow: 0 0 0 rgba(0,0,0,0);
+    min-width: 170px;
   }
   .btn::after {
     content: ""; position: absolute; inset: auto -35% 0 auto;
@@ -1517,14 +1518,16 @@ section.hero-section.testing {
 
 .featured-card-large {
 
-    border-radius: 14px;
+   
     box-shadow: 0 4px 20px 0px #0D111712;
     display: flex;
     flex-direction: column;
     min-height: 480px;
-    overflow: hidden;
+
     position: relative;
-   border: 1px solid #152D4912;
+        border: 1px solid #152d4912;
+    border-radius: 14px;
+   
 }
 
 .featured-card-large-image {
@@ -1535,7 +1538,7 @@ section.hero-section.testing {
   bottom: 0;
   width: 100%;
   height: 100%;
-  background: #152D49;
+  background: none;
   z-index: 0;
   pointer-events: none;
 }
@@ -1548,6 +1551,7 @@ section.hero-section.testing {
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 14px;
 }
 
 .featured-card-large-video {
@@ -1579,13 +1583,15 @@ h3.resource-title {
   flex-direction: column;
   justify-content: center;
   gap: 15px;
+  border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
 .featured-card-small {
-  border: 1px solid #152D4912;
+ 
  box-shadow: 0 4px 20px 0px #0D111712;
+  
   border-radius: 14px;
-  overflow: hidden;
   display: flex;
   height: 300px;
   position: relative;
@@ -1596,6 +1602,9 @@ h3.resource-title {
   width: 60%;
   flex: 0 0 60%;
   display: flex;
+  border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border: 1px solid #152D4912;
   flex-direction: column;
   justify-content: center;
   gap: 15px;
@@ -1609,7 +1618,7 @@ h3.resource-title {
   inset: 0;
   width: 100%;
   height: 100%;
-  background: #152D49;
+  background: none;
   z-index: 0;
 }
 
@@ -1617,6 +1626,7 @@ h3.resource-title {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius:14px;
 }
 
 .featured-card-small-video {
@@ -1659,8 +1669,8 @@ h3.resource-title {
 .resource-title-small {
   color: #152D49;
   font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
+  font-weight: 700;
+  line-height: 20px;
   margin-bottom: 0px;
   text-align:left;
 }

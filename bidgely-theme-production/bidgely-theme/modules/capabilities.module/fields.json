@@ -5,8 +5,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : false,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : "Capabilities"
 }, {
   "id" : "cap_heading_before",
@@ -15,8 +15,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : false,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : "CX outcomes you can "
 }, {
   "id" : "cap_heading_blue",
@@ -25,8 +25,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : false,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : "actually own."
 }, {
   "id" : "cap_heading_after",
@@ -35,8 +35,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : false,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : ""
 }, {
   "id" : "cap_lede",
@@ -44,8 +44,8 @@
   "label" : "Lead paragraph",
   "required" : false,
   "locked" : false,
-  "display_width" : null,
   "type" : "richtext",
+  "display_width" : null,
   "default" : "The data you need is already behind every meter. Decode it and put it to work."
 }, {
   "id" : "cards",
@@ -68,8 +68,8 @@
     "responsive" : false,
     "resizable" : false,
     "show_loading" : true,
-    "display_width" : null,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/explain-bill-icon.svg",
       "alt" : "",
@@ -81,8 +81,8 @@
     "label" : "Title",
     "required" : false,
     "locked" : false,
-    "display_width" : null,
     "type" : "richtext",
+    "display_width" : null,
     "default" : "Explain every bill before the phone rings."
   }, {
     "id" : "cards.copy",
@@ -90,15 +90,15 @@
     "label" : "Body",
     "required" : false,
     "locked" : false,
-    "display_width" : null,
     "type" : "richtext",
+    "display_width" : null,
     "default" : "Surface appliance-level cost drivers proactively so customers already understand their bill and CSRs can resolve what does come in."
   } ],
   "tab" : "CONTENT",
   "expanded" : true,
   "group_occurrence_meta" : null,
-  "display_width" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ {
     "icon" : {
       "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/explain-bill-icon.svg",

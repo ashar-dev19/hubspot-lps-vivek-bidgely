@@ -1,1 +1,25 @@
-[ ]
+[ {
+  "id" : "hubdb_table_id",
+  "name" : "hubdb_table_id",
+  "label" : "HubDB table ID (Leadership)",
+  "help_text" : "Numeric table ID for the leadership directory.",
+  "required" : true,
+  "locked" : false,
+  "display" : "text",
+  "min" : 0,
+  "step" : 1,
+  "type" : "number",
+  "display_width" : null,
+  "default" : 2150970045
+}, {
+  "id" : "headshot_base",
+  "name" : "headshot_base",
+  "label" : "Headshot files base URL",
+  "help_text" : "Folder URL ending with / ; filenames come from the HubDB headshot column.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Leadership%20-%20Headshots/"
+} ]

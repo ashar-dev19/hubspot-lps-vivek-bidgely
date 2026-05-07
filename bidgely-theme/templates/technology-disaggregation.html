@@ -184,8 +184,8 @@
         <h1>
           {% rich_text "hero_heading" html="Appliance-Level Intelligence <span class='accent'>From Every Meter.</span>" no_wrapper=True %}
         </h1>
-        <a class="btn btn--navy" href="{% text "hero_cta_link" value="#" no_wrapper=True %}">
-          {% text "hero_cta_label" value="Get a Demo" no_wrapper=True %}
+        <a class="btn btn--navy" href="{% text "hero_cta_link" value="/pdf/edge-intelligence-solution-brief" no_wrapper=True %}">
+          {% text "hero_cta_label" value="Get Solution Brief" no_wrapper=True %}
         </a>
       </div>
       <div class="hero__copy body-sm">
@@ -221,8 +221,8 @@
         <div class="stat-tile__label">{% text "stat4_label" value="Granularity" no_wrapper=True %}</div>
       </div>
       <div class="stat-tile">
-        {% image "stat5_icon" src="{{ asset_base }}/icon-electricity-plus.svg" alt="" class="stat-tile__icon" %}
-        <div class="stat-tile__label">{% text "stat5_label" value="Electricity, Gas, Water" no_wrapper=True %}</div>
+        <div class="stat-tile__value">{% text "stat5_value" value="15%" no_wrapper=True %}</div>
+        <div class="stat-tile__label">{% text "stat5_label" value="Reduction in Residential Energy Consumption" no_wrapper=True %}</div>
       </div>
     </div>
   </div>
@@ -398,13 +398,13 @@
         <ul class="stripe__bullets">
           {% rich_text "patents_bullets" html="<li>Energy disaggregation techniques for AMI and smart-meter whole-house consumption data</li><li>Solar energy disaggregation for whole-house energy data</li><li>EV disaggregation techniques</li><li>Anomaly detection and bill comparison from disaggregated energy data</li><li>Low-frequency / non-smart-meter energy disaggregation techniques</li>" no_wrapper=True %}
         </ul>
-        <a class="stripe__cta link-arrow" href="{% text "patents_cta_link" value="#" no_wrapper=True %}">
-          {% text "patents_cta_label" value="Read about our patents" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
+        
       </div>
       <div class="stripe__visual">
-        {% image "patents_img" src="{{ asset_base }}/tech-patents-illustration.svg" alt="Patented disaggregation technology — algorithm illustration" class="stripe__img" %}
+        {% module "patents_video"
+          path="@hubspot/video"
+          label="Patents Video"
+        %}
       </div>
     </div>
   </div>
@@ -413,46 +413,23 @@
 {# =========================================================
    RESOURCES — 3 tiles (PDF / Video / Report)
    ========================================================= #}
-<section class="section section--white">
-  <div class="container">
-    <div class="tech-head">
-      <p class="eyebrow">{% text "res_eyebrow" value="Resources" no_wrapper=True %}</p>
-      <h2 class="h2">{% rich_text "res_heading" html="Go deeper on <span class='accent'>true disaggregation.</span>" no_wrapper=True %}</h2>
-    </div>
+{% dnd_area "main" label="Resources" %}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/resources-hubdb.module"
+          label="Resources"
+          ce_resources_eyebrow="Resources"
+          filter_value="Disaggregation"
+          hubdb_limit=3
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-    <div class="resource-tiles">
-      <a class="resource-tile" href="{% text "res1_link" value="#" no_wrapper=True %}">
-        <div class="resource-tile__media">
-          {% image "res1_image" src="{{ asset_base }}/tech-resource-pdf.svg" alt="" %}
-        </div>
-        <div class="resource-tile__body">
-          <span class="resource-tile__type">{% text "res1_type" value="PDF" no_wrapper=True %}</span>
-          <h3 class="resource-tile__title">{% text "res1_title" value="Empowering Utilities With True, Behind-the-Meter Disaggregation" no_wrapper=True %}</h3>
-        </div>
-      </a>
-
-      <a class="resource-tile" href="{% text "res2_link" value="#" no_wrapper=True %}">
-        <div class="resource-tile__media">
-          {% image "res2_image" src="{{ asset_base }}/tech-resource-video.svg" alt="" %}
-        </div>
-        <div class="resource-tile__body">
-          <span class="resource-tile__type">{% text "res2_type" value="Video" no_wrapper=True %}</span>
-          <h3 class="resource-tile__title">{% text "res2_title" value="Future-Ready Insights: Energy Intelligence That Boosts the Entire Tech Stack" no_wrapper=True %}</h3>
-        </div>
-      </a>
-
-      <a class="resource-tile" href="{% text "res3_link" value="#" no_wrapper=True %}">
-        <div class="resource-tile__media">
-          {% image "res3_image" src="{{ asset_base }}/tech-resource-report.svg" alt="" %}
-        </div>
-        <div class="resource-tile__body">
-          <span class="resource-tile__type">{% text "res3_type" value="Report" no_wrapper=True %}</span>
-          <h3 class="resource-tile__title">{% text "res3_title" value="AMI-Driven Insights Report" no_wrapper=True %}</h3>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
+{% end_dnd_area %}
 
 {# =========================================================
    PAGE CTA — navy block, centered, headline + body + CTA
@@ -466,8 +443,8 @@
       <p class="lede">
         {% rich_text "cta_body" html="Disaggregation is the foundation of the UtilityAI Platform. One intelligence layer gives your customer, program, rate, and grid teams the appliance-level insight they need to act with precision." no_wrapper=True %}
       </p>
-      <a class="btn btn--white" href="{% text "cta_btn_link" value="#" no_wrapper=True %}">
-        {% text "cta_btn_label" value="Get a Demo" no_wrapper=True %}
+      <a class="btn btn--white" href="{% text "cta_btn_link" value="demo.bidgely.com" no_wrapper=True %}">
+        {% text "cta_btn_label" value="Interactive Demo" no_wrapper=True %}
       </a>
     </div>
   </div>

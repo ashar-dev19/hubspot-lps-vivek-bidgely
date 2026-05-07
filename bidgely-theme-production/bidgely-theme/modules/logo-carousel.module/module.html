@@ -18,15 +18,12 @@
   font-style: normal;
   color: #499ed7;
 }
-
 /* ── Marquee track ── */
 .bly-lc__overflow {
   overflow: hidden;
   position: relative;
     margin: 0 auto;
 }
-
-
 .bly-lc__track {
   display: flex;
   width: max-content;
@@ -37,7 +34,6 @@
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
 /* ── Logo card ── */
 .bly-lc__item {
   position: relative;
@@ -63,7 +59,6 @@
 .bly-lc__item:hover img {
   transform: translateY(-6px);
 }
-
 /* ── Bottom case-study label (slides up on hover) ── */
 .bly-lc__overlay {
   position: absolute;
@@ -75,7 +70,7 @@
   justify-content: center;
   transform: translateY(100%);
   transition: transform .25s ease;
-  padding-bottom: 6px;
+  padding: 6px;
 }
 .bly-lc__item:hover .bly-lc__overlay {
   transform: translateY(0);
@@ -94,23 +89,34 @@
   text-transform: uppercase;
 }
 </style>
-
-{% set ab = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+{% set ab = "https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/resources/Customer%20Logos" %}
+{% set case_study_url = "/resources/?assetType=Case+Study" %}
 {% set speed = module.speed | default(35) %}
 {% set has_logos = module.logos and module.logos|length > 0 and module.logos[0].image.src %}
-
 {% set fallback = [
-  {"src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/pg-e-logo-w-text-color.png"},
-  {"src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/g6.png"},
-  {"src":  "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Oklahoma_Gas_&_Electric_Logo%201.png"},
-  {"src":  "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Layer_1-2.png"},
-  {"src":  "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/avista-logo-color.png"},
-  {"src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/nv-energy-logo-color.png"}
- 
+  {"src": ab ~ "/Ameren_logo.svg", "alt": "Ameren"},
+  {"src": ab ~ "/aps-logo-color.svg", "alt": "APS"},
+  {"src": ab ~ "/austin-energy-logo-color.svg", "alt": "Austin Energy"},
+  {"src": ab ~ "/avangrid-logo-color.svg", "alt": "Avangrid"},
+  {"src": ab ~ "/avista-logo-color.svg", "alt": "Avista"},
+  {"src": ab ~ "/centerpoint-energy-logo-color.svg", "alt": "CenterPoint Energy"},
+  {"src": ab ~ "/florida-power-%26-light-logo-color.svg", "alt": "Florida Power & Light"},
+  {"src": ab ~ "/hydro-one-logo-color.svg", "alt": "Hydro One"},
+  {"src": ab ~ "/nova-scotia-power-logo-color.svg", "alt": "Nova Scotia Power"},
+  {"src": ab ~ "/nv-energy-logo-color.svg", "alt": "NV Energy"},
+  {"src": ab ~ "/pacificorp-logocolor.svg", "alt": "PacifiCorp"},
+  {"src": ab ~ "/PGE_logo-color.svg", "alt": "PG&E"},
+  {"src": ab ~ "/pnm-logo-color.svg", "alt": "PNM"},
+  {"src": ab ~ "/pseg-logo-color.svg", "alt": "PSEG"},
+  {"src": ab ~ "/puget-sound-energy-logo-color.svg", "alt": "Puget Sound Energy"},
+  {"src": ab ~ "/rocky-mountain-power-logo-color.svg", "alt": "Rocky Mountain Power"},
+  {"src": ab ~ "/sdg-e-logo-color.svg", "alt": "SDG&E"},
+  {"src": ab ~ "/SoCalGas-logo-color.svg", "alt": "SoCalGas"},
+  {"src": ab ~ "/sorgenia-logo-color.svg", "alt": "Sorgenia"},
+  {"src": ab ~ "/srp-logo-color.svg", "alt": "SRP"},
+  {"src": ab ~ "/tep-logo-color.svg", "alt": "TEP"}
 ] %}
-
 <section class="bly-lc">
-
   <p class="bly-lc__heading">
     {% if module.label_text %}
       {{ module.label_text }}
@@ -118,17 +124,15 @@
       TRUSTED BY LEADING UTILITIES ON 4 CONTINENTS
     {% endif %}
   </p>
-
   <div class="bly-lc__overflow" aria-hidden="true">
     <div class="bly-lc__track" style="animation-duration:{{ speed }}s;">
-
       {% if has_logos %}
         {# Pass 1 #}
         {% for logo in module.logos %}{% if logo.image.src %}
           <div class="bly-lc__item">
             <img src="{{ logo.image.src }}" alt="{{ logo.image.alt | default('') }}" loading="lazy">
             <div class="bly-lc__overlay">
-              <a href="{{ logo.cta_url.href | default('#') }}"
+              <a href="{{ logo.cta_url.href | default(case_study_url) }}"
                  {% if logo.cta_url.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
                  class="bly-lc__cta">
                 {{ logo.cta_label | default("Case study") }}
@@ -142,7 +146,7 @@
           <div class="bly-lc__item">
             <img src="{{ logo.image.src }}" alt="{{ logo.image.alt | default('') }}" loading="lazy">
             <div class="bly-lc__overlay">
-              <a href="{{ logo.cta_url.href | default('#') }}"
+              <a href="{{ logo.cta_url.href | default(case_study_url) }}"
                  {% if logo.cta_url.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
                  class="bly-lc__cta">
                 {{ logo.cta_label | default("Case study") }}
@@ -151,14 +155,13 @@
             </div>
           </div>
         {% endif %}{% endfor %}
-
       {% else %}
         {# Fallback – Pass 1 #}
         {% for logo in fallback %}
           <div class="bly-lc__item">
             <img src="{{ logo.src }}" alt="{{ logo.alt }}" loading="lazy">
             <div class="bly-lc__overlay">
-              <a href="/resources/?assetType=Case+Study" class="bly-lc__cta">
+              <a href="{{ case_study_url }}" class="bly-lc__cta">
                 Case study
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
               </a>
@@ -170,7 +173,7 @@
           <div class="bly-lc__item">
             <img src="{{ logo.src }}" alt="{{ logo.alt }}" loading="lazy">
             <div class="bly-lc__overlay">
-              <a href="#" class="bly-lc__cta">
+              <a href="{{ case_study_url }}" class="bly-lc__cta">
                 Case study
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
               </a>
@@ -178,8 +181,6 @@
           </div>
         {% endfor %}
       {% endif %}
-
     </div>
   </div>
-
 </section>

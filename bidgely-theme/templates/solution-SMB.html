@@ -46,8 +46,8 @@
         <h1>
           {% rich_text "hero_heading" html="Bring Precision Targeting to Your <span class='accent'>SMB Customer Base.</span>" no_wrapper=True %}
         </h1>
-        <a class="btn btn--navy" href="{% text "hero_cta_link" value="#" no_wrapper=True %}">
-          {% text "hero_cta_label" value="Get Solution Brief" no_wrapper=True %}
+        <a class="btn btn--navy" href="{% text "hero_cta_link" value="/contact-us-form" no_wrapper=True %}">
+          {% text "hero_cta_label" value="Speak with an Expert" no_wrapper=True %}
         </a>
       </div>
       <div class="hero__copy body-sm">
@@ -73,8 +73,8 @@
 <section class="cta-strip">
   <div class="cta-strip__inner container">
     <h2>{% text "strip_heading" value="See SMB Intelligence in action." no_wrapper=True %}</h2>
-    <a class="btn btn--white" href="{% text "strip_cta_link" value="#" no_wrapper=True %}">
-      {% text "strip_cta_label" value="Talk to Sales" no_wrapper=True %}
+    <a class="btn btn--white" href="{% text "strip_cta_link" value="/video/2025-barb-modley-empower" no_wrapper=True %}">
+      {% text "strip_cta_label" value="Watch Case Study" no_wrapper=True %}
     </a>
   </div>
 </section>
@@ -140,8 +140,8 @@
         <ul class="stripe__bullets">
           {% rich_text "stripe1_bullets" html="<li>Segment SMBs by usage patterns and business type</li><li>Identify operational drivers of energy consumption</li><li>Scaled energy insights for offices, hotels, restaurants, and supermarkets</li>" no_wrapper=True %}
         </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe1_cta_link" value="#" no_wrapper=True %}">
-          {% text "stripe1_cta_label" value="Explore SMB Segmentation" no_wrapper=True %}
+        <a class="stripe__cta link-arrow" href="{% text "stripe1_cta_link" value="/pdf/smb-disaggregation-technical-brief" no_wrapper=True %}">
+          {% text "stripe1_cta_label" value="Technical Brief" no_wrapper=True %}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
@@ -159,8 +159,8 @@
         <ul class="stripe__bullets">
           {% rich_text "stripe2_bullets" html="<li>Identify high-potential SMBs for efficiency and DR programs</li><li>Tailor outreach based on usage patterns and business needs</li><li>Increase enrollment without increasing spend</li>" no_wrapper=True %}
         </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe2_cta_link" value="#" no_wrapper=True %}">
-          {% text "stripe2_cta_label" value="Explore Program Design" no_wrapper=True %}
+        <a class="stripe__cta link-arrow" href="{% text "stripe2_cta_link" value="/video/secrets-of-smb-success-webinar" no_wrapper=True %}">
+          {% text "stripe2_cta_label" value="See Rocky Mountain Power's Approach" no_wrapper=True %}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
@@ -178,7 +178,7 @@
         <ul class="stripe__bullets">
           {% rich_text "stripe3_bullets" html="<li>Identify inefficiencies across equipment and usage patterns</li><li>Deliver targeted recommendations for savings</li><li>Drive measurable energy and cost reductions</li>" no_wrapper=True %}
         </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe3_cta_link" value="#" no_wrapper=True %}">
+        <a class="stripe__cta link-arrow" href="{% text "stripe3_cta_link" value="/pdf/smb-disaggregation-technical-brief" no_wrapper=True %}">
           {% text "stripe3_cta_label" value="Explore SMB Efficiency" no_wrapper=True %}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
@@ -197,8 +197,8 @@
         <ul class="stripe__bullets">
           {% rich_text "stripe4_bullets" html="<li>Enable premium insights and advisory services</li><li>Support new SMB-focused offerings</li><li>Create incremental revenue streams from engagement, program design, and monetization</li>" no_wrapper=True %}
         </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe4_cta_link" value="#" no_wrapper=True %}">
-          {% text "stripe4_cta_label" value="Explore SMB Monetization" no_wrapper=True %}
+        <a class="stripe__cta link-arrow" href="{% text "stripe4_cta_link" value="/pdf/smb-disaggregation-technical-brief" no_wrapper=True %}">
+          {% text "stripe4_cta_label" value="White Paper" no_wrapper=True %}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
         </a>
       </div>
@@ -295,63 +295,7 @@
   </div>
 </section>
 
-{# =========================================================
-   PROVEN RESULTS (case study)
-   ========================================================= #}
-<section class="section section--white">
-  <div class="container">
-    <div class="results-head">
-      <div>
-        <p class="eyebrow">{% text "results_eyebrow" value="Proven Results" no_wrapper=True %}</p>
-        <h2 class="h2">{% rich_text "results_heading" html="From SMB visibility to <span class='accent'>measurable outcomes.</span>" no_wrapper=True %}</h2>
-      </div>
-    </div>
 
-    <div class="peers">
-      <span>{% text "peers_label" value="Peer Utilities:" no_wrapper=True %}</span>
-      {% image "peers_logos" src="{{ asset_base }}/frame-2147227076.svg" alt="Peer utility logos" width="734" height="38" %}
-    </div>
-
-    {# NOTE: Default stat values are placeholders. Replace with the SMB-specific
-       case metrics once the case study is finalized. #}
-    <div class="case">
-      <div class="case__left">
-        <div class="case__eyebrow">{% text "case_eyebrow" value="SMB Engagement · Program Design" no_wrapper=True %}</div>
-        <h3 class="case__title">{% text "case_title" value="Large Multi-State Utility" no_wrapper=True %}</h3>
-        <p class="case__copy">{% rich_text "case_copy" html="With an SMB book spanning offices, restaurants, hotels, and retail, this utility was running residential-style outreach against business customers and getting low program uptake. Bidgely&#39;s SMB segmentation and program matching gave them a precision view of which businesses to engage, with what offer, and through which channel." no_wrapper=True %}</p>
-        <div class="case__hero">
-          <div class="v">{% text "case_hero_value" value="100%" no_wrapper=True %}</div>
-          <div class="l">{% text "case_hero_label" value="Of SMB accounts segmented and program-matched at scale" no_wrapper=True %}</div>
-        </div>
-      </div>
-      <div class="case__right">
-        <p class="case__quote">{% rich_text "case_quote" html="\"For the first time, our SMB customers feel like we actually understand their business. We&#39;re segmenting at scale, matching the right programs, and opening up monetization paths we couldn&#39;t reach before.\"" no_wrapper=True %}</p>
-        <div class="case__stats">
-          <div class="case__stat">
-            <div class="v">{% text "stat1_v" value="100%" no_wrapper=True %}</div>
-            <div class="l">{% text "stat1_l" value="SMB portfolio segmented" no_wrapper=True %}</div>
-          </div>
-          <div class="case__stat">
-            <div class="v">{% text "stat2_v" value="↑" no_wrapper=True %}</div>
-            <div class="l">{% text "stat2_l" value="Increased program participation (placeholder — confirm with case)" no_wrapper=True %}</div>
-          </div>
-          <div class="case__stat">
-            <div class="v">{% text "stat3_v" value="↓" no_wrapper=True %}</div>
-            <div class="l">{% text "stat3_l" value="Energy and cost savings for SMB customers (placeholder — confirm with case)" no_wrapper=True %}</div>
-          </div>
-          <div class="case__stat">
-            <div class="v">{% text "stat4_v" value="$" no_wrapper=True %}</div>
-            <div class="l">{% text "stat4_l" value="New monetization opportunities unlocked (placeholder — confirm with case)" no_wrapper=True %}</div>
-          </div>
-        </div>
-        <a class="case__cta link-arrow" href="{% text "case_cta_link" value="#" no_wrapper=True %}">
-          {% text "case_cta_label" value="Download the Full Case Study PDF" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 {# =========================================================

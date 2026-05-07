@@ -11,8 +11,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "GenAI in Customer Experience"
   }, {
     "id" : "genai_intro.ce_genai_heading_before",
@@ -21,8 +21,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "Conversations grounded in real "
   }, {
     "id" : "genai_intro.ce_genai_heading_accent",
@@ -31,8 +31,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "customer data."
   }, {
     "id" : "genai_intro.ce_genai_heading_after",
@@ -41,8 +41,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : ""
   }, {
     "id" : "genai_intro.ce_genai_lead",
@@ -50,15 +50,15 @@
     "label" : "Lead paragraph",
     "required" : false,
     "locked" : false,
-    "display_width" : null,
     "type" : "richtext",
+    "display_width" : null,
     "default" : "<p>Bidgely's GenAI layer doesn't run on generic LLM prompts. Every answer — to a customer or a CSR — is grounded in that customer's disaggregated appliance profile.</p>"
   } ],
   "tab" : "CONTENT",
   "expanded" : true,
   "group_occurrence_meta" : null,
-  "display_width" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "ce_genai_eyebrow" : "GenAI in Customer Experience",
     "ce_genai_heading_before" : "Conversations grounded in real ",
@@ -87,8 +87,8 @@
     "responsive" : false,
     "resizable" : false,
     "show_loading" : true,
-    "display_width" : null,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ders-icon-v1.svg",
       "alt" : "",
@@ -103,8 +103,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "Energy Assistant (Customer-Facing)"
   }, {
     "id" : "genai_cards.feature_body",
@@ -112,15 +112,15 @@
     "label" : "Body",
     "required" : false,
     "locked" : false,
-    "display_width" : null,
     "type" : "richtext",
+    "display_width" : null,
     "default" : "<p>A conversational AI that answers billing and usage questions, explains appliance-level charges, and recommends programs — embedded in your portal, app, or SMS channel. Personalized to each meter, not a generic chatbot.</p>"
   } ],
   "tab" : "CONTENT",
   "expanded" : true,
   "group_occurrence_meta" : null,
-  "display_width" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ {
     "feature_icon" : {
       "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ders-icon-v1.svg",
@@ -164,8 +164,8 @@
   "multiple" : false,
   "reordering_enabled" : false,
   "preset" : null,
-  "display_width" : null,
   "type" : "choice",
+  "display_width" : null,
   "default" : "live_chat"
 }, {
   "id" : "genai_visual_image",
@@ -184,8 +184,8 @@
   "responsive" : true,
   "resizable" : true,
   "show_loading" : true,
-  "display_width" : null,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grounded-conversations.svg",
     "alt" : "Grounded conversations assistant preview",
@@ -215,8 +215,8 @@
     "responsive" : true,
     "resizable" : true,
     "show_loading" : true,
-    "display_width" : null,
     "type" : "image",
+    "display_width" : null,
     "default" : {
       "src" : "",
       "alt" : "",
@@ -231,8 +231,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "Energy Assistant sample conversation"
   }, {
     "id" : "chat_demo.ce_genai_chat_headline",
@@ -241,8 +241,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "Energy Assistant"
   }, {
     "id" : "chat_demo.ce_genai_chat_status",
@@ -251,15 +251,15 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "● Online · Grounded in your meter data"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
   "group_occurrence_meta" : null,
-  "display_width" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : {
     "ce_genai_chat_avatar" : {
       "src" : "",
@@ -303,8 +303,8 @@
     "multiple" : false,
     "reordering_enabled" : false,
     "preset" : null,
-    "display_width" : null,
     "type" : "choice",
+    "display_width" : null,
     "default" : "user"
   }, {
     "id" : "chat_messages.sender_label",
@@ -313,8 +313,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "You"
   }, {
     "id" : "chat_messages.message_body",
@@ -322,15 +322,15 @@
     "label" : "Message",
     "required" : false,
     "locked" : false,
-    "display_width" : null,
     "type" : "richtext",
+    "display_width" : null,
     "default" : "<p>Why is my bill $68 higher this month?</p>"
   } ],
   "tab" : "CONTENT",
   "expanded" : false,
   "group_occurrence_meta" : null,
-  "display_width" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ {
     "message_role" : "user",
     "sender_label" : "You",
@@ -375,8 +375,8 @@
     "required" : false,
     "locked" : false,
     "allow_new_line" : false,
-    "display_width" : null,
     "type" : "text",
+    "display_width" : null,
     "default" : "Yes, enroll me"
   }, {
     "id" : "chat_chips.chip_link",
@@ -386,8 +386,8 @@
     "locked" : false,
     "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
     "show_advanced_rel_options" : false,
-    "display_width" : null,
     "type" : "link",
+    "display_width" : null,
     "default" : {
       "url" : {
         "type" : "EXTERNAL",
@@ -404,8 +404,8 @@
   "tab" : "CONTENT",
   "expanded" : false,
   "group_occurrence_meta" : null,
-  "display_width" : null,
   "type" : "group",
+  "display_width" : null,
   "default" : [ {
     "chip_label" : "Yes, enroll me",
     "chip_link" : {

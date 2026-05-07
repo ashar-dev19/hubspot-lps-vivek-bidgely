@@ -5,8 +5,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : false,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : "Hero"
 }, {
   "id" : "eyebrow",
@@ -15,8 +15,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : false,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : "Agentic Automation Fabric"
 }, {
   "id" : "headline",
@@ -26,8 +26,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : true,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : "Pre-Built for Utilities. Configurable for Yours."
 }, {
   "id" : "headline_accent",
@@ -37,8 +37,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : false,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : ""
 }, {
   "id" : "headline_after_accent",
@@ -48,8 +48,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : true,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : ""
 }, {
   "id" : "subcopy",
@@ -57,8 +57,8 @@
   "label" : "Subcopy",
   "required" : false,
   "locked" : false,
-  "display_width" : null,
   "type" : "richtext",
+  "display_width" : null,
   "default" : "<p>Your teams shouldn't wait months for AI to be useful. The Agentic Automation Fabric ships production-ready agents for the workflows utilities run every day and the infrastructure to build any new agent you need, running on pre-trained utility models.</p>"
 }, {
   "id" : "cta_text",
@@ -67,8 +67,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : false,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : "Get a Demo"
 }, {
   "id" : "button_style",
@@ -82,8 +82,8 @@
   "multiple" : false,
   "reordering_enabled" : false,
   "preset" : null,
-  "display_width" : null,
   "type" : "choice",
+  "display_width" : null,
   "default" : "navy"
 }, {
   "id" : "cta_link",
@@ -93,8 +93,8 @@
   "locked" : false,
   "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
   "show_advanced_rel_options" : false,
-  "display_width" : null,
   "type" : "link",
+  "display_width" : null,
   "default" : {
     "url" : {
       "type" : "EXTERNAL",
@@ -117,8 +117,8 @@
   "responsive" : false,
   "resizable" : false,
   "show_loading" : false,
-  "display_width" : null,
   "type" : "image",
+  "display_width" : null,
   "default" : {
     "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/agentic-ai-diagrm-1%20(1).svg",
     "alt" : "",

@@ -2,6 +2,7 @@
   "global" : false,
   "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
   "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 341987327707,
   "label" : "News & Press — HubDB listing",
   "is_available_for_new_content" : true
 }

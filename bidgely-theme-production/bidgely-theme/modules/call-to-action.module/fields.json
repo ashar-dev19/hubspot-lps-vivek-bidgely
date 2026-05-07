@@ -6,8 +6,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : false,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : "Request a demo"
 }, {
   "id" : "section_background",
@@ -21,8 +21,8 @@
   "multiple" : false,
   "reordering_enabled" : false,
   "preset" : null,
-  "display_width" : null,
   "type" : "choice",
+  "display_width" : null,
   "default" : "nile"
 }, {
   "id" : "section_heading",
@@ -31,8 +31,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : true,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : "Ready to Start Your Journey With UtilityAI?"
 }, {
   "id" : "subcopy",
@@ -41,8 +41,8 @@
   "help_text" : "Optional rich text. Leave blank to hide.",
   "required" : false,
   "locked" : false,
-  "display_width" : null,
   "type" : "richtext",
+  "display_width" : null,
   "default" : "<p>Don't let your operational investments stall. Find out how to unlock ROI, reliability, and resilience across your utility.</p>"
 }, {
   "id" : "cta_text",
@@ -51,8 +51,8 @@
   "required" : false,
   "locked" : false,
   "allow_new_line" : false,
-  "display_width" : null,
   "type" : "text",
+  "display_width" : null,
   "default" : "EXPLORE LIVE DEMO"
 }, {
   "id" : "button_style",
@@ -66,8 +66,8 @@
   "multiple" : false,
   "reordering_enabled" : false,
   "preset" : null,
-  "display_width" : null,
   "type" : "choice",
+  "display_width" : null,
   "default" : "white"
 }, {
   "id" : "cta_link",
@@ -77,8 +77,8 @@
   "locked" : false,
   "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
   "show_advanced_rel_options" : false,
-  "display_width" : null,
   "type" : "link",
+  "display_width" : null,
   "default" : {
     "url" : {
       "type" : "EXTERNAL",

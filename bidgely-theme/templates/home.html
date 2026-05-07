@@ -72,13 +72,47 @@
         margin: auto;
         padding: 0;
     }
-    .hero-buttons {
-        margin-top: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-    }
+   .hero-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.hero-buttons .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 0 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.hero-buttons .btn--gradient,
+.hero-buttons .btn--gradient:visited,
+.hero-buttons .btn--gradient:hover,
+.hero-buttons .btn--gradient:focus {
+  color: #ffffff !important;
+}
+
+.hero-buttons .btn--white-outline,
+.hero-buttons .btn--white-outline:visited,
+.hero-buttons .btn--white-outline:hover,
+.hero-buttons .btn--white-outline:focus {
+  color: #152d49 !important;
+  background: #ffffff;
+  border: 1px solid #dfe6ee;
+}
+
+.hero-buttons .btn svg {
+  flex: 0 0 auto;
+  display: block;
+}
     .hero:before{
       display: none;
     }
@@ -155,6 +189,10 @@
   
 }
     }
+    
+
+
+
   </style>
 </head>
 <body class="bg-white text-nile font-mont antialiased">
@@ -166,25 +204,35 @@
    ========================================================= #}
 <section class="hero">
   <div class="hero__inner">
+
     <h1 class="text-center">
       {% rich_text "hero_heading" html="Every smart meter is a window. Few utilities ever look through." no_wrapper=True %}
     </h1>
+
     <p class="text-center hero__copy">
       {% rich_text "hero_subheading" html="Appliance-level intelligence for every customer, grid asset, and hour of the year, only with <strong>UtilityAI&trade;</strong>." no_wrapper=True %}
     </p>
+
     <div class="hero-buttons">
-      <a href="{% text "hero_cta1_link" value="#" no_wrapper=True %}" class="btn btn--gradient">
-        {% text "hero_cta1_label" value="See it in Action" no_wrapper=True %}
+
+      <!-- Primary CTA -->
+      <a href="{% text "hero_cta1_link" value="/contact-us-form/" no_wrapper=True %}" class="btn btn--gradient">
+        {% text "hero_cta1_label" value="Speak with an Expert" no_wrapper=True %}
       </a>
-      <a href="{% text "hero_cta2_link" value="#" no_wrapper=True %}" class="btn btn--white-outline">
+
+      <!-- Secondary CTA -->
+      <a href="{% text "hero_cta2_link" value="/video/ted-talk-2026-roadmap" no_wrapper=True %}" class="btn btn--white-outline">
         <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path opacity="0.45" d="M1 1.5L10 6.5L1 11.5V1.5Z" fill="#1E3D5C"/>
-            </svg>            
-        {% text "hero_cta2_label" value="Watch Overview" no_wrapper=True %}
+          <path opacity="0.45" d="M1 1.5L10 6.5L1 11.5V1.5Z" fill="#1E3D5C"/>
+        </svg>
+        {% text "hero_cta2_label" value="Watch the Keynote" no_wrapper=True %}
       </a>
+
     </div>
+
   </div>
 </section>
+
 {# ============================================================
    LOGO CAROUSEL
    To update logos: upload SVGs to HubSpot File Manager and
@@ -214,7 +262,7 @@
     {% rich_text "vai_card1_body" html="Identify what's running inside every home and business from meter data alone. No surveys. No smart plugs. No customer action required. Every insight on the platform is built on this foundation." no_wrapper=True %}
   </p>
   <div class="mt-6 pt-4 border-t vai-card-divider">
-    <a href="{% text "vai_card1_link_href" value="#" no_wrapper=True %}" class="link-arrow vai-card-link">
+    <a href="{% text "vai_card1_link_href" value="/disaggregation" no_wrapper=True %}" class="link-arrow vai-card-link">
       {% text "vai_card1_link_label" value="Explore Disaggregation" no_wrapper=True %}
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
     </a>
@@ -228,7 +276,7 @@
     {% rich_text "vai_card2_body" html="Ask questions in plain English, get answers grounded in real data. A CSR resolves a high-bill call in seconds. A planner queries load trends across feeders without writing a line of code. No data team required." no_wrapper=True %}
   </p>
   <div class="mt-6 pt-4 border-t vai-card-divider">
-    <a href="{% text "vai_card2_link_href" value="#" no_wrapper=True %}" class="link-arrow vai-card-link">
+    <a href="{% text "vai_card2_link_href" value="/gen-ai" no_wrapper=True %}" class="link-arrow vai-card-link">
       {% text "vai_card2_link_label" value="Explore GenAI" no_wrapper=True %}
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
     </a>
@@ -242,7 +290,7 @@
     {% rich_text "vai_card3_body" html="AI agents work continuously in the background across targeting, outreach, enrollment, and program management. You set the rules and approve what matters. Agents handle the volume. Your team handles the judgment." no_wrapper=True %}
   </p>
   <div class="mt-6 pt-4 border-t vai-card-divider">
-    <a href="{% text "vai_card3_link_href" value="#" no_wrapper=True %}" class="link-arrow vai-card-link">
+    <a href="{% text "vai_card3_link_href" value="/agentic-automation" no_wrapper=True %}" class="link-arrow vai-card-link">
       {% text "vai_card3_link_label" value="Explore Agentic AI" no_wrapper=True %}
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
     </a>
@@ -512,7 +560,7 @@
             <div class="text-xs text-nile-52 leading-4">{% rich_text "cs1_stat_label" html="precision EV targeting" no_wrapper=True %}</div>
           </div>
           <div class="mt-auto pt-4 border-t border-nile-10">
-            <a href="{% text "cs1_link_href" value="#" no_wrapper=True %}" class="link-arrow text-azure-soft">
+            <a href="{% text "cs1_link_href" value="/pdf/nv-energy-ev-intelligence-case-study" no_wrapper=True %}" class="link-arrow text-azure-soft">
               {% text "cs1_link_label" value="Read Case Study" no_wrapper=True %}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </a>
@@ -537,8 +585,8 @@
             <div class="text-xs text-nile-52 leading-4">{% rich_text "cs2_stat_label" html="personalized communications delivered" no_wrapper=True %}</div>
           </div>
           <div class="mt-auto pt-4 border-t border-nile-10">
-            <a href="{% text "cs2_link_href" value="#" no_wrapper=True %}" class="link-arrow text-azure-soft">
-              {% text "cs2_link_label" value="Read Case Study" no_wrapper=True %}
+            <a href="{% text "cs2_link_href" value="/video/pseg-long-island-tod-rate-rollout" no_wrapper=True %}" class="link-arrow text-azure-soft">
+              {% text "cs2_link_label" value="Hear Their Story" no_wrapper=True %}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </a>
           </div>
@@ -562,8 +610,8 @@
             <div class="text-xs text-nile-52 leading-4">{% rich_text "cs3_stat_label" html="of contracted savings achieved in year one" no_wrapper=True %}</div>
           </div>
           <div class="mt-auto pt-4 border-t border-nile-10">
-            <a href="{% text "cs3_link_href" value="#" no_wrapper=True %}" class="link-arrow text-azure-soft">
-              {% text "cs3_link_label" value="Read Case Study" no_wrapper=True %}
+            <a href="{% text "cs3_link_href" value="/resources/?assetType=Case+Study" no_wrapper=True %}" class="link-arrow text-azure-soft">
+              {% text "cs3_link_label" value="View More Case Studies" no_wrapper=True %}
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
             </a>
           </div>
@@ -571,7 +619,7 @@
       </article>
     </div>
     <div class="mt-12 flex justify-center">
-      <a href="{% text "cs_all_link_href" value="#" no_wrapper=True %}" class="inline-flex items-center justify-center gap-2 h-[46px] px-8 rounded-[10px] bg-white border border-nile-10 text-[#1e3d5c] text-sm font-semibold">
+      <a href="{% text "cs_all_link_href" value="/resources/?assetType=Case+Study" no_wrapper=True %}" class="inline-flex items-center justify-center gap-2 h-[46px] px-8 rounded-[10px] bg-white border border-nile-10 text-[#1e3d5c] text-sm font-semibold">
         {% text "cs_all_link_label" value="View All Case Studies" no_wrapper=True %}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
       </a>
@@ -629,8 +677,8 @@
         {% rich_text "cta_subcopy" html="Join the utilities delivering individual-level intelligence across every customer, meter, and grid asset." no_wrapper=True %}
       </p>
     </div>
-    <a href="{% text "cta_button_link" value="#" no_wrapper=True %}" class="inline-flex h-14 px-8 items-center justify-center rounded-[9px] bg-white text-nile text-sm font-bold whitespace-nowrap self-start lg:self-auto">
-      {% text "cta_button_label" value="Talk to Sales" no_wrapper=True %}
+    <a href="{% text "cta_button_link" value="/contact-us-form/" no_wrapper=True %}" class="inline-flex h-14 px-8 items-center justify-center rounded-[9px] bg-white text-nile text-sm font-bold whitespace-nowrap self-start lg:self-auto">
+      {% text "cta_button_label" value="Get Started" no_wrapper=True %}
     </a>
   </div>
 </section>
