@@ -159,6 +159,207 @@
     .bly-dd-side-item__label { font-size: 13px; font-weight: 700; color: #152d49; line-height: 1.3; }
     .bly-dd-side-item__desc { font-size: 11px; color: rgba(21,45,73,.6); line-height: 1.4; margin-top: 2px; }
     
+    /* ── Company dropdown (Figma-style layout) ── */
+    .bly-nav__item.company > .bly-nav__dropdown {
+      padding: 0;
+      min-width: 858px;
+      max-width: 858px;
+      overflow: hidden;
+    }
+    .bly-nav__item.company .bly-dd-featured {
+      width: 100%;
+    }
+    .bly-nav__item.company .bly-dd-featured__left {
+      width: 31%;
+      min-height: 214px;
+      border-radius: 0;
+      background: #152d49;
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .bly-nav__item.company .bly-dd-featured__icon {
+      width: 62px;
+      height: 62px;
+    }
+    .bly-nav__item.company .bly-dd-featured__label {
+      color: #ffffff;
+      font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-top: 8px;
+      padding-bottom: 20px;
+    }
+    .bly-nav__item.company .bly-dd-featured__desc {
+      color: rgba(255,255,255,.84);
+      font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+    .bly-nav__item.company .bly-dd-featured__cta {
+      color: #49a8df;
+      margin-top: 10px;
+      align-self: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .bly-nav__item.company .bly-dd-featured__sep {
+      width: 100%;
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
+    }
+    .bly-nav__item.company .bly-dd-featured__right {
+      padding: 18px 18px 12px 18px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 18px;
+      row-gap: 0;
+      position: relative;
+    }
+    .bly-nav__item.company .bly-dd-featured__right::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      bottom: 6px;
+      left: calc(50% - 9px);
+      width: 1px;
+      background: #e5ebf1;
+    }
+    .bly-nav__item.company .bly-dd-side-item {
+      padding: 10px 8px;
+      border-radius: 0;
+      align-items: flex-start;
+      gap: 10px;
+      display: flex;
+    }
+    .bly-nav__item.company .bly-dd-side-item__content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .bly-nav__item.company .bly-dd-side-item__label {
+      font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: #152d49;
+    }
+    .bly-nav__item.company .bly-dd-side-item__desc {
+      font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      line-height: 1.4;
+      color: rgb(21, 45, 73);
+      margin-top: 0;
+      font-weight: 500;
+    }
+    .bly-nav__item.company .bly-dd-side-item:nth-child(odd) {
+      padding-right: 16px;
+      margin-right: 2px;
+    }
+    .bly-nav__item.company .bly-dd-side-item:nth-last-child(-n + 2) {
+      border-bottom: none;
+    }
+    .bly-nav__item.company .bly-dd-side-item__icon {
+      width: 38px;
+      height: 38px;
+      margin-top: 0;
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+    .bly-nav__item.company .bly-dd-grid-footer {
+      margin: 0;
+      border-top: 1px solid #e6edf2;
+      border-radius: 0;
+      padding: 10px 14px 12px;
+      grid-template-columns: minmax(300px, 1fr) repeat(4, 122px);
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      background: #f2f7fb;
+    }
+    .bly-nav__item.company .bly-dd-grid-item--sm {
+      min-height: 54px;
+      padding: 10px;
+      gap: 10px;
+      background: transparent;
+      border: none;
+    }
+    .bly-nav__item.company .bly-dd-grid-item--events {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 8px 10px;
+      border-right: 1px solid #d9e3ea;
+      border-radius: 0;
+      min-height: 63px;
+    }
+    .bly-nav__item.company .bly-dd-grid-item--events .bly-dd-grid-item__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 2px;
+      max-width: 220px;
+    }
+    .bly-nav__item.company .bly-dd-grid-item--events .bly-dd-grid-item__icon {
+      width: 28px;
+      height: 28px;
+      max-width: 28px;
+      margin: 0;
+      flex-shrink: 0;
+    }
+    .bly-nav__item.company .bly-dd-grid-item--sm .bly-dd-grid-item__icon {
+      width: auto;
+      height: 20px;
+      max-width: 130px;
+      object-fit: contain;
+      margin: 0;
+    }
+    .bly-nav__item.company .bly-dd-grid-item--sm:first-child .bly-dd-grid-item__icon {
+      width: 36px;
+      height: 36px;
+      max-width: none;
+    }
+    .bly-nav__item.company .bly-dd-grid-item--sm:first-child .bly-dd-grid-item__label {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: none;
+      line-height: 1.2;
+    }
+    .bly-nav__item.company .bly-dd-grid-item--sm:first-child .bly-dd-grid-item__desc {
+      font-size: 11px;
+      line-height: 1.35;
+      margin-top: 3px;
+      color: #152D49;
+      font-weight: 500;
+    }
+    .bly-nav__item.company .bly-dd-grid-item--sm:not(:first-child) {
+      border-radius: 8px;
+      background: #ffffff;
+      display: grid;
+      place-items: center;
+      width: 122px;
+      height: 63px;
+      min-height: 63px;
+      padding: 0;
+      justify-self: center;
+      align-self: center;
+    }
+    .bly-nav__item.company .bly-dd-grid-item--sm:not(:first-child) .bly-dd-grid-item__icon {
+      width: 100px;
+      height: auto;
+      max-width: 100px;
+    }
+    
     /* ── Right CTAs ── */
     .bly-nav__actions { display: flex; align-items: center; gap: 10px; margin-left: auto; flex-shrink: 0; }
     .bly-nav__login { font-size: 14px; font-weight: 500; color: #152d49; text-decoration: none; padding: 8px 14px; border-radius: 8px; transition: background .15s; }
@@ -343,10 +544,73 @@
             </div>
           </li>
     
-          {# ── Remaining plain links ── #}
+          {# ── Company (featured dropdown) ── #}
+        
           {% if module.nav_items and module.nav_items|length > 2 %}
+            <li class="bly-nav__item bly-nav__item--has-dd company">
+              <button class="bly-nav__link" aria-haspopup="true" aria-expanded="false" data-nav-trigger>
+                {{ module.nav_items[2].label | default("Company") }}
+                <svg class="bly-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="bly-nav__dropdown">
+                <div class="bly-dd-featured">
+                  {% if false %}
+                  <div class="bly-dd-featured__left">
+                    {% if module.nav_items[2].featured_icon.src %}
+                      <img src="{{ module.nav_items[2].featured_icon.src }}" alt="" class="bly-dd-featured__icon">
+                    {% else %}
+                      <img src="https://bidgely.ai/hubfs/default-header/our-story-svg.svg" alt="" class="bly-dd-featured__icon">
+                    {% endif %}
+                    <div class="bly-dd-featured__label">{{ module.nav_items[2].featured_label | default("Our Story") }}</div>
+                    <div class="bly-dd-featured__sep" aria-hidden="true"></div>
+                    <a href="{{ module.nav_items[2].featured_cta_url.href | default('https://www.bidgely.com/company/') }}" class="bly-dd-featured__cta">
+                      {{ module.nav_items[2].featured_cta_label | default("Read More") }}
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                    </a>
+                  </div>
+                  {% endif %}
+                  <div class="bly-dd-featured__right">
+                    {% if module.nav_items[2].side_items and module.nav_items[2].side_items|length > 0 %}
+                      {% for si in module.nav_items[2].side_items %}
+                        <a href="{{ si.url.href | default('#') }}" class="bly-dd-side-item">
+                          {% if si.icon.src %}<img src="{{ si.icon.src }}" alt="" class="bly-dd-side-item__icon">{% endif %}
+                          <div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">{{ si.label }}</div><div class="bly-dd-side-item__desc">{{ si.description }}</div></div>
+                        </a>
+                      {% endfor %}
+                    {% else %}
+                      <a href="#" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/leadership-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Leadership</div><div class="bly-dd-side-item__desc">Meet the people who fuel our success</div></div></a>
+                      <a href="#" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/careers-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Careers</div><div class="bly-dd-side-item__desc">Join a team of smart, supportive experts</div></div></a>
+                      <a href="#" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/customer-success-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Customer Success</div><div class="bly-dd-side-item__desc">Leading utilities working with us to accelerate a clean energy future</div></div></a>
+                      <a href="https://bidgely.ai/partners" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/partners-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Partners</div><div class="bly-dd-side-item__desc">Meet our partner ecosystem</div></div></a>
+                      <a href="https://bidgely.ai/news-press" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/press-news-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Press and News</div><div class="bly-dd-side-item__desc">Extra extra, read all about us</div></div></a>
+                    {% endif %}
+                  </div>
+                </div>
+                {% if false %}
+                <div class="bly-dd-grid-footer">
+                  <a href="https://www.bidgely.com/events/" class="bly-dd-grid-item bly-dd-grid-item--sm bly-dd-grid-item--events" aria-label="Events" title="Events">
+                    <img src="https://bidgely.ai/hubfs/default-header/events-icon.svg" alt="Events" class="bly-dd-grid-item__icon">
+                    <div class="bly-dd-grid-item__content">
+                      <div class="bly-dd-grid-item__label">Events</div>
+                      <div class="bly-dd-grid-item__desc">Discover opportunities to connect with us live and online</div>
+                    </div>
+                  </a>
+                  
+                  <a href="https://www.bidgely.com/customer-engagement-solutions/" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="Bidgely Engage" title="Bidgely Engage"><img src="https://bidgely.ai/hubfs/default-header/bidgely-engage.svg" alt="Bidgely Engage" class="bly-dd-grid-item__icon"></a>
+                  
+                  <a href="https://www.bidgely.com/utilityai-platform/" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="UtilityAI Pro" title="UtilityAI Pro"><img src="https://bidgely.ai/hubfs/default-header/bidgely-utility-ai.svg" alt="UtilityAI Pro" class="bly-dd-grid-item__icon"></a>
+
+                  <a href="https://www.bidgely.com/empower-ai/" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="Empower AI" title="Empower AI"><img src="https://bidgely.ai/hubfs/default-header/empower-logo.svg" alt="Empower AI" class="bly-dd-grid-item__icon"></a>
+                  
+                  <a href="https://www.bidgely.com/webinars/" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="Webinars" title="Webinars"><img src="https://bidgely.ai/hubfs/default-header/webinars-logo.svg" alt="Webinars" class="bly-dd-grid-item__icon"></a>
+                </div>
+                {% endif %}
+              </div>
+            </li>
+
+          {# ── Remaining plain links ── #}
             {% for item in module.nav_items %}
-              {% if loop.index > 2 %}
+              {% if loop.index > 3 %}
                 <li class="bly-nav__item">
                   <a href="{{ item.url.href | default('#') }}"
                      {% if item.url.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}
@@ -355,15 +619,46 @@
               {% endif %}
             {% endfor %}
           {% else %}
-            <li class="bly-nav__item bly-nav__item--has-dd">
+            <li class="bly-nav__item bly-nav__item--has-dd company">
               <button class="bly-nav__link" aria-haspopup="true" aria-expanded="false" data-nav-trigger>
                 Company
                 <svg class="bly-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
-              <div class="bly-nav__dropdown" style="min-width:180px; padding: 8px;">
-                <a href="https://245139178.hs-sites-na2.com/bidgely-leadership" class="bly-dd-side-item">
-                  <div><div class="bly-dd-side-item__label">Leadership</div></div>
-                </a>
+              <div class="bly-nav__dropdown">
+                <div class="bly-dd-featured">
+                  {% if false %}
+                  <div class="bly-dd-featured__left">
+                    <img src="https://bidgely.ai/hubfs/default-header/our-story-svg.svg" alt="" class="bly-dd-featured__icon">
+                    <div class="bly-dd-featured__label">Our Story</div>
+                    <div class="bly-dd-featured__sep" aria-hidden="true"></div>
+                    <a href="https://www.bidgely.com/company/" class="bly-dd-featured__cta">Read More
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                    </a>
+                  </div>
+                  {% endif %}
+                  <div class="bly-dd-featured__right">
+                    <a href="#" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/leadership-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Leadership</div><div class="bly-dd-side-item__desc">Meet the people who fuel our success</div></div></a>
+                    <a href="#" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/careers-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Careers</div><div class="bly-dd-side-item__desc">Join a team of smart, supportive experts</div></div></a>
+                    <a href="#" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/customer-success-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Customer Success</div><div class="bly-dd-side-item__desc">Leading utilities working with us to accelerate a clean energy future</div></div></a>
+                    <a href="https://bidgely.ai/partners" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/partners-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Partners</div><div class="bly-dd-side-item__desc">Meet our partner ecosystem</div></div></a>
+                    <a href="https://bidgely.ai/news-press" class="bly-dd-side-item"><img src="https://bidgely.ai/hubfs/default-header/press-news-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Press and News</div><div class="bly-dd-side-item__desc">Extra extra, read all about us</div></div></a>
+                  </div>
+                </div>
+                {% if false %}
+                <div class="bly-dd-grid-footer">
+                  <a href="https://www.bidgely.com/events/" class="bly-dd-grid-item bly-dd-grid-item--sm bly-dd-grid-item--events" aria-label="Events" title="Events">
+                    <img src="https://bidgely.ai/hubfs/default-header/events-icon.svg" alt="Events" class="bly-dd-grid-item__icon">
+                    <div class="bly-dd-grid-item__content">
+                      <div class="bly-dd-grid-item__label">Events</div>
+                      <div class="bly-dd-grid-item__desc">Discover opportunities to connect with us live and online</div>
+                    </div>
+                  </a>
+                  <a href="https://www.bidgely.com/customer-engagement-solutions/" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="Bidgely Engage" title="Bidgely Engage"><img src="https://bidgely.ai/hubfs/default-header/bidgely-engage.svg" alt="Bidgely Engage" class="bly-dd-grid-item__icon"></a>
+                  <a href="https://www.bidgely.com/utilityai-platform/" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="UtilityAI Pro" title="UtilityAI Pro"><img src="https://bidgely.ai/hubfs/default-header/bidgely-utility-ai.svg" alt="UtilityAI Pro" class="bly-dd-grid-item__icon"></a>
+                  <a href="https://www.bidgely.com/empower-ai/" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="Empower AI" title="Empower AI"><img src="https://bidgely.ai/hubfs/default-header/empower-logo.svg" alt="Empower AI" class="bly-dd-grid-item__icon"></a>
+                  <a href="https://www.bidgely.com/webinars/" class="bly-dd-grid-item bly-dd-grid-item--sm" aria-label="Webinars" title="Webinars"><img src="https://bidgely.ai/hubfs/default-header/webinars-logo.svg" alt="Webinars" class="bly-dd-grid-item__icon"></a>
+                </div>
+                {% endif %}
               </div>
             </li>
             <li class="bly-nav__item"><a href="https://www.bidgely.com/resources/">Resources</a></li>
@@ -404,7 +699,11 @@
         </div>
         <button class="bly-nav__m-link" data-m-trigger>Company <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="bly-nav__m-sub" data-m-sub>
-          <a href="https://245139178.hs-sites-na2.com/bidgely-leadership">Leadership</a>
+          <a href="#">Leadership</a>
+          <a href="#">Careers</a>
+          <a href="#">Customer Success</a>
+          <a href="https://bidgely.ai/partners">Partners</a>
+          <a href="https://bidgely.ai/news-press">Press and News</a>
         </div>
         <a href="https://245139178.hs-sites-na2.com/resources-1" class="bly-nav__m-link">Resources</a>
         <a href="#" class="bly-nav__m-link">Events</a>
