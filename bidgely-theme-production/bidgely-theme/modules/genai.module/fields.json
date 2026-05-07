@@ -1,1 +1,452 @@
-[ ]
+[ {
+  "id" : "genai_intro",
+  "name" : "genai_intro",
+  "label" : "GenAI — intro",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "genai_intro.ce_genai_eyebrow",
+    "name" : "ce_genai_eyebrow",
+    "label" : "Eyebrow",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "GenAI in Customer Experience"
+  }, {
+    "id" : "genai_intro.ce_genai_heading_before",
+    "name" : "ce_genai_heading_before",
+    "label" : "Heading (before accent)",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "Conversations grounded in real "
+  }, {
+    "id" : "genai_intro.ce_genai_heading_accent",
+    "name" : "ce_genai_heading_accent",
+    "label" : "Heading accent",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "customer data."
+  }, {
+    "id" : "genai_intro.ce_genai_heading_after",
+    "name" : "ce_genai_heading_after",
+    "label" : "Heading (after accent)",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : ""
+  }, {
+    "id" : "genai_intro.ce_genai_lead",
+    "name" : "ce_genai_lead",
+    "label" : "Lead paragraph",
+    "required" : false,
+    "locked" : false,
+    "display_width" : null,
+    "type" : "richtext",
+    "default" : "<p>Bidgely's GenAI layer doesn't run on generic LLM prompts. Every answer — to a customer or a CSR — is grounded in that customer's disaggregated appliance profile.</p>"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : true,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : {
+    "ce_genai_eyebrow" : "GenAI in Customer Experience",
+    "ce_genai_heading_before" : "Conversations grounded in real ",
+    "ce_genai_heading_accent" : "customer data.",
+    "ce_genai_heading_after" : "",
+    "ce_genai_lead" : "<p>Bidgely's GenAI layer doesn't run on generic LLM prompts. Every answer — to a customer or a CSR — is grounded in that customer's disaggregated appliance profile.</p>"
+  }
+}, {
+  "id" : "genai_cards",
+  "name" : "genai_cards",
+  "label" : "GenAI feature cards",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 12,
+    "sorting_label_field" : "genai_cards.feature_title",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "genai_cards.feature_icon",
+    "name" : "feature_icon",
+    "label" : "Icon (background)",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : false,
+    "show_loading" : true,
+    "display_width" : null,
+    "type" : "image",
+    "default" : {
+      "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ders-icon-v1.svg",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 42,
+      "height" : 42
+    }
+  }, {
+    "id" : "genai_cards.feature_title",
+    "name" : "feature_title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "Energy Assistant (Customer-Facing)"
+  }, {
+    "id" : "genai_cards.feature_body",
+    "name" : "feature_body",
+    "label" : "Body",
+    "required" : false,
+    "locked" : false,
+    "display_width" : null,
+    "type" : "richtext",
+    "default" : "<p>A conversational AI that answers billing and usage questions, explains appliance-level charges, and recommends programs — embedded in your portal, app, or SMS channel. Personalized to each meter, not a generic chatbot.</p>"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : true,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : [ {
+    "feature_icon" : {
+      "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ders-icon-v1.svg",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 42,
+      "height" : 42
+    },
+    "feature_title" : "Energy Assistant (Customer-Facing)",
+    "feature_body" : "<p>A conversational AI that answers billing and usage questions, explains appliance-level charges, and recommends programs — embedded in your portal, app, or SMS channel. Personalized to each meter, not a generic chatbot.</p>"
+  }, {
+    "feature_icon" : {
+      "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/iucx-icon-05-1.svg",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 42,
+      "height" : 42
+    },
+    "feature_title" : "CSR Copilot",
+    "feature_body" : "<p>A GenAI assistant embedded in your CSR console. Agents ask plain-language questions and get appliance-level answers, rate comparisons, and next-best actions in seconds. No tab-switching required.</p>"
+  }, {
+    "feature_icon" : {
+      "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/daas-v2.svg",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 42,
+      "height" : 42
+    },
+    "feature_title" : "Chart & Bill Explainers",
+    "feature_body" : "<p>Usage charts and bill breakdowns with embedded natural-language explanations. Customers can tap any bar, spike, or line item and get a plain-English reason — powered by the same disaggregation that drives your CSR tools.</p>"
+  } ]
+}, {
+  "id" : "right_column_type",
+  "name" : "right_column_type",
+  "label" : "Right column",
+  "help_text" : "Live Chat shows the demo conversation UI. Image shows a single visual (e.g. product graphic).",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "live_chat", "Live Chat" ], [ "image", "Image" ] ],
+  "multiple" : false,
+  "reordering_enabled" : false,
+  "preset" : null,
+  "display_width" : null,
+  "type" : "choice",
+  "default" : "live_chat"
+}, {
+  "id" : "genai_visual_image",
+  "name" : "genai_visual_image",
+  "label" : "Right column image",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "right_column_type",
+    "controlling_value_regex" : "image",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "responsive" : true,
+  "resizable" : true,
+  "show_loading" : true,
+  "display_width" : null,
+  "type" : "image",
+  "default" : {
+    "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grounded-conversations.svg",
+    "alt" : "Grounded conversations assistant preview",
+    "loading" : "lazy"
+  }
+}, {
+  "id" : "chat_demo",
+  "name" : "chat_demo",
+  "label" : "Live Chat — header",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "right_column_type",
+    "controlling_value_regex" : "live_chat",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "chat_demo.ce_genai_chat_avatar",
+    "name" : "ce_genai_chat_avatar",
+    "label" : "Chat header avatar (optional)",
+    "help_text" : "Optional. If empty, a default lightning icon is shown.",
+    "required" : false,
+    "locked" : false,
+    "responsive" : true,
+    "resizable" : true,
+    "show_loading" : true,
+    "display_width" : null,
+    "type" : "image",
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 26,
+      "height" : 26
+    }
+  }, {
+    "id" : "chat_demo.ce_genai_chat_aria_label",
+    "name" : "ce_genai_chat_aria_label",
+    "label" : "Aside aria-label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "Energy Assistant sample conversation"
+  }, {
+    "id" : "chat_demo.ce_genai_chat_headline",
+    "name" : "ce_genai_chat_headline",
+    "label" : "Chat headline",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "Energy Assistant"
+  }, {
+    "id" : "chat_demo.ce_genai_chat_status",
+    "name" : "ce_genai_chat_status",
+    "label" : "Status line",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "● Online · Grounded in your meter data"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : {
+    "ce_genai_chat_avatar" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy",
+      "width" : 26,
+      "height" : 26
+    },
+    "ce_genai_chat_aria_label" : "Energy Assistant sample conversation",
+    "ce_genai_chat_headline" : "Energy Assistant",
+    "ce_genai_chat_status" : "● Online · Grounded in your meter data"
+  }
+}, {
+  "id" : "chat_messages",
+  "name" : "chat_messages",
+  "label" : "Live Chat — messages",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 24,
+    "sorting_label_field" : null,
+    "default" : 4
+  },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "right_column_type",
+    "controlling_value_regex" : "live_chat",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "chat_messages.message_role",
+    "name" : "message_role",
+    "label" : "Role",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "user", "User / customer" ], [ "assistant", "Assistant" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "display_width" : null,
+    "type" : "choice",
+    "default" : "user"
+  }, {
+    "id" : "chat_messages.sender_label",
+    "name" : "sender_label",
+    "label" : "Sender label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "You"
+  }, {
+    "id" : "chat_messages.message_body",
+    "name" : "message_body",
+    "label" : "Message",
+    "required" : false,
+    "locked" : false,
+    "display_width" : null,
+    "type" : "richtext",
+    "default" : "<p>Why is my bill $68 higher this month?</p>"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : [ {
+    "message_role" : "user",
+    "sender_label" : "You",
+    "message_body" : "<p>Why is my bill $68 higher this month?</p>"
+  }, {
+    "message_role" : "assistant",
+    "sender_label" : "ENERGY ASSISTANT",
+    "message_body" : "<p>Your bill increased mainly because of your <strong>EV charging</strong> — it added about <strong>$34</strong> due to on-peak sessions over the past two weeks. Your HVAC also ran longer during the heat wave, contributing another <strong>$22</strong>.</p><p>Shifting your EV charging to overnight (after 10 PM) could recover most of that $34. Want me to walk you through the Smart Charge program?</p>"
+  }, {
+    "message_role" : "user",
+    "sender_label" : "You",
+    "message_body" : "<p>Yes, how do I sign up?</p>"
+  }, {
+    "message_role" : "assistant",
+    "sender_label" : "ENERGY ASSISTANT",
+    "message_body" : "<p>I can start your enrollment right here. Based on your <strong>Level 2 charger</strong> and current TOU-EV rate, you qualify and could save up to <strong>$34/month</strong>. Should I proceed?</p>"
+  } ]
+}, {
+  "id" : "chat_chips",
+  "name" : "chat_chips",
+  "label" : "Live Chat — quick replies",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : 8,
+    "sorting_label_field" : "chat_chips.chip_label",
+    "default" : 3
+  },
+  "visibility" : {
+    "controlling_field" : null,
+    "controlling_field_path" : "right_column_type",
+    "controlling_value_regex" : "live_chat",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "chat_chips.chip_label",
+    "name" : "chip_label",
+    "label" : "Chip label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "display_width" : null,
+    "type" : "text",
+    "default" : "Yes, enroll me"
+  }, {
+    "id" : "chat_chips.chip_link",
+    "name" : "chip_link",
+    "label" : "Chip link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "display_width" : null,
+    "type" : "link",
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "#chat-enroll",
+        "href_with_scheme" : "#chat-enroll"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "display_width" : null,
+  "type" : "group",
+  "default" : [ {
+    "chip_label" : "Yes, enroll me",
+    "chip_link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "#chat-enroll",
+        "href_with_scheme" : "#chat-enroll"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  }, {
+    "chip_label" : "Tell me more first",
+    "chip_link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "#chat-more",
+        "href_with_scheme" : "#chat-more"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  }, {
+    "chip_label" : "Show my full bill breakdown",
+    "chip_link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "#chat-bill",
+        "href_with_scheme" : "#chat-bill"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  } ]
+} ]
