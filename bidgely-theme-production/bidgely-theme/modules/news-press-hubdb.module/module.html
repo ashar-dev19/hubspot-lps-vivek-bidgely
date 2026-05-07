@@ -1,0 +1,255 @@
+{# HubDB fetch matches resources-hubdb.module; optional column/value filter (comma-separated tokens). #}
+{% set heading_text = module.section_heading|default("Latest Press Releases")|trim %}
+{% if heading_text == "" %}
+  {% set heading_text = "Latest Press Releases" %}
+{% endif %}
+
+{% set bg_choice = module.section_background|default("pale") %}
+
+{% set table_id_raw = module.hubdb_table_id|default("2135009011")|trim %}
+{% set table_id_digits = table_id_raw|replace(",", "")|replace(" ", "") %}
+{% set table_id = table_id_digits|int %}
+{% set table_slug = module.hubdb_table_slug|default("")|trim %}
+{% set press_per_page = module.press_per_page|default(10)|int %}
+{% if press_per_page < 1 %}
+  {% set press_per_page = 10 %}
+{% endif %}
+
+{% set filter_col = module.filter_column|default("")|trim %}
+{% set filter_val = module.filter_value|default("")|trim %}
+{% set filter_active = filter_col != "" and filter_val != "" %}
+
+{% set raw_hubdb_rows = [] %}
+{% if table_slug %}
+  {% set raw_hubdb_rows = hubdb_table_rows(table_slug, "limit=3000")|default([]) %}
+{% elif table_id > 0 %}
+  {% set raw_hubdb_rows = hubdb_table_rows(table_id, "limit=3000")|default([]) %}
+  {% if not raw_hubdb_rows or raw_hubdb_rows|length == 0 %}
+    {% set raw_hubdb_rows = hubdb_table_rows(table_id, "limit=3000&orderBy=-hs_updated_at")|default([]) %}
+  {% endif %}
+{% endif %}
+
+{% set pr_rows = [] %}
+{% if raw_hubdb_rows %}
+  {% for r in raw_hubdb_rows %}
+    {% set include_row = true %}
+    {% if filter_active %}
+      {% set match_ns = namespace(found=false) %}
+      {% set cell = r[filter_col]|default(none) %}
+      {% set cell_str = "" %}
+      {% if cell is mapping %}
+        {% set cell_str = cell.value|default(cell.name|default(cell.label|default("")))|string %}
+      {% elif cell is not none %}
+        {% set cell_str = cell|string %}
+      {% endif %}
+      {% set cell_norm = (cell_str ~ "")|replace(" ", "") %}
+      {% set fv = filter_val|trim|lower %}
+      {% for part in cell_norm|split(",") %}
+        {% if part|trim|lower == fv %}
+          {% set match_ns.found = true %}
+        {% endif %}
+      {% endfor %}
+      {% set include_row = match_ns.found %}
+    {% endif %}
+    {% if include_row %}
+      {% do pr_rows.append(r) %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% set pq = module.pagination_query_param|default("page")|trim %}
+{% if pq == "" %}
+  {% set pq = "page" %}
+{% endif %}
+{% set page = 1 %}
+{% if pq == "news_page" %}
+  {% set page = request.query_dict.news_page|default(1)|int %}
+{% elif pq == "press_page" %}
+  {% set page = request.query_dict.press_page|default(1)|int %}
+{% else %}
+  {% set page = request.query_dict.page|default(1)|int %}
+{% endif %}
+{% if page < 1 %}
+  {% set page = 1 %}
+{% endif %}
+
+{% set pq_slug = pq|replace("_", "-") %}
+{% set anchor_in = module.section_anchor_id|default("")|trim %}
+{% if anchor_in == "" %}
+  {% set anchor_in = "news-press-" ~ pq_slug %}
+{% endif %}
+{% set section_dom_id = anchor_in|lower|replace(" ", "-")|replace("_", "-")|regex_replace("[^a-z0-9-]+", "-")|regex_replace("^-+|-+$", "") %}
+{% if section_dom_id == "" %}
+  {% set section_dom_id = "news-press-" ~ pq_slug %}
+{% endif %}
+
+{% set total_press = pr_rows|length %}
+{% if total_press > 0 %}
+  {% set total_pages = (total_press / press_per_page)|round(0, "ceil")|int %}
+  {% if total_pages < 1 %}
+    {% set total_pages = 1 %}
+  {% endif %}
+  {% if page > total_pages %}
+    {% set page = total_pages %}
+  {% endif %}
+  {% set start_index = (page - 1) * press_per_page %}
+  {% if start_index < 0 %}
+    {% set start_index = 0 %}
+  {% endif %}
+  {% set end_index = start_index + press_per_page %}
+{% else %}
+  {% set total_pages = 0 %}
+  {% set start_index = 0 %}
+  {% set end_index = 0 %}
+{% endif %}
+
+{% set heading_id = "news-press-heading-" ~ name|default("module")|replace(" ", "-")|replace(".", "-")|replace("/", "-") %}
+{% set section_bg_class = "section--pale" %}
+{% if bg_choice == "white" %}
+  {% set section_bg_class = "section--white" %}
+{% endif %}
+
+<section id="{{ section_dom_id|escape }}" class="news-press-releases section {{ section_bg_class }}" aria-labelledby="{{ heading_id|escape }}">
+  <div class="container">
+    <h2 id="{{ heading_id|escape }}" class="h2">{{ heading_text|escape }}</h2>
+
+    {% if total_press > 0 %}
+      <ul class="news-press-releases__grid">
+        {% for row in pr_rows %}
+          {% if loop.index0 >= start_index and loop.index0 < end_index %}
+            {% set title_text = row.asset_title|default(row.hs_name|default(""))|trim %}
+            {% set title_href = "#" %}
+            {% set au = row.asset_url|default(none) %}
+            {% if au %}
+              {% if au is mapping %}
+                {% if au.url is mapping and au.url.href %}
+                  {% set title_href = au.url.href %}
+                {% elif au.href %}
+                  {% set title_href = au.href %}
+                {% elif au.url is string %}
+                  {% set title_href = au.url %}
+                {% endif %}
+              {% elif au is string %}
+                {% set title_href = au|trim %}
+              {% endif %}
+            {% endif %}
+            {% if title_href == "#" or title_href|trim == "" %}
+              {% set pth = row.hs_path|default("")|trim %}
+              {% if pth %}
+                {% if pth|regex_match("^https?://") %}
+                  {% set title_href = pth %}
+                {% elif pth|regex_match("^/") %}
+                  {% set title_href = pth %}
+                {% else %}
+                  {% set title_href = "/" ~ pth %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+            {% if title_href == "#" or title_href|trim == "" %}
+              {% set lk = row.url|default(row.link|default(row.external_url|default(none))) %}
+              {% if lk %}
+                {% if lk is mapping %}
+                  {% if lk.url is mapping and lk.url.href %}
+                    {% set title_href = lk.url.href %}
+                  {% elif lk.href %}
+                    {% set title_href = lk.href %}
+                  {% elif lk.url is string %}
+                    {% set title_href = lk.url %}
+                  {% endif %}
+                {% elif lk is string %}
+                  {% set title_href = lk %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+            {% if title_href|trim == "" %}
+              {% set title_href = "#" %}
+            {% endif %}
+
+            {% set date_label = "" %}
+            {% set date_iso = "" %}
+            {% if row.published_date %}
+              {% set date_label = row.published_date|datetimeformat("%B %e, %Y") %}
+              {% set date_iso = row.published_date|datetimeformat("%Y-%m-%d") %}
+            {% endif %}
+
+            <li>
+              <article class="news-press-releases__card">
+                {% if date_label %}
+                  <p class="news-press-releases__date">{% if date_iso %}<time datetime="{{ date_iso|escape }}">{% endif %}{{ date_label }}{% if date_iso %}</time>{% endif %}</p>
+                {% endif %}
+                <h3 class="news-press-releases__title">
+                  <a href="{{ title_href }}">{{ title_text|escape }}</a>
+                </h3>
+                {% set sr = row.short_read %}
+                {% if sr is mapping and sr.html %}
+                  <div class="news-press-releases__excerpt body-sm">{{ sr.html }}</div>
+                {% elif sr %}
+                  <p class="news-press-releases__excerpt body-sm">{{ sr|striptags }}</p>
+                {% endif %}
+              </article>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+
+      {% if total_pages > 1 %}
+        {# Relative "?page=2" resolves against <base href> → wrong URL / 404. Build from request.full_url so preview params stay; strip old pq=… then append new page. #}
+        {% set pag_src = request.full_url|default("")|trim %}
+        {% if pag_src == "" %}
+          {% set pag_src = content.absolute_url|default("")|trim %}
+        {% endif %}
+        {% set pag_clean = pag_src|regex_replace("&" ~ pq ~ "=[^&]*", "") %}
+        {% set pag_clean = pag_clean|regex_replace("\\?" ~ pq ~ "=[^&]*&", "?") %}
+        {% set pag_clean = pag_clean|regex_replace("\\?" ~ pq ~ "=[^&]*$", "") %}
+        {% set pag_clean = pag_clean|regex_replace("#.*$", "") %}
+        {% set pag_join = "?" %}
+        {% if "?" in pag_clean %}
+          {% set pag_join = "&" %}
+        {% endif %}
+        {% set pag_scroll = "#" ~ section_dom_id %}
+
+        <nav class="pagination" aria-label="{{ heading_text|escape }} pagination">
+          {% if page > 1 %}
+            <a class="pagination-button" target="_self" href="{{ pag_clean }}{{ pag_join }}{{ pq }}={{ page - 1 }}{{ pag_scroll }}">&lt; Prev</a>
+          {% else %}
+            <span class="pagination-button pagination-button--muted">&lt; Prev</span>
+          {% endif %}
+
+          {# Show ≥3 page numbers at start (1–3) when on early pages, and at end when on late pages; current ±1 in the middle; ellipses only between gaps. #}
+          {% set pag_prev = namespace(last=0) %}
+          {% for p in range(1, total_pages + 1) %}
+            {% set show_num = false %}
+            {% if p == 1 or p == total_pages %}
+              {% set show_num = true %}
+            {% elif p >= page - 1 and p <= page + 1 %}
+              {% set show_num = true %}
+            {% elif page <= 3 and p <= 3 %}
+              {% set show_num = true %}
+            {% elif page >= total_pages - 2 and p >= total_pages - 2 %}
+              {% set show_num = true %}
+            {% endif %}
+            {% if show_num %}
+              {% if pag_prev.last > 0 and p - pag_prev.last > 1 %}
+                <span class="pagination-number pagination-ellipsis" aria-hidden="true">...</span>
+              {% endif %}
+              {% if p == page %}
+                <span class="pagination-number active" aria-current="page">{{ p }}</span>
+              {% else %}
+                <a class="pagination-number" target="_self" href="{{ pag_clean }}{{ pag_join }}{{ pq }}={{ p }}{{ pag_scroll }}">{{ p }}</a>
+              {% endif %}
+              {% set pag_prev.last = p %}
+            {% endif %}
+          {% endfor %}
+
+          {% if page < total_pages %}
+            <a class="pagination-button" target="_self" href="{{ pag_clean }}{{ pag_join }}{{ pq }}={{ page + 1 }}{{ pag_scroll }}">Next &gt;</a>
+          {% else %}
+            <span class="pagination-button pagination-button--muted">Next &gt;</span>
+          {% endif %}
+        </nav>
+      {% endif %}
+    {% else %}
+      <p class="news-press-releases__empty">No items found for {{ heading_text|escape }}. Confirm HubDB data, filters, and that the table is published.</p>
+    {% endif %}
+  </div>
+</section>

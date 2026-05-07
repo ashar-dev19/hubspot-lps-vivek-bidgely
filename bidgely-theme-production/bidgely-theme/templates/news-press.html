@@ -1,0 +1,101 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Bidgely - News & Press
+-->
+
+{% set asset_base = "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img" %}
+
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+  <style>
+    /* Grid-banner hero (aligned with leadership.html) */
+    .hero.hero--grid-banner {
+      background-image: var(--hero-grid-banner-bg);
+      background-repeat: no-repeat;
+      background-position: center bottom -115px;
+      background-size: cover;
+    }
+    .hero .hero__inner {
+      align-items: self-start;
+      padding: 120px var(--gutter);
+    }
+    .hero.hero--grid-banner .hero__inner--grid-banner .hero-column {
+      max-width: 812px;
+    }
+    .hero.hero--grid-banner h1 {
+      margin: 0 0 20px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--nile);
+    }
+    .hero-grid-banner__body {
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 400;
+      color: var(--nile-52);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+  {% dnd_area "page_content" label="Page content" %}
+    {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+      {% dnd_column width=12 %}
+        {% dnd_row %}
+          {% dnd_module path="@hubspot/rich_text" label="Banner" %}
+            {% module_attribute "html" %}
+              <section class="hero hero--grid-banner" style="--hero-grid-banner-bg: url('{{ asset_base }}/grid-4.svg')">
+                <div class="container hero__inner hero__inner--grid-banner">
+                  <div class="hero-column">
+                    <h1>News &amp; Press</h1>
+                    <div class="hero__copy hero__copy--grid-banner">
+                      <p class="hero-grid-banner__body">The Bidgely News &amp; Press page is a central hub for the company&rsquo;s latest updates, announcements, and industry insights. It features official press releases about product launches, partnerships, awards, and company milestones, along with articles and thought leadership on topics like AI in energy, grid modernization, and utility innovation.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            {% end_module_attribute %}
+          {% end_dnd_module %}
+        {% end_dnd_row %}
+      {% end_dnd_column %}
+    {% end_dnd_section %}
+  {% end_dnd_area %}
+
+  {# HubDB listings — distinct pagination_query_param per section when both paginate #}
+  {% module "news_press_press" path="../modules/news-press-hubdb.module",
+    section_heading="Latest Press Releases",
+    section_background="pale",
+    filter_column="asset_type",
+    filter_value="PR",
+    pagination_query_param="press_page",
+    press_per_page=10,
+    section_anchor_id="latest-press-releases" %}
+
+  {% module "news_press_news" path="../modules/news-press-hubdb.module",
+    section_heading="Latest News",
+    section_background="white",
+    filter_column="asset_type",
+    filter_value="News",
+    pagination_query_param="news_page",
+    press_per_page=10,
+    section_anchor_id="latest-news" %}
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+<script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
+{{ standard_footer_includes }}
+</body>
+</html>
