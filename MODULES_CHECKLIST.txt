@@ -1,0 +1,22 @@
+[x] agentic-automation.module
+[x] call-to-action.module
+[x] hero-center-text.module
+[x] news-press-hubdb.module
+[x] capabilities.module
+[x] genai.module
+[x] cloud-partners.module
+
+[-] hero
+[-] hero.module
+[ ] hero-2-columns.module
+[ ] hero-text-image.module
+[ ] leadership-hubdb.module
+[ ] logo-carousel.module
+[ ] nav
+[ ] nav.module
+[ ] proven-results.module
+[ ] resources-hubdb.module
+[ ] solution-grid.module
+[ ] solutions-tabs.module
+[ ] stats-bar.module
+[ ] technology-slider.module
