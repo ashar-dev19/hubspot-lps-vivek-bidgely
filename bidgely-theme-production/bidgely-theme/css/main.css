@@ -313,13 +313,13 @@ section.section--hero strong {
     padding: 120px var(--gutter) 80px;
   }
  
-  .hero__top { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: start; }
+  .hero__top { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
   .hero h1 {
     margin: 0 0 28px; font-size: 52px; line-height: 1.18;
     font-weight: 800; letter-spacing: -2px; color: var(--nile);
   }
   .hero h1 .accent { color: var(--azure-soft); }
-  .hero__copy { font-size: 17px; line-height: 1.7; color: var(--nile-52); font-weight: 300; }
+  .hero__copy { font-size: 17px; line-height: 1.7; color: var(--nile); font-weight: 300; }
   .hero-visual { margin-top: 60px; }
   .hero-visual img { width: 100%; height: auto; display: block; border-radius: var(--radius-lg); }
   

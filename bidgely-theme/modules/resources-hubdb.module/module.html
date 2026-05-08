@@ -3,7 +3,8 @@
    FILTER PRIORITY:
    1) hubdb_row_ids — If this field has any comma-separated numeric row IDs, ONLY
       those rows are shown (in the order listed). Tag filter is IGNORED.
-   2) Otherwise — filter_column + filter_value (token match in comma-separated tags).
+   2) Otherwise — filter_column + filter_value (comma-separated OR on both sides:
+      row matches if any token in the cell equals any token in filter_value).
    SORTING (tag mode only):
    Rows are fetched with orderBy=-hs_updated_at (newest HubDB update first), then
    the tag filter is applied in that order. (HubDB tables include hs_updated_at by default.)
@@ -43,6 +44,18 @@
   {% endfor %}
 {% endif %}
 {% set use_row_ids = id_list|length > 0 %}
+
+{# Requested tags: filter_value may be comma-separated — OR semantics vs HubDB cell tokens. #}
+{% set filter_tokens = [] %}
+{% if filter_active %}
+  {% set fv_norm = filter_val|replace(" ", "") %}
+  {% for fp in fv_norm|split(",") %}
+    {% set tok = fp|trim %}
+    {% if tok != "" %}
+      {% do filter_tokens.append(tok) %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
 {% set resource_rows = [] %}
 
@@ -172,8 +185,13 @@
         {% set row_match.ok = false %}
         {% set cell_norm = (r[filter_col] ~ "")|replace(" ", "") %}
         {% for part in cell_norm|split(",") %}
-          {% if part|trim == filter_val %}
-            {% set row_match.ok = true %}
+          {% set pt = part|trim %}
+          {% if pt != "" %}
+            {% for ft in filter_tokens %}
+              {% if pt == ft %}
+                {% set row_match.ok = true %}
+              {% endif %}
+            {% endfor %}
           {% endif %}
         {% endfor %}
       {% endif %}

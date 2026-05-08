@@ -91,13 +91,37 @@
           {% set use_custom_img = diagram == 'custom_image' or row.program_visual_mode|default('') == 'image' %}
           {% if use_custom_img and row.program_custom_image and row.program_custom_image.src %}
             {% set ci = row.program_custom_image %}
-            <img
-              class="stripe__img"
-              src="{{ ci.src|escape }}"
-              alt="{{ ci.alt|default('')|escape }}"
-              {% set il = ci.loading|default('lazy') %}
-              {% if il and il != 'disabled' %}loading="{{ il|escape }}"{% endif %}
-              decoding="async">
+            {% set ci_h = row.program_custom_image_hover|default(none) %}
+            {% set hover_src = '' %}
+            {% if ci_h and ci_h.src|default('')|trim %}
+              {% set hover_src = ci_h.src|trim %}
+            {% endif %}
+            {% if hover_src != '' %}
+              <div class="stripe__img-wrap stripe__img-wrap--dual">
+                <img
+                  class="stripe__img stripe__img--primary"
+                  src="{{ ci.src|escape }}"
+                  alt="{{ ci.alt|default('')|escape }}"
+                  {% set il = ci.loading|default('lazy') %}
+                  {% if il and il != 'disabled' %}loading="{{ il|escape }}"{% endif %}
+                  decoding="async">
+                <img
+                  class="stripe__img stripe__img--secondary"
+                  src="{{ ci_h.src|escape }}"
+                  alt="{{ ci_h.alt|default('')|escape }}"
+                  {% set ilh = ci_h.loading|default('lazy') %}
+                  {% if ilh and ilh != 'disabled' %}loading="{{ ilh|escape }}"{% endif %}
+                  decoding="async">
+              </div>
+            {% else %}
+              <img
+                class="stripe__img"
+                src="{{ ci.src|escape }}"
+                alt="{{ ci.alt|default('')|escape }}"
+                {% set il = ci.loading|default('lazy') %}
+                {% if il and il != 'disabled' %}loading="{{ il|escape }}"{% endif %}
+                decoding="async">
+            {% endif %}
           {% elif diagram == 'alerts_compare' %}
               {# Diagram: Generic vs appliance-level alerts #}
               <div class="program-visual program-visual--alerts-compare">

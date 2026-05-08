@@ -393,10 +393,40 @@
   white-space: nowrap;
   cursor: pointer;
 }
-.stripe__visual > img,.stripe__visual > .program-visual{
+.stripe__visual > img,
+.stripe__visual > .stripe__img-wrap,
+.stripe__visual > .program-visual{
   transition: transform .35s ease, box-shadow .35s ease, filter .35s ease;
 }
-.stripe__visual:hover > img,.stripe__visual:hover > .program-visual {
+.stripe__visual:hover > img,
+.stripe__visual:hover > .stripe__img-wrap,
+.stripe__visual:hover > .program-visual {
   transform: translateY(-4px) scale(1.01);
   filter: drop-shadow(0 14px 30px rgba(21, 45, 73, .12));
+}
+
+/* Custom image pair: default visible, hover image on .stripe__visual:hover */
+.solution-grid-module .stripe__img-wrap--dual {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.solution-grid-module .stripe__img-wrap--dual .stripe__img--secondary {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+.solution-grid-module .stripe__img-wrap--dual .stripe__img--primary {
+  transition: opacity .35s ease;
+}
+.solution-grid-module .stripe__visual:hover .stripe__img-wrap--dual .stripe__img--primary {
+  opacity: 0;
+}
+.solution-grid-module .stripe__visual:hover .stripe__img-wrap--dual .stripe__img--secondary {
+  opacity: 1;
 }

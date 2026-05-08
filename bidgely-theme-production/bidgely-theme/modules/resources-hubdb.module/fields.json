@@ -49,7 +49,7 @@
   "id" : "filter_value",
   "name" : "filter_value",
   "label" : "Filter value (optional)",
-  "help_text" : "Exact token match after trim within comma-separated filter column.",
+  "help_text" : "Comma-separated allowed tags (OR): row matches if its filter column contains any of these tokens. Spaces around commas are ignored. Same token rules as the HubDB cell (comma-separated list).",
   "required" : false,
   "locked" : false,
   "allow_new_line" : false,

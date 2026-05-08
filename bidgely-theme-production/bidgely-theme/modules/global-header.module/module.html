@@ -128,7 +128,7 @@
     .bly-dd-grid-item--sm .bly-dd-grid-item__desc { font-size: 10.5px; }
     
     /* ── Featured dropdown (Technology) ── */
-    .bly-dd-featured { display: flex; width: 540px; }
+    .bly-dd-featured { display: flex; }
     .bly-dd-featured__left {
       width: 195px;
       flex-shrink: 0;
@@ -148,7 +148,7 @@
       font-size: 12px; font-weight: 700; color: #499ed7; text-decoration: none;
     }
     .bly-dd-featured__cta:hover { color: #152d49; }
-    .bly-dd-featured__right { flex: 1; padding: 2px 0 2px 16px; display: flex; flex-direction: column; gap: 2px; }
+    .bly-dd-featured__right { flex: 1; display: flex; flex-direction: column; gap: 2px; }
     .bly-dd-side-item {
       display: flex; align-items: center; gap: 12px;
       padding: 10px 10px; border-radius: 8px;
@@ -414,7 +414,7 @@
     {% set login_label = module.cta_secondary_label | default("Explore Demo") %}
     {% set login_href  = module.cta_secondary_url.href | default("#") %}
     {% set cta_label   = module.cta_primary_label | default("Contact Us") %}
-    {% set cta_href    = module.cta_primary_url.href | default("#") %}
+    {% set cta_href    = module.cta_primary_url.href | default("https://bidgely.ai/contact-us-form") %}
     
     <nav class="bly-nav" aria-label="Main navigation">
       <div class="bly-nav__inner">
@@ -659,7 +659,30 @@
                 {% endif %}
               </div>
             </li>
-            <li class="bly-nav__item"><a href="https://bidgely.ai/resources">Resources</a></li>
+            <li class="bly-nav__item bly-nav__item--has-dd resources-menu">
+              <button class="bly-nav__link" aria-haspopup="true" aria-expanded="false" data-nav-trigger>
+                Resources
+                <svg class="bly-nav__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="bly-nav__dropdown">
+                <div class="bly-dd-featured">
+                  <div class="bly-dd-featured__right">
+                    <a href="https://bidgely.ai/resources" class="bly-dd-side-item">
+                      <div class="bly-dd-side-item__content">
+                        <div class="bly-dd-side-item__label">Resource Library</div>
+                        <div class="bly-dd-side-item__desc">Thought leadership to fuel your brain and inspire your programs.</div>
+                      </div>
+                    </a>
+                    <a href="/blog" class="bly-dd-side-item">
+                      <div class="bly-dd-side-item__content">
+                        <div class="bly-dd-side-item__label">Blog</div>
+                        <div class="bly-dd-side-item__desc">Read the latest posts</div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </li>
           {% endif %}
     
         </ul>
@@ -703,7 +726,11 @@
           <a href="https://bidgely.ai/partners">Partners</a>
           <a href="https://bidgely.ai/news-press">Press and News</a>
         </div>
-        <a href="https://bidgely.ai/resources" class="bly-nav__m-link">Resources</a>
+        <button class="bly-nav__m-link" data-m-trigger>Resources <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="bly-nav__m-sub" data-m-sub>
+          <a href="https://bidgely.ai/resources">Resources</a>
+          <a href="/blog">Blog</a>
+        </div>
         <a href="#" class="bly-nav__m-link">Events</a>
         <div class="bly-nav__m-actions">
           <a href="{{ login_href }}" class="bly-nav__login" style="border:1px solid #e8eaed;border-radius:8px;padding:10px 0;">{{ login_label }}</a>

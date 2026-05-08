@@ -139,6 +139,31 @@
       "loading" : "lazy"
     }
   }, {
+    "id" : "program_rows.program_custom_image_hover",
+    "name" : "program_custom_image_hover",
+    "label" : "Custom image (hover)",
+    "help_text" : "Optional second image for Custom image mode. When set, the default image shows until hover; then this image replaces it (same layout).",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "custom_image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
     "id" : "program_rows.program_title",
     "name" : "program_title",
     "label" : "Title",
@@ -1000,6 +1025,11 @@
       "alt" : "",
       "loading" : "lazy"
     },
+    "program_custom_image_hover" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
     "program_diagram" : "alerts_compare",
     "program_title" : "Proactive Usage Notifications",
     "program_subtitle" : "Alerts that change behavior, not just inboxes.",
@@ -1132,6 +1162,11 @@
       "alt" : "",
       "loading" : "lazy"
     },
+    "program_custom_image_hover" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
     "program_diagram" : "bill_panel",
     "program_title" : "High Bill Analyzer & Call Resolution",
     "program_subtitle" : "Resolve the call before the customer finishes explaining.",
@@ -1260,6 +1295,11 @@
     "program_anchor_id" : "",
     "program_reverse_layout" : false,
     "program_custom_image" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "program_custom_image_hover" : {
       "src" : "",
       "alt" : "",
       "loading" : "lazy"

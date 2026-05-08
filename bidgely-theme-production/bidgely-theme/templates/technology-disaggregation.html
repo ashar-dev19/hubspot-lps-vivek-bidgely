@@ -39,7 +39,7 @@
     @media (max-width: 1000px) { .cards-3 { grid-template-columns: 1fr; } }
 
     /* "How we're different" box gets the brand gradient hover */
-    .diff-card .card__title { font-size: 19px; }
+    .card__title {margin: 0;}
     .diff-card .cap-card__icon-img {
       width: 44px; height: 44px; object-fit: contain;
       transition: filter .25s ease, transform .25s ease;
@@ -51,13 +51,12 @@
     }
     .cards-3 .diff-card:hover .card__title,
     .cards-3 .diff-card:hover .card__copy { color: #fff; }
-    .cards-3 .diff-card:hover .cap-card__icon-img {
+    .cards-3 .diff-card:hover .hs-image-widget {
       filter: brightness(0) invert(1);
-      transform: translateY(-1px) scale(1.03);
     }
 
     /* Use-case card: header + bulleted list, with team icon at top */
-    .uc-card { gap: 16px; }
+    .uc-card { gap: 16px; box-shadow: 0 14px 30px rgba(21,45,73,.1);}
     .uc-card__icon-img {
       width: 44px; height: 44px; object-fit: contain;
     }
@@ -70,13 +69,20 @@
       color: var(--nile); margin: 0;
     }
     .uc-list {
-      margin: 0; padding-left: 18px;
+      margin: 0;
       font-size: 14px; line-height: 1.55;
       color: var(--nile-52); font-weight: 500;
     }
-    .uc-list li { margin-bottom: 10px; }
+    .uc-list li { margin-bottom: 10px; display: flex; gap: 10px; align-items: flex-start;}
     .uc-list li:last-child { margin-bottom: 0; }
-
+    .uc-list li:before {
+    background: url(https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/check-bullet.svg) 50% / contain no-repeat;
+      content: "";
+      flex: 0 0 18px;
+      height: 19px;
+      margin-top: 2px;
+      width: 18px;
+    }
     /* Stats band (navy strip with 5 proof tiles) */
     .stats-band { padding: 56px 0; }
     .stats-band__grid {
@@ -409,6 +415,30 @@
     </div>
   </div>
 </section>
+
+{# =========================================================
+   MID-PAGE CTA — azure band (before Resources)
+   ========================================================= #}
+{% module "tech_disaggregation_resources_cta"
+  path="../modules/call-to-action.module",
+  section_background="azure",
+  section_heading="Unlock True Behind-the-Meter Intelligence",
+  subcopy="",
+  cta_text="Get Started",
+  button_style="white",
+  cta_link={
+    "url": {
+      "type": "EXTERNAL",
+      "content_id": null,
+      "href": "/contact-us-form",
+      "href_with_scheme": "/contact-us-form"
+    },
+    "open_in_new_tab": false,
+    "no_follow": false,
+    "sponsored": false,
+    "user_generated_content": false
+  }
+%}
 
 {# =========================================================
    RESOURCES — 3 tiles (PDF / Video / Report)
