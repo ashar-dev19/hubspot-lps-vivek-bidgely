@@ -17,7 +17,7 @@
 
 {% set table_id = module.hubdb_table_id|default(2150970045) %}
 {# Field default ends with / ; trim user overrides and ensure trailing slash for filename concat. #}
-{% set headshot_base = module.headshot_base|default('https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Leadership%20-%20Headshots/')|trim %}
+{% set headshot_base = module.headshot_base|default('https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/www-img/Leadership%20-%20Headshots/')|trim %}
 {% if headshot_base %}
   {% if headshot_base[-1:] != '/' %}
     {% set headshot_base = headshot_base ~ '/' %}
@@ -25,7 +25,7 @@
 {% endif %}
 
 {% if table_id > 0 %}
-  {% set all_rows = hubdb_table_rows(table_id, order_by="display_order") %}
+  {% set all_rows = hubdb_table_rows(table_id, "orderBy=display_order") %}
 {% else %}
   {% set all_rows = none %}
 {% endif %}
