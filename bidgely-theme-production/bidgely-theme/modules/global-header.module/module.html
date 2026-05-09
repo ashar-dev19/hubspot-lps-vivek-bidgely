@@ -361,7 +361,7 @@
     /* ── Resources dropdown (two-column panel) ── */
     .bly-nav__item.resources-menu > .bly-nav__dropdown {
       padding: 0;
-      min-width: 600px;
+      min-width: min(600px, calc(100vw - 48px));
       overflow: hidden;
       border-radius: 16px;
     }
@@ -474,6 +474,251 @@
       height: 16px;
       flex-shrink: 0;
     }
+    /* View Demo row + arrow: apply everywhere (mobile drawer is NOT inside .resources-menu) */
+    .bly-dd-resources__card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .bly-dd-resources__card-cta svg {
+      width: 14px;
+      height: 14px;
+      max-width: 14px;
+      max-height: 14px;
+      flex-shrink: 0;
+      display: block;
+      stroke: currentColor;
+    }
+    
+    /* Mobile drawer — Resources (single column: links, then Demo Portal) */
+    .bly-nav__mobile .bly-nav__m-sub--resources {
+      padding: 8px 0 14px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources > .bly-dd-resources {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: stretch;
+      gap: 0;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      min-width: 0;
+      background: #ffffff;
+      border: 1px solid #e7edf3;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(21,45,73,.08);
+      margin-top: 4px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__left {
+      padding: 14px 10px 16px;
+      border-right: none;
+      border-bottom: 1px solid #e7edf3;
+      min-width: 0;
+    }
+    /* Drawer is NOT inside .resources-menu — must repeat row layout here */
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 8px;
+      text-decoration: none;
+      color: #152d49;
+      border-radius: 10px;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__item > div {
+      min-width: 0;
+      flex: 1;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__item + .bly-dd-resources__item {
+      margin-top: 8px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__icon {
+      width: 36px;
+      height: 36px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__label {
+      font-size: 13px;
+      font-weight: 700;
+      font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__desc {
+      font-size: 11px;
+      max-width: none;
+      overflow-wrap: anywhere;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__right {
+      background: #f8fcff;
+      padding: 14px 10px 16px;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      min-width: 0;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 4px 4px 8px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__card-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__card-title {
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__card-desc {
+      font-size: 11px;
+      max-width: 200px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__divider {
+      margin: 12px 0 10px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources .bly-dd-resources__card-cta {
+      font-size: 13px;
+      font-weight: 700;
+      color: #43abff;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources a.bly-dd-resources__item,
+    .bly-nav__mobile .bly-nav__m-sub--resources a.bly-dd-resources__card {
+      border-bottom: none;
+    }
+    
+    /* Mobile drawer — Solutions */
+    .bly-nav__mobile .bly-nav__m-sub--solutions {
+      padding: 8px 0 14px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--solutions .bly-dd-sol {
+      width: 100%;
+      max-width: 100%;
+      border: 1px solid #e7edf3;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(21,45,73,.08);
+      background: #fff;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--solutions .bly-dd-grid {
+      padding: 10px 12px 6px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--solutions .bly-dd-grid-footer {
+      margin: 0;
+      border-radius: 0 0 12px 12px;
+      padding: 10px 12px 12px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--solutions a.bly-dd-grid-item,
+    .bly-nav__mobile .bly-nav__m-sub--solutions a.bly-dd-grid-item--sm {
+      border-bottom: none;
+    }
+    @media (max-width: 480px) {
+      .bly-nav__mobile .bly-nav__m-sub--solutions .bly-dd-grid {
+        grid-template-columns: 1fr;
+      }
+      .bly-nav__mobile .bly-nav__m-sub--solutions .bly-dd-grid-footer {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Mobile drawer — Technology */
+    .bly-nav__mobile .bly-nav__m-sub--tech {
+      padding: 8px 0 14px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--tech .bly-dd-featured {
+      width: 100%;
+      max-width: 100%;
+      flex-direction: column;
+      border: 1px solid #e7edf3;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(21,45,73,.08);
+      background: #fff;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--tech .bly-dd-featured__link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: 0;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--tech .bly-dd-featured__left {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--tech .bly-dd-featured__right {
+      padding: 10px 12px 12px;
+      border-top: 1px solid #eaedf0;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--tech a.bly-dd-side-item,
+    .bly-nav__mobile .bly-nav__m-sub--tech a.bly-dd-featured__cta {
+      border-bottom: none;
+    }
+    
+    /* Mobile drawer — Company */
+    .bly-nav__mobile .bly-nav__m-sub--company {
+      padding: 8px 0 14px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--company .bly-dd-featured {
+      width: 100%;
+      max-width: 100%;
+      border: 1px solid #e7edf3;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(21,45,73,.08);
+      background: #fff;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--company .bly-dd-featured__right {
+      padding: 14px 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 12px;
+      row-gap: 4px;
+      position: relative;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--company .bly-dd-featured__right::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      bottom: 8px;
+      left: 50%;
+      width: 1px;
+      background: #e5ebf1;
+      transform: translateX(-50%);
+    }
+    .bly-nav__mobile .bly-nav__m-sub--company .bly-dd-side-item {
+      align-items: flex-start;
+      padding: 8px 6px;
+      border-radius: 8px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--company .bly-dd-side-item__icon {
+      width: 38px;
+      height: 38px;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--company .bly-dd-side-item__label {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--company .bly-dd-side-item__desc {
+      font-size: 11px;
+      line-height: 1.35;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--company a.bly-dd-side-item {
+      border-bottom: none;
+    }
+    @media (max-width: 480px) {
+      .bly-nav__mobile .bly-nav__m-sub--company .bly-dd-featured__right {
+        grid-template-columns: 1fr;
+      }
+      .bly-nav__mobile .bly-nav__m-sub--company .bly-dd-featured__right::before {
+        display: none;
+      }
+    }
     
     /* ── Right CTAs ── */
     .bly-nav__actions { display: flex; align-items: center; gap: 10px; margin-left: auto; flex-shrink: 0; }
@@ -516,6 +761,19 @@
     .bly-nav__m-sub { display: none; flex-direction: column; padding: 6px 0 6px 12px; }
     .bly-nav__m-sub.is-open { display: flex; }
     .bly-nav__m-sub a { padding: 8px 0; font-size: 13px; color: rgba(21,45,73,.75); text-decoration: none; border-bottom: 1px solid #f8f8f8; }
+    /* Override generic .bly-nav__m-sub a for Resources rich panel (must follow rule above) */
+    .bly-nav__mobile .bly-nav__m-sub--resources a.bly-dd-resources__item {
+      padding: 10px 8px;
+      font-size: inherit;
+      color: #152d49;
+      border-bottom: none;
+    }
+    .bly-nav__mobile .bly-nav__m-sub--resources a.bly-dd-resources__card {
+      padding: 8px 4px 12px;
+      font-size: inherit;
+      color: #152d49;
+      border-bottom: none;
+    }
     .bly-nav__m-actions { display: flex; gap: 10px; margin-top: 20px; }
     .bly-nav__m-actions a { flex: 1; text-align: center; }
     
@@ -807,7 +1065,7 @@
                       <div class="bly-dd-resources__divider"></div>
                       <span class="bly-dd-resources__card-cta">
                         View Demo
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                           <line x1="7" y1="17" x2="17" y2="7"></line>
                           <polyline points="7 7 17 7 17 17"></polyline>
                         </svg>
@@ -831,44 +1089,167 @@
         </button>
       </div>
     
-      {# Mobile drawer #}
+      {# Mobile drawer — same submenu layouts as desktop #}
       <div class="bly-nav__mobile" id="bly-mobile-menu" aria-hidden="true">
-        <button class="bly-nav__m-link" data-m-trigger>Solutions <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="bly-nav__m-sub" data-m-sub>
-          <a href="https://bidgely.com/electrification-1">Energy Efficiency</a>
-          <a href="https://bidgely.com/customer-engagement-solutions">Customer Engagement</a>
-          <a href="https://bidgely.com/load-shaping">Flex Demand</a>
-          <a href="https://bidgely.com/ev-programs">EV Programs</a>
-          <a href="https://bidgely.com/der-grid-planning">DER Grid Planning</a>
-          <a href="https://bidgely.com/bidgely-solution-dsm">BTM Targeting</a>
-          <a href="https://bidgely.com/gas-disaggregation">Gas Solutions</a>
-          <a href="https://bidgely.com/smb-solutions">SMB Solutions</a>
-          <a href="https://bidgely.com/theft-detection">Energy Theft Detector</a>
+        <button class="bly-nav__m-link" type="button" data-m-trigger>{% if module.nav_items and module.nav_items[0] %}{{ module.nav_items[0].label | default("Solutions") }}{% else %}Solutions{% endif %} <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="bly-nav__m-sub bly-nav__m-sub--solutions" data-m-sub>
+          <div class="bly-dd-sol">
+            {% if module.nav_items and module.nav_items[0] and module.nav_items[0].grid_items and module.nav_items[0].grid_items|length > 0 %}
+              <div class="bly-dd-grid">
+                {% for gi in module.nav_items[0].grid_items %}{% if loop.index <= 6 %}
+                  <a href="{{ gi.url.href | default('#') }}" class="bly-dd-grid-item">
+                    {% if gi.icon.src %}<img src="{{ gi.icon.src }}" alt="" class="bly-dd-grid-item__icon">{% endif %}
+                    <div><div class="bly-dd-grid-item__label">{{ gi.label }}</div><div class="bly-dd-grid-item__desc">{{ gi.description }}</div></div>
+                  </a>
+                {% endif %}{% endfor %}
+              </div>
+              {% if module.nav_items[0].grid_items|length > 6 %}
+                <div class="bly-dd-grid-footer">
+                  {% for gi in module.nav_items[0].grid_items %}{% if loop.index > 6 %}
+                    <a href="{{ gi.url.href | default('#') }}" class="bly-dd-grid-item bly-dd-grid-item--sm">
+                      {% if gi.icon.src %}<img src="{{ gi.icon.src }}" alt="" class="bly-dd-grid-item__icon">{% endif %}
+                      <div><div class="bly-dd-grid-item__label">{{ gi.label }}</div><div class="bly-dd-grid-item__desc">{{ gi.description }}</div></div>
+                    </a>
+                  {% endif %}{% endfor %}
+                </div>
+              {% endif %}
+            {% else %}
+              <div class="bly-dd-grid">
+                <a href="/bidgely-solution-dsm" class="bly-dd-grid-item"><img src="{{ ab }}/explain-bill.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">DSM Performance</div><div class="bly-dd-grid-item__desc">Improve efficiency outcomes with targeted programs and personalized HERs.</div></div></a>
+                <a href="/customer-engagement-solutions" class="bly-dd-grid-item"><img src="{{ ab }}/customer-experience-v1.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Customer Engagement</div><div class="bly-dd-grid-item__desc">Drive proactive engagement with alerts, bill insights, and self-service tools.</div></div></a>
+                <a href="/load-shaping" class="bly-dd-grid-item"><img src="{{ ab }}/target.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Load Flexibility</div><div class="bly-dd-grid-item__desc">Optimize TOU, DR, and load shifting with precision targeting.</div></div></a>
+                <a href="/electrification-1" class="bly-dd-grid-item"><img src="{{ ab }}/every-touchpoint.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Electrification</div><div class="bly-dd-grid-item__desc">Target and scale EV and electrification programs end to end.</div></div></a>
+                <a href="/der-grid-planning" class="bly-dd-grid-item"><img src="{{ ab }}/ders-icon-v1.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Grid Resiliency</div><div class="bly-dd-grid-item__desc">Plan and optimize grid capacity with DER-aware intelligence.</div></div></a>
+                <a href="/affordability" class="bly-dd-grid-item"><img src="{{ ab }}/daas-v2.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Affordability Programs</div><div class="bly-dd-grid-item__desc">Identify and enroll income-qualified customers with precision.</div></div></a>
+              </div>
+              <div class="bly-dd-grid-footer">
+                <a href="/gas-disaggregation" class="bly-dd-grid-item bly-dd-grid-item--sm"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/gas-solutions.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Gas Solutions</div><div class="bly-dd-grid-item__desc">A full spectrum of solutions for CX, energy efficiency and demand management.</div></div></a>
+                <a href="/smb-solutions" class="bly-dd-grid-item bly-dd-grid-item--sm"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/smb-solutions%20(1).svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">SMB Solutions</div><div class="bly-dd-grid-item__desc">Serve your Small-to-Medium Business customers better.</div></div></a>
+                <a href="/theft-detection" class="bly-dd-grid-item bly-dd-grid-item--sm"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/theft-detection.svg" alt="" class="bly-dd-grid-item__icon"><div><div class="bly-dd-grid-item__label">Energy Theft Detection</div><div class="bly-dd-grid-item__desc">Discover and remedy energy theft to prevent revenue leakage.</div></div></a>
+              </div>
+            {% endif %}
+          </div>
         </div>
-        <button class="bly-nav__m-link" data-m-trigger>Technology <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="bly-nav__m-sub" data-m-sub>
-          <a href="https://bidgely.com/disaggregation">True Disaggregation</a>
-          <a href="https://bidgely.com/agentic-automation">Agentic AI</a>
-          <a href="https://bidgely.com/gen-ai">GenAI</a>
-          <a href="https://bidgely.com/utility-ai-pro">UtilityAI Pro</a>
+        <button class="bly-nav__m-link" type="button" data-m-trigger>{% if module.nav_items and module.nav_items[1] %}{{ module.nav_items[1].label | default("Technology") }}{% else %}Technology{% endif %} <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="bly-nav__m-sub bly-nav__m-sub--tech" data-m-sub>
+          <div class="bly-dd-featured">
+            <a href="{% if module.nav_items and module.nav_items[1] %}{{ module.nav_items[1].featured_cta_url.href | default('https://bidgely.com/utility-ai-pro') }}{% else %}https://bidgely.com/utility-ai-pro{% endif %}" class="bly-dd-featured__link">
+              <div class="bly-dd-featured__left">
+                {% if module.nav_items and module.nav_items[1] and module.nav_items[1].featured_icon.src %}
+                  <img src="{{ module.nav_items[1].featured_icon.src }}" alt="" class="bly-dd-featured__icon">
+                {% else %}
+                  <img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Group%20(2).svg" alt="" class="bly-dd-featured__icon">
+                {% endif %}
+                <div class="bly-dd-featured__label">
+                  {% if module.nav_items and module.nav_items[1] and module.nav_items[1].featured_label %}
+                    {{ module.nav_items[1].featured_label }}
+                  {% else %}
+                    UtilityAI Pro
+                  {% endif %}
+                </div>
+                <div class="bly-dd-featured__desc">
+                  {% if module.nav_items and module.nav_items[1] and module.nav_items[1].featured_description %}
+                    {{ module.nav_items[1].featured_description }}
+                  {% else %}
+                    Deploy Bidgely's advanced machine learning models directly on your cloud...
+                  {% endif %}
+                </div>
+                <div class="bly-dd-featured__cta">
+                  {% if module.nav_items and module.nav_items[1] and module.nav_items[1].featured_cta_label %}
+                    {{ module.nav_items[1].featured_cta_label }}
+                  {% else %}
+                    Learn More
+                  {% endif %}
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </div>
+              </div>
+            </a>
+            <div class="bly-dd-featured__right">
+              {% if module.nav_items and module.nav_items[1] and module.nav_items[1].side_items and module.nav_items[1].side_items|length > 0 %}
+                {% for si in module.nav_items[1].side_items %}
+                  <a href="{{ si.url.href | default('#') }}" class="bly-dd-side-item">
+                    {% if si.icon.src %}<img src="{{ si.icon.src }}" alt="" class="bly-dd-side-item__icon">{% endif %}
+                    <div><div class="bly-dd-side-item__label">{{ si.label }}</div><div class="bly-dd-side-item__desc">{{ si.description }}</div></div>
+                  </a>
+                {% endfor %}
+              {% else %}
+                <a href="https://bidgely.com/disaggregation" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/home-disaggregation-icon.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">True Disaggregation</div><div class="bly-dd-side-item__desc">The tech behind the meter intelligence platform.</div></div></a>
+                <a href="https://bidgely.com/agentic-automation" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/agentic.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">Agentic AI</div><div class="bly-dd-side-item__desc">Autonomous AI deployment for your enterprise.</div></div></a>
+                <a href="https://bidgely.com/gen-ai" class="bly-dd-side-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/genai.svg" alt="" class="bly-dd-side-item__icon"><div><div class="bly-dd-side-item__label">GenAI</div><div class="bly-dd-side-item__desc">Embedded NLU intelligence for your ecosystem.</div></div></a>
+              {% endif %}
+            </div>
+          </div>
         </div>
-        <button class="bly-nav__m-link" data-m-trigger>Company <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="bly-nav__m-sub" data-m-sub>
-          <a href="/leadership">Leadership</a>
-          <a href="#">Careers</a>
-          <a href="/resources/">Customer Success</a>
-          <a href="/partners">Partners</a>
-          <a href="/news-press">Press and News</a>
+        <button class="bly-nav__m-link" type="button" data-m-trigger>{% if module.nav_items and module.nav_items|length > 2 %}{{ module.nav_items[2].label | default("Company") }}{% else %}Company{% endif %} <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="bly-nav__m-sub bly-nav__m-sub--company" data-m-sub>
+          <div class="bly-dd-featured">
+            <div class="bly-dd-featured__right">
+              {% if module.nav_items and module.nav_items|length > 2 %}
+                {% if module.nav_items[2].side_items and module.nav_items[2].side_items|length > 0 %}
+                  {% for si in module.nav_items[2].side_items %}
+                    <a href="{{ si.url.href | default('#') }}" class="bly-dd-side-item">
+                      {% if si.icon.src %}<img src="{{ si.icon.src }}" alt="" class="bly-dd-side-item__icon">{% endif %}
+                      <div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">{{ si.label }}</div><div class="bly-dd-side-item__desc">{{ si.description }}</div></div>
+                    </a>
+                  {% endfor %}
+                {% else %}
+                  <a href="https://bidgely.com/leadership" class="bly-dd-side-item"><img src="https://bidgely.com/hubfs/default-header/leadership-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Leadership</div><div class="bly-dd-side-item__desc">Meet the people who fuel our success</div></div></a>
+                  <a href="#" class="bly-dd-side-item"><img src="https://bidgely.com/hubfs/default-header/careers-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Careers</div><div class="bly-dd-side-item__desc">Join a team of smart, supportive experts</div></div></a>
+                  <a href="https://bidgely.com/resources/" class="bly-dd-side-item"><img src="https://bidgely.com/hubfs/default-header/customer-success-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Customer Success</div><div class="bly-dd-side-item__desc">Leading utilities working with us to accelerate a clean energy future</div></div></a>
+                  <a href="https://bidgely.com/partners" class="bly-dd-side-item"><img src="https://bidgely.com/hubfs/default-header/partners-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Partners</div><div class="bly-dd-side-item__desc">Meet our partner ecosystem</div></div></a>
+                  <a href="https://bidgely.com/news-press" class="bly-dd-side-item"><img src="https://bidgely.com/hubfs/default-header/press-news-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Press and News</div><div class="bly-dd-side-item__desc">Extra extra, read all about us</div></div></a>
+                {% endif %}
+              {% else %}
+                <a href="https://bidgely.com/leadership" class="bly-dd-side-item"><img src="https://bidgely.com/hubfs/default-header/leadership-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Leadership</div><div class="bly-dd-side-item__desc">Meet the people who fuel our success</div></div></a>
+                <a href="#" class="bly-dd-side-item"><img src="https://bidgely.com/hubfs/default-header/careers-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Careers</div><div class="bly-dd-side-item__desc">Join a team of smart, supportive experts</div></div></a>
+                <a href="https://bidgely.com/resources/" class="bly-dd-side-item"><img src="https://bidgely.com/hubfs/default-header/customer-success-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Customer Success</div><div class="bly-dd-side-item__desc">Leading utilities working with us to accelerate a clean energy future</div></div></a>
+                <a href="https://bidgely.com/partners" class="bly-dd-side-item"><img src="https://bidgely.com/hubfs/default-header/partners-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Partners</div><div class="bly-dd-side-item__desc">Meet our partner ecosystem</div></div></a>
+                <a href="https://bidgely.com/news-press" class="bly-dd-side-item"><img src="https://bidgely.com/hubfs/default-header/press-news-icon.svg" alt="" class="bly-dd-side-item__icon"><div class="bly-dd-side-item__content"><div class="bly-dd-side-item__label">Press and News</div><div class="bly-dd-side-item__desc">Extra extra, read all about us</div></div></a>
+              {% endif %}
+            </div>
+          </div>
         </div>
-        <button class="bly-nav__m-link" data-m-trigger>Resources <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="bly-nav__m-sub" data-m-sub>
-          <a href="/resources">Resources</a>
-          <a href="/insights">Blog</a>
-          <a href="https://demo.bidgley.com">Demo Portal</a>
+        <button class="bly-nav__m-link" type="button" data-m-trigger>Resources <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 6l4 4 4-4" stroke="#152d49" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="bly-nav__m-sub bly-nav__m-sub--resources" data-m-sub>
+          <div class="bly-dd-resources">
+            <div class="bly-dd-resources__left">
+              <a href="/resources" class="bly-dd-resources__item">
+                <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/www-img/resource-library-icon.svg" alt="" class="bly-dd-resources__icon">
+                <div>
+                  <div class="bly-dd-resources__label">Resource Library</div>
+                  <div class="bly-dd-resources__desc">Thought leadership to fuel your brain and inspire your programs</div>
+                </div>
+              </a>
+              <a href="/insights" class="bly-dd-resources__item">
+                <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/www-img/blog-icon.svg" alt="" class="bly-dd-resources__icon">
+                <div>
+                  <div class="bly-dd-resources__label">Blog</div>
+                  <div class="bly-dd-resources__desc">Read the latest posts.</div>
+                </div>
+              </a>
+            </div>
+            <div class="bly-dd-resources__right">
+              <a href="https://demo.bidgely.com/" class="bly-dd-resources__card">
+                <img src="https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/www-img/demo-portal-icon.svg" alt="" class="bly-dd-resources__card-icon">
+                <div class="bly-dd-resources__card-title">Demo Portal</div>
+                <div class="bly-dd-resources__card-desc">Experience the power of our solutions first hand.</div>
+                <div class="bly-dd-resources__divider"></div>
+                <span class="bly-dd-resources__card-cta">
+                  View Demo
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <line x1="7" y1="17" x2="17" y2="7"></line>
+                    <polyline points="7 7 17 7 17 17"></polyline>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
-        <a href="#" class="bly-nav__m-link">Events</a>
         <div class="bly-nav__m-actions">
-          <a href="{{ login_href }}" class="bly-nav__login testt" style="border:1px solid #e8eaed;border-radius:8px;padding:10px 0;">{{ login_label }}</a>
+          <a href="https://demo.bidgely.com/" class="bly-nav__login" style="border:1px solid #e8eaed;border-radius:8px;padding:10px 0;">{{ login_label }}</a>
           <a href="{{ cta_href }}" class="bly-nav__cta">{{ cta_label }}</a>
         </div>
       </div>
@@ -919,14 +1300,35 @@
         burger.addEventListener('click', function () {
           var open = drawer.classList.toggle('is-open');
           burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+          if (!open) {
+            drawer.querySelectorAll('[data-m-sub].is-open').forEach(function (el) {
+              el.classList.remove('is-open');
+            });
+            drawer.querySelectorAll('[data-m-trigger]').forEach(function (b) {
+              b.setAttribute('aria-expanded', 'false');
+            });
+          }
         });
       }
-      /* Mobile sub-accordions */
-      document.querySelectorAll('[data-m-trigger]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var sub = btn.nextElementSibling;
-          if (sub) sub.classList.toggle('is-open');
+      /* Mobile sub-accordions — only one open at a time */
+      if (drawer) {
+        drawer.querySelectorAll('[data-m-trigger]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var sub = btn.nextElementSibling;
+            if (!sub || !sub.hasAttribute('data-m-sub')) return;
+            var willOpen = !sub.classList.contains('is-open');
+            drawer.querySelectorAll('[data-m-sub]').forEach(function (el) {
+              el.classList.remove('is-open');
+            });
+            drawer.querySelectorAll('[data-m-trigger]').forEach(function (b) {
+              b.setAttribute('aria-expanded', 'false');
+            });
+            if (willOpen) {
+              sub.classList.add('is-open');
+              btn.setAttribute('aria-expanded', 'true');
+            }
+          });
         });
-      });
+      }
     })();
     </script>
