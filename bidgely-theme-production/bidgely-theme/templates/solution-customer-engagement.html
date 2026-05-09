@@ -1,0 +1,143 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Bidgely Solution – Customer Engagement
+  screenshotPath: ../images/template-previews/bidgely-solution-customer-engagement.png
+-->
+
+{% set asset_base = "https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/www-img" %}
+
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+</head>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+{% dnd_area "main" label="Main Content" %}
+
+  {# ===== SECTION 1 — HERO ===== #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/hero-text-image.module"
+          label="Hero"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+  {# ===== SECTION 2 — CTA STRIP ===== #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/call-to-action.module"
+          label="Call to action"
+          subcopy=""
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+  {# ===== SECTION 3 — CAPABILITIES ===== #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/capabilities.module"
+          label="Capabilities"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+  {# ===== SECTION 4 — SOLUTION GRID (programs / diagrams) ===== #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/solution-grid.module"
+          label="Solution Grid"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+  {# ===== SECTION 5 — AGENTIC AUTOMATION ===== #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/agentic-automation.module"
+          label="Agentic Automation"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+  {# ===== SECTION 6 — GENAI ===== #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/genai.module"
+          label="GenAI"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+  {# ===== SECTION 7 — PROVEN RESULTS ===== #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/proven-results.module"
+          label="Proven Results"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+  {# ===== SECTION 8 — RESOURCES (HubDB) ===== #}
+  {# hubdb_row_ids — comma-separated HubDB row IDs; if set, ONLY those rows (in order), max hubdb_limit cards; tag filter is IGNORED. #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/resources-hubdb.module"
+          label="Resources"
+          ce_resources_eyebrow="Resources"
+          filter_value="CX"
+          hubdb_limit=4
+          hubdb_row_ids="313538825931,313538825932,313538825933"
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+{% end_dnd_area %}
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+<script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
+{{ standard_footer_includes }}
+</body>
+</html>

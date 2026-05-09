@@ -1,0 +1,116 @@
+[ {
+  "id" : "logo",
+  "name" : "logo",
+  "label" : "Logo",
+  "required" : false,
+  "locked" : false,
+  "responsive" : false,
+  "resizable" : true,
+  "show_loading" : false,
+  "type" : "image",
+  "display_width" : null,
+  "default" : {
+    "src" : "",
+    "alt" : null,
+    "size_type" : null,
+    "width" : null,
+    "height" : null,
+    "max_width" : null,
+    "max_height" : null,
+    "loading" : "disabled"
+  }
+}, {
+  "id" : "logo_link",
+  "name" : "logo_link",
+  "label" : "Logo Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "content_id" : null,
+      "href" : "",
+      "href_with_scheme" : ""
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false,
+    "sponsored" : false,
+    "user_generated_content" : false
+  }
+}, {
+  "id" : "menu",
+  "name" : "menu",
+  "label" : "Menu",
+  "required" : false,
+  "locked" : false,
+  "type" : "menu",
+  "display_width" : null
+}, {
+  "id" : "secondary_cta_text",
+  "name" : "secondary_cta_text",
+  "label" : "Secondary CTA Text",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Log In"
+}, {
+  "id" : "secondary_cta_link",
+  "name" : "secondary_cta_link",
+  "label" : "Secondary CTA Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "content_id" : null,
+      "href" : "",
+      "href_with_scheme" : ""
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false,
+    "sponsored" : false,
+    "user_generated_content" : false
+  }
+}, {
+  "id" : "primary_cta_text",
+  "name" : "primary_cta_text",
+  "label" : "Primary CTA Text",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Talk to Sales"
+}, {
+  "id" : "primary_cta_link",
+  "name" : "primary_cta_link",
+  "label" : "Primary CTA Link",
+  "required" : false,
+  "locked" : false,
+  "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+  "show_advanced_rel_options" : false,
+  "type" : "link",
+  "display_width" : null,
+  "default" : {
+    "url" : {
+      "type" : "EXTERNAL",
+      "content_id" : null,
+      "href" : "",
+      "href_with_scheme" : ""
+    },
+    "open_in_new_tab" : false,
+    "no_follow" : false,
+    "sponsored" : false,
+    "user_generated_content" : false
+  }
+} ]

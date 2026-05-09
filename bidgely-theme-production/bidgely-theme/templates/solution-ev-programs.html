@@ -1,0 +1,365 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: 260430 Bidgely Solution – EV Programs
+  screenshotPath: ../images/template-previews/bidgely-solution-ev.png
+-->
+
+{% set asset_base = "https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/www-img" %}
+
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+</head>
+  <style>
+  .hero {
+        position: relative;
+        background: url(https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-4.svg);
+        background-size: cover;
+    }
+    .hero::before{
+      display: none;
+    }
+    .hero::after{
+        display: none;
+    }
+  </style>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+{# =========================================================
+   HERO
+   ========================================================= #}
+<section class="hero">
+  <div class="hero__inner container">
+    <div class="hero__top">
+      <div>
+        <p class="eyebrow">{% text "hero_eyebrow" value="EV Management & Load Intelligence" no_wrapper=True %}</p>
+        <h1>
+          {% rich_text "hero_heading" html="See Every EV. Understand Every Charge.
+Deliver <span class='accent'>3X Program Impact.</span>" no_wrapper=True %}
+        </h1>
+        <a class="btn btn--navy" href="{% text "hero_cta_link" value="#" no_wrapper=True %}">
+          {% text "hero_cta_label" value="Get Solution Brief" no_wrapper=True %}
+        </a>
+      </div>
+      <div class="hero__copy body-sm">
+        {% rich_text "hero_copy" html="EV growth is accelerating — but most utilities still can&#39;t fully see or manage the load.<br><br>Bidgely provides <strong>360° visibility into EVs on your grid</strong>, including location and hour-by-hour charging behavior. With that intelligence, utilities can design and deliver <strong>targeted EV load management programs that are up to 3X more cost effective</strong>.<br><br>Move from partial visibility and broad outreach to <strong>precision targeting, smarter program design, and measurable grid impact</strong>." no_wrapper=True %}
+      </div>
+    </div>
+    <div class="hero-visual">
+      {% image "hero_visual" src="{{ asset_base }}/ev-hero.svg" alt="UtilityAI EV intelligence hero dashboard preview" class="hero-visual__img" %}
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   NAVY CTA STRIP
+   ========================================================= #}
+<section class="cta-strip">
+  <div class="cta-strip__inner container">
+    <h2>{% text "strip_heading" value="See EV Intelligence in action." no_wrapper=True %}</h2>
+    <a class="btn btn--white" href="{% text "strip_cta_link" value="#" no_wrapper=True %}">
+      {% text "strip_cta_label" value="Talk to Sales" no_wrapper=True %}
+    </a>
+  </div>
+</section>
+
+{# =========================================================
+   CAPABILITIES – 4-CARD GRID  (Jobs to Be Done)
+   ========================================================= #}
+<section class="section section--pale">
+  <div class="container">
+    <p class="eyebrow">{% text "cap_eyebrow" value="Jobs to Be Done" no_wrapper=True %}</p>
+    <h2 class="h2">
+      {% rich_text "cap_heading" html="From EV detection to grid impact — <span class='accent'>this is what utilities need to do.</span>" no_wrapper=True %}
+    </h2>
+    <p class="lede">
+      {% rich_text "cap_lede" html="Stop guessing about EV load. Detect it, decode it, and target the customers who actually move the needle." no_wrapper=True %}
+    </p>
+
+    <div class="cards-4 mt-8">
+      <article class="card">
+        {% image "cap1_icon" src="{{ asset_base }}/ev-detect.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap1_title" html="See every EV<br>on your grid." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap1_copy" html="Go beyond registrations and self-reporting. Detect EV ownership and charging patterns directly from AMI data." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card">
+        {% image "cap2_icon" src="{{ asset_base }}/charging-clock.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap2_title" html="Understand how<br>and when they charge." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap2_copy" html="Get hour-by-hour usage patterns to identify on-peak charging behavior and load concentration on each feeder." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card">
+        {% image "cap3_icon" src="{{ asset_base }}/target.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap3_title" html="Target the customers<br>that matter." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap3_copy" html="Move from broad recruitment to precision targeting based on actual charging behavior — not assumptions." no_wrapper=True %}</p>
+      </article>
+
+      <article class="card">
+        {% image "cap4_icon" src="{{ asset_base }}/cost-effective.svg" alt="" class="cap-card__icon-img" %}
+        <h3 class="card__title">{% rich_text "cap4_title" html="Deliver more<br>cost-effective programs." no_wrapper=True %}</h3>
+        <p class="card__copy">{% rich_text "cap4_copy" html="Design EV programs that are up to 3X more cost effective by focusing budget on the high-impact customers." no_wrapper=True %}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   SOLUTIONS STRIPES (Use Cases)
+   ========================================================= #}
+<section class="section section--white">
+  <div class="container">
+    <div class="solutions-head">
+      <p class="eyebrow">{% text "sol_eyebrow" value="Use Cases" no_wrapper=True %}</p>
+      <h2 class="h2">{% rich_text "sol_heading" html="What <span class='accent'>UtilityAI</span> makes possible for EVs." no_wrapper=True %}</h2>
+      <p class="lede">{% rich_text "sol_lede" html="Each use case runs on the same appliance- and EV-level intelligence layer — so your planning, program, and customer teams operate from the same source of truth." no_wrapper=True %}</p>
+    </div>
+
+    {# Stripe 1 — EV Visibility & Detection #}
+    <div class="stripe">
+      <div class="stripe__copy">
+        <h3>{% text "stripe1_title" value="EV Visibility & Detection" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "stripe1_sub" value="See every EV — without relying on imperfect data sources." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "stripe1_quote" html="Most utilities rely on fragmented data — registrations, rebates, or customer disclosures — leaving large portions of EV load invisible." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "stripe1_bullets" html="<li>Detect EV ownership using AMI data</li><li>Identify charger type and charging behavior</li><li>Map EV load by location and feeder</li>" no_wrapper=True %}
+        </ul>
+        <a class="stripe__cta link-arrow" href="{% text "stripe1_cta_link" value="#" no_wrapper=True %}">
+          {% text "stripe1_cta_label" value="Explore EV Visibility" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+      <div class="stripe__visual">
+        {% image "stripe1_img" src="{{ asset_base }}/ev-visibility.svg" alt="EV detection and visibility dashboard preview" class="stripe__img" %}
+      </div>
+    </div>
+
+    {# Stripe 2 — EV Load Management & TOU #}
+    <div class="stripe stripe--reverse">
+      <div class="stripe__copy">
+        <h3>{% text "stripe2_title" value="EV Load Management & TOU Programs" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "stripe2_sub" value="Develop targeted EV load management programs that actually shift load." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "stripe2_quote" html="Traditional programs rely on broad outreach and generic incentives — missing the customers who drive peak demand." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "stripe2_bullets" html="<li>Identify customers charging on-peak</li><li>Target high-impact households for TOU and managed charging</li><li>Improve cost-effectiveness by focusing on measurable grid impact</li>" no_wrapper=True %}
+        </ul>
+        <a class="stripe__cta link-arrow" href="{% text "stripe2_cta_link" value="#" no_wrapper=True %}">
+          {% text "stripe2_cta_label" value="Explore EV Load Management" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+      <div class="stripe__visual">
+        {% image "stripe2_img" src="{{ asset_base }}/ev-load-management.svg" alt="EV load management and TOU enrollment preview" class="stripe__img" %}
+      </div>
+    </div>
+
+    {# Stripe 3 — Precision Targeting & Recruitment #}
+    <div class="stripe">
+      <div class="stripe__copy">
+        <h3>{% text "stripe3_title" value="Precision Targeting & Recruitment" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "stripe3_sub" value="From participation to performance." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "stripe3_quote" html="Broad recruitment drives enrollment — but not necessarily grid impact." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "stripe3_bullets" html="<li>Narrow large EV populations into high-impact segments</li><li>Focus incentives and outreach where load reduction is achievable</li><li>Improve ROI by aligning spend with actual grid value</li><li>Proof: 33,000 EV customers narrowed to ~1,000 high-impact households driving 13% of EV load</li>" no_wrapper=True %}
+        </ul>
+        <a class="stripe__cta link-arrow" href="{% text "stripe3_cta_link" value="#" no_wrapper=True %}">
+          {% text "stripe3_cta_label" value="Explore Precision Targeting" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+      <div class="stripe__visual">
+        {% image "stripe3_img" src="{{ asset_base }}/ev-precision-targeting.svg" alt="EV precision targeting segmentation preview" class="stripe__img" %}
+      </div>
+    </div>
+
+    {# Stripe 4 — Grid Planning & Forecasting #}
+    <div class="stripe stripe--reverse">
+      <div class="stripe__copy">
+        <h3>{% text "stripe4_title" value="Grid Planning & Forecasting" no_wrapper=True %}</h3>
+        <p class="stripe__sub">{% text "stripe4_sub" value="Plan for EV growth with real data — not averages." no_wrapper=True %}</p>
+        <div class="stripe__quote">{% rich_text "stripe4_quote" html="EV load growth is uneven across geographies and feeders, making system-level planning inaccurate." no_wrapper=True %}</div>
+        <ul class="stripe__bullets">
+          {% rich_text "stripe4_bullets" html="<li>Forecast localized EV adoption and load growth</li><li>Identify feeders and circuits at risk</li><li>Support infrastructure planning with real usage patterns</li>" no_wrapper=True %}
+        </ul>
+        <a class="stripe__cta link-arrow" href="{% text "stripe4_cta_link" value="#" no_wrapper=True %}">
+          {% text "stripe4_cta_label" value="Explore Grid Planning" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+      <div class="stripe__visual">
+        {% image "stripe4_img" src="{{ asset_base }}/ev-grid-planning.svg" alt="EV grid planning and forecasting preview" class="stripe__img" %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   AGENTIC AUTOMATION
+   ========================================================= #}
+<section class="section section--navy">
+  <div class="container">
+    <div class="agentic-head">
+      <div>
+        <p class="eyebrow">{% text "ag_eyebrow" value="Agentic Automation in EV Programs" no_wrapper=True %}</p>
+        <h2 class="h2">{% rich_text "ag_heading" html="Continuously optimize EV programs<br>without manual effort." no_wrapper=True %}</h2>
+        <p class="lede">{% rich_text "ag_lede" html="Bidgely's agentic layer runs the workflows your team currently does manually — from EV detection to recruitment to in-flight program tuning. Agents work continuously without adding headcount." no_wrapper=True %}</p>
+      </div>
+      <div class="agentic-pill">
+        <div class="label">{% text "ag_pill_label" value="EV Program Impact" no_wrapper=True %}</div>
+        <div class="val">{% text "ag_pill_value" value="Up to 3X" no_wrapper=True %}</div>
+        <div class="sub">{% rich_text "ag_pill_sub" html="More cost-effective EV programs through precision targeting and continuous optimization" no_wrapper=True %}</div>
+      </div>
+    </div>
+
+    <div class="agent-cards">
+      <article class="agent-card">
+        {% image "ag_card1_icon" src="{{ asset_base }}/dtech26-for-regulators.svg" alt="" width="42" height="42" %}
+        <h4>{% text "ag_card1_title" value="EV Detection & Monitoring Agent" no_wrapper=True %}</h4>
+        <p>{% rich_text "ag_card1_copy" html="Continuously identifies new EV adoption and changing charging patterns directly from AMI data — keeping your EV population view current without manual surveys or self-reporting." no_wrapper=True %}</p>
+        <div class="meta">{% text "ag_card1_meta" value="Always-on detection across the full meter population" no_wrapper=True %}</div>
+      </article>
+
+      <article class="agent-card">
+        {% image "ag_card2_icon" src="{{ asset_base }}/black-1.svg" alt="" width="42" height="42" %}
+        <h4>{% text "ag_card2_title" value="Targeting & Recruitment Agent" no_wrapper=True %}</h4>
+        <p>{% rich_text "ag_card2_copy" html="Identifies high-impact EV customers based on actual charging behavior and triggers targeted outreach across email, SMS, and portal — without manual campaign management." no_wrapper=True %}</p>
+        <div class="meta">{% text "ag_card2_meta" value="Precision targeting on the segments that move the load" no_wrapper=True %}</div>
+      </article>
+
+      <article class="agent-card">
+        {% image "ag_card3_icon" src="{{ asset_base }}/iucx-icon-05.svg" alt="" width="42" height="42" %}
+        <h4>{% text "ag_card3_title" value="Program Optimization Agent" no_wrapper=True %}</h4>
+        <p>{% rich_text "ag_card3_copy" html="Measures actual load shift in-flight and refines targeting and incentive logic to improve outcomes over time. Your EV program gets better every cycle without a re-launch." no_wrapper=True %}</p>
+        <div class="meta">{% text "ag_card3_meta" value="Up to 3X improvement in program output" no_wrapper=True %}</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   GENAI
+   ========================================================= #}
+<section class="section section--gray">
+  <div class="container">
+    <div class="genai__head">
+      <p class="eyebrow">{% text "genai_eyebrow" value="GenAI for EV" no_wrapper=True %}</p>
+      <h2 class="h2">{% rich_text "genai_heading" html="Make EV charging behavior <span class='accent'>understandable — and actionable.</span>" no_wrapper=True %}</h2>
+      <p class="lede">{% rich_text "genai_lede" html="Every answer — to a customer or a CSR — is grounded in that household's actual charging behavior, not a generic LLM prompt." no_wrapper=True %}</p>
+    </div>
+
+    <div class="genai">
+      <div class="genai__cards">
+        <div class="genai-card">
+          <div class="ic" style="background-image:url('{{ asset_base }}/ders-icon-v1.svg');"></div>
+          <div>
+            <h4>{% text "genai_card1_title" value="Energy Assistant (Customer-Facing)" no_wrapper=True %}</h4>
+            <p>{% rich_text "genai_card1_copy" html="Customers get clear, personalized insights tied to real charging behavior. Example: &#34;Your EV is charging during peak hours multiple times per week. Shifting to off-peak could reduce your bill.&#34;" no_wrapper=True %}</p>
+          </div>
+        </div>
+        <div class="genai-card">
+          <div class="ic" style="background-image:url('{{ asset_base }}/iucx-icon-05-1.svg');"></div>
+          <div>
+            <h4>{% text "genai_card2_title" value="CSR Copilot" no_wrapper=True %}</h4>
+            <p>{% rich_text "genai_card2_copy" html="Call center agents instantly understand EV-driven bill impacts and can guide customers through specific load-shifting actions — without tab-switching across systems." no_wrapper=True %}</p>
+          </div>
+        </div>
+        <div class="genai-card">
+          <div class="ic" style="background-image:url('{{ asset_base }}/daas-v2.svg');"></div>
+          <div>
+            <h4>{% text "genai_card3_title" value="Charging Pattern Explainer" no_wrapper=True %}</h4>
+            <p>{% rich_text "genai_card3_copy" html="Charging visualizations with embedded natural-language explanations. Customers and CSRs can tap any peak, spike, or session and get a plain-English reason — powered by the same disaggregation that drives your targeting." no_wrapper=True %}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="genai__visual">
+        {% image "genai_visual" src="{{ asset_base }}/ev-grounded-conversations.svg" alt="EV grounded conversations assistant preview" class="genai__img" %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{# =========================================================
+   PROVEN RESULTS (case study)
+   ========================================================= #}
+<section class="section section--white">
+  <div class="container">
+    <div class="results-head">
+      <div>
+        <p class="eyebrow">{% text "results_eyebrow" value="Proven Results" no_wrapper=True %}</p>
+        <h2 class="h2">{% rich_text "results_heading" html="From EV visibility to <span class='accent'>measurable grid outcomes.</span>" no_wrapper=True %}</h2>
+      </div>
+    </div>
+
+    <div class="peers">
+      <span>{% text "peers_label" value="Peer Utilities:" no_wrapper=True %}</span>
+      {% image "peers_logos" src="{{ asset_base }}/frame-2147227076.svg" alt="Peer utility logos" width="734" height="38" %}
+    </div>
+
+    <div class="case">
+      <div class="case__left">
+        <div class="case__eyebrow">{% text "case_eyebrow" value="EV Management · Targeted Load Programs" no_wrapper=True %}</div>
+        <h3 class="case__title">{% text "case_title" value="Large Investor-Owned Utility" no_wrapper=True %}</h3>
+        <p class="case__copy">{% rich_text "case_copy" html="Facing rapid EV adoption and uneven feeder-level load growth, this utility needed visibility into who was driving peak charging — and a way to target programs at the customers who could actually shift load. Bidgely's behavior-based detection and segmentation cut through the noise." no_wrapper=True %}</p>
+        <div class="case__hero">
+          <div class="v">{% text "case_hero_value" value="3X" no_wrapper=True %}</div>
+          <div class="l">{% text "case_hero_label" value="Improvement in EV program output through precision targeting" no_wrapper=True %}</div>
+        </div>
+      </div>
+      <div class="case__right">
+        <p class="case__quote">{% rich_text "case_quote" html="\"Bidgely gave us the EV visibility we never had — charging behavior at the meter, not assumptions. We're now targeting the customers who actually drive peak load, and our program dollars are going where the grid impact is.\"" no_wrapper=True %}</p>
+        <div class="case__stats">
+          <div class="case__stat">
+            <div class="v">{% text "stat1_v" value="3X" no_wrapper=True %}</div>
+            <div class="l">{% text "stat1_l" value="More cost-effective EV programs" no_wrapper=True %}</div>
+          </div>
+          <div class="case__stat">
+            <div class="v">{% text "stat2_v" value="33K" no_wrapper=True %}</div>
+            <div class="l">{% text "stat2_l" value="EV customers detected and analyzed" no_wrapper=True %}</div>
+          </div>
+          <div class="case__stat">
+            <div class="v">{% text "stat3_v" value="~1K" no_wrapper=True %}</div>
+            <div class="l">{% text "stat3_l" value="High-impact households identified for targeting" no_wrapper=True %}</div>
+          </div>
+          <div class="case__stat">
+            <div class="v">{% text "stat4_v" value="13%" no_wrapper=True %}</div>
+            <div class="l">{% text "stat4_l" value="Of total EV load driven by the top targeted segment" no_wrapper=True %}</div>
+          </div>
+        </div>
+        <a class="case__cta link-arrow" href="{% text "case_cta_link" value="#" no_wrapper=True %}">
+          {% text "case_cta_label" value="Download the Full Case Study PDF" no_wrapper=True %}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{# Resources (HubDB module):
+   • hubdb_row_ids — comma-separated HubDB row IDs; if set, ONLY those rows (in order), max hubdb_limit cards; tag filter is IGNORED.
+   • Else — filter_column + filter_value match a token in the HubDB tags column; rows are newest-first (hs_updated_at).
+   • hubdb_limit — max cards shown (4 below).
+   TODO: replace the placeholder hubdb_row_ids with the EV-tagged rows
+   (e.g., EV Intelligence Solution Brief, EV Active Managed Charging Whitepaper, EV Adoption Playbook).
+   While IDs are unset, the filter_value="EV" path will populate by tag automatically. #}
+{% module "resources_ev" path="../modules/resources-hubdb.module",
+  ce_resources_eyebrow="Resources",
+  filter_value="EV",
+  hubdb_limit=4,
+  hubdb_row_ids="" %}
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+<script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
+{{ standard_footer_includes }}
+</body>
+</html>

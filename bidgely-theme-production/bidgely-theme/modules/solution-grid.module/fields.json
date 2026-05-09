@@ -1,0 +1,1432 @@
+[ {
+  "id" : "programs_intro",
+  "name" : "programs_intro",
+  "label" : "Programs — section intro",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "programs_intro.programs_eyebrow",
+    "name" : "programs_eyebrow",
+    "label" : "Eyebrow",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Solutions"
+  }, {
+    "id" : "programs_intro.programs_heading_before",
+    "name" : "programs_heading_before",
+    "label" : "Heading — before accent",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "What "
+  }, {
+    "id" : "programs_intro.programs_heading_accent",
+    "name" : "programs_heading_accent",
+    "label" : "Heading — accent",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "UtilityAI"
+  }, {
+    "id" : "programs_intro.programs_heading_after",
+    "name" : "programs_heading_after",
+    "label" : "Heading — after accent",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : " makes possible in CX."
+  }, {
+    "id" : "programs_intro.programs_lede",
+    "name" : "programs_lede",
+    "label" : "Lead paragraph",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null,
+    "default" : "<p>Each use case uses the same appliance-level intelligence layer — so your CX, DSM, and marketing teams operate from the same source of truth.</p>"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : true,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "programs_eyebrow" : "Solutions",
+    "programs_heading_before" : "What ",
+    "programs_heading_accent" : "UtilityAI",
+    "programs_heading_after" : " makes possible in CX.",
+    "programs_lede" : "<p>Each use case uses the same appliance-level intelligence layer — so your CX, DSM, and marketing teams operate from the same source of truth.</p>"
+  }
+}, {
+  "id" : "program_rows",
+  "name" : "program_rows",
+  "label" : "Program rows",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 8,
+    "sorting_label_field" : "program_rows.program_title",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "program_rows.program_anchor_id",
+    "name" : "program_anchor_id",
+    "label" : "Anchor id (optional)",
+    "help_text" : "Optional id on the stripe for deep links (e.g. proactive-notifications). Leave blank to omit.",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "program_rows.program_reverse_layout",
+    "name" : "program_reverse_layout",
+    "label" : "Reverse columns (visual on the right)",
+    "required" : false,
+    "locked" : false,
+    "display" : "toggle",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "program_rows.program_diagram",
+    "name" : "program_diagram",
+    "label" : "Diagram / visual type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "alerts_compare", "Alerts comparison (generic vs appliance-level)" ], [ "bill_panel", "High bill CSR panel" ], [ "portal", "Customer portal mockup" ], [ "custom_image", "Custom image" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "alerts_compare"
+  }, {
+    "id" : "program_rows.program_custom_image",
+    "name" : "program_custom_image",
+    "label" : "Custom image",
+    "help_text" : "Shown when Diagram / visual type is Custom image. Replaces built-in diagrams.",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "custom_image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "program_rows.program_custom_image_hover",
+    "name" : "program_custom_image_hover",
+    "label" : "Custom image (hover)",
+    "help_text" : "Optional second image for Custom image mode. When set, the default image shows until hover; then this image replaces it (same layout).",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "custom_image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "program_rows.program_title",
+    "name" : "program_title",
+    "label" : "Title",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Proactive Usage Notifications"
+  }, {
+    "id" : "program_rows.program_subtitle",
+    "name" : "program_subtitle",
+    "label" : "Subtitle",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Alerts that change behavior, not just inboxes."
+  }, {
+    "id" : "program_rows.program_problem",
+    "name" : "program_problem",
+    "label" : "Problem paragraph",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Generic alerts train customers to ignore you."
+  }, {
+    "id" : "program_rows.program_outcomes",
+    "name" : "program_outcomes",
+    "label" : "Outcomes",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 1,
+      "max" : 12,
+      "sorting_label_field" : null,
+      "default" : 3
+    },
+    "children" : [ {
+      "id" : "program_rows.program_outcomes.program_outcome_text",
+      "name" : "program_outcome_text",
+      "label" : "Outcome text",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ {
+      "program_outcome_text" : "85% verified CSAT on personalized alert programs"
+    }, {
+      "program_outcome_text" : "2+ quartile JD Power improvement at reference utilities"
+    }, {
+      "program_outcome_text" : "15%+ reduction in CSR churn from reduced inbound volume"
+    } ]
+  }, {
+    "id" : "program_rows.program_link_label",
+    "name" : "program_link_label",
+    "label" : "Link label",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Explore Proactive Notifications"
+  }, {
+    "id" : "program_rows.program_link",
+    "name" : "program_link",
+    "label" : "Link URL",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "#proactive-notifications",
+        "href_with_scheme" : "#proactive-notifications"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  }, {
+    "id" : "program_rows.alerts_visual_label",
+    "name" : "alerts_visual_label",
+    "label" : "[Alerts] Compare row label",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Generic vs. Appliance-Level Alerts"
+  }, {
+    "id" : "program_rows.alerts_generic_source",
+    "name" : "alerts_generic_source",
+    "label" : "[Alerts] Generic — source line",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Your utility"
+  }, {
+    "id" : "program_rows.alerts_generic_tag",
+    "name" : "alerts_generic_tag",
+    "label" : "[Alerts] Generic — tag",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Segment based"
+  }, {
+    "id" : "program_rows.alerts_generic_headline",
+    "name" : "alerts_generic_headline",
+    "label" : "[Alerts] Generic — headline",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Your bill may be higher this month"
+  }, {
+    "id" : "program_rows.alerts_generic_body",
+    "name" : "alerts_generic_body",
+    "label" : "[Alerts] Generic — body",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Usage in your area has been above average. Visit your online account to see your usage."
+  }, {
+    "id" : "program_rows.alerts_smart_source",
+    "name" : "alerts_smart_source",
+    "label" : "[Alerts] Smart — source line",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Your utility – Powered by UtilityAI"
+  }, {
+    "id" : "program_rows.alerts_smart_tag",
+    "name" : "alerts_smart_tag",
+    "label" : "[Alerts] Smart — tag",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Appliance-level"
+  }, {
+    "id" : "program_rows.alerts_smart_headline_before",
+    "name" : "alerts_smart_headline_before",
+    "label" : "[Alerts] Smart — headline (before highlight)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Hi Jennifer — your "
+  }, {
+    "id" : "program_rows.alerts_smart_headline_highlight",
+    "name" : "alerts_smart_headline_highlight",
+    "label" : "[Alerts] Smart — headline (highlight)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "EV charging"
+  }, {
+    "id" : "program_rows.alerts_smart_headline_after",
+    "name" : "alerts_smart_headline_after",
+    "label" : "[Alerts] Smart — headline (after highlight)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : " added $34 this week."
+  }, {
+    "id" : "program_rows.alerts_smart_body_before",
+    "name" : "alerts_smart_body_before",
+    "label" : "[Alerts] Smart — body (before highlight)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Shifting to off-peak overnight charging could save you up to "
+  }, {
+    "id" : "program_rows.alerts_smart_body_highlight",
+    "name" : "alerts_smart_body_highlight",
+    "label" : "[Alerts] Smart — body (highlight)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "$28/month"
+  }, {
+    "id" : "program_rows.alerts_smart_body_after",
+    "name" : "alerts_smart_body_after",
+    "label" : "[Alerts] Smart — body (after highlight)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "alerts_compare",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ". Here's how to enroll in our Smart Charge program."
+  }, {
+    "id" : "program_rows.bill_visual_eyebrow",
+    "name" : "bill_visual_eyebrow",
+    "label" : "[Bill] Visual eyebrow",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "bill_panel",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "CSR Console · High Bill Resolution"
+  }, {
+    "id" : "program_rows.bill_panel_title",
+    "name" : "bill_panel_title",
+    "label" : "[Bill] Panel title",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "bill_panel",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Bill Analysis · Acct #449211"
+  }, {
+    "id" : "program_rows.bill_panel_pill",
+    "name" : "bill_panel_pill",
+    "label" : "[Bill] Panel pill",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "bill_panel",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "CSR ASSISTANT"
+  }, {
+    "id" : "program_rows.bill_delta_val",
+    "name" : "bill_delta_val",
+    "label" : "[Bill] Delta value",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "bill_panel",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "+$68"
+  }, {
+    "id" : "program_rows.bill_delta_hint",
+    "name" : "bill_delta_hint",
+    "label" : "[Bill] Delta hint",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "bill_panel",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "vs. prior billing period"
+  }, {
+    "id" : "program_rows.bill_driver_rows",
+    "name" : "bill_driver_rows",
+    "label" : "[Bill] Driver rows",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 1,
+      "max" : 10,
+      "sorting_label_field" : null,
+      "default" : 3
+    },
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "bill_panel",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "program_rows.bill_driver_rows.bill_driver_icon",
+      "name" : "bill_driver_icon",
+      "label" : "Icon",
+      "required" : false,
+      "locked" : false,
+      "responsive" : false,
+      "resizable" : false,
+      "show_loading" : true,
+      "type" : "image",
+      "display_width" : null,
+      "default" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ev-charging-peak.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      }
+    }, {
+      "id" : "program_rows.bill_driver_rows.bill_driver_label",
+      "name" : "bill_driver_label",
+      "label" : "Label",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "EV Charging (on-peak)"
+    }, {
+      "id" : "program_rows.bill_driver_rows.bill_driver_bar_percent",
+      "name" : "bill_driver_bar_percent",
+      "label" : "Bar width (%)",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 75
+    }, {
+      "id" : "program_rows.bill_driver_rows.bill_driver_amount",
+      "name" : "bill_driver_amount",
+      "label" : "Amount",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "+$34"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ {
+      "bill_driver_icon" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ev-charging-peak.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      },
+      "bill_driver_label" : "EV Charging (on-peak)",
+      "bill_driver_bar_percent" : 75,
+      "bill_driver_amount" : "+$34"
+    }, {
+      "bill_driver_icon" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/havc-usage.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      },
+      "bill_driver_label" : "HVAC usage spike",
+      "bill_driver_bar_percent" : 40,
+      "bill_driver_amount" : "+$22"
+    }, {
+      "bill_driver_icon" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/weather-adjustment.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      },
+      "bill_driver_label" : "Weather adjustment",
+      "bill_driver_bar_percent" : 22,
+      "bill_driver_amount" : "+$12"
+    } ]
+  }, {
+    "id" : "program_rows.bill_tip_lead",
+    "name" : "bill_tip_lead",
+    "label" : "[Bill] Tip — lead (bold)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "bill_panel",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Recommended:"
+  }, {
+    "id" : "program_rows.bill_tip",
+    "name" : "bill_tip",
+    "label" : "[Bill] Tip — body",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "bill_panel",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Offer Smart Charge enrollment. Saves $34/mo. 92% propensity match."
+  }, {
+    "id" : "program_rows.portal_visual_eyebrow",
+    "name" : "portal_visual_eyebrow",
+    "label" : "[Portal] Visual eyebrow",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "portal",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Customer Portal · Appliance-Level View"
+  }, {
+    "id" : "program_rows.portal_nav_title",
+    "name" : "portal_nav_title",
+    "label" : "[Portal] Nav title",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "portal",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "My Energy Dashboard"
+  }, {
+    "id" : "program_rows.portal_chart_label",
+    "name" : "portal_chart_label",
+    "label" : "[Portal] Chart label",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "portal",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Last 7 Days · Appliance Breakdown"
+  }, {
+    "id" : "program_rows.portal_tabs",
+    "name" : "portal_tabs",
+    "label" : "[Portal] Tabs",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 1,
+      "max" : 8,
+      "sorting_label_field" : null,
+      "default" : 3
+    },
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "portal",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "program_rows.portal_tabs.portal_tab_label",
+      "name" : "portal_tab_label",
+      "label" : "Tab label",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Usage"
+    }, {
+      "id" : "program_rows.portal_tabs.portal_tab_is_active",
+      "name" : "portal_tab_is_active",
+      "label" : "Active tab",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ {
+      "portal_tab_label" : "Usage",
+      "portal_tab_is_active" : true
+    }, {
+      "portal_tab_label" : "Bills",
+      "portal_tab_is_active" : false
+    }, {
+      "portal_tab_label" : "Programs",
+      "portal_tab_is_active" : false
+    } ]
+  }, {
+    "id" : "program_rows.portal_bars",
+    "name" : "portal_bars",
+    "label" : "[Portal] Chart bars",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 1,
+      "max" : 8,
+      "sorting_label_field" : null,
+      "default" : 4
+    },
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "portal",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "children" : [ {
+      "id" : "program_rows.portal_bars.portal_bar_label",
+      "name" : "portal_bar_label",
+      "label" : "Bar label",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "EV"
+    }, {
+      "id" : "program_rows.portal_bars.portal_bar_fill_percent",
+      "name" : "portal_bar_fill_percent",
+      "label" : "Bar height (%)",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "min" : 0,
+      "max" : 100,
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 65
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ {
+      "portal_bar_label" : "EV",
+      "portal_bar_fill_percent" : 65
+    }, {
+      "portal_bar_label" : "HVAC",
+      "portal_bar_fill_percent" : 48
+    }, {
+      "portal_bar_label" : "H2O",
+      "portal_bar_fill_percent" : 28
+    }, {
+      "portal_bar_label" : "Other",
+      "portal_bar_fill_percent" : 18
+    } ]
+  }, {
+    "id" : "program_rows.portal_promo_icon",
+    "name" : "portal_promo_icon",
+    "label" : "[Portal] Promo icon (optional)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "portal",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : true,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    }
+  }, {
+    "id" : "program_rows.portal_promo_title",
+    "name" : "portal_promo_title",
+    "label" : "[Portal] Promo title",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "portal",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Smart Charge Program"
+  }, {
+    "id" : "program_rows.portal_promo_sub",
+    "name" : "portal_promo_sub",
+    "label" : "[Portal] Promo subtitle",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "portal",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Based on your EV usage, you could save up to $34/month"
+  }, {
+    "id" : "program_rows.portal_promo_cta",
+    "name" : "portal_promo_cta",
+    "label" : "[Portal] Promo CTA label",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "portal",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Enroll Now"
+  }, {
+    "id" : "program_rows.portal_promo_cta_link",
+    "name" : "portal_promo_cta_link",
+    "label" : "[Portal] Promo CTA link",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "program_rows.program_diagram",
+      "controlling_value_regex" : "portal",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "#",
+        "href_with_scheme" : "#"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : true,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "program_anchor_id" : "proactive-notifications",
+    "program_reverse_layout" : false,
+    "program_custom_image" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "program_custom_image_hover" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "program_diagram" : "alerts_compare",
+    "program_title" : "Proactive Usage Notifications",
+    "program_subtitle" : "Alerts that change behavior, not just inboxes.",
+    "program_problem" : "Generic alerts train customers to ignore you. When every notification says the same thing to the same segment, open rates fall, calls rise, and trust erodes.",
+    "program_outcomes" : [ {
+      "program_outcome_text" : "85% verified CSAT on personalized alert programs"
+    }, {
+      "program_outcome_text" : "2+ quartile JD Power improvement at reference utilities"
+    }, {
+      "program_outcome_text" : "15%+ reduction in CSR churn from reduced inbound volume"
+    } ],
+    "program_link_label" : "Explore Proactive Notifications",
+    "program_link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "#proactive-notifications",
+        "href_with_scheme" : "#proactive-notifications"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    },
+    "alerts_visual_label" : "Generic vs. Appliance-Level Alerts",
+    "alerts_generic_source" : "Your utility",
+    "alerts_generic_tag" : "Segment based",
+    "alerts_generic_headline" : "Your bill may be higher this month",
+    "alerts_generic_body" : "Usage in your area has been above average. Visit your online account to see your usage.",
+    "alerts_smart_source" : "Your utility – Powered by UtilityAI",
+    "alerts_smart_tag" : "Appliance-level",
+    "alerts_smart_headline_before" : "Hi Jennifer — your ",
+    "alerts_smart_headline_highlight" : "EV charging",
+    "alerts_smart_headline_after" : " added $34 this week.",
+    "alerts_smart_body_before" : "Shifting to off-peak overnight charging could save you up to ",
+    "alerts_smart_body_highlight" : "$28/month",
+    "alerts_smart_body_after" : ". Here's how to enroll in our Smart Charge program.",
+    "bill_visual_eyebrow" : "CSR Console · High Bill Resolution",
+    "bill_panel_title" : "Bill Analysis · Acct #449211",
+    "bill_panel_pill" : "CSR ASSISTANT",
+    "bill_delta_val" : "+$68",
+    "bill_delta_hint" : "vs. prior billing period",
+    "bill_driver_rows" : [ {
+      "bill_driver_icon" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ev-charging-peak.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      },
+      "bill_driver_label" : "EV Charging (on-peak)",
+      "bill_driver_bar_percent" : 75,
+      "bill_driver_amount" : "+$34"
+    }, {
+      "bill_driver_icon" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/havc-usage.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      },
+      "bill_driver_label" : "HVAC usage spike",
+      "bill_driver_bar_percent" : 40,
+      "bill_driver_amount" : "+$22"
+    }, {
+      "bill_driver_icon" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/weather-adjustment.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      },
+      "bill_driver_label" : "Weather adjustment",
+      "bill_driver_bar_percent" : 22,
+      "bill_driver_amount" : "+$12"
+    } ],
+    "bill_tip_lead" : "Recommended:",
+    "bill_tip" : "Offer Smart Charge enrollment. Saves $34/mo. 92% propensity match.",
+    "portal_visual_eyebrow" : "Customer Portal · Appliance-Level View",
+    "portal_nav_title" : "My Energy Dashboard",
+    "portal_chart_label" : "Last 7 Days · Appliance Breakdown",
+    "portal_tabs" : [ {
+      "portal_tab_label" : "Usage",
+      "portal_tab_is_active" : true
+    }, {
+      "portal_tab_label" : "Bills",
+      "portal_tab_is_active" : false
+    }, {
+      "portal_tab_label" : "Programs",
+      "portal_tab_is_active" : false
+    } ],
+    "portal_bars" : [ {
+      "portal_bar_label" : "EV",
+      "portal_bar_fill_percent" : 65
+    }, {
+      "portal_bar_label" : "HVAC",
+      "portal_bar_fill_percent" : 48
+    }, {
+      "portal_bar_label" : "H2O",
+      "portal_bar_fill_percent" : 28
+    }, {
+      "portal_bar_label" : "Other",
+      "portal_bar_fill_percent" : 18
+    } ],
+    "portal_promo_icon" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "portal_promo_title" : "Smart Charge Program",
+    "portal_promo_sub" : "Based on your EV usage, you could save up to $34/month",
+    "portal_promo_cta" : "Enroll Now",
+    "portal_promo_cta_link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "#",
+        "href_with_scheme" : "#"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  }, {
+    "program_anchor_id" : "",
+    "program_reverse_layout" : true,
+    "program_custom_image" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "program_custom_image_hover" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "program_diagram" : "bill_panel",
+    "program_title" : "High Bill Analyzer & Call Resolution",
+    "program_subtitle" : "Resolve the call before the customer finishes explaining.",
+    "program_problem" : "No more clicking through four systems to piece together a vague answer. Get to the root cause of calls, to make them one and done.",
+    "program_outcomes" : [ {
+      "program_outcome_text" : "50%+ reduction in high-bill calls"
+    }, {
+      "program_outcome_text" : "30% reduction in average call handle time"
+    }, {
+      "program_outcome_text" : "Up to 25,000 CSR calls deflected in a single program cycle"
+    } ],
+    "program_link_label" : "Explore High Bill Analyzer",
+    "program_link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "#",
+        "href_with_scheme" : "#"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    },
+    "alerts_visual_label" : "Generic vs. Appliance-Level Alerts",
+    "alerts_generic_source" : "Your utility",
+    "alerts_generic_tag" : "Segment based",
+    "alerts_generic_headline" : "Your bill may be higher this month",
+    "alerts_generic_body" : "Usage in your area has been above average. Visit your online account to see your usage.",
+    "alerts_smart_source" : "Your utility – Powered by UtilityAI",
+    "alerts_smart_tag" : "Appliance-level",
+    "alerts_smart_headline_before" : "Hi Jennifer — your ",
+    "alerts_smart_headline_highlight" : "EV charging",
+    "alerts_smart_headline_after" : " added $34 this week.",
+    "alerts_smart_body_before" : "Shifting to off-peak overnight charging could save you up to ",
+    "alerts_smart_body_highlight" : "$28/month",
+    "alerts_smart_body_after" : ". Here's how to enroll in our Smart Charge program.",
+    "bill_visual_eyebrow" : "CSR Console · High Bill Resolution",
+    "bill_panel_title" : "Bill Analysis · Acct #449211",
+    "bill_panel_pill" : "CSR ASSISTANT",
+    "bill_delta_val" : "+$68",
+    "bill_delta_hint" : "vs. prior billing period",
+    "bill_driver_rows" : [ {
+      "bill_driver_icon" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ev-charging-peak.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      },
+      "bill_driver_label" : "EV Charging (on-peak)",
+      "bill_driver_bar_percent" : 75,
+      "bill_driver_amount" : "+$34"
+    }, {
+      "bill_driver_icon" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/havc-usage.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      },
+      "bill_driver_label" : "HVAC usage spike",
+      "bill_driver_bar_percent" : 40,
+      "bill_driver_amount" : "+$22"
+    }, {
+      "bill_driver_icon" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/weather-adjustment.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      },
+      "bill_driver_label" : "Weather adjustment",
+      "bill_driver_bar_percent" : 22,
+      "bill_driver_amount" : "+$12"
+    } ],
+    "bill_tip_lead" : "Recommended:",
+    "bill_tip" : "Offer Smart Charge enrollment. Saves $34/mo. 92% propensity match.",
+    "portal_visual_eyebrow" : "Customer Portal · Appliance-Level View",
+    "portal_nav_title" : "My Energy Dashboard",
+    "portal_chart_label" : "Last 7 Days · Appliance Breakdown",
+    "portal_tabs" : [ {
+      "portal_tab_label" : "Usage",
+      "portal_tab_is_active" : true
+    }, {
+      "portal_tab_label" : "Bills",
+      "portal_tab_is_active" : false
+    }, {
+      "portal_tab_label" : "Programs",
+      "portal_tab_is_active" : false
+    } ],
+    "portal_bars" : [ {
+      "portal_bar_label" : "EV",
+      "portal_bar_fill_percent" : 65
+    }, {
+      "portal_bar_label" : "HVAC",
+      "portal_bar_fill_percent" : 48
+    }, {
+      "portal_bar_label" : "H2O",
+      "portal_bar_fill_percent" : 28
+    }, {
+      "portal_bar_label" : "Other",
+      "portal_bar_fill_percent" : 18
+    } ],
+    "portal_promo_icon" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "portal_promo_title" : "Smart Charge Program",
+    "portal_promo_sub" : "Based on your EV usage, you could save up to $34/month",
+    "portal_promo_cta" : "Enroll Now",
+    "portal_promo_cta_link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "#",
+        "href_with_scheme" : "#"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  }, {
+    "program_anchor_id" : "",
+    "program_reverse_layout" : false,
+    "program_custom_image" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "program_custom_image_hover" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "program_diagram" : "portal",
+    "program_title" : "Customer Self-Service Tools",
+    "program_subtitle" : "Self-service that actually resolves, not just redirects.",
+    "program_problem" : "Customers who can't explain their own bill don't trust their utility. Self-service built on whole-home averages doesn't resolve that — it moves the confusion online.",
+    "program_outcomes" : [ {
+      "program_outcome_text" : "18% TOU enrollment rates via targeted self-service journeys"
+    }, {
+      "program_outcome_text" : "127% of filed EE targets achieved across deployments"
+    }, {
+      "program_outcome_text" : "1.5 TWh+ in total energy saved"
+    } ],
+    "program_link_label" : "Explore Self-Service Tools",
+    "program_link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "#",
+        "href_with_scheme" : "#"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    },
+    "alerts_visual_label" : "Generic vs. Appliance-Level Alerts",
+    "alerts_generic_source" : "Your utility",
+    "alerts_generic_tag" : "Segment based",
+    "alerts_generic_headline" : "Your bill may be higher this month",
+    "alerts_generic_body" : "Usage in your area has been above average. Visit your online account to see your usage.",
+    "alerts_smart_source" : "Your utility – Powered by UtilityAI",
+    "alerts_smart_tag" : "Appliance-level",
+    "alerts_smart_headline_before" : "Hi Jennifer — your ",
+    "alerts_smart_headline_highlight" : "EV charging",
+    "alerts_smart_headline_after" : " added $34 this week.",
+    "alerts_smart_body_before" : "Shifting to off-peak overnight charging could save you up to ",
+    "alerts_smart_body_highlight" : "$28/month",
+    "alerts_smart_body_after" : ". Here's how to enroll in our Smart Charge program.",
+    "bill_visual_eyebrow" : "CSR Console · High Bill Resolution",
+    "bill_panel_title" : "Bill Analysis · Acct #449211",
+    "bill_panel_pill" : "CSR ASSISTANT",
+    "bill_delta_val" : "+$68",
+    "bill_delta_hint" : "vs. prior billing period",
+    "bill_driver_rows" : [ {
+      "bill_driver_icon" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ev-charging-peak.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      },
+      "bill_driver_label" : "EV Charging (on-peak)",
+      "bill_driver_bar_percent" : 75,
+      "bill_driver_amount" : "+$34"
+    }, {
+      "bill_driver_icon" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/havc-usage.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      },
+      "bill_driver_label" : "HVAC usage spike",
+      "bill_driver_bar_percent" : 40,
+      "bill_driver_amount" : "+$22"
+    }, {
+      "bill_driver_icon" : {
+        "src" : "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/weather-adjustment.svg",
+        "alt" : "",
+        "loading" : "lazy",
+        "width" : 34,
+        "height" : 17
+      },
+      "bill_driver_label" : "Weather adjustment",
+      "bill_driver_bar_percent" : 22,
+      "bill_driver_amount" : "+$12"
+    } ],
+    "bill_tip_lead" : "Recommended:",
+    "bill_tip" : "Offer Smart Charge enrollment. Saves $34/mo. 92% propensity match.",
+    "portal_visual_eyebrow" : "Customer Portal · Appliance-Level View",
+    "portal_nav_title" : "My Energy Dashboard",
+    "portal_chart_label" : "Last 7 Days · Appliance Breakdown",
+    "portal_tabs" : [ {
+      "portal_tab_label" : "Usage",
+      "portal_tab_is_active" : true
+    }, {
+      "portal_tab_label" : "Bills",
+      "portal_tab_is_active" : false
+    }, {
+      "portal_tab_label" : "Programs",
+      "portal_tab_is_active" : false
+    } ],
+    "portal_bars" : [ {
+      "portal_bar_label" : "EV",
+      "portal_bar_fill_percent" : 65
+    }, {
+      "portal_bar_label" : "HVAC",
+      "portal_bar_fill_percent" : 48
+    }, {
+      "portal_bar_label" : "H2O",
+      "portal_bar_fill_percent" : 28
+    }, {
+      "portal_bar_label" : "Other",
+      "portal_bar_fill_percent" : 18
+    } ],
+    "portal_promo_icon" : {
+      "src" : "",
+      "alt" : "",
+      "loading" : "lazy"
+    },
+    "portal_promo_title" : "Smart Charge Program",
+    "portal_promo_sub" : "Based on your EV usage, you could save up to $34/month",
+    "portal_promo_cta" : "Enroll Now",
+    "portal_promo_cta_link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "#",
+        "href_with_scheme" : "#"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  } ]
+} ]

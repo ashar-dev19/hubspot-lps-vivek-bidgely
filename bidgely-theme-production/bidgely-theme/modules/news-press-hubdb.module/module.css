@@ -1,0 +1,119 @@
+/* News & Press HubDB listing — uses tokens from theme main.css */
+
+.news-press-releases.section {
+  border-bottom: none;
+  padding: 72px 0 80px;
+  /* Anchor scroll (pagination #id) — keeps title clear of sticky headers */
+  scroll-margin-top: 5rem;
+}
+
+.news-press-releases .h2 {
+  margin-bottom: 36px;
+}
+
+.news-press-releases__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.news-press-releases__card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 4vw, 36px);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--nile-7);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.news-press-releases__date {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--nile-52);
+  opacity: 0.85;
+}
+
+.news-press-releases__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--nile);
+}
+
+.news-press-releases__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.news-press-releases__title a:hover {
+  color: var(--azure-soft);
+}
+
+.news-press-releases__excerpt {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--nile-52);
+  flex-grow: 1;
+}
+
+.news-press-releases .pagination {
+  margin-top: 48px;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+
+.news-press-releases .pagination-button--muted {
+  color: var(--nile-52);
+  opacity: 0.75;
+  cursor: default;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+.news-press-releases .pagination a.pagination-number {
+  text-decoration: none;
+  color: inherit;
+}
+
+.news-press-releases .pagination-number.pagination-ellipsis {
+  cursor: default;
+  pointer-events: none;
+  background: transparent !important;
+  color: var(--nile-52);
+}
+
+.news-press-releases__empty {
+  margin: 0;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--nile-52);
+  font-size: 15px;
+}
+
+.pagination .pagination-number:hover {
+  background: #499ed7;
+  color: #fff !important;
+  border-radius: 50%;
+}
+
+@media (max-width: 767px) {
+  .news-press-releases__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-press-releases.section {
+    padding: 48px 0 56px;
+  }
+}

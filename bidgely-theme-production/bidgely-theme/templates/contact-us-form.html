@@ -1,0 +1,171 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Bidgely - Contact Us
+-->
+{% set asset_base = "https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/www-img" %}
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+  <style>
+    .contact-two-col-section {
+      padding: 72px 32px 56px;
+      background: var(--bg-soft);
+    }
+    .contact-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .contact-split > div {
+      min-width: 0;
+    }
+    .contact-col-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
+        background-image: url({{ asset_base }}/contact.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 800px;
+    }
+
+    .contact-col-left-inner {
+        max-width: 650px;
+        margin: auto;
+        background: #fff;
+        box-shadow: 0px 0px 40px rgba(0,0,0,0.1);
+        padding: 40px;
+        border-radius: 20px;
+        width: 100%;
+    }
+    .contact-col-left-inner h1 {
+        color: var(--nile);
+        font-size: 52px;
+        font-weight: 800;
+        letter-spacing: -2px;
+        line-height: 1.18;
+        margin: 0 0 28px;
+    }
+    .contact-col-left-inner b,.contact-col-left-inner strong{
+      font-weight: 900;
+    }
+    .contact-col-right {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .contact-col-right h3 {
+        margin: 0;
+        font-size: 22px;
+    }
+    .contact-col-right [data-hsfc-id=Renderer] .hsfc-FieldLabel {
+        font-size: 15px;
+    }
+    .contact-col-right button.hsfc-Button {
+        border-radius: 8px;
+        background: #152d49 !important;
+    }
+    .contact-logo-wrap {
+      margin-top: 28px;
+    }
+    .logo-carousel__overflow {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    .logo-carousel:hover .animate-marquee,
+    .logo-carousel:focus-within .animate-marquee {
+      animation-play-state: paused;
+    }
+    @media (max-width: 1100px) {
+    .contact-col-left-inner h1 {
+        font-size: 46px;
+      }
+    }
+    @media (max-width: 991px) {
+      .contact-split {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+    @media (max-width: 640px) {
+      .contact-col-left-inner h1{
+        font-size: 34px;
+        letter-spacing: -1px;
+    }
+    }
+  </style>
+</head>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+{% dnd_area "main" label="Main Content" %}
+  {% dnd_section
+    css_class="contact-two-col-section"
+    padding={"top":0,"bottom":0,"left":0,"right":0}
+  %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module path="@hubspot/rich_text" label="Contact split content" %}
+          {% module_attribute "html" %}
+            <div class="contact-split">
+              <div class="contact-col-left">
+                <div class="contact-col-left-inner">
+                <h1>Customer-Focused. Data-Driven.</h1>
+                <div class="hero__copy body-sm">
+                  <p><b>Ready to move beyond traditional programs and constraints?</b></p>
+                  <p>We work with leading utilities to deliver real impact&mdash;whether it&rsquo;s keeping the lights on through record demand, engaging the right customers at the right time, or unlocking new opportunities with AMI and behind-the-meter intelligence.</p>
+                </div>
+                <div class="contact-logo-wrap">
+                  <section class="logo-carouselv2">
+                    <div class="logo-carousel__overflow" aria-hidden="true">
+                      <div class="logo-carousel-track animate-marquee">
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/pg-e-logo-w-text-color.png" alt="PG&E logo" loading="lazy"></div>
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/g6.png" alt="G6 logo" loading="lazy"></div>
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/EDF_Energy_logo%201.png" alt="EDF Energy logo" loading="lazy"></div>
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Oklahoma_Gas_&amp;_Electric_Logo%201.png" alt="Oklahoma Gas &amp; Electric logo" loading="lazy"></div>
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Layer_1-2.png" alt="Layer 1 logo" loading="lazy"></div>
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/avista-logo-color.png" alt="Avista logo" loading="lazy"></div>
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/nv-energy-logo-color.png" alt="NV Energy logo" loading="lazy"></div>
+
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/pg-e-logo-w-text-color.png" alt="PG&E logo" loading="lazy"></div>
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/g6.png" alt="G6 logo" loading="lazy"></div>
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/EDF_Energy_logo%201.png" alt="EDF Energy logo" loading="lazy"></div>
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Oklahoma_Gas_&amp;_Electric_Logo%201.png" alt="Oklahoma Gas &amp; Electric logo" loading="lazy"></div>
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/Layer_1-2.png" alt="Layer 1 logo" loading="lazy"></div>
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/avista-logo-color.png" alt="Avista logo" loading="lazy"></div>
+                        <div class="logo-item"><img src="https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/nv-energy-logo-color.png" alt="NV Energy logo" loading="lazy"></div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+              </div>
+              <div class="contact-col-right">
+                <h3>Let&rsquo;s set a new benchmark for what&rsquo;s possible&mdash;for your grid and your customers.</h3>
+                {% form "contact_us_form", form_to_use="f9425370-698e-4a20-b92e-76ccda98abb2" %}
+              </div>
+            </div>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+{% end_dnd_area %}
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+{{ standard_footer_includes }}
+</body>
+</html>

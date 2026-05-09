@@ -1,0 +1,103 @@
+[ {
+  "id" : "section_heading",
+  "name" : "section_heading",
+  "label" : "Section heading",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Latest Press Releases"
+}, {
+  "id" : "section_background",
+  "name" : "section_background",
+  "label" : "Section background",
+  "help_text" : "Pale blue uses theme section--pale; White uses section--white.",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "pale", "Pale blue (default)" ], [ "white", "White" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "pale"
+}, {
+  "id" : "hubdb_table_id",
+  "name" : "hubdb_table_id",
+  "label" : "HubDB table ID",
+  "help_text" : "Numeric table ID from HubDB settings.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "2135009011"
+}, {
+  "id" : "hubdb_table_slug",
+  "name" : "hubdb_table_slug",
+  "label" : "HubDB table name (optional)",
+  "help_text" : "If set, loads by table name instead of ID.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "filter_column",
+  "name" : "filter_column",
+  "label" : "Filter column name",
+  "help_text" : "HubDB column slug (e.g. asset_type). Leave blank with Filter value blank to show all rows.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "filter_value",
+  "name" : "filter_value",
+  "label" : "Filter value",
+  "help_text" : "Must match cell value (e.g. PR, News). Comma-separated tags in one cell are supported.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "pagination_query_param",
+  "name" : "pagination_query_param",
+  "label" : "Pagination query parameter",
+  "help_text" : "When multiple listings share one page, use unique values: press_page, news_page, or page.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "page"
+}, {
+  "id" : "section_anchor_id",
+  "name" : "section_anchor_id",
+  "label" : "Section HTML id (anchor)",
+  "help_text" : "Sets id on the section for deep links and pagination scroll (e.g. latest-press). Use lowercase letters, numbers, hyphens only. Leave blank for a default from the pagination parameter.",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "press_per_page",
+  "name" : "press_per_page",
+  "label" : "Items per page",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "display_width" : null,
+  "default" : 10
+} ]

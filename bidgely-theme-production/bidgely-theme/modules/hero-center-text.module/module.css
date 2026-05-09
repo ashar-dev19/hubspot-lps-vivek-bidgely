@@ -1,0 +1,19 @@
+/* When below-CTA image is set: swap .tup-hero background to e-grid.svg (else main.css Grid.svg) */
+.hero-center-text-module.tup-hero.hero-center-text-module--below-img {
+  background-image: url("https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/e-grid.svg");
+}
+
+/* Hero below-CTA diagram — scoped to this module */
+.hero-center-text-module__below-cta {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-center-text-module__below-cta-img {
+  max-width: 850px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
