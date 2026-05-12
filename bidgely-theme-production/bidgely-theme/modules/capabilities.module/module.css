@@ -1,2 +1,4 @@
 /* capabilities.module — intentionally empty; uses main.css for layout and card styles. */
-
+.card__title{
+    margin: 0;
+}

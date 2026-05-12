@@ -5,8 +5,6 @@
   screenshotPath: ../images/template-previews/bidgely-solution-gas-disaggregation.png
 -->
 
-{% set asset_base = "https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/www-img" %}
-
 <!doctype html>
 <html lang="{{ html_lang }}" {{ html_lang_dir }}>
 <head>
@@ -16,349 +14,407 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
-</head>
   <style>
-  .hero {
-        position: relative;
-        background: url(https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-4.svg);
-        background-size: cover;
+    .hero {
+      position: relative;
+      background: url(https://www.bidgely.com/hubfs/www-img/grid-4.svg);
+      background-size: cover;
     }
-    .hero::before{
-      display: none;
-    }
-    .hero::after{
-        display: none;
-    }
+    /* Text-only hero (no dashboard visual): keep two-column band tight */
+    .hero--text-only .hero__inner { padding-bottom: 120px; }
   </style>
+</head>
 <body>
 
 {% module "site_header" path="../modules/global-header.module" %}
 
-{# =========================================================
-   HERO
-   ========================================================= #}
-<section class="hero">
+{% dnd_area "page_content" label="Page content" %}
+
+  {# ----- Hero ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module path="@hubspot/rich_text" label="Gas disaggregation — Hero" %}
+          {% module_attribute "html" %}
+<section class="hero hero--text-only">
   <div class="hero__inner container">
     <div class="hero__top">
       <div>
-        <p class="eyebrow">{% text "hero_eyebrow" value="Gas Disaggregation & Customer Intelligence" no_wrapper=True %}</p>
-        <h1>
-          {% rich_text "hero_heading" html="Turn Gas Usage Into <span class='accent'>Appliance-Level Intelligence.</span>" no_wrapper=True %}
-        </h1>
-        <a class="btn btn--navy" href="{% text "hero_cta_link" value="/video/future-ready-insights-higher-value-ev-data" no_wrapper=True %}">
-          {% text "hero_cta_label" value="Watch" no_wrapper=True %}
-        </a>
+        <p class="eyebrow">GAS DISAGGREGATION &amp; CUSTOMER INTELLIGENCE</p>
+        <h1>Turn Gas Usage Into<br><span class="accent">Appliance-Level Intelligence.</span></h1>
+        <a class="btn btn--navy" href="/video/future-ready-insights-higher-value-ev-data">Watch</a>
       </div>
       <div class="hero__copy body-sm">
-        {% rich_text "hero_copy" html="Most utilities see gas consumption at the bill level. Bidgely transforms that data into <strong>appliance-level insights for every home</strong> — unlocking a deeper understanding of how energy is actually used.<br><br>Built on <strong>17+ patents in energy disaggregation</strong>, UtilityAI extends and enriches your customer view using AMI or non-smart meter data — revealing usage patterns across heating, water heating, and other major gas loads.<br><br>The result: better customer engagement, faster issue resolution, and more effective programs." no_wrapper=True %}
-      </div>
-    </div>
-    <div class="hero-visual">
-      {% image "hero_visual" src="{{ asset_base }}/gas-disagg-hero.svg" alt="UtilityAI gas disaggregation hero dashboard preview" class="hero-visual__img" %}
-    </div>
-  </div>
-</section>
-
-{# =========================================================
-   NAVY CTA STRIP
-   ========================================================= #}
-<section class="cta-strip">
-  <div class="cta-strip__inner container">
-    <h2>{% text "strip_heading" value="See Gas Disaggregation in action." no_wrapper=True %}</h2>
-    <a class="btn btn--white" href="{% text "strip_cta_link" value="/contact-us-form" no_wrapper=True %}">
-      {% text "strip_cta_label" value="Speak with An Expert" no_wrapper=True %}
-    </a>
-  </div>
-</section>
-
-{# =========================================================
-   CAPABILITIES – 4-CARD GRID  (Jobs to Be Done)
-   ========================================================= #}
-<section class="section section--pale">
-  <div class="container">
-    <p class="eyebrow">{% text "cap_eyebrow" value="Jobs to Be Done" no_wrapper=True %}</p>
-    <h2 class="h2">
-      {% rich_text "cap_heading" html="From gas consumption data to <span class='accent'>actionable intelligence.</span>" no_wrapper=True %}
-    </h2>
-    <p class="lede">
-      {% rich_text "cap_lede" html="The data you need is already in every meter read. Decode it, decompose it by appliance, and put it to work." no_wrapper=True %}
-    </p>
-
-    <div class="cards-4 mt-8">
-      <article class="card">
-        {% image "cap1_icon" src="{{ asset_base }}/explain-bill.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap1_title" html="Understand what&#39;s<br>driving usage." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap1_copy" html="Break total gas consumption into appliance-level insights for each home — heating, water heating, and other major loads." no_wrapper=True %}</p>
-      </article>
-
-      <article class="card">
-        {% image "cap2_icon" src="{{ asset_base }}/customer-experience-v1.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap2_title" html="Improve<br>customer experience." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap2_copy" html="Equip CSRs and digital channels with the data needed to explain high bills and resolve issues quickly." no_wrapper=True %}</p>
-      </article>
-
-      <article class="card">
-        {% image "cap3_icon" src="{{ asset_base }}/target.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap3_title" html="Target the<br>right programs." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap3_copy" html="Identify customers with inefficient heating or high usage patterns and match them to the programs that fit." no_wrapper=True %}</p>
-      </article>
-
-      <article class="card">
-        {% image "cap4_icon" src="{{ asset_base }}/every-touchpoint.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap4_title" html="Deliver<br>measurable savings." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap4_copy" html="Drive therm reduction, cost savings, and faster program impact through precision insights — not broad assumptions." no_wrapper=True %}</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-{# =========================================================
-   SOLUTIONS STRIPES (Use Cases)
-   ========================================================= #}
-<section class="section section--white">
-  <div class="container">
-    <div class="solutions-head">
-      <p class="eyebrow">{% text "sol_eyebrow" value="Use Cases" no_wrapper=True %}</p>
-      <h2 class="h2">{% rich_text "sol_heading" html="What <span class='accent'>UtilityAI</span> makes possible with gas data." no_wrapper=True %}</h2>
-      <p class="lede">{% rich_text "sol_lede" html="Each use case runs on the same disaggregation engine — so your CX, EE, and digital teams operate from the same source of truth, all the way down to the appliance." no_wrapper=True %}</p>
-    </div>
-
-    {# Stripe 1 — Appliance-Level Gas Insights #}
-    <div class="stripe">
-      <div class="stripe__copy">
-        <h3>{% text "stripe1_title" value="Appliance-Level Gas Insights" no_wrapper=True %}</h3>
-        <p class="stripe__sub">{% text "stripe1_sub" value="See beyond the meter." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe1_quote" html="Gas data is typically limited to monthly consumption — making it difficult to understand what&#39;s actually driving usage." no_wrapper=True %}</div>
-        <ul class="stripe__bullets">
-          {% rich_text "stripe1_bullets" html="<li>Disaggregate gas usage into major appliance categories</li><li>Identify heating, water heating, and other key loads</li><li>Provide a complete view of customer energy behavior</li>" no_wrapper=True %}
-        </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe1_cta_link" value="/disaggregation" no_wrapper=True %}">
-          {% text "stripe1_cta_label" value="Explore Appliance-Level Insights" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-      <div class="stripe__visual">
-        {% image "stripe1_img" src="{{ asset_base }}/gas-appliance-insights.svg" alt="Gas appliance-level disaggregation preview" class="stripe__img" %}
-      </div>
-    </div>
-
-    {# Stripe 2 — High Bill Resolution & CX #}
-    <div class="stripe stripe--reverse">
-      <div class="stripe__copy">
-        <h3>{% text "stripe2_title" value="High Bill Resolution & Customer Experience" no_wrapper=True %}</h3>
-        <p class="stripe__sub">{% text "stripe2_sub" value="Turn high bill calls into trust-building moments." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe2_quote" html="Customers don&#39;t understand their gas bills — and agents lack the data to explain them clearly." no_wrapper=True %}</div>
-        <ul class="stripe__bullets">
-          {% rich_text "stripe2_bullets" html="<li>Appliance-level insights for major gas loads</li><li>High Bill Analyzer to identify root causes</li><li>Resolve calls faster and turn high-bill calls into trust-building touchpoints</li>" no_wrapper=True %}
-        </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe2_cta_link" value="/video/video-aps-boosting-customer-satisfaction-and-savings" no_wrapper=True %}">
-          {% text "stripe2_cta_label" value="Explore High Bill Resolution" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-      <div class="stripe__visual">
-        {% image "stripe2_img" src="{{ asset_base }}/gas-high-bill.svg" alt="Gas high bill analyzer console preview" class="stripe__img" %}
-      </div>
-    </div>
-
-    {# Stripe 3 — Energy Efficiency & Program Targeting #}
-    <div class="stripe">
-      <div class="stripe__copy">
-        <h3>{% text "stripe3_title" value="Energy Efficiency & Program Targeting" no_wrapper=True %}</h3>
-        <p class="stripe__sub">{% text "stripe3_sub" value="Target efficiency programs with precision." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe3_quote" html="Without appliance-level visibility, programs rely on broad assumptions and miss high-impact opportunities." no_wrapper=True %}</div>
-        <ul class="stripe__bullets">
-          {% rich_text "stripe3_bullets" html="<li>Identify inefficient heating systems and high usage homes</li><li>Target customers most likely to benefit from efficiency programs</li><li>Improve program uptake and therm savings</li>" no_wrapper=True %}
-        </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe3_cta_link" value="/video/dtech-demo-awb-heat-pump-targeting" no_wrapper=True %}">
-          {% text "stripe3_cta_label" value="Explore Program Targeting" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-      <div class="stripe__visual">
-        {% image "stripe3_img" src="{{ asset_base }}/gas-program-targeting.svg" alt="Gas energy efficiency program targeting preview" class="stripe__img" %}
-      </div>
-    </div>
-
-    {# Stripe 4 — Digital Engagement & Self-Service #}
-    <div class="stripe stripe--reverse">
-      <div class="stripe__copy">
-        <h3>{% text "stripe4_title" value="Digital Engagement & Self-Service" no_wrapper=True %}</h3>
-        <p class="stripe__sub">{% text "stripe4_sub" value="Give customers clarity — and control." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe4_quote" html="Customers lack actionable insights to change behavior or reduce usage." no_wrapper=True %}</div>
-        <ul class="stripe__bullets">
-          {% rich_text "stripe4_bullets" html="<li>Personalized insights tied to actual usage</li><li>Digital tools that guide customers to relevant actions</li><li>Reduced call center volume through self-service</li>" no_wrapper=True %}
-        </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe4_cta_link" value="/video/dtech-demo-cx" no_wrapper=True %}">
-          {% text "stripe4_cta_label" value="Explore Digital Engagement" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-      <div class="stripe__visual">
-        {% image "stripe4_img" src="{{ asset_base }}/gas-self-service.svg" alt="Gas digital engagement and self-service preview" class="stripe__img" %}
+        <p>Most utilities see gas consumption at the bill level. Bidgely transforms that data into <strong>appliance-level insights for every home</strong> &mdash; unlocking a deeper understanding of how energy is actually used.</p>
+        <br>
+        <p>UtilityAI extends and enriches your customer view using AMI or non-smart meter data &mdash; revealing usage patterns across heating, water heating, and other major gas loads. The result: better customer engagement, faster issue resolution, and more effective programs.</p>
       </div>
     </div>
   </div>
 </section>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-{# =========================================================
-   AGENTIC AUTOMATION
-   ========================================================= #}
-<section class="section section--navy">
-  <div class="container">
-    <div class="agentic-head">
-      <div>
-        <p class="eyebrow">{% text "ag_eyebrow" value="Agentic Automation in Gas Disaggregation" no_wrapper=True %}</p>
-        <h2 class="h2">{% rich_text "ag_heading" html="Continuously identify issues<br>and opportunities at scale." no_wrapper=True %}</h2>
-        <p class="lede">{% rich_text "ag_lede" html="Bidgely&#39;s agentic layer monitors your gas customer base around the clock — flagging anomalies, surfacing program-eligible homes, and routing the right insight to the right team without manual effort." no_wrapper=True %}</p>
-      </div>
-      <div class="agentic-pill">
-        <div class="label">{% text "ag_pill_label" value="Disaggregation Engine" no_wrapper=True %}</div>
-        <div class="val">{% text "ag_pill_value" value="17+ Patents" no_wrapper=True %}</div>
-        <div class="sub">{% rich_text "ag_pill_sub" html="Powering appliance-level insights from AMI and non-smart meter data" no_wrapper=True %}</div>
-      </div>
-    </div>
+  {# ----- Navy CTA strip (call-to-action.module) ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/call-to-action.module"
+          label="Gas disaggregation — CTA strip"
+          section_aria_label="See Gas Disaggregation in action"
+          section_background="nile"
+          section_heading="See Gas Disaggregation in action."
+          subcopy=""
+          cta_text="Speak with An Expert"
+          button_style="white"
+          cta_link={
+            "url": {
+              "type": "EXTERNAL",
+              "content_id": null,
+              "href": "/contact-us-form",
+              "href_with_scheme": "/contact-us-form"
+            },
+            "open_in_new_tab": false,
+            "no_follow": false,
+            "sponsored": false,
+            "user_generated_content": false
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-    <div class="agent-cards">
-      <article class="agent-card">
-        {% image "ag_card1_icon" src="{{ asset_base }}/dtech26-for-regulators.svg" alt="" width="42" height="42" %}
-        <h4>{% text "ag_card1_title" value="Usage Detection Agent" no_wrapper=True %}</h4>
-        <p>{% rich_text "ag_card1_copy" html="Continuously analyzes gas consumption to identify appliance-level patterns — heating, water heating, and other major loads — and surfaces changes as they happen." no_wrapper=True %}</p>
-        <div class="meta">{% text "ag_card1_meta" value="Always-on appliance-level monitoring across the customer base" no_wrapper=True %}</div>
-      </article>
+  {# ----- Capabilities (4 cards) — capabilities.module ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/capabilities.module"
+          label="Gas disaggregation — Capabilities"
+          cap_eyebrow="Jobs to Be Done"
+          cap_heading_before="From gas consumption data to"
+          cap_heading_blue="actionable intelligence."
+          cap_heading_after=""
+          cap_lede="The data you need is already in every meter read. Decode it, decompose it by appliance, and put it to work."
+          cards=[
+            {
+              "icon": { "src": "https://www.bidgely.com/hubfs/www-img/explain-bill-icon.svg", "alt": "", "loading": "lazy" },
+              "title": "Understand what&rsquo;s<br>driving usage.",
+              "copy": "Break total gas consumption into appliance-level insights for each home &mdash; heating, water heating, and other major loads."
+            },
+            {
+              "icon": { "src": "https://www.bidgely.com/hubfs/www-img/customer-experience-v1.svg", "alt": "", "loading": "lazy" },
+              "title": "Improve<br>customer experience.",
+              "copy": "Equip CSRs and digital channels with the data needed to explain high bills and resolve issues quickly."
+            },
+            {
+              "icon": { "src": "https://www.bidgely.com/hubfs/www-img/target.svg", "alt": "", "loading": "lazy" },
+              "title": "Target the<br>right programs.",
+              "copy": "Identify customers with inefficient heating or high usage patterns and match them to the programs that fit."
+            },
+            {
+              "icon": { "src": "https://www.bidgely.com/hubfs/www-img/every-touchpoint.svg", "alt": "", "loading": "lazy" },
+              "title": "Deliver<br>measurable savings.",
+              "copy": "Drive therm reduction, cost savings, and faster program impact through precision insights &mdash; not broad assumptions."
+            }
+          ]
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-      <article class="agent-card">
-        {% image "ag_card2_icon" src="{{ asset_base }}/black-1.svg" alt="" width="42" height="42" %}
-        <h4>{% text "ag_card2_title" value="High Bill Investigation Agent" no_wrapper=True %}</h4>
-        <p>{% rich_text "ag_card2_copy" html="Automatically flags bill anomalies and identifies likely root causes at the appliance level — so CSRs walk into every call already knowing the answer." no_wrapper=True %}</p>
-        <div class="meta">{% text "ag_card2_meta" value="Faster resolution and fewer repeat calls" no_wrapper=True %}</div>
-      </article>
+  {# ----- Use cases (stripes) — solution-grid.module ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/solution-grid.module"
+          label="Gas disaggregation — Use cases"
+          programs_intro={
+            "programs_eyebrow": "Use Cases",
+            "programs_heading_before": "What ",
+            "programs_heading_accent": "UtilityAI",
+            "programs_heading_after": " makes possible with gas data.",
+            "programs_lede": "<p>Each use case runs on the same disaggregation engine &mdash; so your CX, EE, and digital teams operate from the same source of truth, all the way down to the appliance.</p>"
+          }
+          program_rows=[
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": false,
+              "program_diagram": "custom_image",
+              "program_custom_image": {
+                "src": "https://www.bidgely.com/hs-fs/hubfs/Gas-disaggregation-image-1.png?width=1360&name=Gas-disaggregation-image-1.png",
+                "alt": "Gas appliance-level disaggregation preview",
+                "loading": "lazy"
+              },
+              "program_title": "Appliance-Level Gas Insights",
+              "program_subtitle": "See beyond the meter.",
+              "program_problem": "Gas data is typically limited to monthly consumption — making it difficult to understand what's actually driving usage.",
+              "program_outcomes": [
+                { "program_outcome_text": "Disaggregate gas usage into major appliance categories" },
+                { "program_outcome_text": "Identify heating, water heating, and other key loads" },
+                { "program_outcome_text": "Provide a complete view of customer energy behavior" }
+              ],
+              "program_link_label": "Explore Appliance-Level Insights",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "/disaggregation", "href_with_scheme": "/disaggregation" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            },
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": true,
+              "program_diagram": "custom_image",
+              "program_custom_image": {
+                "src": "https://www.bidgely.com/hs-fs/hubfs/Gas-disaggregation-image-2.jpg?width=1024&name=Gas-disaggregation-image-2.jpg",
+                "alt": "Gas high bill analyzer console preview",
+                "loading": "lazy"
+              },
+              "program_title": "High Bill Resolution & Customer Experience",
+              "program_subtitle": "Turn high bill calls into trust-building moments.",
+              "program_problem": "Customers don't understand their gas bills — and agents lack the data to explain them clearly.",
+              "program_outcomes": [
+                { "program_outcome_text": "Appliance-level insights for major gas loads" },
+                { "program_outcome_text": "High Bill Analyzer to identify root causes" },
+                { "program_outcome_text": "Resolve calls faster and turn high-bill calls into trust-building touchpoints" }
+              ],
+              "program_link_label": "Explore High Bill Resolution",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "/video/video-aps-boosting-customer-satisfaction-and-savings", "href_with_scheme": "/video/video-aps-boosting-customer-satisfaction-and-savings" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            },
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": false,
+              "program_diagram": "custom_image",
+              "program_custom_image": {
+                "src": "https://www.bidgely.com/hs-fs/hubfs/Gas-disaggregation-image-3.jpg?width=1320&name=Gas-disaggregation-image-3.jpg",
+                "alt": "Gas energy efficiency program targeting preview",
+                "loading": "lazy"
+              },
+              "program_title": "Energy Efficiency & Program Targeting",
+              "program_subtitle": "Target efficiency programs with precision.",
+              "program_problem": "Without appliance-level visibility, programs rely on broad assumptions and miss high-impact opportunities.",
+              "program_outcomes": [
+                { "program_outcome_text": "Identify inefficient heating systems and high usage homes" },
+                { "program_outcome_text": "Target customers most likely to benefit from efficiency programs" },
+                { "program_outcome_text": "Improve program uptake and therm savings" }
+              ],
+              "program_link_label": "Explore Program Targeting",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "/video/dtech-demo-awb-heat-pump-targeting", "href_with_scheme": "/video/dtech-demo-awb-heat-pump-targeting" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            },
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": true,
+              "program_diagram": "custom_image",
+              "program_custom_image": {
+                "src": "https://www.bidgely.com/hs-fs/hubfs/Gas-disaggregation-image-4.jpg?width=1320&name=Gas-disaggregation-image-4.jpg",
+                "alt": "Gas digital engagement and self-service preview",
+                "loading": "lazy"
+              },
+              "program_title": "Digital Engagement & Self-Service",
+              "program_subtitle": "Give customers clarity — and control.",
+              "program_problem": "Customers lack actionable insights to change behavior or reduce usage.",
+              "program_outcomes": [
+                { "program_outcome_text": "Personalized insights tied to actual usage" },
+                { "program_outcome_text": "Digital tools that guide customers to relevant actions" },
+                { "program_outcome_text": "Reduced call center volume through self-service" }
+              ],
+              "program_link_label": "Explore Digital Engagement",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "/video/dtech-demo-cx", "href_with_scheme": "/video/dtech-demo-cx" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            }
+          ]
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-      <article class="agent-card">
-        {% image "ag_card3_icon" src="{{ asset_base }}/iucx-icon-05.svg" alt="" width="42" height="42" %}
-        <h4>{% text "ag_card3_title" value="Program Targeting Agent" no_wrapper=True %}</h4>
-        <p>{% rich_text "ag_card3_copy" html="Matches customers to efficiency and savings programs based on actual gas usage and appliance profiles — not assumptions or broad demographic segments." no_wrapper=True %}</p>
-        <div class="meta">{% text "ag_card3_meta" value="Higher uptake and measurable therm savings" no_wrapper=True %}</div>
-      </article>
-    </div>
-  </div>
-</section>
+  {# Agentic automation — inline agents_intro / agents_value / agent_cards (same pattern as solution-dsm.html). Do not put \\n inside this JSON blob: upload validator breaks the string. #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/agentic-automation.module"
+          label="Gas disaggregation Agentic automation"
+          agents_intro={
+            "ce_agents_eyebrow": "Agentic Automation in Gas Disaggregation",
+            "ce_agents_heading_before": "Continuously identify issues and opportunities at scale.",
+            "ce_agents_heading_accent": "",
+            "ce_agents_heading_after": "",
+            "ce_agents_lede": "<p>Bidgely&rsquo;s agentic layer monitors your gas customer base around the clock &mdash; flagging anomalies, surfacing program-eligible homes, and routing the right insight to the right team without manual effort.</p>"
+          }
+          agents_value={
+            "ce_agents_value_eyebrow": "Disaggregation Engine",
+            "ce_agents_value_num": "17+ Patents",
+            "ce_agents_value_desc": "<p>Powering appliance-level insights from AMI and non-smart meter data</p>"
+          }
+          agent_cards=[
+            {
+              "card_icon": { "src": "https://www.bidgely.com/hubfs/www-img/dtech26-for-regulators.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "card_title": "Usage Detection Agent",
+              "card_body": "<p>Continuously analyzes gas consumption to identify appliance-level patterns &mdash; heating, water heating, and other major loads &mdash; and surfaces changes as they happen.</p>",
+              "card_stat": "Always-on appliance-level monitoring across the customer base"
+            },
+            {
+              "card_icon": { "src": "https://www.bidgely.com/hubfs/www-img/load-shaping-icon-6.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "card_title": "High Bill Investigation Agent",
+              "card_body": "<p>Automatically flags bill anomalies and identifies likely root causes at the appliance level &mdash; so CSRs walk into every call already knowing the answer.</p>",
+              "card_stat": "Faster resolution and fewer repeat calls"
+            },
+            {
+              "card_icon": { "src": "https://www.bidgely.com/hubfs/www-img/iucx-icon-05.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "card_title": "Program Targeting Agent",
+              "card_body": "<p>Matches customers to efficiency and savings programs based on actual gas usage and appliance profiles &mdash; not assumptions or broad demographic segments.</p>",
+              "card_stat": "Higher uptake and measurable therm savings"
+            }
+          ]
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-{# =========================================================
-   GENAI
-   ========================================================= #}
-<section class="section section--gray">
-  <div class="container">
-    <div class="genai__head">
-      <p class="eyebrow">{% text "genai_eyebrow" value="GenAI for Gas Customers" no_wrapper=True %}</p>
-      <h2 class="h2">{% rich_text "genai_heading" html="Make gas usage simple to understand — <span class='accent'>for every customer.</span>" no_wrapper=True %}</h2>
-      <p class="lede">{% rich_text "genai_lede" html="Every answer — to a customer or a CSR — is grounded in that home&#39;s actual appliance-level usage, not a generic LLM prompt." no_wrapper=True %}</p>
-    </div>
+  {# ----- GenAI — genai.module ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/genai.module"
+          label="Gas disaggregation — GenAI"
+          genai_intro={
+            "ce_genai_eyebrow": "GenAI for Gas Customers",
+            "ce_genai_heading_before": "Make gas usage simple to understand — ",
+            "ce_genai_heading_accent": "for every customer.",
+            "ce_genai_heading_after": "",
+            "ce_genai_lead": "<p>Every answer &mdash; to a customer or a CSR &mdash; is grounded in that home&rsquo;s actual appliance-level usage, not a generic LLM prompt.</p>"
+          }
+          genai_cards=[
+            {
+              "feature_icon": { "src": "https://www.bidgely.com/hubfs/www-img/ders-icon-v1.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "feature_title": "Energy Assistant (Customer-Facing)",
+              "feature_body": "<p>Explains gas usage in plain language. Example: &ldquo;Your heating system is driving most of your gas usage this month due to colder temperatures. Improving insulation or adjusting thermostat settings could reduce your bill.&rdquo;</p>"
+            },
+            {
+              "feature_icon": { "src": "https://www.bidgely.com/hubfs/www-img/iucx-icon-05-1.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "feature_title": "CSR Copilot",
+              "feature_body": "<p>Instantly surfaces appliance-level insights during calls &mdash; so agents can explain bills clearly, recommend next steps, and resolve in one touch instead of three.</p>"
+            },
+            {
+              "feature_icon": { "src": "https://www.bidgely.com/hubfs/www-img/daas-v2.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "feature_title": "Bill & Usage Explainer",
+              "feature_body": "<p>Bill breakdowns and usage charts with embedded natural-language explanations. Customers tap any spike or line item and get a plain-English reason &mdash; powered by the same disaggregation that drives your CSR tools.</p>"
+            }
+          ]
+          right_column_type="image"
+          genai_visual_image={
+            "src": "https://www.bidgely.com/hs-fs/hubfs/laptop-phone-combo-CX-2048x1198.png?width=2000&height=1169&name=laptop-phone-combo-CX-2048x1198.png",
+            "alt": "Gas grounded conversations assistant preview",
+            "loading": "lazy"
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-    <div class="genai">
-      <div class="genai__cards">
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/ders-icon-v1.svg');"></div>
-          <div>
-            <h4>{% text "genai_card1_title" value="Energy Assistant (Customer-Facing)" no_wrapper=True %}</h4>
-            <p>{% rich_text "genai_card1_copy" html="Explains gas usage in plain language. Example: &#34;Your heating system is driving most of your gas usage this month due to colder temperatures. Improving insulation or adjusting thermostat settings could reduce your bill.&#34;" no_wrapper=True %}</p>
-          </div>
-        </div>
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/iucx-icon-05-1.svg');"></div>
-          <div>
-            <h4>{% text "genai_card2_title" value="CSR Copilot" no_wrapper=True %}</h4>
-            <p>{% rich_text "genai_card2_copy" html="Instantly surfaces appliance-level insights during calls — so agents can explain bills clearly, recommend next steps, and resolve in one touch instead of three." no_wrapper=True %}</p>
-          </div>
-        </div>
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/daas-v2.svg');"></div>
-          <div>
-            <h4>{% text "genai_card3_title" value="Bill & Usage Explainer" no_wrapper=True %}</h4>
-            <p>{% rich_text "genai_card3_copy" html="Bill breakdowns and usage charts with embedded natural-language explanations. Customers tap any spike or line item and get a plain-English reason — powered by the same disaggregation that drives your CSR tools." no_wrapper=True %}</p>
-          </div>
-        </div>
-      </div>
+  {# ----- Proven results — proven-results.module (peer logos = module defaults from fields.json, not composite sprite) ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/proven-results.module"
+          label="Gas disaggregation — Proven results"
+          section_heading={
+            "ce_cases_eyebrow": "Proven Results",
+            "ce_cases_heading_before": "From gas data to ",
+            "ce_cases_heading_accent": "measurable outcomes.",
+            "ce_cases_heading_after": ""
+          }
+          peer_logos_intro={
+            "ce_cases_peer_label": "Peer Utilities:"
+          }
+          peer_logos=[
+            { "logo_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/nv-energy-logo-color-3.svg", "alt": "NV Energy", "loading": "lazy", "height": 38 } },
+            { "logo_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/avista.svg", "alt": "Avista", "loading": "lazy", "height": 38 } },
+            { "logo_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ogie.svg", "alt": "OG&E", "loading": "lazy", "height": 38 } },
+            { "logo_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/ameran.svg", "alt": "Ameren", "loading": "lazy", "height": 38 } },
+            { "logo_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/xcel-energy.svg", "alt": "Xcel Energy", "loading": "lazy", "height": 38 } },
+            { "logo_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/nova-scotia-power-logo-color.svg", "alt": "Nova Scotia Power", "loading": "lazy", "height": 38 } },
+            { "logo_image": { "src": "https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/enel.svg", "alt": "Enel", "loading": "lazy", "height": 38 } }
+          ]
+          case_left={
+            "ce_cases_kicker": "Gas Disaggregation · High Bill Resolution",
+            "ce_cases_title": "Large Gas Utility",
+            "ce_cases_desc": "<p>With only monthly bill-level visibility, this utility&rsquo;s CSRs were stuck explaining gas spikes they couldn&rsquo;t actually see &mdash; and program teams were targeting efficiency offers without knowing which homes had inefficient heating. Bidgely&rsquo;s disaggregation gave both teams appliance-level intelligence built on the same data they already had.</p>",
+            "ce_cases_big_value": "17+",
+            "ce_cases_big_label": "Patents in energy disaggregation behind every appliance-level insight"
+          }
+          case_right={
+            "ce_cases_quote": "<p>&ldquo;Bidgely turned our gas bills into a conversation we could actually have with customers &mdash; at the appliance level. Our CSRs resolve faster, and our EE team finally knows which homes to target.&rdquo;</p>",
+            "ce_cases_download_label": "Read Case Study",
+            "ce_cases_download_link": {
+              "url": { "type": "EXTERNAL", "href": "/pdf/southern-california-gas-case-study", "href_with_scheme": "/pdf/southern-california-gas-case-study" },
+              "open_in_new_tab": false,
+              "no_follow": false,
+              "sponsored": false,
+              "user_generated_content": false
+            }
+          }
+          case_metrics=[
+            { "metric_value": "17+", "metric_label": "Patents in energy disaggregation" },
+            { "metric_value": "50%+", "metric_label": "Reduction in high-bill calls (placeholder &mdash; confirm with case)" },
+            { "metric_value": "30%", "metric_label": "Reduction in average CSR handle time (placeholder &mdash; confirm with case)" },
+            { "metric_value": "100%", "metric_label": "Of customers get appliance-level visibility" }
+          ]
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-      <div class="genai__visual">
-        {% image "genai_visual" src="{{ asset_base }}/gas-grounded-conversations.svg" alt="Gas grounded conversations assistant preview" class="genai__img" %}
-      </div>
-    </div>
-  </div>
-</section>
+  {# ----- Resources (HubDB) ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/resources-hubdb.module"
+          label="Resources"
+          ce_resources_eyebrow="Resources"
+          filter_value="Disaggregation"
+          hubdb_limit=10
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-{# =========================================================
-   PROVEN RESULTS (case study)
-   ========================================================= #}
-<section class="section section--white">
-  <div class="container">
-    <div class="results-head">
-      <div>
-        <p class="eyebrow">{% text "results_eyebrow" value="Proven Results" no_wrapper=True %}</p>
-        <h2 class="h2">{% rich_text "results_heading" html="From gas data to <span class='accent'>measurable outcomes.</span>" no_wrapper=True %}</h2>
-      </div>
-    </div>
-
-    <div class="peers">
-      <span>{% text "peers_label" value="Peer Utilities:" no_wrapper=True %}</span>
-      {% image "peers_logos" src="{{ asset_base }}/frame-2147227076.svg" alt="Peer utility logos" width="734" height="38" %}
-    </div>
-
-    {# NOTE: Default stat values below are placeholders sourced from broader Bidgely
-       deployments. Replace stat2/stat3/stat4 with the specific gas-utility metrics
-       once the case study is finalized. #}
-    <div class="case">
-      <div class="case__left">
-        <div class="case__eyebrow">{% text "case_eyebrow" value="Gas Disaggregation · High Bill Resolution" no_wrapper=True %}</div>
-        <h3 class="case__title">{% text "case_title" value="Large Gas Utility" no_wrapper=True %}</h3>
-        <p class="case__copy">{% rich_text "case_copy" html="With only monthly bill-level visibility, this utility&#39;s CSRs were stuck explaining gas spikes they couldn&#39;t actually see — and program teams were targeting efficiency offers without knowing which homes had inefficient heating. Bidgely&#39;s disaggregation gave both teams appliance-level intelligence built on the same data they already had." no_wrapper=True %}</p>
-        <div class="case__hero">
-          <div class="v">{% text "case_hero_value" value="17+" no_wrapper=True %}</div>
-          <div class="l">{% text "case_hero_label" value="Patents in energy disaggregation behind every appliance-level insight" no_wrapper=True %}</div>
-        </div>
-      </div>
-      <div class="case__right">
-        <p class="case__quote">{% rich_text "case_quote" html="\"Bidgely turned our gas bills into a conversation we could actually have with customers — at the appliance level. Our CSRs resolve faster, and our EE team finally knows which homes to target.\"" no_wrapper=True %}</p>
-        <div class="case__stats">
-          <div class="case__stat">
-            <div class="v">{% text "stat1_v" value="17+" no_wrapper=True %}</div>
-            <div class="l">{% text "stat1_l" value="Patents in energy disaggregation" no_wrapper=True %}</div>
-          </div>
-          <div class="case__stat">
-            <div class="v">{% text "stat2_v" value="50%+" no_wrapper=True %}</div>
-            <div class="l">{% text "stat2_l" value="Reduction in high-bill calls (placeholder — confirm with case)" no_wrapper=True %}</div>
-          </div>
-          <div class="case__stat">
-            <div class="v">{% text "stat3_v" value="30%" no_wrapper=True %}</div>
-            <div class="l">{% text "stat3_l" value="Reduction in average CSR handle time (placeholder — confirm with case)" no_wrapper=True %}</div>
-          </div>
-          <div class="case__stat">
-            <div class="v">{% text "stat4_v" value="100%" no_wrapper=True %}</div>
-            <div class="l">{% text "stat4_l" value="Of customers get appliance-level visibility" no_wrapper=True %}</div>
-          </div>
-        </div>
-        <a class="case__cta link-arrow" href="{% text "case_cta_link" value="/pdf/southern-california-gas-case-study" no_wrapper=True %}">
-          {% text "case_cta_label" value="Read Case Study" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-{# Resources (HubDB module):
-   • hubdb_row_ids — comma-separated HubDB row IDs; if set, ONLY those rows (in order), max hubdb_limit cards; tag filter is IGNORED.
-   • Else — filter_column + filter_value match a token in the HubDB tags column; rows are newest-first (hs_updated_at).
-   • hubdb_limit — max cards shown (4 below).
-   TODO: replace the placeholder hubdb_row_ids with the gas-disaggregation-tagged rows
-   (e.g., Gas Disaggregation Overview, High Bill Resolution Playbook, Energy Efficiency
-   Targeting Guide, CX Transformation Case Studies). While IDs are unset, the
-   filter_value="Gas Disaggregation" path will populate by tag automatically. #}
-{% module "resources_gas_disagg" path="../modules/resources-hubdb.module",
-  ce_resources_eyebrow="Resources",
-  filter_value="Gas Disaggregation",
-  hubdb_limit=4,
-  hubdb_row_ids="" %}
+{% end_dnd_area %}
 
 {% module "site_footer" path="../modules/global-footer.module" %}
 

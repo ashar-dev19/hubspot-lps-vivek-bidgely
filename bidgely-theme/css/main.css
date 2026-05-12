@@ -1567,6 +1567,7 @@ section.hero-section.testing {
   height: 100%;
   border: none;
 }
+h2.resource-title,
 h3.resource-title {
     margin: 0px;
     text-align: left;
@@ -1674,6 +1675,7 @@ h3.resource-title {
   margin-bottom: 0px;
   text-align:left;
 }
+h3.resource-title-small,
 h4.resource-title-small {
     margin: 0px;
 }
@@ -2011,6 +2013,7 @@ a[href*="http"]:hover .resource-card {
     gap: 25px;
     margin: 30px 0;
   }
+  h2.resource-title,
   h3.resource-title a {
     font-size: 18px;
     line-height: 24px;

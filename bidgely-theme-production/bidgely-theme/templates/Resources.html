@@ -164,7 +164,39 @@
               {% set temp_slug = featured_title|lower|replace(' ', '-')|replace(':', '-')|replace(',', '-')|replace('.', '')|replace('!', '')|replace('?', '')|replace("'", '')|replace('"', '')|replace('&', 'and')|replace('(', '')|replace(')', '')|replace('[', '')|replace(']', '')|replace('{', '')|replace('}', '')|replace('--', '-')|trim %}
               {% set featured_slug = temp_slug %}
             {% endif %}
-            <div class="featured-card-large">
+            {% set featured_link = '#' %}
+            {% set featured_page_tpl = featured.page_template|default('')|lower|trim %}
+            {% set featured_type = featured.asset_picklist_tag|default(featured.asset_type|default(''))|lower %}
+            {% set is_podcast = featured_type == 'podcast' %}
+            {% set is_webinar = featured_type == 'webinar' %}
+            {% set is_video = featured_type == 'video' %}
+            {% set is_playbook = featured_type in ['playbook', 'white paper', 'case study', 'solution brief', 'industry analysis', 'pdf', 'whitepaper', 'white-paper', 'case-study', 'solution-brief', 'brief', 'industry-analysis'] %}
+            {% if featured_slug %}
+              {% if featured_page_tpl == 'live webinar' %}
+                {% set featured_link = '/webinar-v1/' ~ featured_slug %}
+              {% elif featured_page_tpl == 'webinar' %}
+                {% set featured_link = '/webinar/' ~ featured_slug %}
+              {% elif featured_page_tpl == 'podcast' %}
+                {% set featured_link = '/podcast/' ~ featured_slug %}
+              {% elif featured_page_tpl == 'video' %}
+                {% set featured_link = '/video/' ~ featured_slug %}
+              {% elif featured_page_tpl in ['pdf', 'playbook', 'white paper', 'case study', 'solution brief', 'whitepaper'] %}
+                {% set featured_link = '/pdf/' ~ featured_slug %}
+              {% elif is_podcast %}
+                {% set featured_link = '/podcast/' ~ featured_slug %}
+              {% elif is_webinar %}
+                {% set featured_link = '/webinar/' ~ featured_slug %}
+              {% elif is_video %}
+                {% set featured_link = '/video/' ~ featured_slug %}
+              {% elif is_playbook %}
+                {% set featured_link = '/pdf/' ~ featured_slug %}
+              {% else %}
+                {% set featured_link = '/resource/' ~ featured_slug %}
+              {% endif %}
+            {% elif featured.url and 'publish' not in featured.url|lower and 'hs-sites' not in featured.url|lower %}
+              {% set featured_link = featured.url %}
+            {% endif %}
+            <a class="featured-card-large" href="{{ featured_link }}" style="color: inherit; text-decoration: none;">
               <div class="featured-card-large-image">
                   {% set image_url = '' %}
                   {# Priority 1: HubDB file objects or string filenames #}
@@ -199,41 +231,7 @@
                     {{ featured.asset|default(featured.asset_picklist_tag|default(featured.asset_type|default('RESOURCE')))|upper }}
                   </span>
                 </div>
-                {% set featured_link = '#' %}
-                {% set featured_page_tpl = featured.page_template|default('')|lower|trim %}
-                {% set featured_type = featured.asset_picklist_tag|default(featured.asset_type|default(''))|lower %}
-                {% set is_podcast = featured_type == 'podcast' %}
-                {% set is_webinar = featured_type == 'webinar' %}
-                {% set is_video = featured_type == 'video' %}
-                {% set is_playbook = featured_type in ['playbook', 'white paper', 'case study', 'solution brief', 'industry analysis', 'pdf', 'whitepaper', 'white-paper', 'case-study', 'solution-brief', 'brief', 'industry-analysis'] %}
-                {% if featured_slug %}
-                  {% if featured_page_tpl == 'live webinar' %}
-                    {% set featured_link = '/webinar-v1/' ~ featured_slug %}
-                  {% elif featured_page_tpl == 'webinar' %}
-                    {% set featured_link = '/webinar/' ~ featured_slug %}
-                  {% elif featured_page_tpl == 'podcast' %}
-                    {% set featured_link = '/podcast/' ~ featured_slug %}
-                  {% elif featured_page_tpl == 'video' %}
-                    {% set featured_link = '/video/' ~ featured_slug %}
-                  {% elif featured_page_tpl in ['pdf', 'playbook', 'white paper', 'case study', 'solution brief', 'whitepaper'] %}
-                    {% set featured_link = '/pdf/' ~ featured_slug %}
-                  {% elif is_podcast %}
-                    {% set featured_link = '/podcast/' ~ featured_slug %}
-                  {% elif is_webinar %}
-                    {% set featured_link = '/webinar/' ~ featured_slug %}
-                  {% elif is_video %}
-                    {% set featured_link = '/video/' ~ featured_slug %}
-                  {% elif is_playbook %}
-                    {% set featured_link = '/pdf/' ~ featured_slug %}
-                  {% else %}
-                    {% set featured_link = '/resource/' ~ featured_slug %}
-                  {% endif %}
-                {% elif featured.url and 'publish' not in featured.url|lower and 'hs-sites' not in featured.url|lower %}
-                  {% set featured_link = featured.url %}
-                {% endif %}
-                <h3 class="resource-title">
-                  <a href="{{ featured_link }}" style="color: inherit; text-decoration: none;">{{ featured_title }}</a>
-                </h3>
+                <h2 class="resource-title">{{ featured_title }}</h2>
                 {% if featured.long_description %}
                   <p class="resource-description">{{ featured.long_description|striptags|truncate(150) }}</p>
                 {% elif featured.short_description %}
@@ -265,7 +263,7 @@
                 {% endif %}
                 
               </div>
-            </div>
+            </a>
           {% endif %}
   
           {# Small Featured Cards (featured_order 2 = first small, 3 = second small) #}
@@ -281,7 +279,39 @@
                 {% set temp_slug = res_title|lower|replace(' ', '-')|replace(':', '-')|replace(',', '-')|replace('.', '')|replace('!', '')|replace('?', '')|replace("'", '')|replace('"', '')|replace('&', 'and')|replace('(', '')|replace(')', '')|replace('[', '')|replace(']', '')|replace('{', '')|replace('}', '')|replace('--', '-')|trim %}
                 {% set res_slug = temp_slug %}
               {% endif %}
-              <div class="featured-card-small">
+              {% set res_link = '#' %}
+              {% set res_page_tpl = resource.page_template|default('')|lower|trim %}
+              {% set res_type = resource.asset_picklist_tag|default(resource.asset_type|default(''))|lower %}
+              {% set res_is_podcast = res_type == 'podcast' %}
+              {% set res_is_webinar = res_type == 'webinar' %}
+              {% set res_is_video = res_type == 'video' %}
+              {% set res_is_playbook = res_type in ['playbook', 'white paper', 'case study', 'solution brief', 'industry analysis', 'pdf', 'whitepaper', 'white-paper', 'case-study', 'solution-brief', 'brief', 'industry-analysis'] %}
+              {% if res_slug %}
+                {% if res_page_tpl == 'live webinar' %}
+                  {% set res_link = '/webinar-v1/' ~ res_slug %}
+                {% elif res_page_tpl == 'webinar' %}
+                  {% set res_link = '/webinar/' ~ res_slug %}
+                {% elif res_page_tpl == 'podcast' %}
+                  {% set res_link = '/podcast/' ~ res_slug %}
+                {% elif res_page_tpl == 'video' %}
+                  {% set res_link = '/video/' ~ res_slug %}
+                {% elif res_page_tpl in ['pdf', 'playbook', 'white paper', 'case study', 'solution brief', 'whitepaper'] %}
+                  {% set res_link = '/pdf/' ~ res_slug %}
+                {% elif res_is_podcast %}
+                  {% set res_link = '/podcast/' ~ res_slug %}
+                {% elif res_is_webinar %}
+                  {% set res_link = '/webinar/' ~ res_slug %}
+                {% elif res_is_video %}
+                  {% set res_link = '/video/' ~ res_slug %}
+                {% elif res_is_playbook %}
+                  {% set res_link = '/pdf/' ~ res_slug %}
+                {% else %}
+                  {% set res_link = '/resource/' ~ res_slug %}
+                {% endif %}
+              {% elif resource.url and 'publish' not in resource.url|lower and 'hs-sites' not in resource.url|lower %}
+                {% set res_link = resource.url %}
+              {% endif %}
+              <a class="featured-card-small" href="{{ res_link }}" style="color: inherit; text-decoration: none;">
                 <div class="featured-card-small-image">
                     {% set img_url = '' %}
                     {# Priority 1: HubDB file objects #}
@@ -338,41 +368,7 @@
                       </div>
                     {% endif %}
                   </div>
-                  {% set res_link = '#' %}
-                  {% set res_page_tpl = resource.page_template|default('')|lower|trim %}
-                  {% set res_type = resource.asset_picklist_tag|default(resource.asset_type|default(''))|lower %}
-                  {% set res_is_podcast = res_type == 'podcast' %}
-                  {% set res_is_webinar = res_type == 'webinar' %}
-                  {% set res_is_video = res_type == 'video' %}
-                  {% set res_is_playbook = res_type in ['playbook', 'white paper', 'case study', 'solution brief', 'industry analysis', 'pdf', 'whitepaper', 'white-paper', 'case-study', 'solution-brief', 'brief', 'industry-analysis'] %}
-                  {% if res_slug %}
-                    {% if res_page_tpl == 'live webinar' %}
-                      {% set res_link = '/webinar-v1/' ~ res_slug %}
-                    {% elif res_page_tpl == 'webinar' %}
-                      {% set res_link = '/webinar/' ~ res_slug %}
-                    {% elif res_page_tpl == 'podcast' %}
-                      {% set res_link = '/podcast/' ~ res_slug %}
-                    {% elif res_page_tpl == 'video' %}
-                      {% set res_link = '/video/' ~ res_slug %}
-                    {% elif res_page_tpl in ['pdf', 'playbook', 'white paper', 'case study', 'solution brief', 'whitepaper'] %}
-                      {% set res_link = '/pdf/' ~ res_slug %}
-                    {% elif res_is_podcast %}
-                      {% set res_link = '/podcast/' ~ res_slug %}
-                    {% elif res_is_webinar %}
-                      {% set res_link = '/webinar/' ~ res_slug %}
-                    {% elif res_is_video %}
-                      {% set res_link = '/video/' ~ res_slug %}
-                    {% elif res_is_playbook %}
-                      {% set res_link = '/pdf/' ~ res_slug %}
-                    {% else %}
-                      {% set res_link = '/resource/' ~ res_slug %}
-                    {% endif %}
-                  {% elif resource.url and 'publish' not in resource.url|lower and 'hs-sites' not in resource.url|lower %}
-                    {% set res_link = resource.url %}
-                  {% endif %}
-                  <h4 class="resource-title-small">
-                    <a href="{{ res_link }}" style="color: inherit; text-decoration: none;">{{ res_title }}</a>
-                  </h4>
+                  <h3 class="resource-title-small">{{ res_title }}</h3>
                   {% if resource.long_description %}
                     <p class="resource-description-small">{{ resource.long_description|striptags|truncate(100) }}</p>
                   {% elif resource.short_description %}
@@ -384,7 +380,7 @@
                     </div>
                   {% endif %}
                 </div>
-              </div>
+              </a>
             {% endfor %}
           </div>
         </div>
@@ -523,11 +519,7 @@
               {% set resource_link = resource.url %}
             {% endif %}
   
-            {% if is_current_page %}
-            <a href="{{ resource_link }}" style="text-decoration: none; display: block; color: inherit;" class="resource-link" data-page-item="true">
-            {% else %}
-            <a href="{{ resource_link }}" style="text-decoration: none; display: none; color: inherit;" class="resource-link" data-page-item="false">
-            {% endif %}
+            <a href="{{ resource_link }}" style="text-decoration: none; {% if is_current_page %}display: block{% else %}display: none{% endif %}; color: inherit;" class="resource-link" data-page-item="{% if is_current_page %}true{% else %}false{% endif %}">
               <div class="resource-card" data-asset-type="{{ normalized_final_type }}" data-solution="{{ resource.solution_tags|default('')|lower }}" data-title="{{ resource_title|lower }}">
                 <div class="resource-card-image">
                     {% set image_url = '' %}

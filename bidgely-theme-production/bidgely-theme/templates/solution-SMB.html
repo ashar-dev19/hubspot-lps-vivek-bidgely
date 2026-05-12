@@ -5,8 +5,6 @@
   screenshotPath: ../images/template-previews/bidgely-solution-smb.png
 -->
 
-{% set asset_base = "https://244460873.fs1.hubspotusercontent-na2.net/hubfs/244460873/www-img" %}
-
 <!doctype html>
 <html lang="{{ html_lang }}" {{ html_lang_dir }}>
 <head>
@@ -16,312 +14,356 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
-</head>
   <style>
-  .hero {
-        position: relative;
-        background: url(https://245139178.fs1.hubspotusercontent-na2.net/hubfs/245139178/www-img/grid-4.svg);
-        background-size: cover;
+    .hero {
+      position: relative;
+      background: url(https://www.bidgely.com/hubfs/www-img/grid-4.svg);
+      background-size: cover;
     }
-    .hero::before{
-      display: none;
-    }
-    .hero::after{
-        display: none;
-    }
+    .hero--text-only .hero__inner { padding-bottom: 120px; }
   </style>
+</head>
 <body>
 
 {% module "site_header" path="../modules/global-header.module" %}
 
+{% dnd_area "page_content" label="Page content" %}
 
-{# =========================================================
-   HERO
-   ========================================================= #}
-<section class="hero">
+  {# ----- Hero ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module path="@hubspot/rich_text" label="SMB — Hero" %}
+          {% module_attribute "html" %}
+<section class="hero hero--text-only">
   <div class="hero__inner container">
     <div class="hero__top">
       <div>
-        <p class="eyebrow">{% text "hero_eyebrow" value="Small & Medium Business Energy Intelligence" no_wrapper=True %}</p>
-        <h1>
-          {% rich_text "hero_heading" html="Bring Precision Targeting to Your <span class='accent'>SMB Customer Base.</span>" no_wrapper=True %}
-        </h1>
-        <a class="btn btn--navy" href="{% text "hero_cta_link" value="/contact-us-form" no_wrapper=True %}">
-          {% text "hero_cta_label" value="Speak with an Expert" no_wrapper=True %}
-        </a>
+        <p class="eyebrow">Small &amp; Medium Business Energy Intelligence</p>
+        <h1>Bring Precision Targeting to Your<br><span class="accent">SMB Customer Base.</span></h1>
+        <a class="btn btn--navy" href="/contact-us-form">Speak with an Expert</a>
       </div>
       <div class="hero__copy body-sm">
-        {% rich_text "hero_copy" html="Small and medium businesses represent a massive opportunity — but most utilities treat them as an afterthought.<br><br>Bidgely transforms interval and billing data into <strong>actionable insights for SMB customers at scale</strong> — across offices, restaurants, hotels, and retail — enabling utilities to engage, target, and monetize this segment with precision.<br><br>Built on proven disaggregation and AI, UtilityAI delivers the visibility needed to drive <strong>program participation, energy savings, and new revenue opportunities</strong> across your SMB portfolio." no_wrapper=True %}
-      </div>
-    </div>
-    <div class="hero-visual">
-      {% image "hero_visual" src="{{ asset_base }}/smb-hero.svg" alt="UtilityAI SMB intelligence hero dashboard preview" class="hero-visual__img" %}
-    </div>
-  </div>
-</section>
-{# =========================================================
-   ADDITIONAL CONTENT — AFTER HERO
-   Empty by default. Editors can drop in CTAs, banners,
-   videos, forms, or any HubSpot module via the visual editor.
-   ========================================================= #}
-{% dnd_area "extras_after_hero", label="Additional Content (after hero)" %}{% end_dnd_area %}
-
-
-{# =========================================================
-   NAVY CTA STRIP
-   ========================================================= #}
-<section class="cta-strip">
-  <div class="cta-strip__inner container">
-    <h2>{% text "strip_heading" value="See SMB Intelligence in action." no_wrapper=True %}</h2>
-    <a class="btn btn--white" href="{% text "strip_cta_link" value="/video/2025-barb-modley-empower" no_wrapper=True %}">
-      {% text "strip_cta_label" value="Watch Case Study" no_wrapper=True %}
-    </a>
-  </div>
-</section>
-
-{# =========================================================
-   CAPABILITIES – 4-CARD GRID  (Jobs to Be Done)
-   ========================================================= #}
-<section class="section section--pale">
-  <div class="container">
-    <p class="eyebrow">{% text "cap_eyebrow" value="Jobs to Be Done" no_wrapper=True %}</p>
-    <h2 class="h2">
-      {% rich_text "cap_heading" html="From underserved segment to <span class='accent'>strategic growth driver.</span>" no_wrapper=True %}
-    </h2>
-    <p class="lede">
-      {% rich_text "cap_lede" html="Stop treating SMBs as small residential customers or large C&amp;I leftovers. Segment them, engage them, and grow them on their terms." no_wrapper=True %}
-    </p>
-
-    <div class="cards-4 mt-8">
-      <article class="card">
-        {% image "cap1_icon" src="{{ asset_base }}/explain-bill.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap1_title" html="Understand SMB<br>energy behavior." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap1_copy" html="Move beyond aggregate consumption to identify usage patterns across business types — offices, restaurants, hotels, retail, and more." no_wrapper=True %}</p>
-      </article>
-
-      <article class="card">
-        {% image "cap2_icon" src="{{ asset_base }}/customer-experience-v1.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap2_title" html="Engage SMB customers<br>effectively." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap2_copy" html="Deliver insights and recommendations tailored to real operational needs — not generic residential templates repurposed for businesses." no_wrapper=True %}</p>
-      </article>
-
-      <article class="card">
-        {% image "cap3_icon" src="{{ asset_base }}/target.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap3_title" html="Drive program<br>participation." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap3_copy" html="Target the businesses most likely to benefit from efficiency, demand response, and electrification programs based on actual usage." no_wrapper=True %}</p>
-      </article>
-
-      <article class="card">
-        {% image "cap4_icon" src="{{ asset_base }}/every-touchpoint.svg" alt="" class="cap-card__icon-img" %}
-        <h3 class="card__title">{% rich_text "cap4_title" html="Unlock new revenue<br>opportunities." no_wrapper=True %}</h3>
-        <p class="card__copy">{% rich_text "cap4_copy" html="Monetize SMB insights through new offerings, advisory services, and premium products built on the data you already have." no_wrapper=True %}</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-{# =========================================================
-   SOLUTIONS STRIPES (Use Cases)
-   ========================================================= #}
-<section class="section section--white">
-  <div class="container">
-    <div class="solutions-head">
-      <p class="eyebrow">{% text "sol_eyebrow" value="Use Cases" no_wrapper=True %}</p>
-      <h2 class="h2">{% rich_text "sol_heading" html="What <span class='accent'>UtilityAI</span> makes possible for SMB." no_wrapper=True %}</h2>
-      <p class="lede">{% rich_text "sol_lede" html="Each use case runs on the same business-aware intelligence layer — so your engagement, program design, and monetization teams operate from the same source of truth." no_wrapper=True %}</p>
-    </div>
-
-    {# Stripe 1 — SMB Energy Segmentation & Insights #}
-    <div class="stripe">
-      <div class="stripe__copy">
-        <h3>{% text "stripe1_title" value="SMB Energy Segmentation & Insights" no_wrapper=True %}</h3>
-        <p class="stripe__sub">{% text "stripe1_sub" value="Understand how SMB customers actually use energy." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe1_quote" html="SMB customers are diverse, but utilities lack the visibility to segment and understand their energy behavior." no_wrapper=True %}</div>
-        <ul class="stripe__bullets">
-          {% rich_text "stripe1_bullets" html="<li>Segment SMBs by usage patterns and business type</li><li>Identify operational drivers of energy consumption</li><li>Scaled energy insights for offices, hotels, restaurants, and supermarkets</li>" no_wrapper=True %}
-        </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe1_cta_link" value="/pdf/smb-disaggregation-technical-brief" no_wrapper=True %}">
-          {% text "stripe1_cta_label" value="Technical Brief" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-      <div class="stripe__visual">
-        {% image "stripe1_img" src="{{ asset_base }}/smb-segmentation.svg" alt="SMB segmentation and insights preview" class="stripe__img" %}
-      </div>
-    </div>
-
-    {# Stripe 2 — Targeted Program Design & Outreach #}
-    <div class="stripe stripe--reverse">
-      <div class="stripe__copy">
-        <h3>{% text "stripe2_title" value="Targeted Program Design & Outreach" no_wrapper=True %}</h3>
-        <p class="stripe__sub">{% text "stripe2_sub" value="Drive participation with precision." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe2_quote" html="Generic outreach fails to resonate with SMBs and leads to low program uptake." no_wrapper=True %}</div>
-        <ul class="stripe__bullets">
-          {% rich_text "stripe2_bullets" html="<li>Identify high-potential SMBs for efficiency and DR programs</li><li>Tailor outreach based on usage patterns and business needs</li><li>Increase enrollment without increasing spend</li>" no_wrapper=True %}
-        </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe2_cta_link" value="/video/secrets-of-smb-success-webinar" no_wrapper=True %}">
-          {% text "stripe2_cta_label" value="See Rocky Mountain Power's Approach" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-      <div class="stripe__visual">
-        {% image "stripe2_img" src="{{ asset_base }}/smb-program-design.svg" alt="SMB program design and outreach preview" class="stripe__img" %}
-      </div>
-    </div>
-
-    {# Stripe 3 — Energy Efficiency & Cost Savings #}
-    <div class="stripe">
-      <div class="stripe__copy">
-        <h3>{% text "stripe3_title" value="Energy Efficiency & Cost Savings" no_wrapper=True %}</h3>
-        <p class="stripe__sub">{% text "stripe3_sub" value="Help SMBs reduce costs and improve operations." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe3_quote" html="Businesses lack actionable insights to reduce energy usage without impacting operations." no_wrapper=True %}</div>
-        <ul class="stripe__bullets">
-          {% rich_text "stripe3_bullets" html="<li>Identify inefficiencies across equipment and usage patterns</li><li>Deliver targeted recommendations for savings</li><li>Drive measurable energy and cost reductions</li>" no_wrapper=True %}
-        </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe3_cta_link" value="/pdf/smb-disaggregation-technical-brief" no_wrapper=True %}">
-          {% text "stripe3_cta_label" value="Explore SMB Efficiency" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-      <div class="stripe__visual">
-        {% image "stripe3_img" src="{{ asset_base }}/smb-efficiency.svg" alt="SMB energy efficiency and cost savings preview" class="stripe__img" %}
-      </div>
-    </div>
-
-    {# Stripe 4 — SMB Monetization & New Offerings #}
-    <div class="stripe stripe--reverse">
-      <div class="stripe__copy">
-        <h3>{% text "stripe4_title" value="SMB Monetization & New Offerings" no_wrapper=True %}</h3>
-        <p class="stripe__sub">{% text "stripe4_sub" value="Turn insights into revenue." no_wrapper=True %}</p>
-        <div class="stripe__quote">{% rich_text "stripe4_quote" html="Utilities struggle to monetize SMB engagement beyond traditional programs." no_wrapper=True %}</div>
-        <ul class="stripe__bullets">
-          {% rich_text "stripe4_bullets" html="<li>Enable premium insights and advisory services</li><li>Support new SMB-focused offerings</li><li>Create incremental revenue streams from engagement, program design, and monetization</li>" no_wrapper=True %}
-        </ul>
-        <a class="stripe__cta link-arrow" href="{% text "stripe4_cta_link" value="/pdf/smb-disaggregation-technical-brief" no_wrapper=True %}">
-          {% text "stripe4_cta_label" value="White Paper" no_wrapper=True %}
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-        </a>
-      </div>
-      <div class="stripe__visual">
-        {% image "stripe4_img" src="{{ asset_base }}/smb-monetization.svg" alt="SMB monetization and new offerings preview" class="stripe__img" %}
+        <p>Bidgely transforms interval and billing data into actionable <strong>insights for SMB customers at scale</strong> — across offices, restaurants, hotels, and retail — enabling utilities to engage, target, and monetize this segment with precision</p>
+        <br>
+        <p>Built on proven disaggregation and AI, UtilityAI delivers the visibility needed to drive <strong>program participation, energy savings, and new revenue opportunities</strong> across your SMB portfolio.</p>
       </div>
     </div>
   </div>
 </section>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-{# =========================================================
-   AGENTIC AUTOMATION
-   ========================================================= #}
-<section class="section section--navy">
-  <div class="container">
-    <div class="agentic-head">
-      <div>
-        <p class="eyebrow">{% text "ag_eyebrow" value="Agentic Automation in SMB" no_wrapper=True %}</p>
-        <h2 class="h2">{% rich_text "ag_heading" html="Continuously identify opportunities<br>across your SMB portfolio." no_wrapper=True %}</h2>
-        <p class="lede">{% rich_text "ag_lede" html="Bidgely&#39;s agentic layer monitors your SMB customer base around the clock — segmenting, scoring, and matching businesses to programs without manual analyst effort." no_wrapper=True %}</p>
-      </div>
-      <div class="agentic-pill">
-        <div class="label">{% text "ag_pill_label" value="SMB Portfolio Coverage" no_wrapper=True %}</div>
-        <div class="val">{% text "ag_pill_value" value="100%" no_wrapper=True %}</div>
-        <div class="sub">{% rich_text "ag_pill_sub" html="Always-on segmentation and program matching across every SMB account" no_wrapper=True %}</div>
-      </div>
-    </div>
+  {# ----- Navy CTA strip ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/call-to-action.module"
+          label="SMB — CTA strip"
+          section_aria_label="See SMB Intelligence in action"
+          section_background="nile"
+          section_heading="See SMB Intelligence in action."
+          subcopy=""
+          cta_text="Watch Case Study"
+          button_style="white"
+          cta_link={
+            "url": {
+              "type": "EXTERNAL",
+              "content_id": null,
+              "href": "/video/2025-barb-modley-empower",
+              "href_with_scheme": "/video/2025-barb-modley-empower"
+            },
+            "open_in_new_tab": false,
+            "no_follow": false,
+            "sponsored": false,
+            "user_generated_content": false
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-    <div class="agent-cards">
-      <article class="agent-card">
-        {% image "ag_card1_icon" src="{{ asset_base }}/dtech26-for-regulators.svg" alt="" width="42" height="42" %}
-        <h4>{% text "ag_card1_title" value="Segmentation Agent" no_wrapper=True %}</h4>
-        <p>{% rich_text "ag_card1_copy" html="Automatically categorizes SMBs by usage patterns and operational behavior — keeping segments fresh as businesses evolve, expand, or change operations." no_wrapper=True %}</p>
-        <div class="meta">{% text "ag_card1_meta" value="Always-on segmentation across the SMB book" no_wrapper=True %}</div>
-      </article>
+  {# ----- Capabilities ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/capabilities.module"
+          label="SMB — Jobs to be done"
+          cap_eyebrow="Jobs to Be Done"
+          cap_heading_before="From underserved segment to"
+          cap_heading_blue="strategic growth driver."
+          cap_heading_after=""
+          cap_lede="Stop treating SMBs as small residential customers or large C&amp;I leftovers. Segment them, engage them, and grow them on their terms."
+          cards=[
+            {
+              "icon": { "src": "https://www.bidgely.com/hubfs/www-img/explain-bill-icon.svg", "alt": "", "loading": "lazy" },
+              "title": "Understand SMB<br>energy behavior.",
+              "copy": "Move beyond aggregate consumption to identify usage patterns across business types &mdash; offices, restaurants, hotels, retail, and more."
+            },
+            {
+              "icon": { "src": "https://www.bidgely.com/hubfs/www-img/customer-experience-v1.svg", "alt": "", "loading": "lazy" },
+              "title": "Engage SMB customers<br>effectively.",
+              "copy": "Deliver insights and recommendations tailored to real operational needs &mdash; not generic residential templates repurposed for businesses."
+            },
+            {
+              "icon": { "src": "https://www.bidgely.com/hubfs/www-img/target.svg", "alt": "", "loading": "lazy" },
+              "title": "Drive program<br>participation.",
+              "copy": "Target the businesses most likely to benefit from efficiency, demand response, and electrification programs based on actual usage."
+            },
+            {
+              "icon": { "src": "https://www.bidgely.com/hubfs/www-img/every-touchpoint.svg", "alt": "", "loading": "lazy" },
+              "title": "Unlock new revenue<br>opportunities.",
+              "copy": "Monetize SMB insights through new offerings, advisory services, and premium products built on the data you already have."
+            }
+          ]
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-      <article class="agent-card">
-        {% image "ag_card2_icon" src="{{ asset_base }}/black-1.svg" alt="" width="42" height="42" %}
-        <h4>{% text "ag_card2_title" value="Efficiency Opportunity Agent" no_wrapper=True %}</h4>
-        <p>{% rich_text "ag_card2_copy" html="Identifies businesses with high savings potential by spotting inefficient equipment patterns and abnormal load profiles before customers even notice." no_wrapper=True %}</p>
-        <div class="meta">{% text "ag_card2_meta" value="Higher-confidence efficiency targeting" no_wrapper=True %}</div>
-      </article>
+  {# ----- Use cases — solution-grid ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/solution-grid.module"
+          label="SMB — Use cases"
+          programs_intro={
+            "programs_eyebrow": "Use Cases",
+            "programs_heading_before": "What ",
+            "programs_heading_accent": "UtilityAI",
+            "programs_heading_after": " makes possible for SMB.",
+            "programs_lede": "<p>Each use case runs on the same business-aware intelligence layer &mdash; so your engagement, program design, and monetization teams operate from the same source of truth.</p>"
+          }
+          program_rows=[
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": false,
+              "program_diagram": "custom_image",
+              "program_custom_image": {
+                "src": "https://www.bidgely.com/hubfs/Background+Border+Shadow-1.svg",
+                "alt": "SMB energy segmentation and business type analysis preview",
+                "loading": "lazy"
+              },
+              "program_title": "SMB Energy Segmentation & Insights",
+              "program_subtitle": "Understand how SMB customers actually use energy.",
+              "program_problem": "SMB customers are diverse, but utilities lack the visibility to segment and understand their energy behavior.",
+              "program_outcomes": [
+                { "program_outcome_text": "Segment SMBs by usage patterns and business type" },
+                { "program_outcome_text": "Identify operational drivers of energy consumption" },
+                { "program_outcome_text": "Scaled energy insights for offices, hotels, restaurants, and supermarkets" }
+              ],
+              "program_link_label": "Technical Brief",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "/pdf/smb-disaggregation-technical-brief", "href_with_scheme": "/pdf/smb-disaggregation-technical-brief" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            },
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": true,
+              "program_diagram": "custom_image",
+              "program_custom_image": {
+                "src": "https://www.bidgely.com/hubfs/program-targeting.svg",
+                "alt": "SMB program targeting and recruitment funnel preview",
+                "loading": "lazy"
+              },
+              "program_title": "Targeted Program Design & Outreach",
+              "program_subtitle": "Drive participation with precision.",
+              "program_problem": "Generic outreach fails to resonate with SMBs and leads to low program uptake.",
+              "program_outcomes": [
+                { "program_outcome_text": "Identify high-potential SMBs for efficiency and DR programs" },
+                { "program_outcome_text": "Tailor outreach based on usage patterns and business needs" },
+                { "program_outcome_text": "Increase enrollment without increasing spend" }
+              ],
+              "program_link_label": "See Rocky Mountain Power's Approach",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "/video/secrets-of-smb-success-webinar", "href_with_scheme": "/video/secrets-of-smb-success-webinar" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            },
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": false,
+              "program_diagram": "custom_image",
+              "program_custom_image": {
+                "src": "https://www.bidgely.com/hs-fs/hubfs/SMB-image-3.jpg?width=1320&name=SMB-image-3.jpg",
+                "alt": "SMB energy efficiency programs and tips preview",
+                "loading": "lazy"
+              },
+              "program_title": "Energy Efficiency & Cost Savings",
+              "program_subtitle": "Help SMBs reduce costs and improve operations.",
+              "program_problem": "Businesses lack actionable insights to reduce energy usage without impacting operations.",
+              "program_outcomes": [
+                { "program_outcome_text": "Identify inefficiencies across equipment and usage patterns" },
+                { "program_outcome_text": "Deliver targeted recommendations for savings" },
+                { "program_outcome_text": "Drive measurable energy and cost reductions" }
+              ],
+              "program_link_label": "Explore SMB Efficiency",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "/pdf/smb-disaggregation-technical-brief", "href_with_scheme": "/pdf/smb-disaggregation-technical-brief" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            },
+            {
+              "program_anchor_id": "",
+              "program_reverse_layout": true,
+              "program_diagram": "custom_image",
+              "program_custom_image": {
+                "src": "https://www.bidgely.com/hs-fs/hubfs/SMB-image-4.jpg?width=1320&name=SMB-image-4.jpg",
+                "alt": "SMB monetization and high bill analyzer preview",
+                "loading": "lazy"
+              },
+              "program_title": "SMB Monetization & New Offerings",
+              "program_subtitle": "Turn insights into revenue.",
+              "program_problem": "Utilities struggle to monetize SMB engagement beyond traditional programs.",
+              "program_outcomes": [
+                { "program_outcome_text": "Enable premium insights and advisory services" },
+                { "program_outcome_text": "Support new SMB-focused offerings" },
+                { "program_outcome_text": "Create incremental revenue streams from engagement, program design, and monetization" }
+              ],
+              "program_link_label": "White Paper",
+              "program_link": {
+                "url": { "type": "EXTERNAL", "href": "/pdf/smb-disaggregation-technical-brief", "href_with_scheme": "/pdf/smb-disaggregation-technical-brief" },
+                "open_in_new_tab": false,
+                "no_follow": false,
+                "sponsored": false,
+                "user_generated_content": false
+              }
+            }
+          ]
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-      <article class="agent-card">
-        {% image "ag_card3_icon" src="{{ asset_base }}/iucx-icon-05.svg" alt="" width="42" height="42" %}
-        <h4>{% text "ag_card3_title" value="Program Matching Agent" no_wrapper=True %}</h4>
-        <p>{% rich_text "ag_card3_copy" html="Matches SMBs to relevant programs and offerings based on real data — efficiency, demand response, electrification, advisory — without manual campaign workflows." no_wrapper=True %}</p>
-        <div class="meta">{% text "ag_card3_meta" value="Higher enrollment without higher spend" no_wrapper=True %}</div>
-      </article>
-    </div>
-  </div>
-</section>
+  {# ----- Agentic automation ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/agentic-automation.module"
+          label="SMB — Agentic automation"
+          agents_intro={
+            "ce_agents_eyebrow": "Agentic Automation in SMB",
+            "ce_agents_heading_before": "Continuously identify opportunities across your SMB portfolio.",
+            "ce_agents_heading_accent": "",
+            "ce_agents_heading_after": "",
+            "ce_agents_lede": "<p>Bidgely&rsquo;s agentic layer monitors your SMB customer base around the clock &mdash; segmenting, scoring, and matching businesses to programs without manual analyst effort.</p>"
+          }
+          agents_value={
+            "ce_agents_value_eyebrow": "SMB Portfolio Coverage",
+            "ce_agents_value_num": "100%",
+            "ce_agents_value_desc": "<p>Always-on segmentation and program matching across every SMB account</p>"
+          }
+          agent_cards=[
+            {
+              "card_icon": { "src": "https://www.bidgely.com/hubfs/www-img/dtech26-for-regulators.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "card_title": "Segmentation Agent",
+              "card_body": "<p>Automatically categorizes SMBs by usage patterns and operational behavior &mdash; keeping segments fresh as businesses evolve, expand, or change operations.</p>",
+              "card_stat": "Always-on segmentation across the SMB book"
+            },
+            {
+              "card_icon": { "src": "https://www.bidgely.com/hubfs/black-1.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "card_title": "Efficiency Opportunity Agent",
+              "card_body": "<p>Identifies businesses with high savings potential by spotting inefficient equipment patterns and abnormal load profiles before customers even notice.</p>",
+              "card_stat": "Higher-confidence efficiency targeting"
+            },
+            {
+              "card_icon": { "src": "https://www.bidgely.com/hubfs/www-img/iucx-icon-05.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "card_title": "Program Matching Agent",
+              "card_body": "<p>Matches SMBs to relevant programs and offerings based on real data &mdash; efficiency, demand response, electrification, advisory &mdash; without manual campaign workflows.</p>",
+              "card_stat": "Higher enrollment without higher spend"
+            }
+          ]
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-{# =========================================================
-   GENAI
-   ========================================================= #}
-<section class="section section--gray">
-  <div class="container">
-    <div class="genai__head">
-      <p class="eyebrow">{% text "genai_eyebrow" value="GenAI for SMB" no_wrapper=True %}</p>
-      <h2 class="h2">{% rich_text "genai_heading" html="Make energy insights usable for <span class='accent'>every business owner.</span>" no_wrapper=True %}</h2>
-      <p class="lede">{% rich_text "genai_lede" html="Every answer — to a business owner or a CSR — is grounded in that account&#39;s actual usage and operational profile, not a generic LLM prompt." no_wrapper=True %}</p>
-    </div>
+  {# ----- GenAI ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/genai.module"
+          label="SMB — GenAI"
+          genai_intro={
+            "ce_genai_eyebrow": "GenAI for SMB",
+            "ce_genai_heading_before": "Make energy insights usable for ",
+            "ce_genai_heading_accent": "every business owner.",
+            "ce_genai_heading_after": "",
+            "ce_genai_lead": "<p>Every answer &mdash; to a business owner or a CSR &mdash; is grounded in that account&rsquo;s actual usage and operational profile, not a generic LLM prompt.</p>"
+          }
+          genai_cards=[
+            {
+              "feature_icon": { "src": "https://www.bidgely.com/hubfs/www-img/ders-icon-v1.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "feature_title": "Energy Assistant (SMB-Facing)",
+              "feature_body": "<p>Explains energy usage in simple, actionable terms. Example: &ldquo;Your restaurant&rsquo;s peak energy use is driven by refrigeration and cooking during evening hours. Adjusting equipment schedules or upgrading to more efficient systems could reduce costs.&rdquo;</p>"
+            },
+            {
+              "feature_icon": { "src": "https://www.bidgely.com/hubfs/www-img/iucx-icon-05-1.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "feature_title": "CSR Copilot (SMB-Aware)",
+              "feature_body": "<p>Equips agents with SMB-specific insights &mdash; by business type, equipment profile, and usage pattern &mdash; so they can provide relevant recommendations and support without the residential script.</p>"
+            },
+            {
+              "feature_icon": { "src": "https://www.bidgely.com/hubfs/www-img/daas-v2.svg", "alt": "", "loading": "lazy", "width": 42, "height": 42 },
+              "feature_title": "Operations & Equipment Explainer",
+              "feature_body": "<p>Usage charts and equipment-level breakdowns with embedded natural-language explanations. Owners and CSRs can tap any spike or schedule and get a plain-English reason &mdash; grounded in the same data driving program matching.</p>"
+            }
+          ]
+          right_column_type="image"
+          genai_visual_image={
+            "src": "https://www.bidgely.com/hubfs/SMB-assistant.svg",
+            "alt": "SMB grounded conversations assistant preview",
+            "loading": "lazy"
+          }
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-    <div class="genai">
-      <div class="genai__cards">
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/ders-icon-v1.svg');"></div>
-          <div>
-            <h4>{% text "genai_card1_title" value="Energy Assistant (SMB-Facing)" no_wrapper=True %}</h4>
-            <p>{% rich_text "genai_card1_copy" html="Explains energy usage in simple, actionable terms. Example: &#34;Your restaurant&#39;s peak energy use is driven by refrigeration and cooking during evening hours. Adjusting equipment schedules or upgrading to more efficient systems could reduce costs.&#34;" no_wrapper=True %}</p>
-          </div>
-        </div>
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/iucx-icon-05-1.svg');"></div>
-          <div>
-            <h4>{% text "genai_card2_title" value="CSR Copilot (SMB-Aware)" no_wrapper=True %}</h4>
-            <p>{% rich_text "genai_card2_copy" html="Equips agents with SMB-specific insights — by business type, equipment profile, and usage pattern — so they can provide relevant recommendations and support without the residential script." no_wrapper=True %}</p>
-          </div>
-        </div>
-        <div class="genai-card">
-          <div class="ic" style="background-image:url('{{ asset_base }}/daas-v2.svg');"></div>
-          <div>
-            <h4>{% text "genai_card3_title" value="Operations & Equipment Explainer" no_wrapper=True %}</h4>
-            <p>{% rich_text "genai_card3_copy" html="Usage charts and equipment-level breakdowns with embedded natural-language explanations. Owners and CSRs can tap any spike or schedule and get a plain-English reason — grounded in the same data driving program matching." no_wrapper=True %}</p>
-          </div>
-        </div>
-      </div>
+  {# ----- Resources (HubDB) ----- #}
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module
+          path="../modules/resources-hubdb.module"
+          label="Resources"
+          ce_resources_eyebrow="Resources"
+          filter_value="SMB,Enterprise Analytics"
+          hubdb_limit=4
+          hubdb_row_ids=""
+        %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
 
-      <div class="genai__visual">
-        {% image "genai_visual" src="{{ asset_base }}/smb-grounded-conversations.svg" alt="SMB grounded conversations assistant preview" class="genai__img" %}
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-{# =========================================================
-   ADDITIONAL CONTENT — BEFORE RESOURCES
-   Empty by default. Editors can drop in CTAs, banners,
-   forms, additional case studies, or any HubSpot module here.
-   ========================================================= #}
-{% dnd_area "extras_before_resources", label="Additional Content (before resources)" %}{% end_dnd_area %}
-
-{# Resources (HubDB module):
-   • hubdb_row_ids — comma-separated HubDB row IDs; if set, ONLY those rows (in order), max hubdb_limit cards; tag filter is IGNORED.
-   • Else — filter_column + filter_value match a token in the HubDB tags column; rows are newest-first (hs_updated_at).
-   • hubdb_limit — max cards shown (4 below).
-   TODO: replace the placeholder hubdb_row_ids with the SMB-tagged rows
-   (SMB Energy Intelligence Overview, Program Design for SMB Customers,
-   Monetization Strategy Guide, SMB Case Studies). While IDs are unset,
-   the filter_value="SMB" path will populate by tag automatically. #}
-{% module "resources_smb" path="../modules/resources-hubdb.module",
-  ce_resources_eyebrow="Resources",
-  filter_value="SMB",
-  hubdb_limit=4,
-  hubdb_row_ids="" %}
+{% end_dnd_area %}
 
 {% module "site_footer" path="../modules/global-footer.module" %}
 
-<script src="{{ get_asset_url('/bidgely-theme/css/js/main.js') }}" defer></script>
+<script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
 {{ standard_footer_includes }}
 </body>
 </html>

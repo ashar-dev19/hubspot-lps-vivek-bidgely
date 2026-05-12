@@ -9,6 +9,6 @@
     "css/main.css"
   ],
   "default_js": [
-    "js/main.js"
+    "css/js/main.js"
   ]
 }
