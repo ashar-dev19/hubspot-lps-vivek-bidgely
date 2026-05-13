@@ -1,0 +1,67 @@
+{#
+  EmPOWER AI virtual tracks: section + horizontal video cards.
+  Wistia web components render here (not inside rich text). media-id comes from module fields.
+#}
+<div class="empowerai-virtual-track-module">
+  <style>
+    wistia-player:not(:defined) { display: block; filter: blur(5px); }
+    {% for track in module.tracks %}
+    {% for item in track.videos %}
+    {% if item.media_id %}
+    wistia-player[media-id='{{ item.media_id|escape }}']:not(:defined) {
+      background: center / cover no-repeat url('https://fast.wistia.com/embed/medias/{{ item.media_id|escape }}/swatch');
+    }
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+  </style>
+
+  {% for track in module.tracks %}
+  <section{% if track.section_anchor %} id="{{ track.section_anchor|escape }}"{% endif %} class="track-section">
+    <div class="section-head">
+      <div>
+        {% if track.section_eyebrow %}
+          <span class="eyebrow">{{ track.section_eyebrow|escape }}</span>
+        {% endif %}
+        {% if track.section_heading %}
+          <h2 class="h2">{{ track.section_heading|escape }}</h2>
+        {% endif %}
+      </div>
+      {% if track.section_intro %}
+        <p>{{ track.section_intro|escape }}</p>
+      {% endif %}
+    </div>
+    <div class="video-slider">
+      <button type="button" class="slider-arrow slider-arrow--prev" data-dir="prev" aria-label="Previous videos">‹</button>
+      <button type="button" class="slider-arrow slider-arrow--next" data-dir="next" aria-label="Next videos">›</button>
+      <div class="video-track">
+        {% for item in track.videos %}
+        {% if item.media_id %}
+        <article class="video-card">
+          <div class="video-frame">
+            <wistia-player
+              media-id="{{ item.media_id|escape }}"
+              wistia-popover="true"
+              aspect="1.7777777777777777"
+              style="width:100%;height:100%;"
+            ></wistia-player>
+          </div>
+          <div class="video-copy">
+            {% if item.card_eyebrow %}
+              <div class="eyebrow">{{ item.card_eyebrow|escape }}</div>
+            {% endif %}
+            {% if item.card_title %}
+              <h3>{{ item.card_title|escape }}</h3>
+            {% endif %}
+            {% if item.card_body %}
+              <p>{{ item.card_body|escape }}</p>
+            {% endif %}
+          </div>
+        </article>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+</div>

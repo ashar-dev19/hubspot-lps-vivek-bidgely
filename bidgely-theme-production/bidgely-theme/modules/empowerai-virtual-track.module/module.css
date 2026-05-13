@@ -1,0 +1,6 @@
+/* Page template supplies .track-section / .video-slider; web component fills the frame. */
+.empowerai-virtual-track-module .video-frame wistia-player {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,207 @@
+[ {
+  "id" : "tracks",
+  "name" : "tracks",
+  "label" : "Virtual tracks",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : 6,
+    "sorting_label_field" : "tracks.section_heading",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "tracks.section_anchor",
+    "name" : "section_anchor",
+    "label" : "Section ID (URL anchor)",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "tracks.section_eyebrow",
+    "name" : "section_eyebrow",
+    "label" : "Section eyebrow",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "tracks.section_heading",
+    "name" : "section_heading",
+    "label" : "Section heading",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "tracks.section_intro",
+    "name" : "section_intro",
+    "label" : "Section intro paragraph",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : true,
+    "type" : "text",
+    "display_width" : null,
+    "default" : ""
+  }, {
+    "id" : "tracks.videos",
+    "name" : "videos",
+    "label" : "Videos",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 1,
+      "max" : 12,
+      "sorting_label_field" : "tracks.videos.media_id",
+      "default" : 4
+    },
+    "children" : [ {
+      "id" : "tracks.videos.media_id",
+      "name" : "media_id",
+      "label" : "Wistia media ID",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "tracks.videos.card_eyebrow",
+      "name" : "card_eyebrow",
+      "label" : "Card eyebrow",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "tracks.videos.card_title",
+      "name" : "card_title",
+      "label" : "Card title",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    }, {
+      "id" : "tracks.videos.card_body",
+      "name" : "card_body",
+      "label" : "Card body",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : true,
+      "type" : "text",
+      "display_width" : null,
+      "default" : ""
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : true,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ {
+      "media_id" : "auflagjooc",
+      "card_eyebrow" : "Analytics Workbench",
+      "card_title" : "Evaluate TOU Performance and Activate the Right Customers",
+      "card_body" : "See how Analytics Workbench helps utilities compare TOU adoption, quantify load-shift potential, and turn the right customer segments into ready-to-launch campaigns."
+    }, {
+      "media_id" : "d6xbzt4rkq",
+      "card_eyebrow" : "Agentic Automation",
+      "card_title" : "Run a VPP Program From Targeting to Delivered Capacity",
+      "card_body" : "See how Bidgely agents identify eligible smart thermostat customers, recruit them at speed, and verify whether committed capacity was actually delivered."
+    }, {
+      "media_id" : "j43q2mpahz",
+      "card_eyebrow" : "Analytics Workbench",
+      "card_title" : "Target Weatherization Candidates and Launch Personalized Outreach",
+      "card_body" : "See how Bidgely combines appliance, premise, income, and load-curve signals to identify high-value weatherization candidates and move them directly into Campaign Builder."
+    }, {
+      "media_id" : "e2dbey51kf",
+      "card_eyebrow" : "Analytics Workbench",
+      "card_title" : "Find High-Impact Cooling Customers With Analytics Workbench",
+      "card_body" : "See how appliance-level intelligence helps utilities isolate inefficient cooling loads, peak-hour usage, and high-consumption households for DSM, weatherization, and demand response programs."
+    } ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : true,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "section_anchor" : "shape-shift-load",
+    "section_eyebrow" : "Virtual Track · Track 01",
+    "section_heading" : "Shape and Shift Load",
+    "section_intro" : "AI-powered targeting for flexible load, TOU, DSM, VPP, and weatherization programs.",
+    "videos" : [ {
+      "media_id" : "auflagjooc",
+      "card_eyebrow" : "Analytics Workbench",
+      "card_title" : "Evaluate TOU Performance and Activate the Right Customers",
+      "card_body" : "See how Analytics Workbench helps utilities compare TOU adoption, quantify load-shift potential, and turn the right customer segments into ready-to-launch campaigns."
+    }, {
+      "media_id" : "d6xbzt4rkq",
+      "card_eyebrow" : "Agentic Automation",
+      "card_title" : "Run a VPP Program From Targeting to Delivered Capacity",
+      "card_body" : "See how Bidgely agents identify eligible smart thermostat customers, recruit them at speed, and verify whether committed capacity was actually delivered."
+    }, {
+      "media_id" : "j43q2mpahz",
+      "card_eyebrow" : "Analytics Workbench",
+      "card_title" : "Target Weatherization Candidates and Launch Personalized Outreach",
+      "card_body" : "See how Bidgely combines appliance, premise, income, and load-curve signals to identify high-value weatherization candidates and move them directly into Campaign Builder."
+    }, {
+      "media_id" : "e2dbey51kf",
+      "card_eyebrow" : "Analytics Workbench",
+      "card_title" : "Find High-Impact Cooling Customers With Analytics Workbench",
+      "card_body" : "See how appliance-level intelligence helps utilities isolate inefficient cooling loads, peak-hour usage, and high-consumption households for DSM, weatherization, and demand response programs."
+    } ]
+  }, {
+    "section_anchor" : "customer-delight",
+    "section_eyebrow" : "Virtual Track · Track 02",
+    "section_heading" : "Create Customer Delight",
+    "section_intro" : "Personalized, proactive experiences that help customers understand usage, resolve issues, and act with confidence.",
+    "videos" : [ {
+      "media_id" : "9868rf8rg8",
+      "card_eyebrow" : "Customer Engagement",
+      "card_title" : "Answer Customer Energy Questions With an Agentic Energy Assistant",
+      "card_body" : "See how Energy Assistant uses AMI, rate, appliance, and behavior data to explain high bills, surface savings opportunities, and guide customers toward the next best action."
+    }, {
+      "media_id" : "kxfp39onpx",
+      "card_eyebrow" : "Customer Engagement",
+      "card_title" : "Resolve High-Bill Calls With IVR-Ready Energy Intelligence",
+      "card_body" : "See how Bidgely-powered IVR support explains bill increases, detects unusual appliance behavior, and helps customers resolve issues without a generic escalation path."
+    }, {
+      "media_id" : "hr1su8c865",
+      "card_eyebrow" : "Affordability",
+      "card_title" : "Guide Income-Qualified Customers to the Right Programs",
+      "card_body" : "See how personalized emails, eligibility checks, and a guided web journey help customers find assistance programs they are more likely to qualify for and act on."
+    } ]
+  }, {
+    "section_anchor" : "future-grid",
+    "section_eyebrow" : "Virtual Track · Track 03",
+    "section_heading" : "Understand & Plan Your Future Grid",
+    "section_intro" : "Behind-the-meter visibility for DER, EV, and electrification planning so grid teams can act before constraints arrive.",
+    "videos" : [ {
+      "media_id" : "z90rrb6m4y",
+      "card_eyebrow" : "Grid Intelligence",
+      "card_title" : "Ask Grid Planning Questions in Plain Language",
+      "card_body" : "See how Energy Analyzer helps planners investigate peak demand, inefficient cooling, and EV charging behavior using natural-language analysis grounded in customer data."
+    }, {
+      "media_id" : "w0inxemnlx",
+      "card_eyebrow" : "Grid Intelligence",
+      "card_title" : "Model Long-Term Load Growth and Grid Stress Scenarios",
+      "card_body" : "Use scenario analysis to see how electrification, DER adoption, and changing load behavior could compound over time across the grid."
+    }, {
+      "media_id" : "dn2euw7rei",
+      "card_eyebrow" : "Grid Intelligence",
+      "card_title" : "Use Grid Agents to Diagnose Constraints and Build the Next Best Plan",
+      "card_body" : "See how grid agents explain what is driving a constrained substation, project future risk, and recommend targeted actions using appliance-level intelligence."
+    } ]
+  } ]
+} ]
