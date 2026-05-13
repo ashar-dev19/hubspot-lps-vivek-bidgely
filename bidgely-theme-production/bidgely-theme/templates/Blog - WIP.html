@@ -1,0 +1,418 @@
+<!--
+  templateType: blog_post
+  isAvailableForNewContent: true
+  label: Blog post WIP
+-->
+
+<!--
+  HubSpot dynamic blog/article template.
+  Use this in HubSpot Design Manager as a blog post template or adapt the
+  marked module defaults into custom module fields.
+-->
+{% set post_title = content.name|default("Beyond Basic Targeting: Why Income-Qualified Programs Need Premise-Level Precision") %}
+{% set author_name = content.blog_post_author.display_name|default("Ted Nielson") %}
+{% set author_avatar = content.blog_post_author.avatar|default("") %}
+{% set publish_date = content.publish_date|datetimeformat("%B %e, %Y") %}
+{% set featured_image = content.featured_image|default("") %}
+{% set sidebar_promo_image = module.sidebar_promo_image.src|default("") %}
+{% set sidebar_promo_alt = module.sidebar_promo_image.alt|default("Related resource") %}
+{% set sidebar_promo_text = module.sidebar_promo_text|default("") %}
+<!DOCTYPE html>
+<html lang="{{ html_lang|default('en') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ post_title|striptags }}</title>
+    {{ standard_header_includes }}
+    <style>
+      :root {
+        --ink: #20334d;
+        --muted: #65748b;
+        --soft: #eff7fc;
+        --blue: #33a3e6;
+        --button: #123453;
+        --line: #edf2f6;
+        --page: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        background: var(--page);
+        color: var(--ink);
+        font-family: Montserrat, "Segoe UI", Arial, sans-serif;
+        font-size: 18px;
+        line-height: 1.72;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .hero {
+        min-height: 420px;
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        background-image:
+          linear-gradient(rgba(53, 164, 230, 0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(53, 164, 230, 0.07) 1px, transparent 1px);
+        background-size: 34px 34px;
+        border-bottom: 1px solid #f3f5f8;
+      }
+
+      .hero-inner,
+      .feature-wrap,
+      .content-shell {
+        width: min(1300px, calc(100% - 48px));
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-inner {
+        padding-top: 35px;
+      }
+
+      .kicker {
+        margin: 0 0 13px;
+        color: #33a3e6;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .kicker span {
+        margin: 0 12px;
+        color: #a0d2ef;
+      }
+
+      h1 {
+        width: min(1060px, 100%);
+        margin: 0;
+        color: #152842;
+        font-size: 52px;
+        line-height: 1.08;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .feature-wrap {
+        transform: translateY(-15px);
+      }
+
+      .feature-image {
+        display: block;
+        width: 100%;
+        border-radius: 12px;
+      }
+
+      .content-shell {
+        margin-top: 56px;
+        display: grid;
+        grid-template-columns: 270px minmax(0, 789px);
+        gap: 100px;
+        align-items: start;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 96px;
+        color: #5a6980;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .author-photo {
+        width: 96px;
+        height: 96px;
+        display: block;
+        object-fit: cover;
+        object-position: top center;
+        border-radius: 999px;
+        background: #d9f1ff;
+      }
+
+      .author {
+        margin: 23px 0 33px;
+      }
+
+      .side-block {
+        padding: 22px 0;
+        border-top: 1px solid #dce4eb;
+      }
+
+      .side-block h2 {
+        margin: 0 0 15px;
+        color: #516176;
+        font-size: 12px;
+        line-height: 1.2;
+      }
+
+      .topic-pill {
+        display: block;
+        width: max-content;
+        max-width: 100%;
+        margin: 9px 0;
+        padding: 4px 11px;
+        border-radius: 999px;
+        background: #eef8ff;
+        color: #54afe7;
+        font-size: 10px;
+        font-weight: 600;
+      }
+
+      .sidebar-promo {
+        padding: 22px 0;
+        border-bottom: 1px solid #dce4eb;
+      }
+
+      .sidebar-promo img {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin-bottom: 14px;
+        border-radius: 8px;
+      }
+
+      .sidebar-promo-text {
+        margin: 0;
+        color: #536173;
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .socials {
+        display: flex;
+        gap: 12px;
+      }
+
+      .socials a {
+        width: 25px;
+        height: 25px;
+        display: grid;
+        place-items: center;
+        border: 2px solid #1f2d3e;
+        border-radius: 999px;
+        color: #1f2d3e;
+        font-size: 13px;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .article {
+        color: #536173;
+        font-size: 18px;
+        line-height: 1.72;
+      }
+
+      .article p {
+        margin: 0 0 28px;
+      }
+
+      .article h2 {
+        margin: 43px 0 18px;
+        color: #5f6d82;
+        font-size: 34px;
+        line-height: 1.15;
+        font-weight: 500;
+        letter-spacing: 0;
+      }
+
+      .article h3 {
+        margin: 28px 0 6px;
+        color: #273953;
+        font-size: 18px;
+        line-height: 1.45;
+        font-weight: 800;
+      }
+
+      .article a {
+        color: #2da2e4;
+        font-weight: 700;
+      }
+
+      .article img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      blockquote {
+        position: relative;
+        margin: 48px 0 26px;
+        padding: 38px 52px 38px 137px;
+        border-radius: 15px;
+        background: #edf8ff;
+        color: #18314f;
+        font-size: 28px;
+        line-height: 1.28;
+        font-weight: 800;
+      }
+
+      blockquote::before {
+        content: "“";
+        position: absolute;
+        left: 51px;
+        top: 25px;
+        color: #3aa6e7;
+        font-size: 82px;
+        line-height: 1;
+      }
+
+      .back-link {
+        display: inline-flex;
+        margin-top: 10px;
+        color: #2aa6ec;
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      @media (max-width: 1100px) {
+        h1 {
+          font-size: 40px;
+        }
+
+        .content-shell {
+          grid-template-columns: 220px minmax(0, 1fr);
+          gap: 48px;
+        }
+      }
+
+      @media (max-width: 820px) {
+        body {
+          font-size: 16px;
+        }
+
+        .hero {
+          min-height: 300px;
+        }
+
+        h1 {
+          font-size: 31px;
+        }
+
+        .content-shell {
+          display: block;
+          margin-top: 24px;
+        }
+
+        .sidebar {
+          position: static;
+          margin-bottom: 36px;
+          display: grid;
+          grid-template-columns: 96px 1fr;
+          column-gap: 18px;
+        }
+
+        .side-block {
+          grid-column: 1 / -1;
+        }
+
+        .article h2 {
+          font-size: 27px;
+        }
+
+        blockquote {
+          padding: 72px 28px 30px;
+          font-size: 23px;
+        }
+
+        blockquote::before {
+          left: 28px;
+        }
+      }
+
+      @media (max-width: 520px) {
+        h1 {
+          font-size: 26px;
+        }
+
+        .feature-image {
+          aspect-ratio: 1300 / 867;
+          object-fit: cover;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <p class="kicker">
+            {{ author_name|upper }}
+            <span>•</span>
+            {{ publish_date|upper }}
+          </p>
+          <h1>{{ post_title }}</h1>
+        </div>
+      </section>
+
+      {% if featured_image %}
+        <section class="feature-wrap">
+          <img class="feature-image" src="{{ featured_image }}" alt="{{ content.featured_image_alt_text|default(post_title)|striptags }}" />
+        </section>
+      {% endif %}
+
+      <div class="content-shell">
+        <aside class="sidebar" aria-label="Article details">
+          {% if author_avatar %}
+            <img class="author-photo" src="{{ author_avatar }}" alt="{{ author_name|striptags }}" />
+          {% endif %}
+          <p class="author">Author: {{ author_name }}</p>
+
+          {% if content.topic_list %}
+            <div class="side-block">
+              <h2>Topics:</h2>
+              {% for topic in content.topic_list %}
+                <a class="topic-pill" href="{{ blog_tag_url(group.id, topic.slug) }}">{{ topic.name }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <div class="side-block">
+            <h2>Share this Article:</h2>
+            <div class="socials" aria-label="Share links">
+              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ content.absolute_url|urlencode }}" aria-label="Share on LinkedIn">in</a>
+              <a href="https://twitter.com/intent/tweet?url={{ content.absolute_url|urlencode }}&text={{ post_title|striptags|urlencode }}" aria-label="Share on X">X</a>
+              <a href="mailto:?subject={{ post_title|striptags|urlencode }}&body={{ content.absolute_url|urlencode }}" aria-label="Share by email">@</a>
+            </div>
+          </div>
+
+          <div class="side-block">
+            <h2>Subscribe to Bidgely Emails:</h2>
+            {% form "blog_subscription_form"
+              form_to_use="",
+              response_response_type="inline",
+              response_message="Thanks for subscribing."
+            %}
+          </div>
+
+          {% if sidebar_promo_image or sidebar_promo_text %}
+            <div class="sidebar-promo">
+              {% if sidebar_promo_image %}
+                <img src="{{ sidebar_promo_image }}" alt="{{ sidebar_promo_alt|striptags }}" />
+              {% endif %}
+              {% if sidebar_promo_text %}
+                <div class="sidebar-promo-text">
+                  {{ sidebar_promo_text }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </aside>
+
+        <article class="article">
+          {{ content.post_body }}
+          <a class="back-link" href="{{ group.absolute_url|default('/resources/insights') }}">← Back to Insights</a>
+        </article>
+      </div>
+    </main>
+
+    {{ standard_footer_includes }}
+  </body>
+</html>

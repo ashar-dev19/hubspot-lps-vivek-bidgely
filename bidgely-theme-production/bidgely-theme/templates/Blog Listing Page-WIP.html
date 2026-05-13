@@ -1,0 +1,453 @@
+<!--
+  templateType: blog_listing
+  isAvailableForNewContent: true
+  label: Blog Listing WIP
+-->
+{% set selected_blog = group.id|default("default") %}
+{% set all_tags = blog_tags(selected_blog, 250) %}
+
+{% macro read_time(post) %}
+  {% set words = post.post_body|striptags|wordcount %}
+  {% set minutes = (words / 200)|round(0, "ceil") %}
+  {{ minutes|int if minutes > 0 else 1 }} Min Read
+{% endmacro %}
+
+{% macro post_card(post, card_class="") %}
+  <article class="insight-card {{ card_class }}" data-tags="{{ post.tag_list|map(attribute='slug')|join(',') }}" {{ flag_content_for_access_check(post.id) }}>
+    <a class="insight-card__media" href="{{ post.absolute_url|escape_url }}" aria-label="{{ post.name|striptags }}">
+      {% if post.featured_image %}
+        <img
+          src="{{ resize_image_url(post.featured_image, 720) }}"
+          alt="{{ post.featured_image_alt_text|default(post.name)|striptags }}"
+          loading="lazy"
+        />
+      {% else %}
+        <span class="insight-card__placeholder" aria-hidden="true"></span>
+      {% endif %}
+    </a>
+    <div class="insight-card__body">
+      <time datetime="{{ post.publish_date|datetimeformat('%Y-%m-%d') }}">
+        {{ post.publish_date|datetimeformat("%B %e, %Y") }}
+      </time>
+      <h2>
+        <a href="{{ post.absolute_url|escape_url }}">{{ post.name }}</a>
+      </h2>
+      <p class="insight-card__meta">
+        {% if post.blog_post_author %}
+          <span>{{ post.blog_post_author.display_name }}</span>
+        {% endif %}
+        <span aria-hidden="true">•</span>
+        <span>{{ read_time(post) }}</span>
+      </p>
+      <div class="insight-card__bottom">
+        {% set visible_tags = [] %}
+        {% for t in post.tag_list %}
+          {% if t.slug != "featured" %}{% set visible_tags = visible_tags + [t] %}{% endif %}
+        {% endfor %}
+        {% if visible_tags %}
+          <a class="tag-pill" href="{{ blog_tag_url(selected_blog, visible_tags[0].slug)|escape_url }}">
+            {{ visible_tags[0].name }}
+          </a>
+        {% else %}
+          <span></span>
+        {% endif %}
+        <a class="read-link" href="{{ post.absolute_url|escape_url }}">Read Now ↗</a>
+      </div>
+    </div>
+  </article>
+{% endmacro %}
+
+<!DOCTYPE html>
+<html lang="{{ html_lang|default('en') }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page_meta.html_title|default("UtilityAI™ Insights") }}</title>
+    {{ standard_header_includes }}
+    <style>
+      :root {
+        --ink: #142942;
+        --body: #66768d;
+        --muted: #9aabba;
+        --blue: #39a6e6;
+        --navy: #123456;
+        --surface: #eef7fc;
+        --card: #ffffff;
+        --line: #dfeaf2;
+        --shadow: 0 18px 36px rgba(20, 41, 66, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        background: var(--surface);
+        color: var(--ink);
+        font-family: Montserrat, "Segoe UI", Arial, sans-serif;
+        font-size: 16px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .hero {
+        min-height: 820px;
+        padding: 138px 24px 70px;
+        background-color: #fff;
+        background-image:
+          linear-gradient(rgba(53, 164, 230, 0.11) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(53, 164, 230, 0.11) 1px, transparent 1px);
+        background-size: 73px 73px;
+      }
+
+      .container {
+        width: min(1300px, calc(100% - 48px));
+        margin: 0 auto;
+      }
+
+      .page-title {
+        margin: 0 0 34px;
+        color: #132942;
+        font-size: 52px;
+        line-height: 1.05;
+        font-weight: 800;
+        text-align: center;
+        letter-spacing: 0;
+      }
+
+      .section-label {
+        margin: 0 0 64px;
+        color: var(--blue);
+        font-size: 14px;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .featured-grid,
+      .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 25px;
+      }
+
+      .insight-card {
+        overflow: hidden;
+        border-radius: 12px;
+        background: var(--card);
+        box-shadow: var(--shadow);
+      }
+
+      .insight-card__media {
+        display: block;
+        aspect-ratio: 398 / 189;
+        overflow: hidden;
+        background: #dbe8f1;
+      }
+
+      .insight-card__media img,
+      .insight-card__placeholder {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .insight-card__placeholder {
+        background:
+          linear-gradient(135deg, rgba(57, 166, 230, 0.18), transparent),
+          #173b5d;
+      }
+
+      .insight-card__body {
+        padding: 31px 29px 27px;
+      }
+
+      .insight-card time {
+        display: block;
+        margin-bottom: 18px;
+        color: #a0afbf;
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+      .insight-card h2 {
+        min-height: 66px;
+        margin: 0 0 42px;
+        color: #14304f;
+        font-size: 18px;
+        line-height: 1.22;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .insight-card__meta {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #a0afbf;
+        font-size: 13px;
+        line-height: 1.2;
+      }
+
+      .insight-card__meta span:nth-child(2) {
+        color: var(--blue);
+      }
+
+      .insight-card__bottom {
+        margin-top: 28px;
+        padding-top: 17px;
+        border-top: 1px solid #e7eef4;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .tag-pill,
+      .filter-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 24px;
+        padding: 4px 12px;
+        border: 1px solid rgba(57, 166, 230, 0.45);
+        border-radius: 999px;
+        color: var(--blue);
+        font-size: 11px;
+        font-weight: 600;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      .read-link {
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .filters-band {
+        padding: 60px 24px;
+        background: #123456;
+      }
+
+      .filters {
+        width: min(1040px, calc(100% - 48px));
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .filter-pill {
+        min-height: 28px;
+        border-color: rgba(57, 166, 230, 0.55);
+        color: #d6e8f5;
+        font-size: 14px;
+      }
+
+      .filter-pill.is-active,
+      .filter-pill:hover {
+        border-color: var(--blue);
+        background: var(--blue);
+        color: #fff;
+      }
+
+      .listing {
+        padding: 64px 24px 100px;
+      }
+
+      .posts-grid {
+        row-gap: 26px;
+      }
+
+      .pagination-dots {
+        margin-top: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+      }
+
+      .pagination-dots a,
+      .pagination-dots span {
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        background: #c8e5f5;
+      }
+
+      .pagination-dots .is-active {
+        background: var(--blue);
+      }
+
+      button.filter-pill {
+        cursor: pointer;
+        background: transparent;
+        font-family: inherit;
+      }
+
+      @media (max-width: 1100px) {
+        .featured-grid,
+        .posts-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .hero {
+          min-height: 0;
+          padding-top: 72px;
+        }
+
+        .page-title {
+          font-size: 36px;
+        }
+
+        .featured-grid,
+        .posts-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .insight-card h2 {
+          min-height: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h1 class="page-title">
+            {% if tag %}
+              {{ page_meta.html_title|split(" | ")|last }}
+            {% elif blog_author %}
+              {{ blog_author.display_name }}
+            {% else %}
+              UtilityAI™ Insights
+            {% endif %}
+          </h1>
+
+          {% if not tag and not blog_author %}
+            {% set featured_posts = [] %}
+            {% for post in blog_recent_posts(group.id, 200) %}
+              {% set is_featured = false %}
+              {% for t in post.tag_list %}
+                {% if t.slug == "featured" %}{% set is_featured = true %}{% endif %}
+              {% endfor %}
+              {% if is_featured and featured_posts|length < 3 %}
+                {% set featured_posts = featured_posts + [post] %}
+              {% endif %}
+            {% endfor %}
+            {% if featured_posts %}
+              <p class="section-label">Featured</p>
+              <div class="featured-grid">
+                {% for post in featured_posts %}
+                  {{ post_card(post, "is-featured") }}
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      </section>
+
+      {% if all_tags %}
+        <section class="filters-band" aria-label="Insight filters">
+          <div class="filters">
+            <button class="filter-pill is-active" data-filter="all">ALL</button>
+            {% for item in all_tags %}
+              {% if item.slug != "featured" %}
+                <button class="filter-pill" data-filter="{{ item.slug }}">{{ item.name|default(item) }}</button>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+
+      <section class="listing">
+        <div class="container">
+          <div class="posts-grid">
+            {% for post in contents %}
+              {{ post_card(post) }}
+            {% endfor %}
+          </div>
+
+          {% if contents.total_page_count > 1 %}
+            <nav class="pagination-dots" aria-label="Blog pagination">
+              {% for page_num in range(1, contents.total_page_count + 1) %}
+                {% if page_num == current_page_num %}
+                  <span class="is-active" aria-label="Page {{ page_num }}"></span>
+                {% else %}
+                  <a href="{{ blog_page_link(page_num)|escape_url }}" aria-label="Go to page {{ page_num }}"></a>
+                {% endif %}
+              {% endfor %}
+            </nav>
+          {% endif %}
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        var pills = document.querySelectorAll('.filter-pill[data-filter]');
+        var cards = document.querySelectorAll('.listing .insight-card');
+        var activeFilters = new Set();
+
+        function applyFilters() {
+          cards.forEach(function (card) {
+            if (activeFilters.size === 0) {
+              card.style.display = '';
+            } else {
+              var tags = (card.getAttribute('data-tags') || '').split(',');
+              var match = false;
+              activeFilters.forEach(function (f) {
+                if (tags.indexOf(f) !== -1) match = true;
+              });
+              card.style.display = match ? '' : 'none';
+            }
+          });
+        }
+
+        var allBtn = document.querySelector('.filter-pill[data-filter="all"]');
+
+        pills.forEach(function (pill) {
+          pill.addEventListener('click', function () {
+            var filter = this.getAttribute('data-filter');
+
+            if (filter === 'all') {
+              activeFilters.clear();
+              pills.forEach(function (p) { p.classList.remove('is-active'); });
+              allBtn.classList.add('is-active');
+            } else {
+              allBtn.classList.remove('is-active');
+              if (activeFilters.has(filter)) {
+                activeFilters.delete(filter);
+                this.classList.remove('is-active');
+              } else {
+                activeFilters.add(filter);
+                this.classList.add('is-active');
+              }
+              if (activeFilters.size === 0) {
+                allBtn.classList.add('is-active');
+              }
+            }
+
+            applyFilters();
+          });
+        });
+      })();
+    </script>
+
+    {{ standard_footer_includes }}
+  </body>
+</html>
