@@ -1,0 +1,486 @@
+<!--
+  templateType: page
+  isAvailableForNewContent: true
+  label: Bidgely - Privacy Policy
+  description: Privacy policy with global header/footer and drag-and-drop content (hero, table of contents, full policy body in rich text).
+-->
+<!doctype html>
+<html lang="{{ html_lang }}" {{ html_lang_dir }}>
+<head>
+  <meta charset="utf-8">
+  {{ standard_header_includes }}
+  <title>{{ page_meta.html_title|default('Privacy Policy | Bidgely UtilityAI™', true) }}</title>
+  <meta name="description" content="{{ page_meta.meta_description|default('Bidgely cares about your privacy. Read our Privacy Policy to learn what information we collect, how we use it, and your rights.', true) }}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ get_asset_url('bidgely-theme/css/main.css') }}">
+  <style>
+    :root {
+      --privacy-navy: #152d49;
+      --privacy-navy-deep: #0d1f33;
+      --privacy-blue: #449bd5;
+      --privacy-blue-deep: #449bd5;
+      --privacy-ice: #f2f8fc;
+      --privacy-ice-edge: #bedcf1;
+      --privacy-ink: #121d2a;
+      --privacy-muted: #5b6b7d;
+      --privacy-line: #e3eaf2;
+      --privacy-white: #ffffff;
+      --privacy-radius: 6px;
+      --privacy-radius-lg: 14px;
+    }
+    .privacy-policy-page {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--privacy-ink);
+      line-height: 1.7;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .privacy-policy-page img { max-width: 100%; height: auto; display: block; }
+    /* Links: scope to policy + TOC only so global header/footer are unaffected */
+    .privacy-policy-page .policy a {
+      color: var(--privacy-blue-deep);
+      text-decoration: underline;
+      transition: color .2s ease;
+    }
+    .privacy-policy-page .policy a:hover { color: #ffffff; }
+    .privacy-policy-page h1,
+    .privacy-policy-page h2,
+    .privacy-policy-page h3,
+    .privacy-policy-page h4 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--privacy-navy);
+      margin: 0 0 .6em;
+      letter-spacing: -.01em;
+    }
+    .privacy-policy-page h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; line-height: 1.1; }
+    .privacy-policy-page h2 { font-size: 1.5rem; font-weight: 700; line-height: 1.25; margin: 2.4rem 0 .8rem; padding-top: .4rem; }
+    .privacy-policy-page h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.3; margin: 1.8rem 0 .6rem; }
+    .privacy-policy-page h4 { font-size: 1rem; font-weight: 600; margin: 1.4rem 0 .4rem; }
+    .privacy-policy-page p { margin: 0 0 1rem; color: #2c3e52; font-size: .98rem; }
+    /* Lists: policy body only (.toc ul is styled separately below) */
+    .privacy-policy-page .policy ul,
+    .privacy-policy-page .policy ol {
+      color: #2c3e52;
+      font-size: .98rem;
+      line-height: 1.75;
+      padding-left: 1.4rem;
+      margin: 0 0 1.2rem;
+    }
+    .privacy-policy-page .policy ul li,
+    .privacy-policy-page .policy ol li { margin-bottom: .5rem; }
+    .privacy-policy-page .container { width: 100%; max-width: 880px; margin: 0 auto; padding: 0 32px; }
+    .privacy-policy-page .hs_cos_wrapper_type_rich_text { display: block; }
+    .privacy-policy-page .privacy-hero {
+      background: linear-gradient(180deg, var(--privacy-navy-deep) 0%, var(--privacy-navy) 100%);
+      color: var(--privacy-white);
+      padding: 80px 0 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .privacy-policy-page .privacy-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(900px 380px at 80% -10%, rgba(68,155,213,.18), transparent 60%);
+      pointer-events: none;
+    }
+    .privacy-policy-page .privacy-hero .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: .72rem;
+      font-weight: 600;
+      color: var(--privacy-blue);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .privacy-policy-page .privacy-hero h1 { color: var(--privacy-white); margin: 0 0 .6rem; }
+    .privacy-policy-page .privacy-hero .last-updated,
+    .privacy-policy-page .privacy-hero .last-updated p {
+      font-size: .92rem;
+      color: rgba(255,255,255,.7);
+      font-style: italic;
+      margin: 0;
+    }
+    .privacy-policy-page .toc { background: var(--privacy-ice); border-bottom: 1px solid var(--privacy-line); padding: 32px 0; }
+    .privacy-policy-page .toc-wrap { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+    .privacy-policy-page .toc-label {
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      font-size: .68rem;
+      font-weight: 600;
+      color: var(--privacy-blue-deep);
+      margin-bottom: 14px;
+    }
+    .privacy-policy-page .toc ul { list-style: none; padding: 0; margin: 0; columns: 2; column-gap: 32px; font-size: .88rem; }
+    .privacy-policy-page .toc ul li { margin-bottom: 8px; break-inside: avoid; }
+    .privacy-policy-page .toc ul li a {
+      color: var(--privacy-navy);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all .2s ease;
+    }
+    .privacy-policy-page .toc ul li a:hover {
+      color: var(--privacy-blue-deep);
+      border-bottom-color: var(--privacy-blue);
+    }
+    .privacy-policy-page .policy { padding: 64px 0 96px; }
+    .privacy-policy-page .policy section { margin-bottom: 8px; scroll-margin-top: 90px; }
+    .privacy-policy-page .policy section:first-of-type h2 { margin-top: 0; padding-top: 0; }
+    .privacy-policy-page .policy p em,
+    .privacy-policy-page .policy p i {
+      color: var(--privacy-muted);
+      font-size: .92rem;
+      display: inline-block;
+      margin-top: .2rem;
+    }
+    .privacy-policy-page .policy a { word-break: break-word; }
+    .privacy-policy-page .personal-info {
+      background: var(--privacy-ice);
+      border-radius: var(--privacy-radius-lg);
+      padding: 28px 32px;
+      margin: 24px 0;
+      border: 1px solid var(--privacy-line);
+    }
+    .privacy-policy-page .personal-info h4 { color: var(--privacy-navy); margin-top: 1.4rem; }
+    .privacy-policy-page .personal-info h4:first-child { margin-top: 0; }
+    .privacy-policy-page .personal-info p:last-child { margin-bottom: 0; }
+    .privacy-policy-page .contact-card {
+      margin: 40px 0 0;
+      padding: 28px 32px;
+      background: linear-gradient(135deg, var(--privacy-ice) 0%, #ffffff 100%);
+      border: 1px solid var(--privacy-ice-edge);
+      border-radius: var(--privacy-radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .privacy-policy-page .contact-card h3 { margin: 0 0 .25rem; color: var(--privacy-navy); }
+    .privacy-policy-page .contact-card p { margin: 0; color: var(--privacy-muted); font-size: .92rem; }
+    .privacy-policy-page .contact-card .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: var(--privacy-radius);
+      font-weight: 600;
+      font-size: .85rem;
+      letter-spacing: .03em;
+      background: var(--privacy-blue-deep);
+      color: var(--privacy-white);
+      text-decoration: none;
+      transition: all .2s ease;
+    }
+    .privacy-policy-page .contact-card .btn:hover { background: var(--privacy-navy); }
+    @media (max-width: 720px) {
+      .privacy-policy-page .toc ul { columns: 1; }
+      .privacy-policy-page .privacy-hero { padding: 56px 0 44px; }
+      .privacy-policy-page .contact-card { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+{% module "site_header" path="../modules/global-header.module" %}
+
+<div class="privacy-policy-page">
+{% dnd_area "page_content" label="Privacy policy content" %}
+
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module path="@hubspot/rich_text" label="Privacy — Hero" %}
+          {% module_attribute "html" %}
+<section class="privacy-hero">
+  <div class="container">
+    <span class="eyebrow">Legal</span>
+    <h1>Privacy Policy</h1>
+    <div class="last-updated">
+      <p><em>Last updated: April 25, 2023</em></p>
+    </div>
+  </div>
+</section>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module path="@hubspot/rich_text" label="Privacy — Table of contents" %}
+          {% module_attribute "html" %}
+<section class="toc">
+  <div class="toc-wrap">
+    <div class="toc-label">On this page</div>
+    <ul>
+      <li><a href="#representation">Representation</a></li>
+      <li><a href="#scope">Scope of the Policy</a></li>
+      <li><a href="#sources">Sources of Information</a></li>
+      <li><a href="#voluntary">Information You Provide</a></li>
+      <li><a href="#automatic">Information Collected Automatically</a></li>
+      <li><a href="#use">Use and Disclosure</a></li>
+      <li><a href="#sale-sharing">Sale and Sharing</a></li>
+      <li><a href="#retention">Data Retention</a></li>
+      <li><a href="#security">Data Security</a></li>
+      <li><a href="#children">Children's Data Privacy</a></li>
+      <li><a href="#rights">Your Rights</a></li>
+      <li><a href="#changes">Changes and Amendments</a></li>
+      <li><a href="#marketing">Marketing Outreach</a></li>
+      <li><a href="#california">California Residents (CCPA)</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</section>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+  {% dnd_section padding={"top":0,"bottom":0,"left":0,"right":0} %}
+    {% dnd_column width=12 %}
+      {% dnd_row %}
+        {% dnd_module path="@hubspot/rich_text" label="Privacy — Policy body" %}
+          {% module_attribute "html" %}
+          <section class="policy">
+            <div class="container">
+              <p>We at Bidgely, Inc. care about your privacy and are committed to protecting it. This Privacy Policy explains what information we collect about you and why.</p>
+
+              <section id="representation">
+                <h2>Representation</h2>
+                <p>Throughout this document, the terms &ldquo;We&rdquo; or &ldquo;Us&rdquo; would mean Bidgely, Inc.</p>
+                <p>&ldquo;Utility&rdquo; would mean the utility company that provides its services to you and enlists our services to offer those to you.</p>
+                <p>The term &ldquo;You&rdquo; would mean the consumer who uses the services offered by the Utility.</p>
+                <p>Any variants of these terms used in this document would imply the same representation as these terms.</p>
+              </section>
+
+              <section id="scope">
+                <h2>Scope of the Policy</h2>
+                <p>Please read this Privacy Policy carefully to understand Bidgely&rsquo;s policies and practices regarding your information.</p>
+                <p>By accessing the website or other associated channels, you consent to this Privacy Policy and to the collection and use of your information by Bidgely as specified herein. This Privacy Policy is subject to Bidgely&rsquo;s Terms of Use, which take precedence over any conflicting terms contained herein.</p>
+              </section>
+
+              <section id="sources">
+                <h2>Sources of Information</h2>
+                <p>We collect information about you from your Utility and your use of our website(s) or apps and emails. Bidgely may provide its services through your Utility&rsquo;s website or app under your Utility's brand or a joint brand (co-branded) with Bidgely. Your Utility may provide us with information about you to enable us to offer our services to you.</p>
+              </section>
+
+              <section id="voluntary">
+                <h2>Information Voluntarily Provided by You that We Collect</h2>
+                <p>We primarily collect your information so that we can provide you with our services, as chosen by your Utility or voluntarily by you.</p>
+                <p>Apart from collecting information about you provided by your Utility, you can provide us information about you on the website or app.</p>
+                <p>Such information typically belongs to one of the following categories:</p>
+                <h3>Personal identifiers</h3>
+                <p>This category refers to information we gather about you that can be used to identify or contact an individual person, such as your name, e-mail address, postal address, telephone number, and Utility account number. We use or partially share this information to fulfill the purpose for which you provided it to us, to provide our services, and to educate you about energy efficiency, relevant programs run by your Utility, offer you recommendations for savings and provide relevant content.</p>
+                <h3>Non-identifying information</h3>
+                <p>This category refers to information that cannot be used to identify you as an individual, such as the type of power you obtain from your Utility (electric, gas, etc), and the type of metering at your premise (smart or non-smart meters). We collect such information only to provide you our services, offer you energy efficiency comparisons within your neighborhood, and so forth.</p>
+              </section>
+
+              <section id="automatic">
+                <h2>Information About You that We Collect Automatically</h2>
+                <p>In addition to collecting information directly from you or collecting your information from your Utility, we collect information indirectly or automatically from several sources. These sources and further information as to each is detailed below.</p>
+                <h3>Usage or website/app activity information</h3>
+                <p>We use cookies, web beacons, and similar technologies. When you access the website or app, our web servers automatically record certain data, including, but not limited to, your internet service provider, IP address (which may identify your general geographic location or company), domain name, browser type, device type, device ID, operating system and the times and dates of your visits. Cookies help in the proper functioning and your secure access of websites and apps and help us optimize our offerings. You may block all cookies through your browser or device settings. However, we recommend against it for your better experience on the website or app.</p>
+                <h3>Energy usage information</h3>
+                <p>We collect your energy usage information through your Utility to provide you with usage insights, recommendations, bill projections, and more. This information about you is collected automatically through the metering system of your Utility and is critical to our services offered.</p>
+              </section>
+
+              <section id="use">
+                <h2>Use and Disclosure of Your Information</h2>
+                <p>We treat your personal information as confidential and use it in a limited number of ways. When you provide information on the website or app, over the phone, or when we collect it from your Utility, we use that information consistent with the manner intended when you provided it. We may also use or disclose your personal information for one or more of the following purposes:</p>
+                <ol>
+                  <li>to establish and maintain your account and provide requested services,</li>
+                  <li>to communicate with you about your account and our programs,</li>
+                  <li>to improve our customer service,</li>
+                  <li>to share insights on energy efficiency,</li>
+                  <li>to respond to your inquiries, including to investigate and address your concerns,</li>
+                  <li>to assist in fraud protection and compliance with cybersecurity laws,</li>
+                  <li>to mitigate the risk of identity theft,</li>
+                  <li>in the event of an emergency or imminent threat to life or property,</li>
+                  <li>to enforce and apply our Terms of Use,</li>
+                  <li>to meet regulatory requirements and applicable laws,</li>
+                  <li>to notify you about changes to our website/app,</li>
+                  <li>to provide you with access to certain features,</li>
+                  <li>to maintain the safety, security, integrity and functionality of our website/app,</li>
+                  <li>to comply with law enforcement.</li>
+                </ol>
+              </section>
+
+              <section id="sale-sharing">
+                <h2>Sale and Sharing of Your Information</h2>
+                <p>We do not sell your information to any third party for their advertising purposes or for those not related to the objectives described here. We only partially share some of your information with our trusted vendors to provide you with our services.</p>
+                <p>The use of your data for any other purpose than listed here would be only after your consent.</p>
+              </section>
+
+              <section id="retention">
+                <h2>Data Retention and Deletion</h2>
+                <p>We retain your data for as long as we provide you with our services and thereafter until necessary to ensure business continuity and compliance with legal requirement or for a business need. We may remove or retain data on your Utility&rsquo;s discretion.</p>
+              </section>
+
+              <section id="security">
+                <h2>Data Security</h2>
+                <p>The security of your data is important to us. We have placed reasonable administrative, procedural, and technological safeguards to prevent accidental loss from unauthorized access, use, modification, or deletion.</p>
+              </section>
+
+              <section id="children">
+                <h2>Children&rsquo;s Data Privacy</h2>
+                <p>We do not intentionally collect data from children under the age of 13 years. If you are under 13 years of age, please do not submit any personal data through our websites or services. We encourage parents and legal guardians to monitor their children&rsquo;s internet usage and to help enforce this notice by instructing their children never to provide personal data through our services or websites without their permission. If you have reason to believe that a child under the age of 13 has provided personal data to us through our websites or services, please contact us at <a href="mailto:privacy@bidgely.com">privacy@bidgely.com</a>.</p>
+              </section>
+
+              <section id="rights">
+                <h2>Your Rights</h2>
+                <ol>
+                  <li>You have the right to make a written request to be informed whether or not we hold or process any of your personal information (by emailing <a href="mailto:privacy@bidgely.com">privacy@bidgely.com</a>).</li>
+                  <li>You have the right to ask us not to process your personal data for marketing purposes. You can exercise your right to prevent such processing by checking certain boxes on the forms we use to collect your data, clicking the Unsubscribe button on any communication we have sent to you, or by writing to us.</li>
+                  <li>Where you have consented to us using your personal data, you can withdraw that consent at any time.</li>
+                  <li>If the information we hold about you is inaccurate or incomplete, you can notify us and ask us to correct or supplement it.</li>
+                  <li>You also have the right, with some exceptions and qualifications, to ask us to provide a copy of any personal data we hold about you.</li>
+                  <li>Where you have provided your data to us and it is processed by automated means, you can request that we provide it to you in a structured, machine-readable format.</li>
+                  <li>If you have a complaint about how we have handled your personal data, you can ask us to restrict how we use your personal data while your complaint is resolved.</li>
+                  <li>In some circumstances, you can write to us to erase your personal data (a) if it is no longer necessary for us to use your personal data; (b) if you object to the use of your personal data and we don't have a good reason to continue to use it; or (c) if we haven't handled your personal data in accordance with our obligations.</li>
+                </ol>
+              </section>
+
+              <section id="changes">
+                <h2>Changes and Amendments</h2>
+                <p>We reserve the right to modify this policy at any time, effective upon posting of an updated version of this policy on the website. The last update would be indicated on this page. Continued use of the website after any such changes shall constitute your consent to such changes.</p>
+              </section>
+
+              <section id="marketing">
+                <h2>Marketing Outreach</h2>
+                <p>We use email outreach to keep potential customers and stakeholders informed of industry trends, product updates, upcoming events, Bidgely news, and other select content. Email addresses are collected through multiple sources, including forms filled on our website, trade show attendance, communication with our team, public records, and webinar attendance. We collect this information to communicate with you effectively and respond to your requests. We strive to provide relevant and interesting content. To do this, we need to process information about you, and therefore do so on the basis of legitimate interest. You may unsubscribe from our marketing communication <a href="https://go.bidgely.com/UnsubscribePage.html">here</a>. If you wish to re-subscribe, please email <a href="mailto:marketing@bidgely.com">marketing@bidgely.com</a>.</p>
+              </section>
+
+              <section id="california">
+                <h2>Supplemental Privacy Notice for Residents of California</h2>
+                <p>This Privacy Notice for California Residents supplements the information contained in our Privacy Policy and applies to you only if you are a resident of the State of California (&ldquo;you&rdquo;). We adopt this notice to comply with the California Consumer Privacy Act of 2018 (&ldquo;CCPA&rdquo;).</p>
+                <h3>Personal Information Definition</h3>
+                <p>Under the CCPA, &ldquo;personal information&rdquo; is information that identifies, relates to, describes, references, is reasonably capable of being associated with, or could reasonably be linked, directly or indirectly, with a particular consumer, household, or device. Personal information does not include publicly available information from government records and de-identified or aggregated consumer information.</p>
+                <h3>Categories of Personal Information</h3>
+                <p>We may collect personal information, as described in our Privacy Policy, during your interactions with us. The descriptions below detail the categories of personal information generally collected from you; however, the personal information we have about you may be more limited.</p>
+
+                <div class="personal-info">
+                  <h4>1. Identifiers.</h4>
+                  <p>A real name, alias, postal address, unique personal identifier, online identifier, Internet Protocol address, email address, account name, Social Security number, driver&rsquo;s license number, passport number, or other similar identifiers.</p>
+                  <p><em>We collect such information from you when voluntarily provided by you to avail services or when provided to us by your Utility to facilitate services requested.</em></p>
+
+                  <h4>2. Personal information categories listed in the California Customer Records statute (Cal. Civ. Code &sect; 1798.80(e)).</h4>
+                  <p>A name, signature, Social Security number, physical characteristics or description, address, telephone number, passport number, driver&rsquo;s license or state identification card number, insurance policy number, education, employment, employment history, bank account number, credit card number, debit card number, or any other financial information, medical information, or health insurance information. Some personal information included in this category may overlap with other categories.</p>
+                  <p><em>We collect such information from you when voluntarily provided by you to avail services or when provided to us by your Utility to facilitate services requested.</em></p>
+
+                  <h4>3. Protected classification characteristics under California or federal law.</h4>
+                  <p>Age (40 years or older), race, color, ancestry, national origin, citizenship, religion or creed, marital status, medical condition, physical or mental disability, sex (including gender, gender identity, gender expression, pregnancy or childbirth and related medical conditions), sexual orientation, veteran or military status, genetic information (including familial genetic information).</p>
+                  <p><em>We collect such information only partially when voluntarily provided by you to avail services or when provided to us by your Utility to fulfill services requested.</em></p>
+
+                  <h4>4. Commercial information.</h4>
+                  <p>Records of personal property, products or services purchased, obtained, or considered, or other purchasing or consuming histories or tendencies.</p>
+                  <p><em>We collect such information only partially when voluntarily provided by you to avail services or when provided to us by your Utility to fulfill services requested.</em></p>
+
+                  <h4>5. Biometric information.</h4>
+                  <p>Genetic, physiological, behavioral, and biological characteristics, or activity patterns used to extract a template or other identifier or identifying information, such as, fingerprints, faceprints, and voiceprints, iris or retina scans, keystroke, gait, or other physical patterns, and sleep, health, or exercise data.</p>
+                  <p><em>We only collect data regarding behavioral and activity patterns when voluntarily provided by you to avail services or when provided to us by your Utility to fulfill services requested.</em></p>
+
+                  <h4>6. Internet or other similar network activity.</h4>
+                  <p>Browsing history, search history, information on a consumer&rsquo;s interaction with a website, application, or advertisement.</p>
+                  <p><em>We collect such information indirectly from you to offer you and improve our services (cookies and website interactions).</em></p>
+
+                  <h4>7. Geolocation data.</h4>
+                  <p>Physical location or movements.</p>
+                  <p><em>We do not collect such data about you.</em></p>
+
+                  <h4>8. Sensory data.</h4>
+                  <p>Audio, electronic, visual, thermal, olfactory, or similar information.</p>
+                  <p><em>We do not collect such data about you.</em></p>
+
+                  <h4>9. Professional or employment-related information.</h4>
+                  <p>Current or past job history or performance evaluations.</p>
+                  <p><em>We do not collect such data about you.</em></p>
+
+                  <h4>10. Non-public education information (per the Family Educational Rights and Privacy Act (20 U.S.C. Section 1232g, 34 C.F.R. Part 99)).</h4>
+                  <p>Education records directly related to a student maintained by an educational institution or party acting on its behalf, such as grades, transcripts, class lists, student schedules, student identification codes, student financial information, or student disciplinary records.</p>
+                  <p><em>We do not collect such data about you.</em></p>
+
+                  <h4>11. Inferences drawn from other personal information.</h4>
+                  <p>Profile reflecting a person&rsquo;s preferences, characteristics, psychological trends, predispositions, behavior, attitudes, intelligence, abilities, and aptitudes.</p>
+                  <p><em>We do not collect such data about you.</em></p>
+                </div>
+
+                <h3>Use of Personal Information</h3>
+                <p>The personal information collected about you is used to enable services offered to you and meet associated business needs (service improvement and service personalization).</p>
+
+                <h3>Sharing of Personal Information</h3>
+                <p>We may share some data with service providers to offer you services that you have requested. We take reasonable effort to avoid sharing personally identifying information with such service providers.</p>
+
+                <h3>Your Rights and Choices</h3>
+                <p>The CCPA provides California residents with specific rights regarding their personal information. This section describes your CCPA rights and explains how to exercise those rights. We have tried to ensure that our Privacy Policy as a whole addresses much of this information, so please read it carefully.</p>
+
+                <h4>Access to personal information</h4>
+                <p>You have the right to request that we disclose certain information to you about our collection and use of your personal information over the past 12 months, through your Utility. We need to verify your request through your Utility to fulfill your request.</p>
+                <p>Once we have verified your request, we will inform you, through your Utility:</p>
+                <ul>
+                  <li>The categories of personal information we collected about you.</li>
+                  <li>The categories of sources for the personal information we collected about you.</li>
+                  <li>Our business or commercial purpose for collecting personal information.</li>
+                  <li>The categories of third parties with whom we share the personal information.</li>
+                  <li>The specific pieces of personal information we collected about you.</li>
+                </ul>
+                <p>If we sold or disclosed your personal information for a business purpose, two separate lists disclosing: sales of your personal information; and disclosures for a business purpose, identifying the associated personal information categories.</p>
+
+                <h4>Deletion request rights</h4>
+                <p>You have the right to request that we delete any of your personal information that we collected from you and retained, subject to certain exceptions under the CCPA. Once we have verified your request, we will delete (and direct our service providers to delete) your personal information from our records, unless an exception under the CCPA applies.</p>
+                <p>Specifically, in addition to any other applicable exception under the CCPA, we may deny your deletion request if retaining the information is necessary for us or our service provider(s) to:</p>
+                <ol>
+                  <li>Complete the transaction for which we collected the personal information, provide service that you requested, take actions reasonably anticipated within the context of our ongoing business relationship with you, or otherwise perform our contract with you.</li>
+                  <li>Detect security incidents, protect against malicious, deceptive, fraudulent, or illegal activity, or prosecute those responsible for such activities.</li>
+                  <li>Debug products to identify and repair errors that impair existing intended functionality.</li>
+                  <li>Engage in public or peer-reviewed scientific, historical, or statistical research in the public interest that adheres to all other applicable ethics and privacy laws, when the information&rsquo;s deletion may likely render impossible or seriously impair the research&rsquo;s achievement, if you previously provided informed consent.</li>
+                  <li>Enable solely internal uses that are reasonably aligned with customer expectations based on your relationship with us.</li>
+                  <li>Comply with a legal obligation.</li>
+                  <li>Make other internal and lawful uses of that information that are compatible with the context in which you provided it.</li>
+                </ol>
+
+                <h4>Submitting a verifiable request</h4>
+                <p>If you would like to exercise the rights detailed above, please submit a verifiable request with your Utility.</p>
+
+                <h4>Response time</h4>
+                <p>We will respond to a verifiable request made through your Utility within forty-five (45) days of its receipt, unless we require more time to complete your request. We will inform you directly or through your Utility of the reason for any extension period in writing.</p>
+                <p>Our response to your request will cover the 12-month period preceding your request and will explain the reasons we cannot comply with a request, if applicable.</p>
+                <p>We will not charge a fee to process or respond to your verifiable request unless it is excessive, repetitive, or manifestly unfounded. If we determine your request warrants a fee, we will tell you why we made that decision and provide you with a cost estimate before completing your request.</p>
+
+                <h4>Non-discrimination</h4>
+                <p>We will not discriminate against you for exercising any of your CCPA rights.</p>
+              </section>
+
+              <section id="contact">
+                <div class="contact-card">
+                  <div>
+                    <h3>Questions about this policy?</h3>
+                    <p>Reach out to our privacy team — we typically respond within one business day.</p>
+                  </div>
+                  <a class="btn" href="mailto:privacy@bidgely.com">Email privacy@bidgely.com →</a>
+                </div>
+              </section>
+
+            </div>
+          </section>
+          {% end_module_attribute %}
+        {% end_dnd_module %}
+      {% end_dnd_row %}
+    {% end_dnd_column %}
+  {% end_dnd_section %}
+
+{% end_dnd_area %}
+</div>
+
+{% module "site_footer" path="../modules/global-footer.module" %}
+
+<script src="{{ get_asset_url('bidgely-theme/css/js/main.js') }}" defer></script>
+{{ standard_footer_includes }}
+</body>
+</html>
