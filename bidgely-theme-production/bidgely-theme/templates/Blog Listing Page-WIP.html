@@ -61,9 +61,12 @@
 <html lang="{{ html_lang|default('en') }}">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ page_meta.html_title|default("UtilityAI™ Insights") }}</title>
     {{ standard_header_includes }}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+    <title>{{ page_meta.html_title|default("UtilityAI™ Insights") }}</title>
     <style>
       :root {
         --ink: #142942;
@@ -142,31 +145,38 @@
         border-radius: 12px;
         background: var(--card);
         box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
       }
 
       .insight-card__media {
         display: block;
-        aspect-ratio: 398 / 189;
         overflow: hidden;
         background: #dbe8f1;
       }
 
-      .insight-card__media img,
-      .insight-card__placeholder {
+      .insight-card__media img {
         display: block;
         width: 100%;
-        height: 100%;
+        aspect-ratio: 398 / 189;
         object-fit: cover;
       }
 
       .insight-card__placeholder {
-        background:
-          linear-gradient(135deg, rgba(57, 166, 230, 0.18), transparent),
-          #173b5d;
+        display: block;
+        width: 100%;
+        aspect-ratio: 398 / 189;
+      }
+
+      .insight-card__placeholder {
+        background: linear-gradient(135deg, rgba(57, 166, 230, 0.18), transparent), #173b5d;
       }
 
       .insight-card__body {
         padding: 31px 29px 27px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
       }
 
       .insight-card time {
@@ -178,8 +188,7 @@
       }
 
       .insight-card h2 {
-        min-height: 66px;
-        margin: 0 0 42px;
+        margin: 0;
         color: #14304f;
         font-size: 18px;
         line-height: 1.22;
@@ -188,7 +197,8 @@
       }
 
       .insight-card__meta {
-        margin: 0;
+        margin-top: auto;
+        padding-top: 20px;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -253,6 +263,7 @@
         border-color: rgba(57, 166, 230, 0.55);
         color: #d6e8f5;
         font-size: 14px;
+        font-weight: 300;
       }
 
       .filter-pill.is-active,
@@ -270,24 +281,59 @@
         row-gap: 26px;
       }
 
-      .pagination-dots {
+      .pagination {
         margin-top: 68px;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 24px;
+        gap: 6px;
+        flex-wrap: wrap;
       }
 
-      .pagination-dots a,
-      .pagination-dots span {
-        width: 12px;
-        height: 12px;
-        border-radius: 999px;
-        background: #c8e5f5;
+      .pagination__btn,
+      .pagination__num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 38px;
+        height: 38px;
+        padding: 0 10px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1;
+        transition: background 0.15s, color 0.15s;
       }
 
-      .pagination-dots .is-active {
+      .pagination__btn {
+        background: #e4eef6;
+        color: var(--ink);
+      }
+
+      .pagination__btn:hover {
         background: var(--blue);
+        color: #fff;
+      }
+
+      .pagination__num {
+        background: transparent;
+        color: var(--muted);
+      }
+
+      .pagination__num:hover {
+        background: #e4eef6;
+        color: var(--ink);
+      }
+
+      .pagination__num.is-active {
+        background: var(--blue);
+        color: #fff;
+      }
+
+      .pagination__ellipsis {
+        color: var(--muted);
+        font-size: 13px;
+        padding: 0 4px;
       }
 
       button.filter-pill {
@@ -325,6 +371,7 @@
     </style>
   </head>
   <body>
+    {% module "site_header" path="../modules/global-header.module" %}
     <main>
       <section class="hero">
         <div class="container">
@@ -339,16 +386,7 @@
           </h1>
 
           {% if not tag and not blog_author %}
-            {% set featured_posts = [] %}
-            {% for post in blog_recent_posts(group.id, 200) %}
-              {% set is_featured = false %}
-              {% for t in post.tag_list %}
-                {% if t.slug == "featured" %}{% set is_featured = true %}{% endif %}
-              {% endfor %}
-              {% if is_featured and featured_posts|length < 3 %}
-                {% set featured_posts = featured_posts + [post] %}
-              {% endif %}
-            {% endfor %}
+            {% set featured_posts = blog_recent_posts(group.id, 3, "featured") %}
             {% if featured_posts %}
               <p class="section-label">Featured</p>
               <div class="featured-grid">
@@ -377,77 +415,111 @@
       <section class="listing">
         <div class="container">
           <div class="posts-grid">
-            {% for post in contents %}
+            {% for post in blog_recent_posts(group.id, 200) %}
               {{ post_card(post) }}
             {% endfor %}
           </div>
 
-          {% if contents.total_page_count > 1 %}
-            <nav class="pagination-dots" aria-label="Blog pagination">
-              {% for page_num in range(1, contents.total_page_count + 1) %}
-                {% if page_num == current_page_num %}
-                  <span class="is-active" aria-label="Page {{ page_num }}"></span>
-                {% else %}
-                  <a href="{{ blog_page_link(page_num)|escape_url }}" aria-label="Go to page {{ page_num }}"></a>
-                {% endif %}
-              {% endfor %}
-            </nav>
-          {% endif %}
+          <nav class="pagination" aria-label="Blog pagination"></nav>
         </div>
       </section>
     </main>
 
     <script>
       (function () {
-        var pills = document.querySelectorAll('.filter-pill[data-filter]');
-        var cards = document.querySelectorAll('.listing .insight-card');
+        var PER_PAGE = 9;
+        var pills    = document.querySelectorAll('.filter-pill[data-filter]');
+        var allCards = Array.from(document.querySelectorAll('.listing .insight-card'));
+        var allBtn   = document.querySelector('.filter-pill[data-filter="all"]');
+        var nav      = document.querySelector('.listing .pagination');
         var activeFilters = new Set();
+        var currentPage   = 1;
 
-        function applyFilters() {
-          cards.forEach(function (card) {
-            if (activeFilters.size === 0) {
-              card.style.display = '';
-            } else {
-              var tags = (card.getAttribute('data-tags') || '').split(',');
-              var match = false;
-              activeFilters.forEach(function (f) {
-                if (tags.indexOf(f) !== -1) match = true;
-              });
-              card.style.display = match ? '' : 'none';
-            }
+        function filteredCards() {
+          if (activeFilters.size === 0) return allCards;
+          return allCards.filter(function (card) {
+            var tags = (card.getAttribute('data-tags') || '').split(',');
+            var hit = false;
+            activeFilters.forEach(function (f) { if (tags.indexOf(f) !== -1) hit = true; });
+            return hit;
           });
         }
 
-        var allBtn = document.querySelector('.filter-pill[data-filter="all"]');
+        function renderPage() {
+          var visible    = filteredCards();
+          var totalPages = Math.max(1, Math.ceil(visible.length / PER_PAGE));
+          if (currentPage > totalPages) currentPage = 1;
+          var start = (currentPage - 1) * PER_PAGE;
+
+          allCards.forEach(function (c) { c.style.display = 'none'; });
+          visible.slice(start, start + PER_PAGE).forEach(function (c) { c.style.display = ''; });
+
+          buildPagination(totalPages);
+        }
+
+        function buildPagination(total) {
+          if (total <= 1) { nav.innerHTML = ''; return; }
+          var parts = [];
+
+          if (currentPage > 1) {
+            parts.push('<a class="pagination__btn" data-page="' + (currentPage - 1) + '">← Prev</a>');
+          }
+
+          for (var i = 1; i <= total; i++) {
+            if (i === currentPage) {
+              parts.push('<span class="pagination__num is-active">' + i + '</span>');
+            } else if (i === 1 || i === total || (i >= currentPage - 2 && i <= currentPage + 2)) {
+              parts.push('<a class="pagination__num" data-page="' + i + '">' + i + '</a>');
+            } else if (i === currentPage - 3 || i === currentPage + 3) {
+              parts.push('<span class="pagination__ellipsis">…</span>');
+            }
+          }
+
+          if (currentPage < total) {
+            parts.push('<a class="pagination__btn" data-page="' + (currentPage + 1) + '">Next →</a>');
+          }
+
+          nav.innerHTML = parts.join('');
+
+          nav.querySelectorAll('[data-page]').forEach(function (el) {
+            el.addEventListener('click', function () {
+              currentPage = +this.getAttribute('data-page');
+              renderPage();
+              document.querySelector('.listing').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+          });
+        }
 
         pills.forEach(function (pill) {
           pill.addEventListener('click', function () {
-            var filter = this.getAttribute('data-filter');
-
-            if (filter === 'all') {
+            var f = this.getAttribute('data-filter');
+            if (f === 'all') {
               activeFilters.clear();
               pills.forEach(function (p) { p.classList.remove('is-active'); });
               allBtn.classList.add('is-active');
             } else {
               allBtn.classList.remove('is-active');
-              if (activeFilters.has(filter)) {
-                activeFilters.delete(filter);
+              if (activeFilters.has(f)) {
+                activeFilters.delete(f);
                 this.classList.remove('is-active');
               } else {
-                activeFilters.add(filter);
+                activeFilters.add(f);
                 this.classList.add('is-active');
               }
-              if (activeFilters.size === 0) {
-                allBtn.classList.add('is-active');
-              }
+              if (activeFilters.size === 0) allBtn.classList.add('is-active');
             }
-
-            applyFilters();
+            currentPage = 1;
+            renderPage();
           });
         });
+
+        renderPage();
       })();
     </script>
 
+    {% module "site_footer" path="../modules/global-footer.module" %}
+
+    <script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
     {{ standard_footer_includes }}
   </body>
 </html>

@@ -172,9 +172,8 @@
 <script>
   window.addEventListener("hs-form-event:on-ready", event => {
     const assetRow = {{ dynamic_page_hubdb_row|tojson }}; 
-    const { formId, instanceId } = event.detail;
     const form = HubSpotFormsV4.getFormFromEvent(event);
-    
+
     form.setFieldValue("0-1/file_id", assetRow.hs_id.toString());
     form.setFieldValue("0-1/slug", assetRow.slug);
     form.setFieldValue("0-1/url", assetRow.url);
@@ -182,24 +181,32 @@
     form.setFieldValue("0-1/sfdc_campaign", assetRow.salesforce_campaign);
   });
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6SN5X02JTZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-6SN5X02JTZ');
-</script>
-
-<script>
-(function(d,b,a,s,e){ var t = b.createElement(a),
-  fs = b.getElementsByTagName(a)[0]; t.async=1; t.id=e; t.src=s;
-  fs.parentNode.insertBefore(t, fs); })
-(window,document,'script','https://tag.demandbase.com/6777fbd385590f90.min.js','demandbase_js_lib');  
-</script>
-
 {% end_require_js %}
 {% endif %}
 
+{% require_js %}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6SN5X02JTZ"></script>
 
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6SN5X02JTZ');
+</script>
+
+<script>
+(function(d,b,a,s,e){
+  var t = b.createElement(a),
+  fs = b.getElementsByTagName(a)[0];
+  t.async = 1;
+  t.id = e;
+  t.src = s;
+  fs.parentNode.insertBefore(t, fs);
+})
+(window,document,'script',
+'https://tag.demandbase.com/6777fbd385590f90.min.js',
+'demandbase_js_lib');
+</script>
+{% end_require_js %}

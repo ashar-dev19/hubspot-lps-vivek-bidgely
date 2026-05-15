@@ -21,9 +21,12 @@
 <html lang="{{ html_lang|default('en') }}">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ post_title|striptags }}</title>
     {{ standard_header_includes }}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+    <title>{{ post_title|striptags }}</title>
     <style>
       :root {
         --ink: #20334d;
@@ -267,6 +270,7 @@
       .back-link {
         display: inline-flex;
         margin-top: 10px;
+        margin-bottom: 60px;
         color: #2aa6ec;
         font-size: 13px;
         font-weight: 800;
@@ -340,6 +344,7 @@
     </style>
   </head>
   <body>
+    {% module "site_header" path="../modules/global-header.module" %}
     <main>
       <section class="hero">
         <div class="hero-inner">
@@ -369,7 +374,9 @@
             <div class="side-block">
               <h2>Topics:</h2>
               {% for topic in content.topic_list %}
-                <a class="topic-pill" href="{{ blog_tag_url(group.id, topic.slug) }}">{{ topic.name }}</a>
+                {% if topic.slug != "featured" %}
+                  <a class="topic-pill" href="{{ blog_tag_url(group.id, topic.slug) }}">{{ topic.name }}</a>
+                {% endif %}
               {% endfor %}
             </div>
           {% endif %}
@@ -413,6 +420,9 @@
       </div>
     </main>
 
-    {{ standard_footer_includes }}
+      {% module "site_footer" path="../modules/global-footer.module" %}
+
+      <script src="{{ get_asset_url('bidgely-theme/js/main.js') }}" defer></script>
+      {{ standard_footer_includes }}
   </body>
 </html>
