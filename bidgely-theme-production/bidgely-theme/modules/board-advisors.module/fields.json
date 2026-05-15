@@ -1,0 +1,183 @@
+[
+  {
+    "id": "section_aria_label",
+    "name": "section_aria_label",
+    "label": "Section aria-label (accessibility)",
+    "required": false,
+    "locked": false,
+    "allow_new_line": false,
+    "type": "text",
+    "display_width": null,
+    "default": "Board and advisors"
+  },
+  {
+    "id": "profiles",
+    "name": "profiles",
+    "label": "Profiles",
+    "required": false,
+    "locked": false,
+    "occurrence": {
+      "min": 1,
+      "max": 24,
+      "sorting_label_field": "profiles.full_name",
+      "default": 8
+    },
+    "children": [
+      {
+        "id": "profiles.headshot",
+        "name": "headshot",
+        "label": "Headshot",
+        "help_text": "Upload a square or portrait photo (displayed in a circle).",
+        "required": false,
+        "locked": false,
+        "responsive": true,
+        "resizable": true,
+        "show_loading": true,
+        "type": "image",
+        "display_width": null,
+        "default": {
+          "src": "",
+          "alt": "",
+          "loading": "lazy",
+          "width": 240,
+          "height": 240
+        }
+      },
+      {
+        "id": "profiles.full_name",
+        "name": "full_name",
+        "label": "Name",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": ""
+      },
+      {
+        "id": "profiles.role_title",
+        "name": "role_title",
+        "label": "Title / role",
+        "required": false,
+        "locked": false,
+        "allow_new_line": false,
+        "type": "text",
+        "display_width": null,
+        "default": ""
+      },
+      {
+        "id": "profiles.bio",
+        "name": "bio",
+        "label": "Biography",
+        "required": false,
+        "locked": false,
+        "type": "richtext",
+        "display_width": null,
+        "default": "<p></p>"
+      }
+    ],
+    "tab": "CONTENT",
+    "expanded": true,
+    "group_occurrence_meta": null,
+    "type": "group",
+    "display_width": null,
+    "default": [
+      {
+        "headshot": {
+          "src": "https://www.bidgely.com/hubfs/board-advisors/simon-chong.png",
+          "alt": "Simon Chong",
+          "loading": "lazy",
+          "width": 240,
+          "height": 240
+        },
+        "full_name": "Simon Chong",
+        "role_title": "Managing Partner and Co-Founder of Georgian",
+        "bio": "<p>Simon Chong is a Managing Partner and Co-Founder of Georgian. Prior to Georgian, Simon was Worldwide Director of Sales, Information Solutions within the IBM Software Group, via the acquisition of DWL Inc. in 2005. At DWL, Simon was the Senior Vice President, Worldwide Sales and Marketing, where he was responsible for global field operations and achieving revenue leadership in the master data management (MDM) space. Having spent his career in sales management, marketing and operations, Simon applies his strong operating background to helping our portfolio companies. He focuses on designing growth strategies and helping companies develop and execute their go-to-market approach, with a particular focus on sales.</p>"
+      },
+      {
+        "headshot": {
+          "src": "https://www.bidgely.com/hubfs/board-advisors/scott-dupcak.png",
+          "alt": "Scott Dupcak",
+          "loading": "lazy",
+          "width": 240,
+          "height": 240
+        },
+        "full_name": "Scott Dupcak",
+        "role_title": "Managing Director - Constellation Technology Ventures, Exelon Corporation",
+        "bio": "<p>Scott is the head of Constellation Technology Ventures (CTV), the venture capital investing arm of Exelon Corp. In this role, Scott oversees the CTV investing strategy, the management of the CTV portfolio and the commercialization of new energy technologies within the Exelon commercial platform. Prior to CTV, Scott was part of the Strategic Systems and Business Operations group where he led a team responsible for market data management, IT governance and supporting business process improvement projects, new business/growth initiatives and integration projects. He held several other roles within the Constellation wholesale commercial organization prior to that. Scott earned a Bachelor of Science in Accounting from Fairfield University and an MBA from the University of Maryland's Robert H. Smith School of Business.</p>"
+      },
+      {
+        "headshot": {
+          "src": "https://www.bidgely.com/hubfs/board-advisors/witold-bik.png",
+          "alt": "Witold Bik",
+          "loading": "lazy",
+          "width": 240,
+          "height": 240
+        },
+        "full_name": "Witold Bik",
+        "role_title": "Vice President of Product Innovation, S&C Electric Company",
+        "bio": "<p>Witold has over 25 years of experience working with the electric utility industry with focus on distribution automation, smart grid technologies, and communications. He currently serves as Vice President of Product Innovation at S&C Electric Company. Before that, Witold was in charge of S&C's Automation Systems Division. Prior to joining S&C, he was President of EnergyLine Systems, a supplier of real-time embedded control systems. Earlier at EnergyLine, he was VP of Engineering responsible for development of electronic and software products based on distributed intelligence. Prior to EnergyLine Witold experienced fast-paced Silicon Valley environment while working at Magnetic Pulse, Inc. where he was involved in development of high-tech logging equipment for the oil industry. Witold is a board member at Varentec, a startup funded by Khosla Ventures and Bill Gates. Witold holds MS in Electrical Engineering from Technical University of Lodz.</p>"
+      },
+      {
+        "headshot": {
+          "src": "https://www.bidgely.com/hubfs/board-advisors/rajesh-swaminathan.png",
+          "alt": "Rajesh Swaminathan",
+          "loading": "lazy",
+          "width": 240,
+          "height": 240
+        },
+        "full_name": "Rajesh Swaminathan",
+        "role_title": "Venture Partner, Khosla Ventures",
+        "bio": "<p>Rajesh is a Partner at Khosla Ventures. Rajesh brings with him two decades of experience assisting and investing in deeptech/hardware startups across many industries including Cleantech, AI, 3D Printing and Healthcare. Before joining Khosla Ventures, Rajesh served as the Head of Applied Ventures LLC, the Venture Capital arm of Applied Materials, where he managed a portfolio of over 85 hardware startups across 13 countries. Before joining Applied Ventures, Rajesh worked at the venture arm of Third Point LLC, Third Point Ventures in New York, where he drove the technical assessment &amp; partnerships with several photonics, MEMS and RF startups. Rajesh also led the design for reliability program for Lucent's 10Gbs and 40Gbs telecommunication systems and supported the successful deployment of these systems globally. While pursuing his MBA at Harvard Business School, Rajesh interned at Deutsche Bank's Tech Investment Banking group. Rajesh completed his M.S. at the University of Maryland at College Park, and received his Bachelors degree in Chemical Engineering from IIT Madras where he was awarded the Shankar Dayal Sharma Presidential Gold Medal for overall excellence.</p>"
+      },
+      {
+        "headshot": {
+          "src": "https://www.bidgely.com/hubfs/board-advisors/ashutosh-garg.png",
+          "alt": "Ashutosh Garg",
+          "loading": "lazy",
+          "width": 240,
+          "height": 240
+        },
+        "full_name": "Ashutosh Garg",
+        "role_title": "Board Member",
+        "bio": "<p>With 6000+ research citations, 50+ patents, 35+ peer-reviewed research publications, and the outstanding PhD thesis award from UIUC for his PhD thesis in Machine Learning, it's fair to say that Ashutosh is one of the world's experts in Machine Learning. Co-Author of the book &ldquo;What's Next for You - The Eightfold Path To Transforming The Way We Hire And Manage Talent.&rdquo;</p>"
+      },
+      {
+        "headshot": {
+          "src": "https://www.bidgely.com/hubfs/board-advisors/bahman-hoveida.png",
+          "alt": "Bahman Hoveida",
+          "loading": "lazy",
+          "width": 240,
+          "height": 240
+        },
+        "full_name": "Bahman Hoveida",
+        "role_title": "Board Member",
+        "bio": "<p>Bahman was the founder and CEO of Open Systems International (OSI), a very successful utility automation and control software company, which was acquired by Emerson Electric in 2021. Under his stewardship, OSI grew from a startup company of less than 10 employees to an international organization of nearly 1000 employees disrupting the utility automation field. Under his watch, OSI remained a profitable company year after year with impressive revenue growth. Bahman is also a leading expert in Smart Grid technologies and served as the technical visionary at OSI to help innovate and build an impressive product portfolio including a leading Advanced Distribution Management (ADMS) and Distributed Energy Resource Management (DERMS) platform. Since retiring from OSI, Bahman is involved in managing a family office which invests in high quality energy and clean-tech companies. He uses his 40+ years of technical and business experience in leading growing organizations to advise the portfolio companies in an Advisory or Board role in technical, organizational, and sales and business development matters. Bahman has previously worked for divisions of GE and Siemens involved in Utility Energy Management systems as well as serving as a management consultant to utilities worldwide. Bahman holds a Master of Science degree in Electrical Engineering with specialization in Electric Power from the University of Illinois at Urbana-Champaign.</p>"
+      },
+      {
+        "headshot": {
+          "src": "https://www.bidgely.com/hubfs/board-advisors/abhay-gupta.png",
+          "alt": "Abhay Gupta",
+          "loading": "lazy",
+          "width": 240,
+          "height": 240
+        },
+        "full_name": "Abhay Gupta",
+        "role_title": "Co-founder & CEO, Bidgely",
+        "bio": "<p>Abhay Gupta founded Bidgely with the mission to accomplish energy efficiency at a massive scale. He's worked at a combination of energy and technology companies including Grid Net, Echelon and Sun Microsystems. He holds a B.Tech from the Indian Institute of Technology Delhi, M.S. from University of Southern California and MBA from Santa Clara University.</p>"
+      },
+      {
+        "headshot": {
+          "src": "https://www.bidgely.com/hubfs/board-advisors/vivek-garud.png",
+          "alt": "Vivek Garud",
+          "loading": "lazy",
+          "width": 240,
+          "height": 240
+        },
+        "full_name": "Vivek Garud",
+        "role_title": "Co-founder & CTO, Bidgely",
+        "bio": "<p>Vivek leads the technology team at Bidgely, where he leads the team creating energy innovations through big data analytics. Prior to Bidgely, Vivek contributed to building voice recognition technology at Microsoft. He has a B.Tech degree in Computer Science from IIT Bombay.</p>"
+      }
+    ]
+  }
+]

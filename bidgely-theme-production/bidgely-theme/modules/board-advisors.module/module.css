@@ -1,0 +1,82 @@
+/* Board & Advisors — stacked cards; tokens from main.css (:root) */
+.board-advisors-module {
+  background: var(--bg-soft);
+  padding-block: 48px 72px;
+}
+
+.board-advisors-module__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.board-advisor-card {
+  display: flex;
+  flex-direction: row;
+  gap: 28px 36px;
+  background: #fff;
+  border: 1px solid var(--nile-10);
+  border-radius: var(--radius-lg, 14px);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-card, 0 5px 25px rgba(0, 0, 0, 0.05));
+}
+
+.board-advisor-card__media {
+  width: 165px;
+  height: 165px;
+}
+
+.board-advisor-card__media img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--nile-10);
+}
+
+.board-advisor-card__body {
+  min-width: 0;
+  flex: 1;
+}
+
+.board-advisor-card__name {
+  margin: 0;
+  font-size: 17px;
+  letter-spacing: -0.2px;
+  color: var(--nile);
+}
+
+.board-advisor-card__role {
+  margin: 10px 0;
+  font-size: 13px;
+  color: var(--nile-52);
+}
+
+.board-advisor-card__bio {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--nile-52);
+  font-weight: 400;
+}
+
+.board-advisor-card__bio p {
+  margin: 0 0 10px;
+  font-size: 13px;
+}
+
+.board-advisor-card__bio p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .board-advisor-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+  }
+}

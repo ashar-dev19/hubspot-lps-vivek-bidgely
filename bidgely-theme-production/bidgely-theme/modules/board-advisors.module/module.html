@@ -1,0 +1,46 @@
+{#
+  Board & Advisors — vertical list of profile cards.
+  Headshot: HubSpot image field (upload or replace in the module editor).
+#}
+<section class="section board-advisors-module"{% if module.section_aria_label %} aria-label="{{ module.section_aria_label|escape }}"{% endif %}>
+  <div class="container">
+    <ul class="board-advisors-module__list">
+      {% for item in module.profiles %}
+        {% set img = item.headshot %}
+        {% set src = '' %}
+        {% if img and img.src %}
+          {% set src = img.src|trim %}
+        {% endif %}
+        {% set who = item.full_name|default('')|trim %}
+        {% if src or who %}
+          <li class="board-advisor-card">
+            {% if src %}
+              <div class="board-advisor-card__media">
+                <img
+                  src="{{ img.src|escape }}"
+                  alt="{% if img.alt|trim %}{{ img.alt|escape }}{% elif who %}{{ who|escape }}{% else %}{% endif %}"
+                  {% if img.width %}width="{{ img.width }}"{% else %}width="120"{% endif %}
+                  {% if img.height %}height="{{ img.height }}"{% else %}height="120"{% endif %}
+                  loading="{{ img.loading|default('lazy') }}"
+                  decoding="async"
+                >
+              </div>
+            {% endif %}
+            <div class="board-advisor-card__body">
+              {% if who %}
+                <h2 class="board-advisor-card__name">{{ who|escape }}</h2>
+              {% endif %}
+              {% set subtitle = item.role_title|default('')|trim %}
+              {% if subtitle %}
+                <p class="board-advisor-card__role">{{ subtitle|escape }}</p>
+              {% endif %}
+              <div class="board-advisor-card__bio">
+                {{ item.bio }}
+              </div>
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</section>
